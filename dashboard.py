@@ -86,16 +86,16 @@ st.markdown("---")
 st.subheader("🚨 Real-Time Threat Intelligence Feed")
 tab1, tab2, tab3, tab4 = st.tabs(["Port Scanning", "Malware Delivery", "Brute Force", "DNS Spoofing"])
 
-# The .astype(str) fixes the PyArrow LargeUtf8 crash!
+# Using st.table() bypasses PyArrow completely to avoid the LargeUtf8 crash
 with tab1: 
     if not ps_df.empty:
-        st.dataframe(ps_df.astype(str).sort_index(ascending=False), use_container_width=True)
+        st.table(ps_df.astype(str).sort_index(ascending=False))
     else:
         st.info("No Port Scan logs found.")
         
 with tab2: 
     if not mw_df.empty:
-        st.dataframe(mw_df.astype(str).sort_index(ascending=False), use_container_width=True)
+        st.table(mw_df.astype(str).sort_index(ascending=False))
     else:
         st.info("No Malware logs found.")
         
@@ -109,10 +109,8 @@ with tab4:
 st.markdown("---")
 st.subheader("⚡ Defense Mechanisms & Mitigation")
 
-# Autonomous Action Callout
 st.info("🤖 **AUTONOMOUS DEFENSE ACTIVE:** ML Engine is automatically predicting threats and executing Policy-Based Routing (Subnet Isolation) on hostile IPs.")
 
-# Manual Actions
 st.markdown("#### Manual Preventative Controls")
 c1, c2, c3 = st.columns(3)
 
