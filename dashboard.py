@@ -3,7 +3,6 @@ import pandas as pd
 import os
 from datetime import datetime, timedelta
 import pytz
-import plotly.express as px
 
 # --- CONFIGURATION ---
 GITHUB_USER = "vinayak-salian"
@@ -20,7 +19,6 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# --- TIMEZONE FIX (IST) ---
 ist = pytz.timezone('Asia/Kolkata')
 
 # --- DEMO DATA GENERATOR ---
@@ -80,40 +78,32 @@ with time_col:
 m1, m2, m3, m4 = st.columns(4)
 m1.metric("RECONNAISSANCE EVENTS", len(ps_df))
 m2.metric("PAYLOAD DROPS", len(mw_df))
-m3.metric("AUTH VIOLATIONS", len(bf_df) if not bf_df.empty else 12) # Demo number
+m3.metric("AUTH VIOLATIONS", len(bf_df) if not bf_df.empty else 0) 
 m4.metric("DNS ANOMALIES", len(dns_df) if not dns_df.empty else 0)
-
-# --- SIEM VISUALIZATIONS ---
-st.markdown("---")
-st.subheader("📊 Global Threat Analytics")
-chart_col1, chart_col2 = st.columns(2)
-
-with chart_col1:
-    # Threat Distribution Donut Chart
-    labels = ['Port Scans', 'Malware', 'Brute Force', 'DNS Spoofing']
-    values = [len(ps_df), len(mw_df), 12, 0] # Using demo numbers for visuals
-    fig_pie = px.pie(values=values, names=labels, hole=0.4, title="Vector Distribution", color_discrete_sequence=px.colors.sequential.RdBu)
-    fig_pie.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', font_color="white")
-    st.plotly_chart(fig_pie, use_container_width=True)
-
-with chart_col2:
-    # Top Attacker IPs Bar Chart
-    if not ps_df.empty:
-        top_ips = ps_df['src_ip'].value_counts().reset_index()
-        top_ips.columns = ['Source IP', 'Attack Count']
-        fig_bar = px.bar(top_ips.head(5), x='Source IP', y='Attack Count', title="Top Hostile Actors", color='Attack Count', color_continuous_scale='Reds')
-        fig_bar.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', font_color="white")
-        st.plotly_chart(fig_bar, use_container_width=True)
 
 # --- MAIN THREAT FEED ---
 st.markdown("---")
 st.subheader("🚨 Real-Time Threat Intelligence Feed")
 tab1, tab2, tab3, tab4 = st.tabs(["Port Scanning", "Malware Delivery", "Brute Force", "DNS Spoofing"])
 
-with tab1: st.dataframe(ps_df.sort_index(ascending=False), use_container_width=True)
-with tab2: st.dataframe(mw_df.sort_index(ascending=False), use_container_width=True)
-with tab3: st.info("Brute force telemetry awaiting sync.")
-with tab4: st.info("DNS integrity baseline nominal. No spoofing detected.")
+# The .astype(str) fixes the PyArrow LargeUtf8 crash!
+with tab1: 
+    if not ps_df.empty:
+        st.dataframe(ps_df.astype(str).sort_index(ascending=False), use_container_width=True)
+    else:
+        st.info("No Port Scan logs found.")
+        
+with tab2: 
+    if not mw_df.empty:
+        st.dataframe(mw_df.astype(str).sort_index(ascending=False), use_container_width=True)
+    else:
+        st.info("No Malware logs found.")
+        
+with tab3: 
+    st.info("No Brute Force logs found yet. Module not active.")
+    
+with tab4: 
+    st.info("No DNS Spoofing logs found yet. Module not active.")
 
 # --- TACTICAL RESPONSE ACTIONS ---
 st.markdown("---")
