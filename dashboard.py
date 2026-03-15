@@ -89,9 +89,13 @@ st.info("🤖 **AUTONOMOUS DEFENSE ACTIVE:** ML Engine is predicting threats and
 
 st.markdown("#### 🛑 Autonomous Firewall Actions (Live Feed)")
 try:
-    blocked_df = pd.read_csv(RAW_URL + "blocked_ips.txt", names=["Banned Source IPs"])
+    blocked_url = RAW_URL + "blocked_ips.txt"
+    blocked_df = pd.read_csv(blocked_url, names=["Banned Source IPs"])
+    
     if not blocked_df.empty:
-        st.table(blocked_df.astype(str))
+        # THE FIX: Bypass PyArrow and render as raw HTML
+        html_table = blocked_df.astype(str).to_html(index=False, escape=False)
+        st.markdown(html_table, unsafe_allow_html=True)
     else:
         st.success("No IPs currently banned by the Sentry.")
 except Exception:
