@@ -1,1 +1,5 @@
 scapy==2.6.1
+pandas
+plotly
+pytz
+streamlit
