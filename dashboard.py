@@ -8,7 +8,7 @@ import plotly.express as px
 # --- CONFIGURATION ---
 GITHUB_USER = "vinayak-salian"
 GITHUB_REPO = "honeypot-idps"
-RAW_URL = f"https://raw.githubusercontent.com/{GITHUB_USER}/{GITHUB_REPO}/main/logs/"
+RAW_URL = f"https://raw.githubusercontent.com/vinayak-salian/honeypot-idps/main/logs/"
 
 st.set_page_config(page_title="IDPS Operational Console", page_icon="🛡️", layout="wide")
 
