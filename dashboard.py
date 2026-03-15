@@ -129,3 +129,12 @@ with c2:
 with c3:
     if st.button("HARDEN SSH (Rate Limit)", use_container_width=True):
         st.success("Policy Applied: Max 3 SSH connections per minute enforced.")
+
+st.markdown("#### 🛑 Autonomous Firewall Actions (Live)")
+try:
+    # Read the blocked IPs file from GitHub
+    blocked_url = RAW_URL + "blocked_ips.txt"
+    blocked_df = pd.read_csv(blocked_url, names=["Banned Source IPs"])
+    st.table(blocked_df)
+except Exception:
+    st.success("No IPs currently banned by the Sentry.")
