@@ -1,16 +1,14 @@
 import streamlit as st
 import pandas as pd
-from datetime import datetime, timedelta
+from datetime import datetime
 import pytz
 
 # --- CONFIGURATION ---
-GITHUB_USER = "vinayak-salian"
-GITHUB_REPO = "honeypot-idps"
+
 RAW_URL = f"https://raw.githubusercontent.com/vinayak-salian/honeypot-idps/main/logs/"
 
 st.set_page_config(page_title="IDPS Operational Console", page_icon="🛡️", layout="wide")
 
-# --- STYLING ---
 st.markdown("""
     <style>
     .main { background-color: #0e1117; }
@@ -23,72 +21,40 @@ st.markdown("""
 
 ist = pytz.timezone('Asia/Kolkata')
 
-# --- DEMO DATA GENERATOR ---
-def get_demo_data(attack_type):
-    """Generates realistic dummy data for presentation purposes if real logs are empty."""
-    now = datetime.now(ist)
-    if attack_type == "portscan":
-        return pd.DataFrame({
-            "timestamp": [(now - timedelta(minutes=i*15)).strftime('%Y-%m-%d %H:%M:%S') for i in range(5)],
-            "src_ip": ["192.168.1.105", "10.0.0.42", "192.168.1.105", "172.16.0.8", "192.168.1.105"],
-            "unique_ports": [150, 22, 1000, 5, 65535],
-            "packet_count": [300, 45, 2050, 10, 130000],
-            "scan_speed": ["fast", "slow", "fast", "slow", "insane"],
-            "ml_confidence": ["98%", "82%", "99%", "75%", "99.9%"]
-        })
-    elif attack_type == "malware":
-        return pd.DataFrame({
-            "timestamp": [(now - timedelta(hours=i*2)).strftime('%Y-%m-%d %H:%M:%S') for i in range(2)],
-            "src_ip": ["45.33.32.156", "185.220.101.14"],
-            "file_hash": ["e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855", "8d1b11601cc56eb41a542b588339ab3c"],
-            "av_result": ["Trojan.Mirai", "Ransom.WannaCry"]
-        })
-    return pd.DataFrame()
-
-# --- ROBUST DATA LOADING ---
 @st.cache_data(ttl=60)
-def fetch_logs(filename, attack_type):
+def fetch_logs(filename):
+    """Fetches real logs only. Returns empty dataframe if no logs exist."""
     try:
         url = RAW_URL + filename
-        df = pd.read_csv(url)
-        if df.empty:
-            return get_demo_data(attack_type), True
-        return df, False
+        return pd.read_csv(url)
     except Exception:
-        return get_demo_data(attack_type), True
+        return pd.DataFrame()
 
-# --- HEADER & STATUS ---
 st.title("🛡️ IoT Autonomous Honeypot & IDPS")
 st.markdown("### Operational Intelligence & Strategic Mitigation Console")
 
 status_col, time_col = st.columns([3, 1])
-ps_df, is_demo_ps = fetch_logs("portscan_log.csv", "portscan")
-mw_df, is_demo_mw = fetch_logs("malware_delivery_log.csv", "malware")
-bf_df, _ = fetch_logs("bruteforce_log.csv", "bruteforce")
-dns_df, _ = fetch_logs("dns_spoof_log.csv", "dns")
+ps_df = fetch_logs("portscan_log.csv")
+mw_df = fetch_logs("malware_delivery_log.csv")
+bf_df = fetch_logs("bruteforce_log.csv")
+dns_df = fetch_logs("dns_spoof_log.csv")
 
 with status_col:
-    if is_demo_ps and is_demo_mw:
-        st.warning("🟡 **SYSTEM STATUS:** SENTRY NODE IDLE (DISPLAYING SIMULATION DATA)")
-    else:
-        st.success("🟢 **SYSTEM STATUS:** SENTRY NODE OPERATIONAL (LIVE FEED ACTIVE)")
+    st.success("🟢 **SYSTEM STATUS:** SENTRY NODE OPERATIONAL (LIVE FEED ACTIVE)")
 
 with time_col:
     st.write(f"**IST Time:** {datetime.now(ist).strftime('%H:%M:%S')}")
 
-# --- KPI METRICS ---
 m1, m2, m3, m4 = st.columns(4)
 m1.metric("RECONNAISSANCE EVENTS", len(ps_df))
 m2.metric("PAYLOAD DROPS", len(mw_df))
-m3.metric("AUTH VIOLATIONS", len(bf_df) if not bf_df.empty else 0) 
-m4.metric("DNS ANOMALIES", len(dns_df) if not dns_df.empty else 0)
+m3.metric("AUTH VIOLATIONS", len(bf_df)) 
+m4.metric("DNS ANOMALIES", len(dns_df))
 
-# --- MAIN THREAT FEED ---
 st.markdown("---")
 st.subheader("🚨 Real-Time Threat Intelligence Feed")
 tab1, tab2, tab3, tab4 = st.tabs(["Port Scanning", "Malware Delivery", "Brute Force", "DNS Spoofing"])
 
-# THE FIX: Bypass PyArrow by converting the dataframe directly to raw HTML
 with tab1: 
     if not ps_df.empty:
         html_table = ps_df.astype(str).sort_index(ascending=False).to_html(index=False, escape=False)
@@ -104,37 +70,29 @@ with tab2:
         st.info("No Malware logs found.")
         
 with tab3: 
-    st.info("No Brute Force logs found yet. Module not active.")
+    if not bf_df.empty:
+        html_table = bf_df.astype(str).sort_index(ascending=False).to_html(index=False, escape=False)
+        st.markdown(html_table, unsafe_allow_html=True)
+    else:
+        st.info("No Brute Force logs found.")
     
 with tab4: 
-    st.info("No DNS Spoofing logs found yet. Module not active.")
+    if not dns_df.empty:
+        html_table = dns_df.astype(str).sort_index(ascending=False).to_html(index=False, escape=False)
+        st.markdown(html_table, unsafe_allow_html=True)
+    else:
+        st.info("No DNS Spoofing logs found.")
 
-# --- TACTICAL RESPONSE ACTIONS ---
 st.markdown("---")
 st.subheader("⚡ Defense Mechanisms & Mitigation")
+st.info("🤖 **AUTONOMOUS DEFENSE ACTIVE:** ML Engine is predicting threats and executing Policy-Based Routing on hostile IPs.")
 
-st.info("🤖 **AUTONOMOUS DEFENSE ACTIVE:** ML Engine is automatically predicting threats and executing Policy-Based Routing (Subnet Isolation) on hostile IPs.")
-
-st.markdown("#### Manual Preventative Controls")
-c1, c2, c3 = st.columns(3)
-
-with c1:
-    if st.button("BLOCK SOURCE IP (Global)", use_container_width=True):
-        st.error("Firewall Rule Queued: IPTables DROP initiated.")
-
-with c2:
-    if st.button("PURGE DNS CACHE", use_container_width=True):
-        st.info("Resolver Command: Cache Flush & Upstream Validation engaged.")
-
-with c3:
-    if st.button("HARDEN SSH (Rate Limit)", use_container_width=True):
-        st.success("Policy Applied: Max 3 SSH connections per minute enforced.")
-
-st.markdown("#### 🛑 Autonomous Firewall Actions (Live)")
+st.markdown("#### 🛑 Autonomous Firewall Actions (Live Feed)")
 try:
-    # Read the blocked IPs file from GitHub
-    blocked_url = RAW_URL + "blocked_ips.txt"
-    blocked_df = pd.read_csv(blocked_url, names=["Banned Source IPs"])
-    st.table(blocked_df)
+    blocked_df = pd.read_csv(RAW_URL + "blocked_ips.txt", names=["Banned Source IPs"])
+    if not blocked_df.empty:
+        st.table(blocked_df.astype(str))
+    else:
+        st.success("No IPs currently banned by the Sentry.")
 except Exception:
     st.success("No IPs currently banned by the Sentry.")
