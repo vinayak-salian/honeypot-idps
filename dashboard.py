@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import os
 from datetime import datetime, timedelta
 import pytz
 
@@ -16,6 +15,9 @@ st.markdown("""
     <style>
     .main { background-color: #0e1117; }
     .stMetric { background-color: #1e2130; padding: 15px; border-radius: 10px; border: 1px solid #3e4250; }
+    table { color: white; width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { text-align: left; padding: 10px; border-bottom: 1px solid #3e4250; background-color: #1e2130; }
+    td { padding: 10px; border-bottom: 1px solid #3e4250; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -86,16 +88,18 @@ st.markdown("---")
 st.subheader("🚨 Real-Time Threat Intelligence Feed")
 tab1, tab2, tab3, tab4 = st.tabs(["Port Scanning", "Malware Delivery", "Brute Force", "DNS Spoofing"])
 
-# Using st.table() bypasses PyArrow completely to avoid the LargeUtf8 crash
+# THE FIX: Bypass PyArrow by converting the dataframe directly to raw HTML
 with tab1: 
     if not ps_df.empty:
-        st.table(ps_df.astype(str).sort_index(ascending=False))
+        html_table = ps_df.astype(str).sort_index(ascending=False).to_html(index=False, escape=False)
+        st.markdown(html_table, unsafe_allow_html=True)
     else:
         st.info("No Port Scan logs found.")
         
 with tab2: 
     if not mw_df.empty:
-        st.table(mw_df.astype(str).sort_index(ascending=False))
+        html_table = mw_df.astype(str).sort_index(ascending=False).to_html(index=False, escape=False)
+        st.markdown(html_table, unsafe_allow_html=True)
     else:
         st.info("No Malware logs found.")
         
