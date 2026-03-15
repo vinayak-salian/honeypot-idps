@@ -84,7 +84,7 @@ m3.metric("AUTH VIOLATIONS", len(bf_df) if not bf_df.empty else 12) # Demo numbe
 m4.metric("DNS ANOMALIES", len(dns_df) if not dns_df.empty else 0)
 
 # --- SIEM VISUALIZATIONS ---
-st.divider()
+st.markdown("---")
 st.subheader("📊 Global Threat Analytics")
 chart_col1, chart_col2 = st.columns(2)
 
@@ -106,7 +106,7 @@ with chart_col2:
         st.plotly_chart(fig_bar, use_container_width=True)
 
 # --- MAIN THREAT FEED ---
-st.divider()
+st.markdown("---")
 st.subheader("🚨 Real-Time Threat Intelligence Feed")
 tab1, tab2, tab3, tab4 = st.tabs(["Port Scanning", "Malware Delivery", "Brute Force", "DNS Spoofing"])
 
@@ -116,7 +116,7 @@ with tab3: st.info("Brute force telemetry awaiting sync.")
 with tab4: st.info("DNS integrity baseline nominal. No spoofing detected.")
 
 # --- TACTICAL RESPONSE ACTIONS ---
-st.divider()
+st.markdown("---")
 st.subheader("⚡ Defense Mechanisms & Mitigation")
 
 # Autonomous Action Callout
