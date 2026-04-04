@@ -110,3 +110,14 @@
 [2026-04-04 16:18:28.134811] Prediction for 102.67.167.188: Class=0 (BENIGN) | Confidence: 0.88
 [2026-04-04 16:18:35.876611] Prediction for 45.159.97.233: Class=0 (BENIGN) | Confidence: 0.88
 [2026-04-04 16:18:43.047397] Prediction for 208.111.34.178: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-04 16:21:54.784258] Prediction for 102.67.165.36: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-04 16:24:09.186378] Prediction for 185.40.234.77: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-04 16:24:09.491669] Prediction for 185.40.234.53: Class=0 (BENIGN) | Confidence: 0.89
+[2026-04-04 16:24:09.635734] Prediction for 185.40.234.176: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-04 16:24:33.910691] Prediction for 176.58.90.104: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-04 16:25:14.909026] Prediction for 172.237.72.79: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-04 16:25:14.987825] Prediction for 172.237.66.30: Class=0 (BENIGN) | Confidence: 0.89
+[2026-04-04 16:26:48.501040] Prediction for 205.147.105.78: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-04 16:28:58.548164] Prediction for 95.217.2.165: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-04 16:28:58.901097] Prediction for 157.180.28.32: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-04 16:29:30.628316] Prediction for 49.13.204.141: Class=0 (BENIGN) | Confidence: 0.88
