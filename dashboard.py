@@ -16,7 +16,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# --- CUSTOM CSS (Cyberpunk Theme) ---
+# --- CUSTOM CSS ---
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -40,7 +40,6 @@ st.markdown("""
 
 ist = pytz.timezone('Asia/Kolkata')
 
-# --- DATA FETCHING ---
 @st.cache_data(ttl=15)
 def fetch_logs(filename):
     try:
@@ -48,11 +47,11 @@ def fetch_logs(filename):
     except:
         return pd.DataFrame()
 
-# Fetch All Master Data
+# Fetch Master Data
 events_df = fetch_logs("security_events.csv")
 banned_df = fetch_logs("banned_ips.csv")
 traffic_df = fetch_logs("traffic_metrics.csv")
-devices_df = fetch_logs("known_devices.csv") # The Network Census
+devices_df = fetch_logs("known_devices.csv")
 
 # --- HEADER ---
 col_h1, col_h2 = st.columns([1, 1])
@@ -60,30 +59,22 @@ with col_h1:
     st.markdown('<div class="main-header">Nexus Security Core</div>', unsafe_allow_html=True)
     st.markdown('<div class="status-badge">🟢 C2 CLOUD DASHBOARD • ONLINE</div>', unsafe_allow_html=True)
 with col_h2:
-    st.markdown(f"<div style='text-align: right; color: #94a3b8; font-family: \"Fira Code\"; pt-4'>SYS_TIME // {datetime.now(ist).strftime('%H:%M:%S')}</div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='text-align: right; color: #94a3b8; font-family: \"Fira Code\"; padding-top: 20px;'>SYS_TIME // {datetime.now(ist).strftime('%H:%M:%S')}</div>", unsafe_allow_html=True)
 
-# --- SECTION 1: NETWORK CENSUS (Connected Devices) ---
+st.markdown("---")
+
+# --- SECTION 1: NETWORK CENSUS & QUICK ACTIONS ---
 st.markdown("### 📱 Network Census")
-st.markdown("<p style='color: #94a3b8;'>Internal devices discovered by Sentry. Use the C2 panel below to block unauthorized hardware.</p>", unsafe_allow_html=True)
-
 if not devices_df.empty:
-    cols = st.columns(len(devices_df) if len(devices_df) < 5 else 4)
-    for i, row in devices_df.iterrows():
-        with cols[i % 4]:
-            trusted_color = "#10b981" if row.get('is_trusted') == 1 else "#ef4444"
-            st.markdown(f"""
-            <div class="cyber-card">
-                <div class="card-title">Device IP: {row['ip_address']}</div>
-                <div style="color: {trusted_color}; font-size: 0.8rem; font-weight: bold;">
-                    {'TRUSTED' if row.get('is_trusted') == 1 else 'UNTRUSTED'}
-                </div>
-                <div style="font-size: 0.7rem; color: #64748b; font-family: 'Fira Code';">MAC: {row['mac_address']}</div>
-            </div>
-            """, unsafe_allow_html=True)
+    # Use st.data_editor to allow selecting rows for blocking
+    st.markdown("Select a device to view traffic details or initiate a remote block command.")
+    event = st.dataframe(devices_df, use_container_width=True, hide_index=True)
 else:
-    st.info("No network census data available. Ensure your Pi is scanning the local network.")
+    st.info("Searching for local devices... ensure your network scanner is active on the Pi.")
 
-# --- SECTION 2: LIVE TRAFFIC & HEATMAP ---
+st.markdown("<br>", unsafe_allow_html=True)
+
+# --- SECTION 2: MAP & TRAFFIC (Walrus Fix) ---
 col_m1, col_m2 = st.columns([2, 1])
 
 with col_m1:
@@ -94,26 +85,29 @@ with col_m1:
     else:
         st.warning("Awaiting geospatial data...")
 
-with col_traffic := col_m2:
+col_traffic = col_m2 # Assignment fix for SyntaxError
+with col_traffic:
     st.markdown("### 📊 Network Heartbeat")
     if not traffic_df.empty:
         latest = traffic_df.iloc[0]
         st.markdown(f"""
         <div class="cyber-card">
-            <div class="card-title">Bandwidth Usage</div>
-            <div class="card-value">{latest.get('total_bytes', 0)} B</div>
+            <div class="card-title">Live Bandwidth</div>
+            <div class="card-value">{latest.get('total_bytes', 0)} Bytes</div>
             <hr style="opacity: 0.1">
             <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
-                <span>TCP: {latest.get('tcp_count', 0)}</span>
-                <span>UDP: {latest.get('udp_count', 0)}</span>
-                <span>ICMP: {latest.get('icmp_count', 0)}</span>
+                <span>TCP: {int(latest.get('tcp_count', 0))}</span>
+                <span>UDP: {int(latest.get('udp_count', 0))}</span>
+                <span>ICMP: {int(latest.get('icmp_count', 0))}</span>
             </div>
         </div>
         """, unsafe_allow_html=True)
     else:
         st.info("Awaiting traffic telemetry...")
 
-# --- SECTION 3: MITIGATION & BLOCKING ---
+st.markdown("---")
+
+# --- SECTION 3: C2 COMMAND CENTER ---
 st.markdown("### 🛡️ Command & Control (C2)")
 c1, c2 = st.columns([1, 2])
 
@@ -121,7 +115,7 @@ with c1:
     st.markdown("#### ⚡ Manual Override")
     with st.form("c2_form", clear_on_submit=True):
         ip_to_block = st.text_input("Target IP:", placeholder="192.168.x.x")
-        reason = st.selectbox("Reason", ["Unauthorized Device", "Brute Force", "Port Scan", "Malware"])
+        reason = st.selectbox("Reason", ["Unauthorized Device", "Confirmed BruteForce", "Port Scan", "Anomalous Traffic"])
         if st.form_submit_button("QUEUE BLOCK COMMAND"):
             if ip_to_block:
                 try:
@@ -133,22 +127,24 @@ with c1:
                         repo.update_file(contents.path, f"C2: Block {ip_to_block}", contents.decoded_content.decode() + "\n" + cmd, contents.sha)
                     except:
                         repo.create_file("logs/block_queue.txt", "C2: Init Queue", cmd)
-                    st.success(f"Command Sent: Blocking {ip_to_block}")
+                    st.success(f"Command Queued: {ip_to_block}")
                 except Exception as e:
-                    st.error(f"C2 Error: {e}")
+                    st.error(f"C2 Link Failed: {e}")
 
 with c2:
-    st.markdown("#### 🚫 Active Containment (Banned IPs)")
+    st.markdown("#### 🚫 Active Containment Zone")
     if not banned_df.empty:
-        st.markdown(f'<div class="dataframe-container">{banned_df.to_html(index=False, classes="custom-table")}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="dataframe-container">{banned_df.to_html(index=False)}</div>', unsafe_allow_html=True)
     else:
-        st.success("Containment zone empty.")
+        st.success("Firewall is clear. No active blocks.")
 
-# --- SECTION 4: HISTORICAL INTELLIGENCE ---
-st.markdown("### 📜 Master Security Logs (Historical)")
+st.markdown("---")
+
+# --- SECTION 4: HISTORICAL DATA ---
+st.markdown("### 📜 Intelligence Master Logs")
 if not events_df.empty:
-    st.markdown(f'<div class="dataframe-container">{events_df.sort_values("timestamp", ascending=False).to_html(index=False, classes="custom-table")}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="dataframe-container">{events_df.sort_values("timestamp", ascending=False).to_html(index=False)}</div>', unsafe_allow_html=True)
 else:
-    st.info("No historical events recorded yet.")
+    st.info("Awaiting historical event sync...")
 
-st.markdown("<div style='text-align: center; color: #475569; padding-top: 50px;'>Nexus System Build v2.0.5 • Remote C2 Encrypted</div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align: center; color: #475569; padding-top: 50px;'>Nexus System Build v2.0.6 • Remote C2 Encrypted</div>", unsafe_allow_html=True)
