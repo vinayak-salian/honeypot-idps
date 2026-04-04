@@ -238,3 +238,9 @@ fatal: unable to access 'https://github.com/vinayak-salian/honeypot-idps.git/': 
 fatal: unable to access 'https://github.com/vinayak-salian/honeypot-idps.git/': Could not resolve host: github.com
 [!] Sync FAILED. Check your internet or GitHub Token.
 [*] Synchronizing local Sentry data with Cloud Dashboard...
+[main ad25c77] C2-Sync: Sat  4 Apr 16:10:01 BST 2026
+ 6 files changed, 123 insertions(+), 63 deletions(-)
+fatal: unable to access 'https://github.com/vinayak-salian/honeypot-idps.git/': Could not resolve host: github.com
+fatal: unable to access 'https://github.com/vinayak-salian/honeypot-idps.git/': Could not resolve host: github.com
+[!] Sync FAILED. Check your internet or GitHub Token.
+[*] Synchronizing local Sentry data with Cloud Dashboard...
