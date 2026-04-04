@@ -1,6 +1,6 @@
-scapy==2.6.1
+PyGithub
 pandas
-plotly
+numpy
 pytz
 streamlit
 altair==4.2.2
