@@ -189,3 +189,15 @@ To https://github.com/vinayak-salian/honeypot-idps.git
    fba17ec..0f1c644  main -> main
 [?] Sync complete. Dashboard updated.
 [*] Synchronizing local Sentry data with Cloud Dashboard...
+[main ea94cee] C2-Sync: Sat  4 Apr 15:10:01 BST 2026
+ 3 files changed, 22 insertions(+), 7 deletions(-)
+ create mode 100644 stop_hunt.sh
+From https://github.com/vinayak-salian/honeypot-idps
+ * branch            main       -> FETCH_HEAD
+   455ace0..c780804  main       -> origin/main
+Merge made by the 'ort' strategy.
+ requirements.txt | 280 +------------------------------------------------------
+ 1 file changed, 5 insertions(+), 275 deletions(-)
+To https://github.com/vinayak-salian/honeypot-idps.git
+   c780804..02f91fe  main -> main
+[?] Sync complete. Dashboard updated.
