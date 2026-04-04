@@ -33,3 +33,7 @@
 [2026-04-04 15:33:37.281383] Labels mapping: {'0': 'BENIGN', '1': 'PortScan'}
 [2026-04-04 15:34:42.372497] Prediction for 192.168.0.1: Class=0 (BENIGN) | Confidence: 0.89
 [2026-04-04 15:34:42.373141] ATTACK LOGGED: 192.168.0.1 - PortScan - 5 ports
+[2026-04-04 15:53:24.145210] Prediction for 68.183.90.120: Class=0 (BENIGN) | Confidence: 0.89
+[2026-04-04 15:53:24.145641] ATTACK LOGGED: 68.183.90.120 - PortScan - 5 ports
+[2026-04-04 15:57:53.518508] Prediction for 176.58.93.248: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-04 15:59:37.802212] Prediction for 192.73.240.161: Class=0 (BENIGN) | Confidence: 0.88
