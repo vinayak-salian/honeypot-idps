@@ -125,3 +125,6 @@
 [2026-04-04 16:31:42.552476] ATTACK LOGGED: 185.34.3.75 - PortScan - 5 ports
 [2026-04-04 16:32:17.146491] Prediction for 208.72.155.133: Class=0 (BENIGN) | Confidence: 0.88
 [2026-04-04 16:34:36.554544] Prediction for 209.177.156.197: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-04 16:40:16.484269] Prediction for 20.207.73.82: Class=0 (BENIGN) | Confidence: 0.89
+[2026-04-04 16:40:33.218081] Prediction for 185.199.110.133: Class=0 (BENIGN) | Confidence: 0.9
+[2026-04-04 16:40:43.471048] Prediction for 185.199.109.133: Class=0 (BENIGN) | Confidence: 0.88
