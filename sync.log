@@ -220,3 +220,9 @@ To https://github.com/vinayak-salian/honeypot-idps.git
    d1f41af..08a1697  main -> main
 [?] Sync complete. Dashboard updated.
 [*] Synchronizing local Sentry data with Cloud Dashboard...
+[main 7e1876c] C2-Sync: Sat  4 Apr 15:40:01 BST 2026
+ 7 files changed, 73 insertions(+)
+fatal: unable to access 'https://github.com/vinayak-salian/honeypot-idps.git/': Could not resolve host: github.com
+fatal: unable to access 'https://github.com/vinayak-salian/honeypot-idps.git/': Could not resolve host: github.com
+[!] Sync FAILED. Check your internet or GitHub Token.
+[*] Synchronizing local Sentry data with Cloud Dashboard...
