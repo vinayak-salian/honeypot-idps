@@ -132,3 +132,4 @@
 [2026-04-04 16:43:38.019910] Prediction for 8.8.8.8: Class=0 (BENIGN) | Confidence: 0.88
 [2026-04-04 16:43:48.487572] Prediction for 185.199.108.133: Class=0 (BENIGN) | Confidence: 0.88
 [2026-04-04 16:44:39.745124] Prediction for 185.199.111.133: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-04 19:00:02.173236] Prediction for 140.82.112.3: Class=0 (BENIGN) | Confidence: 0.89
