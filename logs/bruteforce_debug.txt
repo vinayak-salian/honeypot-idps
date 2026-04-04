@@ -1,0 +1,101 @@
+[2026-03-26 11:09:14.830634] Features: ['Flow Duration', 'Total Fwd Packets', 'Total Backward Packets', 'Total Length of Fwd Packets', 'Total Length of Bwd Packets', 'Fwd Packet Length Max', 'Fwd Packet Length Min', 'Fwd Packet Length Mean', 'Fwd Packet Length Std', 'Bwd Packet Length Max', 'Bwd Packet Length Min', 'Bwd Packet Length Mean', 'Bwd Packet Length Std', 'Flow Bytes/s', 'Flow Packets/s', 'Flow IAT Mean', 'Flow IAT Std', 'Flow IAT Max', 'Flow IAT Min', 'Fwd IAT Total', 'Fwd IAT Mean', 'Fwd IAT Std', 'Fwd IAT Max', 'Fwd IAT Min', 'Bwd IAT Total', 'Bwd IAT Mean', 'Bwd IAT Std', 'Bwd IAT Max', 'Bwd IAT Min', 'Fwd Packets/s', 'Bwd Packets/s', 'Min Packet Length', 'Max Packet Length', 'Packet Length Mean', 'Packet Length Std', 'FIN Flag Count', 'SYN Flag Count', 'RST Flag Count', 'PSH Flag Count', 'ACK Flag Count', 'URG Flag Count', 'Down/Up Ratio', 'Average Packet Size', 'act_data_pkt_fwd', 'min_seg_size_forward', 'Active Mean', 'Active Std', 'Active Max', 'Active Min', 'Idle Mean', 'Idle Std', 'Idle Max', 'Idle Min']
+[2026-03-26 11:09:14.831301] Labels mapping: {'0': 'BENIGN', '1': 'SSH-Patator', '2': 'FTP-Patator'}
+[2026-03-26 11:12:03.089610] Prediction for 199.165.136.101:45840: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:15:27.631440] Features: ['Flow Duration', 'Total Fwd Packets', 'Total Backward Packets', 'Total Length of Fwd Packets', 'Total Length of Bwd Packets', 'Fwd Packet Length Max', 'Fwd Packet Length Min', 'Fwd Packet Length Mean', 'Fwd Packet Length Std', 'Bwd Packet Length Max', 'Bwd Packet Length Min', 'Bwd Packet Length Mean', 'Bwd Packet Length Std', 'Flow Bytes/s', 'Flow Packets/s', 'Flow IAT Mean', 'Flow IAT Std', 'Flow IAT Max', 'Flow IAT Min', 'Fwd IAT Total', 'Fwd IAT Mean', 'Fwd IAT Std', 'Fwd IAT Max', 'Fwd IAT Min', 'Bwd IAT Total', 'Bwd IAT Mean', 'Bwd IAT Std', 'Bwd IAT Max', 'Bwd IAT Min', 'Fwd Packets/s', 'Bwd Packets/s', 'Min Packet Length', 'Max Packet Length', 'Packet Length Mean', 'Packet Length Std', 'FIN Flag Count', 'SYN Flag Count', 'RST Flag Count', 'PSH Flag Count', 'ACK Flag Count', 'URG Flag Count', 'Down/Up Ratio', 'Average Packet Size', 'act_data_pkt_fwd', 'min_seg_size_forward', 'Active Mean', 'Active Std', 'Active Max', 'Active Min', 'Idle Mean', 'Idle Std', 'Idle Max', 'Idle Min']
+[2026-03-26 11:15:27.631908] Labels mapping: {'0': 'BENIGN', '1': 'SSH-Patator', '2': 'FTP-Patator'}
+[2026-03-26 11:15:40.213540] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:17:43.406134] Prediction for 199.165.136.101:45840: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:23:00.547147] Prediction for 68.183.90.120:32834: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:28:24.690321] Features: ['Flow Duration', 'Total Fwd Packets', 'Total Backward Packets', 'Total Length of Fwd Packets', 'Total Length of Bwd Packets', 'Fwd Packet Length Max', 'Fwd Packet Length Min', 'Fwd Packet Length Mean', 'Fwd Packet Length Std', 'Bwd Packet Length Max', 'Bwd Packet Length Min', 'Bwd Packet Length Mean', 'Bwd Packet Length Std', 'Flow Bytes/s', 'Flow Packets/s', 'Flow IAT Mean', 'Flow IAT Std', 'Flow IAT Max', 'Flow IAT Min', 'Fwd IAT Total', 'Fwd IAT Mean', 'Fwd IAT Std', 'Fwd IAT Max', 'Fwd IAT Min', 'Bwd IAT Total', 'Bwd IAT Mean', 'Bwd IAT Std', 'Bwd IAT Max', 'Bwd IAT Min', 'Fwd Packets/s', 'Bwd Packets/s', 'Min Packet Length', 'Max Packet Length', 'Packet Length Mean', 'Packet Length Std', 'FIN Flag Count', 'SYN Flag Count', 'RST Flag Count', 'PSH Flag Count', 'ACK Flag Count', 'URG Flag Count', 'Down/Up Ratio', 'Average Packet Size', 'act_data_pkt_fwd', 'min_seg_size_forward', 'Active Mean', 'Active Std', 'Active Max', 'Active Min', 'Idle Mean', 'Idle Std', 'Idle Max', 'Idle Min']
+[2026-03-26 11:28:24.690798] Labels mapping: {'0': 'BENIGN', '1': 'SSH-Patator', '2': 'FTP-Patator'}
+[2026-03-26 11:28:52.660726] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:28:52.807410] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:28:52.974201] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:01.890846] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:08.653585] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:08.853338] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:10.902837] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:11.073243] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:13.294523] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:17.988384] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:24.793224] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:27.008146] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:27.128169] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:29.451772] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:36.260299] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:43.043067] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:45.235708] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:45.397097] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:45.564996] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:49.997350] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:56.767017] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:56.955979] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:59.003826] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:59.191454] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:29:59.337867] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:05.947897] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:10.472740] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:12.781176] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:12.917196] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:13.080178] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:19.701866] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:24.179280] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:26.526330] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:26.667368] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:28.931603] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:33.501261] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:40.209610] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:42.481225] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:42.629813] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:47.173011] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:53.967874] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:58.371715] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:58.606161] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:30:58.734013] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:31:00.979723] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:31:05.571711] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:31:12.154534] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:31:12.343898] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:31:12.511728] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:31:12.685081] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:31:21.312145] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:31:26.092374] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:31:28.180224] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:31:28.494716] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:31:30.775840] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:31:39.725781] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:31:44.111474] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:31:44.330486] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:31:44.498175] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:31:46.849077] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:31:55.774349] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:32:00.436743] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:32:00.589495] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:32:02.947331] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:39:42.633771] Features: ['Flow Duration', 'Total Fwd Packets', 'Total Backward Packets', 'Total Length of Fwd Packets', 'Total Length of Bwd Packets', 'Fwd Packet Length Max', 'Fwd Packet Length Min', 'Fwd Packet Length Mean', 'Fwd Packet Length Std', 'Bwd Packet Length Max', 'Bwd Packet Length Min', 'Bwd Packet Length Mean', 'Bwd Packet Length Std', 'Flow Bytes/s', 'Flow Packets/s', 'Flow IAT Mean', 'Flow IAT Std', 'Flow IAT Max', 'Flow IAT Min', 'Fwd IAT Total', 'Fwd IAT Mean', 'Fwd IAT Std', 'Fwd IAT Max', 'Fwd IAT Min', 'Bwd IAT Total', 'Bwd IAT Mean', 'Bwd IAT Std', 'Bwd IAT Max', 'Bwd IAT Min', 'Fwd Packets/s', 'Bwd Packets/s', 'Min Packet Length', 'Max Packet Length', 'Packet Length Mean', 'Packet Length Std', 'FIN Flag Count', 'SYN Flag Count', 'RST Flag Count', 'PSH Flag Count', 'ACK Flag Count', 'URG Flag Count', 'Down/Up Ratio', 'Average Packet Size', 'act_data_pkt_fwd', 'min_seg_size_forward', 'Active Mean', 'Active Std', 'Active Max', 'Active Min', 'Idle Mean', 'Idle Std', 'Idle Max', 'Idle Min']
+[2026-03-26 11:39:42.634797] Labels mapping: {'0': 'BENIGN', '1': 'SSH-Patator', '2': 'FTP-Patator'}
+[2026-03-26 11:39:57.257134] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9366666666666668
+[2026-03-26 11:39:57.735328] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:39:57.911501] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:39:58.066292] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:40:04.651148] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:40:09.240969] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:40:15.947982] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:40:16.076817] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:40:18.466972] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.9266666666666667
+[2026-03-26 11:45:40.840163] Features: ['Flow Duration', 'Total Fwd Packets', 'Total Backward Packets', 'Total Length of Fwd Packets', 'Total Length of Bwd Packets', 'Fwd Packet Length Max', 'Fwd Packet Length Min', 'Fwd Packet Length Mean', 'Fwd Packet Length Std', 'Bwd Packet Length Max', 'Bwd Packet Length Min', 'Bwd Packet Length Mean', 'Bwd Packet Length Std', 'Flow Bytes/s', 'Flow Packets/s', 'Flow IAT Mean', 'Flow IAT Std', 'Flow IAT Max', 'Flow IAT Min', 'Fwd IAT Total', 'Fwd IAT Mean', 'Fwd IAT Std', 'Fwd IAT Max', 'Fwd IAT Min', 'Bwd IAT Total', 'Bwd IAT Mean', 'Bwd IAT Std', 'Bwd IAT Max', 'Bwd IAT Min', 'Fwd Packets/s', 'Bwd Packets/s', 'Min Packet Length', 'Max Packet Length', 'Packet Length Mean', 'Packet Length Std', 'FIN Flag Count', 'SYN Flag Count', 'RST Flag Count', 'PSH Flag Count', 'ACK Flag Count', 'URG Flag Count', 'Down/Up Ratio', 'Average Packet Size', 'act_data_pkt_fwd', 'min_seg_size_forward', 'Active Mean', 'Active Std', 'Active Max', 'Active Min', 'Idle Mean', 'Idle Std', 'Idle Max', 'Idle Min']
+[2026-03-26 11:45:40.840765] Labels mapping: {'0': 'BENIGN', '1': 'SSH-Patator', '2': 'FTP-Patator'}
+[2026-03-26 11:45:45.702417] Prediction for 192.168.0.103:22: Class=0 (BENIGN) | Confidence: 0.95
+[2026-03-26 11:45:45.703118] ATTACK LOGGED: 192.168.0.103:22 - Brute-Force - 30 packets
+[2026-03-26 11:46:15.975986] Features: ['Flow Duration', 'Total Fwd Packets', 'Total Backward Packets', 'Total Length of Fwd Packets', 'Total Length of Bwd Packets', 'Fwd Packet Length Max', 'Fwd Packet Length Min', 'Fwd Packet Length Mean', 'Fwd Packet Length Std', 'Bwd Packet Length Max', 'Bwd Packet Length Min', 'Bwd Packet Length Mean', 'Bwd Packet Length Std', 'Flow Bytes/s', 'Flow Packets/s', 'Flow IAT Mean', 'Flow IAT Std', 'Flow IAT Max', 'Flow IAT Min', 'Fwd IAT Total', 'Fwd IAT Mean', 'Fwd IAT Std', 'Fwd IAT Max', 'Fwd IAT Min', 'Bwd IAT Total', 'Bwd IAT Mean', 'Bwd IAT Std', 'Bwd IAT Max', 'Bwd IAT Min', 'Fwd Packets/s', 'Bwd Packets/s', 'Min Packet Length', 'Max Packet Length', 'Packet Length Mean', 'Packet Length Std', 'FIN Flag Count', 'SYN Flag Count', 'RST Flag Count', 'PSH Flag Count', 'ACK Flag Count', 'URG Flag Count', 'Down/Up Ratio', 'Average Packet Size', 'act_data_pkt_fwd', 'min_seg_size_forward', 'Active Mean', 'Active Std', 'Active Max', 'Active Min', 'Idle Mean', 'Idle Std', 'Idle Max', 'Idle Min']
+[2026-03-26 11:46:15.976605] Labels mapping: {'0': 'BENIGN', '1': 'SSH-Patator', '2': 'FTP-Patator'}
+[2026-03-29 08:03:26.898019] Features: ['Flow Duration', 'Total Fwd Packets', 'Total Backward Packets', 'Total Length of Fwd Packets', 'Total Length of Bwd Packets', 'Fwd Packet Length Max', 'Fwd Packet Length Min', 'Fwd Packet Length Mean', 'Fwd Packet Length Std', 'Bwd Packet Length Max', 'Bwd Packet Length Min', 'Bwd Packet Length Mean', 'Bwd Packet Length Std', 'Flow Bytes/s', 'Flow Packets/s', 'Flow IAT Mean', 'Flow IAT Std', 'Flow IAT Max', 'Flow IAT Min', 'Fwd IAT Total', 'Fwd IAT Mean', 'Fwd IAT Std', 'Fwd IAT Max', 'Fwd IAT Min', 'Bwd IAT Total', 'Bwd IAT Mean', 'Bwd IAT Std', 'Bwd IAT Max', 'Bwd IAT Min', 'Fwd Packets/s', 'Bwd Packets/s', 'Min Packet Length', 'Max Packet Length', 'Packet Length Mean', 'Packet Length Std', 'FIN Flag Count', 'SYN Flag Count', 'RST Flag Count', 'PSH Flag Count', 'ACK Flag Count', 'URG Flag Count', 'Down/Up Ratio', 'Average Packet Size', 'act_data_pkt_fwd', 'min_seg_size_forward', 'Active Mean', 'Active Std', 'Active Max', 'Active Min', 'Idle Mean', 'Idle Std', 'Idle Max', 'Idle Min']
+[2026-03-29 08:03:26.907578] Labels mapping: {'0': 'BENIGN', '1': 'SSH-Patator', '2': 'FTP-Patator'}
+[2026-03-31 08:37:16.936550] Features: ['Flow Duration', 'Total Fwd Packets', 'Total Backward Packets', 'Total Length of Fwd Packets', 'Total Length of Bwd Packets', 'Fwd Packet Length Max', 'Fwd Packet Length Min', 'Fwd Packet Length Mean', 'Fwd Packet Length Std', 'Bwd Packet Length Max', 'Bwd Packet Length Min', 'Bwd Packet Length Mean', 'Bwd Packet Length Std', 'Flow Bytes/s', 'Flow Packets/s', 'Flow IAT Mean', 'Flow IAT Std', 'Flow IAT Max', 'Flow IAT Min', 'Fwd IAT Total', 'Fwd IAT Mean', 'Fwd IAT Std', 'Fwd IAT Max', 'Fwd IAT Min', 'Bwd IAT Total', 'Bwd IAT Mean', 'Bwd IAT Std', 'Bwd IAT Max', 'Bwd IAT Min', 'Fwd Packets/s', 'Bwd Packets/s', 'Min Packet Length', 'Max Packet Length', 'Packet Length Mean', 'Packet Length Std', 'FIN Flag Count', 'SYN Flag Count', 'RST Flag Count', 'PSH Flag Count', 'ACK Flag Count', 'URG Flag Count', 'Down/Up Ratio', 'Average Packet Size', 'act_data_pkt_fwd', 'min_seg_size_forward', 'Active Mean', 'Active Std', 'Active Max', 'Active Min', 'Idle Mean', 'Idle Std', 'Idle Max', 'Idle Min']
+[2026-03-31 08:37:16.939775] Labels mapping: {'0': 'BENIGN', '1': 'SSH-Patator', '2': 'FTP-Patator'}
+[2026-04-04 12:46:06.326197] Features: ['Flow Duration', 'Total Fwd Packets', 'Total Backward Packets', 'Total Length of Fwd Packets', 'Total Length of Bwd Packets', 'Fwd Packet Length Max', 'Fwd Packet Length Min', 'Fwd Packet Length Mean', 'Fwd Packet Length Std', 'Bwd Packet Length Max', 'Bwd Packet Length Min', 'Bwd Packet Length Mean', 'Bwd Packet Length Std', 'Flow Bytes/s', 'Flow Packets/s', 'Flow IAT Mean', 'Flow IAT Std', 'Flow IAT Max', 'Flow IAT Min', 'Fwd IAT Total', 'Fwd IAT Mean', 'Fwd IAT Std', 'Fwd IAT Max', 'Fwd IAT Min', 'Bwd IAT Total', 'Bwd IAT Mean', 'Bwd IAT Std', 'Bwd IAT Max', 'Bwd IAT Min', 'Fwd Packets/s', 'Bwd Packets/s', 'Min Packet Length', 'Max Packet Length', 'Packet Length Mean', 'Packet Length Std', 'FIN Flag Count', 'SYN Flag Count', 'RST Flag Count', 'PSH Flag Count', 'ACK Flag Count', 'URG Flag Count', 'Down/Up Ratio', 'Average Packet Size', 'act_data_pkt_fwd', 'min_seg_size_forward', 'Active Mean', 'Active Std', 'Active Max', 'Active Min', 'Idle Mean', 'Idle Std', 'Idle Max', 'Idle Min']
+[2026-04-04 12:46:06.328518] Labels mapping: {'0': 'BENIGN', '1': 'SSH-Patator', '2': 'FTP-Patator'}
+[2026-04-04 12:47:16.032922] Prediction for 192.168.0.102:22: Class=0 (BENIGN) | Confidence: 0.95
+[2026-04-04 12:47:39.768158] Prediction for 192.168.0.102:22: Class=0 (BENIGN) | Confidence: 0.89
+[2026-04-04 12:47:49.903590] Prediction for 192.168.0.102:22: Class=0 (BENIGN) | Confidence: 0.91
+[2026-04-04 12:47:49.939466] ATTACK LOGGED: 192.168.0.102:22 - Brute-Force - 90 packets

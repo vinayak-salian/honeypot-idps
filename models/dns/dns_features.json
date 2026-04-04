@@ -1,0 +1,24 @@
+{
+    "features": [
+        "Flow Bytes/s",
+        "Protocol",
+        "Packet Length Min",
+        "Fwd Packet Length Min",
+        "Fwd Act Data Packets",
+        "Fwd IAT Total",
+        "Bwd Packets/s",
+        "Flow Duration",
+        "Total Backward Packets",
+        "Flow Packets/s",
+        "Fwd Packet Length Max",
+        "Fwd Seg Size Min",
+        "Fwd Packets Length Total",
+        "Packet Length Max",
+        "Fwd IAT Std",
+        "Init Fwd Win Bytes",
+        "Avg Packet Size",
+        "Flow IAT Min",
+        "Flow IAT Std",
+        "Fwd Header Length"
+    ]
+}

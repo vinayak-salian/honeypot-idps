@@ -1,0 +1,309 @@
+
+============================================================
+    IOT SENTRY | DNS MODEL RETRAINING FOR PI
+============================================================
+[*] XGBoost version: 3.2.0
+[*] Training data: /home/vinayak/honeypot_project/data/DNS-testing.parquet
+[*] Output directory: /home/vinayak/honeypot_project/models/dns/
+
+[*] Loading dataset from /home/vinayak/honeypot_project/data/DNS-testing.parquet...
+
+[!] ERROR during training: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip or conda to install the pyarrow package.
+ - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip or conda to install the fastparquet package.
+Traceback (most recent call last):
+  File "/home/vinayak/honeypot_project/train_dns_model_pi.py", line 203, in main
+    df = load_data(PARQUET_FILE)
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/train_dns_model_pi.py", line 43, in load_data
+    df = pd.read_parquet(filepath)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 668, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 68, in get_engine
+    raise ImportError(
+ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip or conda to install the pyarrow package.
+ - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip or conda to install the fastparquet package.
+
+
+============================================================
+    IOT SENTRY | DNS MODEL RETRAINING FOR PI
+============================================================
+[*] XGBoost version: 3.2.0
+[*] Training data: /home/vinayak/honeypot_project/data/DNS-testing.parquet
+[*] Output directory: /home/vinayak/honeypot_project/models/dns/
+
+[*] Loading dataset from /home/vinayak/honeypot_project/data/DNS-testing.parquet...
+
+[!] ERROR during training: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip or conda to install the pyarrow package.
+ - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip or conda to install the fastparquet package.
+Traceback (most recent call last):
+  File "/home/vinayak/honeypot_project/train_dns_model_pi.py", line 203, in main
+    df = load_data(PARQUET_FILE)
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/train_dns_model_pi.py", line 43, in load_data
+    df = pd.read_parquet(filepath)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 668, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 68, in get_engine
+    raise ImportError(
+ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip or conda to install the pyarrow package.
+ - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip or conda to install the fastparquet package.
+
+
+============================================================
+    IOT SENTRY | DNS MODEL RETRAINING FOR PI
+============================================================
+[*] XGBoost version: 3.2.0
+[*] Training data: /home/vinayak/honeypot_project/data/DNS-testing.parquet
+[*] Output directory: /home/vinayak/honeypot_project/models/dns/
+
+[*] Loading dataset from /home/vinayak/honeypot_project/data/DNS-testing.parquet...
+
+[!] ERROR during training: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip or conda to install the pyarrow package.
+ - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip or conda to install the fastparquet package.
+Traceback (most recent call last):
+  File "/home/vinayak/honeypot_project/train_dns_model_pi.py", line 203, in main
+    df = load_data(PARQUET_FILE)
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/train_dns_model_pi.py", line 43, in load_data
+    df = pd.read_parquet(filepath)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 668, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 68, in get_engine
+    raise ImportError(
+ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip or conda to install the pyarrow package.
+ - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip or conda to install the fastparquet package.
+
+
+============================================================
+    IOT SENTRY | DNS MODEL RETRAINING FOR PI
+============================================================
+[*] XGBoost version: 3.2.0
+[*] Training data: /home/vinayak/honeypot_project/data/DNS-testing.parquet
+[*] Output directory: /home/vinayak/honeypot_project/models/dns/
+
+[*] Loading dataset from /home/vinayak/honeypot_project/data/DNS-testing.parquet...
+
+[!] ERROR during training: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip or conda to install the pyarrow package.
+ - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip or conda to install the fastparquet package.
+Traceback (most recent call last):
+  File "/home/vinayak/honeypot_project/train_dns_model_pi.py", line 203, in main
+    df = load_data(PARQUET_FILE)
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/train_dns_model_pi.py", line 43, in load_data
+    df = pd.read_parquet(filepath)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 668, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 68, in get_engine
+    raise ImportError(
+ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip or conda to install the pyarrow package.
+ - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip or conda to install the fastparquet package.
+
+
+============================================================
+    IOT SENTRY | DNS MODEL RETRAINING FOR PI
+============================================================
+[*] XGBoost version: 3.2.0
+[*] Training data: /home/vinayak/honeypot_project/data/DNS-testing.parquet
+[*] Output directory: /home/vinayak/honeypot_project/models/dns/
+
+[*] Loading dataset from /home/vinayak/honeypot_project/data/DNS-testing.parquet...
+
+[!] ERROR during training: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip or conda to install the pyarrow package.
+ - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip or conda to install the fastparquet package.
+Traceback (most recent call last):
+  File "/home/vinayak/honeypot_project/train_dns_model_pi.py", line 203, in main
+    df = load_data(PARQUET_FILE)
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/train_dns_model_pi.py", line 43, in load_data
+    df = pd.read_parquet(filepath)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 668, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 68, in get_engine
+    raise ImportError(
+ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip or conda to install the pyarrow package.
+ - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip or conda to install the fastparquet package.
+
+
+============================================================
+    IOT SENTRY | DNS MODEL RETRAINING FOR PI
+============================================================
+[*] XGBoost version: 3.2.0
+[*] Training data: /home/vinayak/honeypot_project/data/DNS-testing.parquet
+[*] Output directory: /home/vinayak/honeypot_project/models/dns/
+
+[*] Loading dataset from /home/vinayak/honeypot_project/data/DNS-testing.parquet...
+
+[!] ERROR during training: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip or conda to install the pyarrow package.
+ - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip or conda to install the fastparquet package.
+Traceback (most recent call last):
+  File "/home/vinayak/honeypot_project/train_dns_model_pi.py", line 203, in main
+    df = load_data(PARQUET_FILE)
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/train_dns_model_pi.py", line 43, in load_data
+    df = pd.read_parquet(filepath)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 668, in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 68, in get_engine
+    raise ImportError(
+ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+A suitable version of pyarrow or fastparquet is required for parquet support.
+Trying to import the above resulted in these errors:
+ - `Import pyarrow` failed. pyarrow is required for parquet support. Use pip or conda to install the pyarrow package.
+ - `Import fastparquet` failed. fastparquet is required for parquet support. Use pip or conda to install the fastparquet package.
+
+
+============================================================
+    IOT SENTRY | DNS MODEL RETRAINING FOR PI
+============================================================
+[*] XGBoost version: 3.2.0
+[*] Training data: /home/vinayak/honeypot_project/data/DNS-testing.csv
+[*] Output directory: /home/vinayak/honeypot_project/models/dns/
+
+[*] Loading dataset from /home/vinayak/honeypot_project/data/DNS-testing.csv...
+[!] ERROR: File not found: /home/vinayak/honeypot_project/data/DNS-testing.csv
+[*] Make sure the file exists at: /home/vinayak/honeypot_project/data/DNS-testing.csv
+
+[!] ERROR during training: CSV file not found at /home/vinayak/honeypot_project/data/DNS-testing.csv
+Traceback (most recent call last):
+  File "/home/vinayak/honeypot_project/train_dns_model_pi.py", line 203, in main
+    df = load_data(PARQUET_FILE)
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vinayak/honeypot_project/train_dns_model_pi.py", line 41, in load_data
+    raise FileNotFoundError(f"CSV file not found at {filepath}")
+FileNotFoundError: CSV file not found at /home/vinayak/honeypot_project/data/DNS-testing.csv
+
+
+============================================================
+    IOT SENTRY | DNS MODEL RETRAINING FOR PI
+============================================================
+[*] XGBoost version: 3.2.0
+[*] Training data: /home/vinayak/honeypot_project/data/DNS-testing.csv
+[*] Output directory: /home/vinayak/honeypot_project/models/dns/
+
+[*] Loading dataset from /home/vinayak/honeypot_project/data/DNS-testing.csv...
+[✓] Dataset loaded successfully with shape: (6703, 78)
+[*] Columns: ['Protocol', 'Flow Duration', 'Total Fwd Packets', 'Total Backward Packets', 'Fwd Packets Length Total', 'Bwd Packets Length Total', 'Fwd Packet Length Max', 'Fwd Packet Length Min', 'Fwd Packet Length Mean', 'Fwd Packet Length Std', 'Bwd Packet Length Max', 'Bwd Packet Length Min', 'Bwd Packet Length Mean', 'Bwd Packet Length Std', 'Flow Bytes/s', 'Flow Packets/s', 'Flow IAT Mean', 'Flow IAT Std', 'Flow IAT Max', 'Flow IAT Min', 'Fwd IAT Total', 'Fwd IAT Mean', 'Fwd IAT Std', 'Fwd IAT Max', 'Fwd IAT Min', 'Bwd IAT Total', 'Bwd IAT Mean', 'Bwd IAT Std', 'Bwd IAT Max', 'Bwd IAT Min', 'Fwd PSH Flags', 'Bwd PSH Flags', 'Fwd URG Flags', 'Bwd URG Flags', 'Fwd Header Length', 'Bwd Header Length', 'Fwd Packets/s', 'Bwd Packets/s', 'Packet Length Min', 'Packet Length Max', 'Packet Length Mean', 'Packet Length Std', 'Packet Length Variance', 'FIN Flag Count', 'SYN Flag Count', 'RST Flag Count', 'PSH Flag Count', 'ACK Flag Count', 'URG Flag Count', 'CWE Flag Count', 'ECE Flag Count', 'Down/Up Ratio', 'Avg Packet Size', 'Avg Fwd Segment Size', 'Avg Bwd Segment Size', 'Fwd Avg Bytes/Bulk', 'Fwd Avg Packets/Bulk', 'Fwd Avg Bulk Rate', 'Bwd Avg Bytes/Bulk', 'Bwd Avg Packets/Bulk', 'Bwd Avg Bulk Rate', 'Subflow Fwd Packets', 'Subflow Fwd Bytes', 'Subflow Bwd Packets', 'Subflow Bwd Bytes', 'Init Fwd Win Bytes', 'Init Bwd Win Bytes', 'Fwd Act Data Packets', 'Fwd Seg Size Min', 'Active Mean', 'Active Std', 'Active Max', 'Active Min', 'Idle Mean', 'Idle Std', 'Idle Max', 'Idle Min', 'Label']
+[*] Preprocessing data...
+[*] Kept 77 numeric columns
+[*] No missing values found.
+[*] Label classes: ['Benign' 'DrDoS_DNS']
+[✓] Preprocessing complete. Features: (6703, 77), Labels: (6703,)
+
+[*] Splitting data (80% train, 20% test)...
+[✓] Training samples: 5362, Test samples: 1341
+
+[*] Training base XGBoost to select top 20 features...
+[✓] Top 20 features selected:
+     1. Flow Bytes/s
+     2. Protocol
+     3. Packet Length Min
+     4. Fwd Packet Length Min
+     5. Fwd Act Data Packets
+     6. Fwd IAT Total
+     7. Bwd Packets/s
+     8. Flow Duration
+     9. Total Backward Packets
+    10. Flow Packets/s
+    11. Fwd Packet Length Max
+    12. Fwd Seg Size Min
+    13. Fwd Packets Length Total
+    14. Packet Length Max
+    15. Fwd IAT Std
+    16. Init Fwd Win Bytes
+    17. Avg Packet Size
+    18. Flow IAT Min
+    19. Flow IAT Std
+    20. Fwd Header Length
+
+[*] Training final XGBoost model on selected features...
+[*] Pi-optimized parameters (reduced complexity for ARM):
+    - n_estimators: 100
+    - max_depth: 6
+    - learning_rate: 0.1
+    - subsample: 0.8
+[✓] Model training complete
+
+[*] Evaluating model on test set...
+
+==================================================
+           FINAL MODEL EVALUATION
+==================================================
+Accuracy:  0.9970
+Precision: 0.9970
+Recall:    0.9970
+F1 Score:  0.9970
+==================================================
+
+[*] Classification Report:
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       607
+           1       1.00      1.00      1.00       734
+
+    accuracy                           1.00      1341
+   macro avg       1.00      1.00      1.00      1341
+weighted avg       1.00      1.00      1.00      1341
+
+
+[*] Saving model artifacts to /home/vinayak/honeypot_project/models/dns/...
+[✓] Model saved: /home/vinayak/honeypot_project/models/dns/dns_model.joblib
+[✓] Label encoder saved: /home/vinayak/honeypot_project/models/dns/dns_scalar.joblib
+[✓] Features saved: /home/vinayak/honeypot_project/models/dns/dns_features.json
+[✓] Labels saved: /home/vinayak/honeypot_project/models/dns/dns_labels.json
+
+[✓] All artifacts saved successfully!
+[*] You can now restart dns_detector.py to use the new model
+
+============================================================
+   ✅ TRAINING COMPLETE - MODEL READY FOR DEPLOYMENT
+============================================================
+
+[*] Next steps:
+    1. Restart dns_detector.py
+    2. Monitor /home/vinayak/honeypot_project/logs/dns_log.csv
+    3. Check training log at: /home/vinayak/honeypot_project/logs/training.log

@@ -1,0 +1,11 @@
+{
+    "SYSTEM_MODE": "LOCAL", 
+    "CLOUD_SETTINGS": {
+        "AUTO_BAN": true,
+        "GEO_TRACKING": true
+    },
+    "LOCAL_SETTINGS": {
+        "AUTO_BAN": false,
+        "GEO_TRACKING": false
+    }
+}
