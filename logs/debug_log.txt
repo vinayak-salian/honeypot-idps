@@ -121,3 +121,7 @@
 [2026-04-04 16:28:58.548164] Prediction for 95.217.2.165: Class=0 (BENIGN) | Confidence: 0.88
 [2026-04-04 16:28:58.901097] Prediction for 157.180.28.32: Class=0 (BENIGN) | Confidence: 0.88
 [2026-04-04 16:29:30.628316] Prediction for 49.13.204.141: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-04 16:31:42.551838] Prediction for 185.34.3.75: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-04 16:31:42.552476] ATTACK LOGGED: 185.34.3.75 - PortScan - 5 ports
+[2026-04-04 16:32:17.146491] Prediction for 208.72.155.133: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-04 16:34:36.554544] Prediction for 209.177.156.197: Class=0 (BENIGN) | Confidence: 0.88
