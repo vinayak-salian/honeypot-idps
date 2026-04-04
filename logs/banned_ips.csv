@@ -1,5 +1,0 @@
-"Banned IP",Timestamp,Reason
-192.168.0.103,"2026-04-01 06:37:50",Malware_Upload
-8.8.8.8,"2026-04-01 07:58:49",Test_Global_Attack
-100.117.237.102,"2026-04-04 07:41:33",Suspicious_Upload
-192.168.0.102,"2026-04-04 11:47:49",Brute-Force

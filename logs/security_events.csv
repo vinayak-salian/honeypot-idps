@@ -1,5 +1,0 @@
-id,timestamp,source_ip,attack_type,target_port,protocol,confidence,latitude,longitude,country,city,action_taken
-1,"2026-04-01 07:37:50",192.168.0.103,Malware_Upload,8080,HTTP,0.99,19.076,72.8777,India,"Local Network",BLOCKED
-2,"2026-04-01 08:58:49",8.8.8.8,Test_Global_Attack,80,TCP,0.99,37.751,-97.822,"United States",Unknown,BLOCKED
-3,"2026-04-04 08:41:33",100.117.237.102,Suspicious_Upload,8080,HTTP,0.6,0.0,0.0,Unknown,Unknown,BLOCKED
-4,"2026-04-04 12:47:49",192.168.0.102,Brute-Force,22,TCP,0.95,19.076,72.8777,India,"Mumbai (Sandbox)",BLOCKED
