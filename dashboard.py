@@ -3,11 +3,11 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 import pytz
-import sqlite3
 import os
+from github import Github
 
 # --- CONFIGURATION ---
-DB_PATH = '/home/vinayak/honeypot_project/data/honeypot_events.db'
+RAW_URL = "https://raw.githubusercontent.com/vinayak-salian/honeypot-idps/main/logs/"
 
 st.set_page_config(
     page_title="Nexus Security Core",
@@ -174,27 +174,21 @@ st.markdown("""
 
 ist = pytz.timezone('Asia/Kolkata')
 
-# --- DATA FETCHING ---
-@st.cache_data(ttl=5)
-def query_db(query):
-    """Fetches data from the local SQLite database."""
-    if not os.path.exists(DB_PATH):
-        return pd.DataFrame()
+# --- DATA FETCHING (From GitHub) ---
+@st.cache_data(ttl=30)
+def fetch_logs(filename):
     try:
-        conn = sqlite3.connect(DB_PATH)
-        df = pd.read_sql_query(query, conn)
-        conn.close()
-        return df
-    except Exception as e:
+        url = RAW_URL + filename
+        return pd.read_csv(url)
+    except Exception:
         return pd.DataFrame()
 
-# Fetch Master Tables
-events_df = query_db("SELECT timestamp, source_ip, attack_type, target_port, protocol, confidence, country, city, action_taken, latitude, longitude FROM security_events ORDER BY timestamp DESC LIMIT 2000")
-banned_df = query_db("SELECT ip as 'Banned IP', ban_time as 'Timestamp', reason as 'Reason' FROM banned_ips ORDER BY ban_time DESC")
-traffic_df = query_db("SELECT timestamp, tcp_count, udp_count, icmp_count, total_bytes FROM traffic_metrics ORDER BY timestamp DESC LIMIT 60")
+# Fetch Master Tables from GitHub
+events_df = fetch_logs("security_events.csv")
+banned_df = fetch_logs("banned_ips.csv")
+traffic_df = fetch_logs("traffic_metrics.csv")
 
-# Filter into sub-dataframes based on attack type
-if not events_df.empty:
+if not events_df.empty and 'attack_type' in events_df.columns:
     ps_df = events_df[events_df['attack_type'].str.contains('PortScan', case=False, na=False)]
     mw_df = events_df[events_df['attack_type'].str.contains('Malware', case=False, na=False)]
     bf_df = events_df[events_df['attack_type'].str.contains('Brute|Patator', case=False, na=False)]
@@ -206,14 +200,14 @@ else:
 col1, col2 = st.columns([1, 1])
 with col1:
     st.markdown('<div class="main-header">Nexus Security Core</div>', unsafe_allow_html=True)
-    st.markdown('<div class="status-badge">🟢 SENTRY NODE OPERATIONAL • LIVE</div>', unsafe_allow_html=True)
+    st.markdown('<div class="status-badge">🟢 C2 CLOUD DASHBOARD • SYNCHRONIZED</div>', unsafe_allow_html=True)
 
 with col2:
     st.markdown(
         f"""
         <div style="text-align: right; padding-top: 1rem; color: #94a3b8; font-family: 'Fira Code', monospace;">
             <div>SYS_TIME // {datetime.now(ist).strftime('%H:%M:%S IST')}</div>
-            <div>STATUS // ACTIVE_MONITORING</div>
+            <div>STATUS // REMOTE_COMMAND_READY</div>
         </div>
         """,
         unsafe_allow_html=True
@@ -230,19 +224,15 @@ def build_sparkline_path(df, bins=24):
         df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
         df = df.dropna(subset=['timestamp'])
         if df.empty: return "M0 25 L100 25"
-        
         now = datetime.now(pytz.utc).replace(tzinfo=None)
         start = now - timedelta(hours=bins)
         df = df[df['timestamp'] >= start]
-        
         df['hour_bin'] = df['timestamp'].dt.floor('h')
         counts = df.groupby('hour_bin').size()
         all_hours = pd.date_range(start=start.replace(minute=0, second=0, microsecond=0), periods=bins, freq='h')
         counts = counts.reindex(all_hours, fill_value=0)
-        
         values = counts.values.astype(float)
         if values.max() == 0: return "M0 25 L100 25"
-        
         norm = (values - values.min()) / (values.max() - values.min() + 1e-9)
         ys = 28 - norm * 23
         xs = np.linspace(0, 100, len(ys))
@@ -285,7 +275,7 @@ with col_map:
     st.markdown("<p style='color: #94a3b8; margin-bottom: 1rem;'>Live geospatial visualization of hostile origins.</p>", unsafe_allow_html=True)
     
     if not events_df.empty and 'latitude' in events_df.columns and 'longitude' in events_df.columns:
-        map_df = events_df[(events_df['latitude'] != 0.0) & (events_df['longitude'] != 0.0)].dropna(subset=['latitude', 'longitude'])
+        map_df = events_df[(events_df['latitude'].astype(float) != 0.0) & (events_df['longitude'].astype(float) != 0.0)].dropna(subset=['latitude', 'longitude'])
         if not map_df.empty:
             st.map(map_df, latitude='latitude', longitude='longitude', size=40, color='#ec4899', zoom=1)
         else:
@@ -295,17 +285,17 @@ with col_map:
 
 with col_traffic:
     st.markdown("### 📊 Network Heartbeat")
-    st.markdown("<p style='color: #94a3b8; margin-bottom: 1rem;'>Real-time packet tally (5s intervals).</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #94a3b8; margin-bottom: 1rem;'>Recent packet tally snapshot.</p>", unsafe_allow_html=True)
     
     if not traffic_df.empty:
         latest = traffic_df.iloc[0]
         st.markdown(f"""
         <div style="background: rgba(30, 41, 59, 0.4); padding: 1.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-            <div style="margin-bottom: 10px;"><strong>TCP Packets:</strong> <span style="color: #3b82f6; font-family: 'Fira Code'; float: right;">{latest['tcp_count']}</span></div>
-            <div style="margin-bottom: 10px;"><strong>UDP Packets:</strong> <span style="color: #8b5cf6; font-family: 'Fira Code'; float: right;">{latest['udp_count']}</span></div>
-            <div style="margin-bottom: 10px;"><strong>ICMP Packets:</strong> <span style="color: #f59e0b; font-family: 'Fira Code'; float: right;">{latest['icmp_count']}</span></div>
+            <div style="margin-bottom: 10px;"><strong>TCP Packets:</strong> <span style="color: #3b82f6; font-family: 'Fira Code'; float: right;">{latest.get('tcp_count', 0)}</span></div>
+            <div style="margin-bottom: 10px;"><strong>UDP Packets:</strong> <span style="color: #8b5cf6; font-family: 'Fira Code'; float: right;">{latest.get('udp_count', 0)}</span></div>
+            <div style="margin-bottom: 10px;"><strong>ICMP Packets:</strong> <span style="color: #f59e0b; font-family: 'Fira Code'; float: right;">{latest.get('icmp_count', 0)}</span></div>
             <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1);">
-                <strong>Bandwidth:</strong> <span style="color: #10b981; font-family: 'Fira Code'; float: right;">{latest['total_bytes']} bytes</span>
+                <strong>Bandwidth:</strong> <span style="color: #10b981; font-family: 'Fira Code'; float: right;">{latest.get('total_bytes', 0)} bytes</span>
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -316,14 +306,11 @@ st.markdown("<br><hr style='border-color: rgba(255,255,255,0.05);'><br>", unsafe
 
 # --- MAIN DASHBOARD CONTENT ---
 st.markdown("### 📡 Threat Intelligence Feed")
-st.markdown("<p style='color: #94a3b8; margin-bottom: 2rem;'>Real-time analysis of incoming honeypot traffic.</p>", unsafe_allow_html=True)
-
 tab1, tab2, tab3, tab4 = st.tabs(["🎯 Port Scanning", "🦠 Malware Delivery", "🔑 Brute Force", "🌐 DNS Spoofing"])
 
 def render_table(df, empty_message):
     if not df.empty:
-        # Drop raw coordinates for a cleaner UI table
-        display_df = df.drop(columns=['latitude', 'longitude'], errors='ignore')
+        display_df = df.drop(columns=['latitude', 'longitude', 'id'], errors='ignore')
         html_table = f'<div class="dataframe-container">{display_df.astype(str).to_html(index=False, escape=False, classes="custom-table")}</div>'
         st.markdown(html_table, unsafe_allow_html=True)
     else:
@@ -341,52 +328,50 @@ with tab4: render_table(dns_df, "No DNS Spoofing activities recorded.")
 
 st.markdown("<br><hr style='border-color: rgba(255,255,255,0.05);'><br>", unsafe_allow_html=True)
 
-# --- MITIGATION SECTION ---
+# --- MITIGATION SECTION (C2 QUEUE LOGIC) ---
 col_mit1, col_mit2 = st.columns([1, 2])
 
 with col_mit1:
     st.markdown("### 🛡️ Active Mitigation")
-    
-    current_mode = os.environ.get("SENTRY_MODE", "LOCAL")
-    mode_color = "#ef4444" if current_mode == "CLOUD" else "#f59e0b"
     st.markdown(f"""
     **Nexus ML Engine Status:**
-    * System Mode: <span style='color: {mode_color}; font-weight: bold;'>{current_mode}</span>
-    * Autonomous Firewall: <span style='color: {"#10b981" if current_mode == "CLOUD" else "#94a3b8"}; font-weight: bold;'>{"Active" if current_mode == "CLOUD" else "Observer (Off)"}</span>
-    * Threat Intelligence Sync: <span style='color: #10b981; font-weight: bold;'>Healthy</span>
+    * C2 Link: <span style='color: #10b981; font-weight: bold;'>ESTABLISHED</span>
+    * Polling Interval: <span style='color: #8b5cf6; font-weight: bold;'>10 Seconds</span>
+    * Remote IP Drop: <span style='color: #10b981; font-weight: bold;'>Active</span>
     """, unsafe_allow_html=True)
 
-    # MANUAL OVERRIDE BLOCKING FEATURE
-    st.markdown("<br>#### ⚡ Manual Override", unsafe_allow_html=True)
-    st.markdown("<p style='font-size: 0.8rem; color: #94a3b8;'>Execute kernel-level IP drop.</p>", unsafe_allow_html=True)
+    st.markdown("<br>#### ⚡ Remote Manual Override", unsafe_allow_html=True)
+    st.markdown("<p style='font-size: 0.8rem; color: #94a3b8;'>Queue an IP for kernel-level dropping on the remote Sentry Node.</p>", unsafe_allow_html=True)
     
     with st.form("manual_ban_form", clear_on_submit=True):
         target_ip = st.text_input("Target IPv4 Address:", placeholder="192.168.x.x")
-        ban_reason = st.selectbox("Reason:", ["Manual Intervention", "Confirmed PortScan", "Confirmed BruteForce", "Confirmed Malware", "Confirmed DrDoS"])
-        submit_ban = st.form_submit_button("EXECUTE ISOLATION", use_container_width=True)
+        ban_reason = st.selectbox("Reason:", ["Manual Intervention (C2)", "Confirmed PortScan", "Confirmed BruteForce", "Confirmed Malware"])
+        submit_ban = st.form_submit_button("QUEUE ISOLATION COMMAND", use_container_width=True)
         
         if submit_ban and target_ip:
             try:
-                # 1. Execute iptables rule
-                os.system(f"sudo iptables -A INPUT -s {target_ip} -j DROP")
+                # Retrieve the GitHub token from Streamlit secrets
+                github_token = st.secrets["GITHUB_TOKEN"]
+                g = Github(github_token)
+                repo = g.get_repo("vinayak-salian/honeypot-idps")
                 
-                # 2. Log to the database
-                conn = sqlite3.connect(DB_PATH)
-                cursor = conn.cursor()
-                timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                cursor.execute('''
-                    INSERT OR IGNORE INTO banned_ips (ip, ban_time, reason) VALUES (?, ?, ?)
-                ''', (target_ip, timestamp, ban_reason))
-                conn.commit()
-                conn.close()
+                new_entry = f"{target_ip},{ban_reason},{datetime.now(ist).strftime('%Y-%m-%d %H:%M:%S')}"
                 
-                st.success(f"IP {target_ip} isolated successfully.")
-                st.rerun()
+                try:
+                    contents = repo.get_contents("logs/block_queue.txt")
+                    current_queue = contents.decoded_content.decode()
+                    new_queue = current_queue + f"\n{new_entry}"
+                    repo.update_file(contents.path, f"C2: Queued IP {target_ip}", new_queue, contents.sha)
+                except Exception:
+                    # If file doesn't exist, create it
+                    repo.create_file("logs/block_queue.txt", f"C2: Initialized queue with {target_ip}", new_entry)
+                
+                st.success(f"Command queued! The remote Pi will fetch and block {target_ip} within 10 seconds.")
             except Exception as e:
-                st.error(f"Isolation failed. Did you run Streamlit with sudo? Error: {e}")
+                st.error("C2 Link Failed. Did you set GITHUB_TOKEN in Streamlit Secrets?")
 
 with col_mit2:
-    st.markdown("#### 🚫 Banned Sentry Entities (Live)")
+    st.markdown("#### 🚫 Banned Sentry Entities (Historical)")
     if not banned_df.empty:
         render_table(banned_df, "")
     else:
@@ -394,6 +379,6 @@ with col_mit2:
 
 st.markdown("""
 <div style="text-align: center; margin-top: 3rem; color: #475569; font-size: 0.875rem; font-family: 'Fira Code', monospace;">
-    SYSTEM BUILD 2.0.4 • ENCRYPTED CONNECTION • ZERO-TRUST ARCHITECTURE
+    SYSTEM BUILD 2.0.4 • REMOTE C2 ARCHITECTURE • ZERO-TRUST
 </div>
 """, unsafe_allow_html=True)
