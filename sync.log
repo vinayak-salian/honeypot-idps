@@ -567,3 +567,16 @@ Already up to date.
 To https://github.com/vinayak-salian/honeypot-idps.git
    03ad691..569807e  main -> main
 [?] Sync complete. Dashboard updated.
+[main 0ef213a] C2-Sync: Sun  5 Apr 15:50:01 BST 2026
+ 5 files changed, 65 insertions(+), 4 deletions(-)
+ create mode 100644 logs/system_status.csv
+ create mode 100644 system_monitor.py
+To https://github.com/vinayak-salian/honeypot-idps.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/vinayak-salian/honeypot-idps.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[*] Synchronizing local Sentry data with Cloud Dashboard...
