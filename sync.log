@@ -626,3 +626,8 @@ Merge made by the 'ort' strategy.
 To https://github.com/vinayak-salian/honeypot-idps.git
    2ff7e32..8e6e4bb  main -> main
 [!] Sync complete. Dashboard updated.
+[main a41fd08] C2-Sync: Sun  5 Apr 20:40:02 IST 2026
+ 2 files changed, 1 insertion(+)
+To https://github.com/vinayak-salian/honeypot-idps.git
+   4b27d54..a41fd08  main -> main
+[*] Synchronizing local Sentry data with Cloud Dashboard...
