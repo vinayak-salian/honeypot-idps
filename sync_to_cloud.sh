@@ -1,39 +1,36 @@
 #!/bin/bash
-# Nexus Auto-Sync Engine v2.1
+# Nexus Auto-Sync Engine v2.2 (SIES GST SOC Edition)
 DB_PATH="/home/vinayak/honeypot_project/data/honeypot_events.db"
 LOG_DIR="/home/vinayak/honeypot_project/logs"
+
+# Move to the project root
 cd /home/vinayak/honeypot_project/
 
-# 1. Generate fresh system health data
+echo "[*] Step 1: Generating Fresh System Health Data..."
 python3 system_monitor.py
 
-# 2. Existing sync logic
-git add .
-git commit -m "C2-Sync: $(date)"
-git push origin main
-
-echo "[*] Synchronizing local Sentry data with Cloud Dashboard..."
-
-# 3. Export Data to CSV
+echo "[*] Step 2: Exporting Security Events from SQLite..."
 sqlite3 -header -csv $DB_PATH "SELECT * FROM security_events;" > $LOG_DIR/security_events.csv
 sqlite3 -header -csv $DB_PATH "SELECT ip as 'Banned IP', ban_time as 'Timestamp', reason as 'Reason' FROM banned_ips;" > $LOG_DIR/banned_ips.csv
 sqlite3 -header -csv $DB_PATH "SELECT mac_address, ip_address, last_seen FROM known_devices;" > $LOG_DIR/known_devices.csv
 sqlite3 -header -csv $DB_PATH "SELECT * FROM traffic_metrics ORDER BY timestamp DESC LIMIT 60;" > $LOG_DIR/traffic_metrics.csv
 
-# 4. Sync with GitHub
-cd /home/vinayak/honeypot_project/
+echo "[*] Step 3: Synchronizing with Cloud Dashboard..."
+
+# FORCE Git to see the health file (incase .gitignore is blocking it)
+git add -f $LOG_DIR/system_status.csv
 git add .
 
-# Commit only if there are changes
-git commit -m "C2-Sync: $(date)" || echo "No local changes to commit."
+# Commit changes (don't exit if there's nothing new)
+git commit -m "C2-Sync: $(date)" || echo "No changes detected since last sync."
 
-# THE FIX: Pull remote commands (like block requests) and favor local logs if there is a conflict
+# Pull remote changes (favor local logs in case of conflict)
 git pull origin main -X ours --no-edit
 
-# Final Push
+# FINAL PUSH
 if git push origin main; then
-    echo "[!] Sync complete. Dashboard updated."
+    echo "[!] SUCCESS: Pi Heartbeat & Logs pushed to Cloud."
 else
-    echo "[!] Sync FAILED. Check your internet or GitHub Token."
+    echo "[!] ERROR: Sync failed. Check internet or GitHub credentials."
     exit 1
 fi
