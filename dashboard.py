@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 import pytz
-from github import Github
 
 # --- CONFIGURATION ---
 RAW_URL = "https://raw.githubusercontent.com/vinayak-salian/honeypot-idps/main/logs/"
@@ -14,23 +13,19 @@ st.set_page_config(page_title="Nexus Security Core", page_icon="🛡️", layout
 PLAYBOOK = {
     "PortScan": {
         "label": "🎯 Port Scanning Detected",
-        "solution": "Action: Deploy IPTables DROP rule for the source IP. Enable rate-limiting on edge firewall.",
-        "severity": "Medium"
+        "solution": "Action: Deploy IPTables DROP rule for source. Enable rate-limiting on edge firewall.",
     },
     "Malware": {
         "label": "🦠 Malware Activity",
-        "solution": "Action: Isolate infected asset. Run ClamAV scan. Block outgoing C2 connections.",
-        "severity": "Critical"
+        "solution": "Action: Isolate asset. Run ClamAV scan. Block outgoing C2 connections.",
     },
     "Brute Force": {
         "label": "🔑 Brute Force / SSH Attack",
         "solution": "Action: Enforce SSH Key Auth. Install Fail2Ban. Reset credentials.",
-        "severity": "High"
     },
     "DNS_Spoof": {
         "label": "📡 DNS Spoofing / Poisoning",
-        "solution": "Action: Flush DNS cache on Pi (sudo systemd-resolve --flush-caches). Enforce DNSSEC. Use static ARP tables to prevent gateway redirection.",
-        "severity": "Critical"
+        "solution": "Action: Flush DNS cache (sudo systemd-resolve --flush-caches). Enforce DNSSEC.",
     }
 }
 
@@ -52,7 +47,6 @@ def fetch_logs(filename):
     try:
         url = f"{RAW_URL}{filename}?t={datetime.now().timestamp()}"
         df = pd.read_csv(url)
-        # Convert timestamp to datetime for the heartbeat check
         if 'timestamp' in df.columns:
             df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
         return df
@@ -68,19 +62,18 @@ banned_df = fetch_logs("banned_ips.csv")
 # --- HEADER & DYNAMIC STATUS ---
 c_h1, c_h2 = st.columns([2, 1])
 with c_h1:
-    st.markdown('<div class="main-header">Nexus Security Core v2.3.0</div>', unsafe_allow_html=True)
+    st.markdown('<div class="main-header">Nexus Security Core v2.3.1</div>', unsafe_allow_html=True)
     
-    # --- DYNAMIC HEARTBEAT LOGIC ---
     is_online = False
     if not events_df.empty:
         last_sync = events_df['timestamp'].max()
-        # If last sync was within 15 minutes, consider it "Online"
-        if (datetime.now(pytz.utc) - last_sync.tz_localize('UTC')).total_seconds() < 900:
+        # Check if last record was within 20 mins (accounting for GitHub sync delays)
+        if pd.notnull(last_sync) and (datetime.now(pytz.utc) - last_sync.tz_localize('UTC')).total_seconds() < 1200:
             is_online = True
     
-    status_class = "status-online" if is_online else "status-offline"
-    status_text = "🟢 PI NODE ACTIVE" if is_online else "🔴 PI NODE OFFLINE (STALE DATA)"
-    st.markdown(f'<span class="{status_class}">{status_text}</span>', unsafe_allow_html=True)
+    s_class = "status-online" if is_online else "status-offline"
+    s_text = "🟢 PI NODE ACTIVE" if is_online else "🔴 PI NODE OFFLINE (STALE DATA)"
+    st.markdown(f'<span class="{s_class}">{s_text}</span>', unsafe_allow_html=True)
 
 with c_h2:
     st.markdown(f"<div style='text-align: right; color: #94a3b8; padding-top: 15px;'>{datetime.now(ist).strftime('%H:%M:%S IST')}</div>", unsafe_allow_html=True)
@@ -112,6 +105,8 @@ if not devices_df.empty:
                 if not asset_traffic.empty: st.dataframe(asset_traffic, use_container_width=True, hide_index=True)
                 else: st.info("Device is silent. No active packets recorded.")
             else: st.info("Telemetry log empty.")
+else:
+    st.info("Awaiting sensor data... No local assets discovered yet.")
 
 st.divider()
 
@@ -119,18 +114,35 @@ st.divider()
 st.markdown("### 📡 Real-Time Threat Intel & Mitigation")
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["🎯 Port Scans", "🦠 Malware", "🔑 Brute Force", "🌐 DNS Security", "🚫 Banned List"])
 
-def display_with_solution(df, attack_key):
+def display_section(df, attack_key):
     if not df.empty:
         st.dataframe(df, use_container_width=True, hide_index=True)
         if attack_key in PLAYBOOK:
             st.markdown(f'<div class="playbook-card"><strong>🛡️ Mitigation:</strong> {PLAYBOOK[attack_key]["solution"]}</div>', unsafe_allow_html=True)
-    else: st.info(f"System clear for {attack_key}.")
+    else:
+        st.info(f"System clear for {attack_key} signatures.")
 
-with tab1: display_with_solution(events_df[events_df['attack_type'].str.contains('PortScan|Heartbeat', na=False)] if not events_df.empty else pd.DataFrame(), "PortScan")
-with tab2: display_with_solution(events_df[events_df['attack_type'].str.contains('Malware', na=False)] if not events_df.empty else pd.DataFrame(), "Malware")
-with tab3: display_with_solution(events_df[events_df['attack_type'].str.contains('Brute', na=False)] if not events_df.empty else pd.DataFrame(), "Brute Force")
-with tab4: display_with_solution(events_df[events_df['attack_type'].str.contains('DNS|Spoof', na=False)] if not events_df.empty else pd.DataFrame(), "DNS_Spoof")
-with tab5: st.dataframe(banned_df, use_container_width=True) if not banned_df.empty else st.info("No active bans.")
+with tab1:
+    scan_data = events_df[events_df['attack_type'].str.contains('PortScan|Heartbeat', na=False)] if not events_df.empty else pd.DataFrame()
+    display_section(scan_data, "PortScan")
+
+with tab2:
+    malware_data = events_df[events_df['attack_type'].str.contains('Malware', na=False)] if not events_df.empty else pd.DataFrame()
+    display_section(malware_data, "Malware")
+
+with tab3:
+    brute_data = events_df[events_df['attack_type'].str.contains('Brute', na=False)] if not events_df.empty else pd.DataFrame()
+    display_section(brute_data, "Brute Force")
+
+with tab4:
+    dns_data = events_df[events_df['attack_type'].str.contains('DNS|Spoof', na=False)] if not events_df.empty else pd.DataFrame()
+    display_section(dns_data, "DNS_Spoof")
+
+with tab5:
+    if not banned_df.empty:
+        st.dataframe(banned_df, use_container_width=True, hide_index=True)
+    else:
+        st.info("No active bans currently in kernel.")
 
 st.divider()
 
@@ -141,14 +153,17 @@ col_map, col_hist = st.columns([1, 1])
 with col_map:
     st.markdown("#### Global Attribution Map")
     if not events_df.empty and 'latitude' in events_df.columns:
-        st.map(events_df.dropna(subset=['latitude', 'longitude']), latitude='latitude', longitude='longitude', color='#ec4899', size=40)
-    else: st.info("Awaiting geospatial logs...")
+        map_data = events_df.dropna(subset=['latitude', 'longitude'])
+        st.map(map_data, latitude='latitude', longitude='longitude', color='#ec4899', size=40)
+    else:
+        st.info("Awaiting geospatial logs...")
 
 with col_hist:
     st.markdown("#### Master Botnet Archive")
     if not events_df.empty:
-        # This is where your historical data lives!
+        # FULL HISTORY LIVES HERE
         st.dataframe(events_df.sort_values("timestamp", ascending=False), height=400, use_container_width=True, hide_index=True)
-    else: st.info("Archive empty.")
+    else:
+        st.info("Archive currently empty.")
 
-st.markdown("<center style='color: #475569; padding-top: 30px;'>Nexus System Build v2.3.0 • Dynamic Monitoring Active</center>", unsafe_allow_html=True)
+st.markdown("<center style='color: #475569; padding-top: 30px;'>Nexus System Build v2.3.1 • Mumbai Node Integration</center>", unsafe_allow_html=True)
