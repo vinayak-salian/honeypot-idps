@@ -145,3 +145,5 @@
 [2026-04-05 15:03:11.095545] Prediction for 65.109.143.62: Class=0 (BENIGN) | Confidence: 0.88
 [2026-04-05 15:10:01.488010] Prediction for 20.207.73.82: Class=0 (BENIGN) | Confidence: 0.89
 [2026-04-05 16:57:24.999463] Prediction for 102.67.165.90: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-05 17:02:31.620696] Prediction for 192.73.243.135: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-05 17:02:32.891650] Prediction for 209.177.158.246: Class=0 (BENIGN) | Confidence: 0.88
