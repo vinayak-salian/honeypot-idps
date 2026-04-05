@@ -538,3 +538,15 @@ To https://github.com/vinayak-salian/honeypot-idps.git
    f3b0636..474e009  main -> main
 [?] Sync complete. Dashboard updated.
 [*] Synchronizing local Sentry data with Cloud Dashboard...
+[main cbeac54] C2-Sync: Sun  5 Apr 15:20:01 BST 2026
+ 5 files changed, 73 insertions(+), 63 deletions(-)
+From https://github.com/vinayak-salian/honeypot-idps
+ * branch            main       -> FETCH_HEAD
+   474e009..37c89c5  main       -> origin/main
+Merge made by the 'ort' strategy.
+ logs/blocked_ips.txt | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+To https://github.com/vinayak-salian/honeypot-idps.git
+   37c89c5..f6547ca  main -> main
+[?] Sync complete. Dashboard updated.
+[*] Synchronizing local Sentry data with Cloud Dashboard...
