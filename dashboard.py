@@ -77,20 +77,19 @@ with c_h1:
         last_sync = latest['timestamp']
         
         if pd.notnull(last_sync):
-            # Ensure the timestamp is localized correctly to IST for display
-            if last_sync.tzinfo is None:
-                # If Pi is writing local time, we treat it as IST
-                last_sync_display = last_sync.strftime('%H:%M:%S IST')
-                last_sync_utc = ist.localize(last_sync).astimezone(pytz.UTC)
-            else:
-                last_sync_display = last_sync.astimezone(ist).strftime('%H:%M:%S IST')
-                last_sync_utc = last_sync.astimezone(pytz.UTC)
-
-            # Heartbeat check (15 min window)
-            diff = (datetime.now(pytz.UTC) - last_sync_utc).total_seconds()
-            if diff < 900:
+            # 1. Assume Pi is sending IST. We localize it.
+            last_sync_ist = ist.localize(last_sync.replace(tzinfo=None))
+            
+            # 2. Get current time in IST
+            now_ist = datetime.now(ist)
+            
+            # 3. Calculate difference
+            diff = (now_ist - last_sync_ist).total_seconds()
+            
+            if diff < 900: # 15 min window
                 is_online = True
-            last_sync_str = last_sync_display
+            
+            last_sync_str = last_sync_ist.strftime('%H:%M:%S IST')
 
     s_class = "status-online" if is_online else "status-offline"
     s_text = f"🟢 PI NODE ACTIVE | Last Pulse: {last_sync_str}" if is_online else f"🔴 PI NODE OFFLINE | Last Pulse: {last_sync_str}"
@@ -98,8 +97,9 @@ with c_h1:
 
 with c_h2:
     if not health_df.empty:
-        # Only Uptime metric remains
-        st.metric("System Uptime", health_df.iloc[-1]['uptime'])
+        # Cleaned up Uptime card
+        uptime_val = health_df.iloc[-1]['uptime']
+        st.metric("System Uptime", f"⏱️ {uptime_val}")
 
 st.divider()
 
