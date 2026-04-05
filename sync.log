@@ -501,3 +501,12 @@ To https://github.com/vinayak-salian/honeypot-idps.git
    0062e9e..49a352c  main -> main
 [?] Sync complete. Dashboard updated.
 [*] Synchronizing local Sentry data with Cloud Dashboard...
+[main 285b8b5] C2-Sync: Sun  5 Apr 14:40:01 BST 2026
+ 2 files changed, 55 insertions(+)
+ create mode 100644 vulnerable_ssh.py
+From https://github.com/vinayak-salian/honeypot-idps
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+To https://github.com/vinayak-salian/honeypot-idps.git
+   49a352c..285b8b5  main -> main
+[?] Sync complete. Dashboard updated.
