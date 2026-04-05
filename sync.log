@@ -591,3 +591,38 @@ Merge made by the 'ort' strategy.
 To https://github.com/vinayak-salian/honeypot-idps.git
    da8219f..1d67521  main -> main
 [!] Sync complete. Dashboard updated.
+[main 515f0d6] C2-Sync: Sun  5 Apr 16:00:01 BST 2026
+ 3 files changed, 12 insertions(+)
+To https://github.com/vinayak-salian/honeypot-idps.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/vinayak-salian/honeypot-idps.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[*] Synchronizing local Sentry data with Cloud Dashboard...
+fatal: confused by unstable object source data for f79d46b2f9f6ea573c2eda9e065b601f0651255b
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data/honeypot_events.db
+	modified:   logs/known_devices.csv
+	modified:   logs/traffic_metrics.csv
+	modified:   sync.log
+
+no changes added to commit (use "git add" and/or "git commit -a")
+No local changes to commit.
+From https://github.com/vinayak-salian/honeypot-idps
+ * branch            main       -> FETCH_HEAD
+   1d67521..2ff7e32  main       -> origin/main
+Merge made by the 'ort' strategy.
+ dashboard.py | 150 ++++++++++++++++++++++++++---------------------------------
+ 1 file changed, 67 insertions(+), 83 deletions(-)
+To https://github.com/vinayak-salian/honeypot-idps.git
+   2ff7e32..8e6e4bb  main -> main
+[!] Sync complete. Dashboard updated.
