@@ -25,7 +25,6 @@ st.markdown("""
     .stApp { background-color: #050505; background-image: radial-gradient(circle at 50% 0%, #171124 0%, #050505 50%); color: #e2e8f0; }
     .main-header { font-size: 2.2rem; background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; margin-bottom: 0px; }
     .status-badge { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 50px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2); color: #10b981; font-size: 0.75rem; }
-    .cyber-card { background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 1rem; backdrop-filter: blur(10px); }
     .dataframe-container { border-radius: 12px; overflow: auto; max-height: 450px; border: 1px solid rgba(255, 255, 255, 0.05); background: rgba(15, 23, 42, 0.4); }
 </style>
 """, unsafe_allow_html=True)
@@ -35,7 +34,9 @@ ist = pytz.timezone('Asia/Kolkata')
 @st.cache_data(ttl=10)
 def fetch_logs(filename):
     try:
-        df = pd.read_csv(RAW_URL + filename)
+        # Cache-busting URL to ensure we get the latest data from GitHub
+        url = f"{RAW_URL}{filename}?t={datetime.now().timestamp()}"
+        df = pd.read_csv(url)
         return df
     except:
         return pd.DataFrame()
@@ -58,52 +59,64 @@ st.divider()
 
 # --- TOP SECTION: NETWORK CENSUS & INVESTIGATION ---
 st.markdown("### 📱 Active Network Census")
-st.markdown("Select a device from the list to view its traffic history and manage its access.")
 
 if not devices_df.empty:
-    # Column selector for interaction
-    col_list, col_investigate = st.columns([1, 1])
+    col_list, col_investigate = st.columns([1, 1.2])
     
     with col_list:
         st.markdown("#### Discovered Assets")
-        # Let the user pick a device
         selected_ip = st.selectbox("🎯 Target Selection for Investigation:", 
                                    options=devices_df['ip_address'].unique(),
                                    index=0)
-        
-        # Display the device list in a clean table
         st.dataframe(devices_df[['ip_address', 'mac_address', 'last_seen']], use_container_width=True, hide_index=True)
 
     with col_investigate:
         st.markdown(f"#### 🔍 Investigation: {selected_ip}")
         
-        # Filter traffic for the selected IP
-        if not events_df.empty:
-            ip_traffic = events_df[events_df['source_ip'] == selected_ip]
-            if not ip_traffic.empty:
-                st.warning(f"⚠️ {len(ip_traffic)} Hostile events recorded for this IP.")
-                st.dataframe(ip_traffic[['timestamp', 'attack_type', 'confidence']], use_container_width=True, hide_index=True)
-            else:
-                st.success("No hostile behavior detected for this asset.")
+        # TAB 1: Hostile Hits | TAB 2: All Traffic (The "Button" logic)
+        tab_hostile, tab_traffic = st.tabs(["🔴 Hostile Events", "📊 Traffic Telemetry"])
         
+        with tab_hostile:
+            if not events_df.empty:
+                ip_events = events_df[events_df['source_ip'] == selected_ip]
+                if not ip_events.empty:
+                    st.warning(f"⚠️ {len(ip_events)} Hostile events recorded.")
+                    st.dataframe(ip_events[['timestamp', 'attack_type', 'confidence']], use_container_width=True, hide_index=True)
+                else:
+                    st.success("No hostile behavior detected for this asset.")
+            else:
+                st.info("Event log is empty.")
+
+        with tab_traffic:
+            st.markdown(f"**Historical Packets for {selected_ip}**")
+            if not traffic_df.empty:
+                # Filter for this device's general activity
+                asset_activity = traffic_df[traffic_df['source_ip'] == selected_ip]
+                if not asset_activity.empty:
+                    st.dataframe(asset_activity, use_container_width=True, hide_index=True)
+                else:
+                    st.info("No standard telemetry recorded. Only hostile packets logged.")
+            else:
+                st.info("Awaiting telemetry sync from the Pi...")
+
         # C2 Command for this specific IP
-        st.markdown("---")
-        with st.form("quick_block"):
-            st.markdown(f"**Physical Isolation Request for {selected_ip}**")
-            reason = st.selectbox("Reason", ["Unauthorized Device", "Confirmed Intrusion", "Suspicious Activity"])
-            if st.form_submit_button("🚀 EXECUTE KERNEL BLOCK", use_container_width=True):
-                try:
-                    g = Github(st.secrets["GITHUB_TOKEN"])
-                    repo = g.get_repo("vinayak-salian/honeypot-idps")
-                    cmd = f"{selected_ip},{reason},{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+        with st.expander("🛠️ Advanced Asset Control"):
+            with st.form("quick_block"):
+                st.markdown(f"**Physical Isolation Request for {selected_ip}**")
+                reason = st.selectbox("Reason", ["Unauthorized Device", "Confirmed Intrusion", "Suspicious Activity"])
+                if st.form_submit_button("🚀 EXECUTE KERNEL BLOCK", use_container_width=True):
                     try:
-                        contents = repo.get_contents("logs/block_queue.txt")
-                        repo.update_file(contents.path, f"C2: Block {selected_ip}", contents.decoded_content.decode() + "\n" + cmd, contents.sha)
-                    except:
-                        repo.create_file("logs/block_queue.txt", "C2: Init Queue", cmd)
-                    st.success(f"Command Sent: {selected_ip} will be isolated.")
-                except Exception as e:
-                    st.error(f"C2 Link Failure: {e}")
+                        g = Github(st.secrets["GITHUB_TOKEN"])
+                        repo = g.get_repo("vinayak-salian/honeypot-idps")
+                        cmd = f"{selected_ip},{reason},{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+                        try:
+                            contents = repo.get_contents("logs/block_queue.txt")
+                            repo.update_file(contents.path, f"C2: Block {selected_ip}", contents.decoded_content.decode() + "\n" + cmd, contents.sha)
+                        except:
+                            repo.create_file("logs/block_queue.txt", "C2: Init Queue", cmd)
+                        st.success(f"Command Sent: {selected_ip} will be isolated.")
+                    except Exception as e:
+                        st.error(f"C2 Link Failure: {e}")
 else:
     st.info("Searching for local hardware... Please ensure the Sentry Network Census is running on the Pi.")
 
@@ -120,7 +133,7 @@ def simple_table(df):
         st.info("Monitoring for specific signatures...")
 
 with t1:
-    simple_table(events_df[events_df['attack_type'].str.contains('PortScan', na=False)] if not events_df.empty else pd.DataFrame())
+    simple_table(events_df[events_df['attack_type'].str.contains('PortScan|Heartbeat', na=False)] if not events_df.empty else pd.DataFrame())
 with t2:
     simple_table(events_df[events_df['attack_type'].str.contains('Malware', na=False)] if not events_df.empty else pd.DataFrame())
 with t3:
@@ -149,4 +162,4 @@ with c_hist:
     else:
         st.info("Archive empty.")
 
-st.markdown("<div style='text-align: center; color: #475569; padding-top: 50px;'>Nexus System Build v2.0.7 • Secure Remote C2 Link</div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align: center; color: #475569; padding-top: 50px;'>Nexus System Build v2.1.0 • Secure Remote C2 Link</div>", unsafe_allow_html=True)
