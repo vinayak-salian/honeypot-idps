@@ -8,6 +8,36 @@ import pytz
 RAW_URL = "https://raw.githubusercontent.com/vinayak-salian/honeypot-idps/main/logs/"
 
 st.set_page_config(page_title="Nexus Security Core", page_icon="🛡️", layout="wide")
+# --- FETCH HEALTH DATA ---
+health_df = fetch_logs("system_status.csv")
+
+# --- HEADER & SYSTEM HEALTH ---
+c_h1, c_h2 = st.columns([1.5, 1])
+
+with c_h1:
+    st.markdown('<div class="main-header">Nexus Security Core v2.4.0</div>', unsafe_allow_html=True)
+    
+    if not health_df.empty:
+        latest_health = health_df.iloc[-1]
+        last_sync = pd.to_datetime(latest_health['timestamp'])
+        
+        # Dynamic Badge Logic
+        is_online = (datetime.now() - last_sync).total_seconds() < 900 # 15 mins
+        s_class = "status-online" if is_online else "status-offline"
+        s_text = "🟢 PI NODE ACTIVE" if is_online else "🔴 PI NODE OFFLINE"
+        st.markdown(f'<span class="{s_class}">{s_text}</span>', unsafe_allow_html=True)
+    else:
+        st.markdown('<span class="status-offline">🔴 NO TELEMETRY FOUND</span>', unsafe_allow_html=True)
+
+with c_h2:
+    if not health_df.empty:
+        # Display Hardware Stats in a clean row
+        cols = st.columns(3)
+        cols[0].metric("Temp", f"{latest_health['cpu_temp']}°C")
+        cols[1].metric("RAM", f"{latest_health['ram_usage']}%")
+        cols[2].metric("Uptime", latest_health['uptime'])
+
+st.divider()
 
 # --- MITIGATION PLAYBOOK ---
 PLAYBOOK = {
