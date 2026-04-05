@@ -148,3 +148,5 @@
 [2026-04-05 17:02:31.620696] Prediction for 192.73.243.135: Class=0 (BENIGN) | Confidence: 0.88
 [2026-04-05 17:02:32.891650] Prediction for 209.177.158.246: Class=0 (BENIGN) | Confidence: 0.88
 [2026-04-05 17:28:27.015043] Prediction for 192.73.240.161: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-05 17:37:15.295059] Prediction for 192.168.0.1: Class=0 (BENIGN) | Confidence: 0.87
+[2026-04-05 17:38:51.308584] Prediction for 192.73.244.245: Class=0 (BENIGN) | Confidence: 0.88
