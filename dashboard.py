@@ -67,7 +67,7 @@ st.markdown("""
 c_h1, c_h2 = st.columns([1.5, 1])
 
 with c_h1:
-    st.markdown('<div class="main-header">Nexus Security Core v2.4.2</div>', unsafe_allow_html=True)
+    st.markdown('<div class="main-header">Nexus Security Core </div>', unsafe_allow_html=True)
     
     # Dynamic Status Logic based on System Health
     is_online = False
