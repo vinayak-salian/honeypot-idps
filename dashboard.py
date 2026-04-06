@@ -68,11 +68,11 @@ op_mode = st.sidebar.radio(
     ["Mode A: Global Watchtower", "Mode B: Local Sentinel"]
 )
 
-# --- 7. HEADER & STATUS ---
-c_h1, c_h2 = st.columns([2, 1])
+# --- 7. HEADER & UPTIME TELEMETRY ---
+c_h1, c_h2 = st.columns([1.8, 1.2])
 
 with c_h1:
-    st.markdown(f'<div class="main-header">Nexus Security Core</div>', unsafe_allow_html=True)
+    st.markdown('<div class="main-header">Nexus Security Core</div>', unsafe_allow_html=True)
     
     is_online = False
     last_sync_str = "No Data"
@@ -82,13 +82,11 @@ with c_h1:
         last_sync = latest['timestamp']
         
         if pd.notnull(last_sync):
-            # Syncing time to IST
             last_sync_ist = ist.localize(last_sync.replace(tzinfo=None))
             now_ist = datetime.now(ist)
             diff = (now_ist - last_sync_ist).total_seconds()
             
-            if diff < 900: # 15 min window
-                is_online = True
+            if diff < 900: is_online = True
             last_sync_str = last_sync_ist.strftime('%H:%M:%S IST')
 
     s_class = "status-online" if is_online else "status-offline"
@@ -97,10 +95,11 @@ with c_h1:
 
 with c_h2:
     if not health_df.empty:
-        # Fixed Uptime Formatting: "2 hours, 30 minutes" -> "2h 30m"
-        uptime_raw = health_df.iloc[-1]['uptime']
-        uptime_clean = uptime_raw.replace("up ", "").replace(" hours", "h").replace(" hour", "h").replace(" minutes", "m").replace(" minute", "m").replace(",", "")
-        st.metric("System Uptime", f"⏱️ {uptime_clean}")
+        latest = health_df.iloc[-1]
+        m1, m2 = st.columns(2)
+        # Displaying Uptime and Gateway IP side-by-side
+        m1.metric("System Uptime", f"⏱️ {latest['uptime']}")
+        m2.metric("Sentry Gateway", f"🌐 {latest['gateway_ip']}")
 
 st.divider()
 
