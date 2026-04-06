@@ -97,11 +97,13 @@ with c_h2:
     if not health_df.empty:
         latest = health_df.iloc[-1]
         m1, m2 = st.columns(2)
-        # Displaying Uptime and Gateway IP side-by-side
-        m1.metric("System Uptime", f"⏱️ {latest['uptime']}")
-        m2.metric("Sentry Gateway", f"🌐 {latest['gateway_ip']}")
-
-st.divider()
+        
+        # DEFENSIVE CHECK: Use .get() or check if column exists to prevent KeyError
+        uptime_display = latest['uptime'] if 'uptime' in latest else "Unknown"
+        gateway_display = latest['gateway_ip'] if 'gateway_ip' in latest else "0.0.0.0"
+        
+        m1.metric("System Uptime", f"⏱️ {uptime_display}")
+        m2.metric("Sentry Gateway", f"🌐 {gateway_display}")
 
 # --- MODE A: GLOBAL WATCHTOWER ---
 if op_mode == "Mode A: Global Watchtower":
