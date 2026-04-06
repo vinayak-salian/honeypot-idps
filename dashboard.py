@@ -4,7 +4,7 @@ import numpy as np
 from datetime import datetime, timedelta
 import pytz
 
-# --- 1. CONFIGURATION (Update your AWS IP here) ---
+# --- 1. CONFIGURATION ---
 AWS_IP = "51.21.135.152" 
 RAW_URL = "https://raw.githubusercontent.com/vinayak-salian/honeypot-idps/main/logs/"
 ist = pytz.timezone('Asia/Kolkata')
@@ -15,6 +15,7 @@ st.set_page_config(page_title="Nexus Security Core", page_icon="🛡️", layout
 @st.cache_data(ttl=10)
 def fetch_logs(filename):
     try:
+        # Cache-busting URL to ensure fresh data
         url = f"{RAW_URL}{filename}?t={datetime.now().timestamp()}"
         df = pd.read_csv(url)
         if 'timestamp' in df.columns:
@@ -76,13 +77,14 @@ with c_h1:
     st.markdown('<div class="main-header">Nexus Security Core</div>', unsafe_allow_html=True)
     
     is_online = False
-    last_sync_str = "No Data"
+    last_sync_str = "Awaiting Heartbeat..."
     
     if not health_df.empty:
         latest = health_df.iloc[-1]
         last_sync = latest['timestamp']
         
         if pd.notnull(last_sync):
+            # Localize to IST
             last_sync_ist = ist.localize(last_sync.replace(tzinfo=None))
             now_ist = datetime.now(ist)
             diff = (now_ist - last_sync_ist).total_seconds()
@@ -95,24 +97,26 @@ with c_h1:
     st.markdown(f'<span class="{s_class}">{s_text}</span>', unsafe_allow_html=True)
 
 with c_h2:
+    m1, m2 = st.columns(2)
     if not health_df.empty:
         latest = health_df.iloc[-1]
-        m1, m2 = st.columns(2)
         
-        # 1. Clean Uptime
-        uptime_display = latest.get('uptime', 'Unknown')
+        # 1. Clean Uptime (Short format: 1h 20m)
+        uptime_display = latest.get('uptime', '0h 0m')
         
-        # 2. Dynamic Gateway IP Logic
+        # 2. Mode-Based Gateway
         if op_mode == "Mode A: Global Watchtower":
             gateway_display = AWS_IP
-            label = "Cloud Entry Point"
+            label = "Cloud IP"
         else:
-            # Pulls the actual Pi IP from the system_status.csv
-            gateway_display = latest.get('gateway_ip', '0.0.0.0')
-            label = "Local Gateway"
+            gateway_display = latest.get('gateway_ip', 'Detecting...')
+            label = "Pi Gateway"
             
-        m1.metric("System Uptime", f"⏱️ {uptime_display}")
+        m1.metric("Uptime", f"⏱️ {uptime_display}")
         m2.metric(label, f"🌐 {gateway_display}")
+    else:
+        m1.metric("Uptime", "⏱️ --")
+        m2.metric("Gateway", "🌐 --")
 
 st.divider()
 
@@ -123,28 +127,30 @@ if op_mode == "Mode A: Global Watchtower":
 
     with col_map:
         st.markdown("#### Real-Time Attack Heatmap")
-        if not events_df.empty and 'latitude' in events_df.columns:
+        # Check if we have valid coordinates to map
+        if not events_df.empty and 'latitude' in events_df.columns and not events_df['latitude'].isnull().all():
             st.map(events_df.dropna(subset=['latitude', 'longitude']), latitude='latitude', longitude='longitude', color='#ec4899', size=40)
         else:
-            st.info("Awaiting geospatial logs from AWS VPS...")
+            st.info("📡 System Ready. Awaiting global telemetry from AWS VPS...")
 
     with col_hist:
         st.markdown("#### Historical Botnet Archive")
-        if not events_df.empty:
+        if not events_df.empty and len(events_df) > 1: # len > 1 because header-only is len 1 or empty
             st.dataframe(events_df.sort_values("timestamp", ascending=False), height=450, use_container_width=True, hide_index=True)
         else:
-            st.info("Archive empty.")
+            st.info("🗄️ Archive currently empty. Fresh logs will appear here.")
 
 # --- MODE B: LOCAL SENTINEL ---
 else:
     st.markdown("### 📱 Local Sentinel & Infection Zone")
     
     # 1. Network Census Section
+    # Check if we have actual data beyond just the header
     if not devices_df.empty:
         col_l, col_r = st.columns([1, 1.2])
         with col_l:
             st.markdown("**Discovered Local Assets**")
-            selected_ip = st.selectbox("🎯 Select Target:", options=devices_df['ip_address'].unique())
+            selected_ip = st.selectbox("🎯 Select Target Device:", options=devices_df['ip_address'].unique())
             st.dataframe(devices_df, use_container_width=True, hide_index=True)
         
         with col_r:
@@ -156,13 +162,15 @@ else:
                     st.warning(f"Detected {len(ip_events)} malicious signatures.")
                     st.dataframe(ip_events, use_container_width=True, hide_index=True)
                 else:
-                    st.success("No hostile behavior found.")
+                    st.success("Clean: No hostile behavior found for this asset.")
             with t_traffic:
                 if not traffic_df.empty and 'source_ip' in traffic_df.columns:
                     asset_traffic = traffic_df[traffic_df['source_ip'] == selected_ip]
                     if not asset_traffic.empty: st.dataframe(asset_traffic, use_container_width=True, hide_index=True)
-                    else: st.info("Device is silent.")
-                else: st.info("Telemetry log empty.")
+                    else: st.info("Asset is currently silent.")
+                else: st.info("No raw telemetry captured yet.")
+    else:
+        st.info("📡 Scanning Local Network... Connect a device to the Sentry AP to begin.")
     
     st.divider()
 
@@ -170,12 +178,12 @@ else:
     st.markdown("### 📡 Live Threat Intelligence")
     
     def display_section(df, attack_key):
-        if not df.empty:
+        if not df.empty and len(df) > 0:
             st.dataframe(df, use_container_width=True, hide_index=True)
             if attack_key in PLAYBOOK:
                 st.markdown(f'<div class="playbook-card"><strong>🛡️ Mitigation:</strong> {PLAYBOOK[attack_key]["solution"]}</div>', unsafe_allow_html=True)
         else:
-            st.info(f"System status clear for {attack_key}.")
+            st.info(f"✅ System status clear for {attack_key}.")
 
     tab1, tab2, tab3, tab4, tab5 = st.tabs(["🎯 Port Scans", "🦠 Malware", "🔑 Brute Force", "🌐 DNS Security", "🚫 Banned List"])
 
@@ -193,6 +201,6 @@ else:
         display_section(dns_data, "DNS_Spoof")
     with tab5:
         if not banned_df.empty: st.dataframe(banned_df, use_container_width=True, hide_index=True)
-        else: st.info("No active IP bans.")
+        else: st.info("🛡️ No active IP bans in the local kernel.")
 
-st.markdown("<center style='color: #475569; padding-top: 30px;'>Nexus System Build v2.5.0 • </center>", unsafe_allow_html=True)
+st.markdown("<center style='color: #475569; padding-top: 30px;'>Nexus System Build v2.5.1 • SIES GST SOC Project</center>", unsafe_allow_html=True)
