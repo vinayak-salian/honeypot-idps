@@ -183,4 +183,4 @@ else:
         if not banned_df.empty: st.dataframe(banned_df, use_container_width=True, hide_index=True)
         else: st.info("No active IP bans.")
 
-st.markdown("<center style='color: #475569; padding-top: 30px;'>Nexus System Build v2.5.0 • Mumbai SIES GST SOC Integration</center>", unsafe_allow_html=True)
+st.markdown("<center style='color: #475569; padding-top: 30px;'>Nexus System Build v2.5.0 • </center>", unsafe_allow_html=True)
