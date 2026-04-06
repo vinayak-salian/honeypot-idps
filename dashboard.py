@@ -15,7 +15,6 @@ st.set_page_config(page_title="Nexus Security Core", page_icon="🛡️", layout
 @st.cache_data(ttl=10)
 def fetch_logs(filename):
     try:
-        # Cache-busting URL to ensure fresh data
         url = f"{RAW_URL}{filename}?t={datetime.now().timestamp()}"
         df = pd.read_csv(url)
         if 'timestamp' in df.columns:
@@ -82,13 +81,10 @@ with c_h1:
     if not health_df.empty:
         latest = health_df.iloc[-1]
         last_sync = latest['timestamp']
-        
         if pd.notnull(last_sync):
-            # Localize to IST
             last_sync_ist = ist.localize(last_sync.replace(tzinfo=None))
             now_ist = datetime.now(ist)
             diff = (now_ist - last_sync_ist).total_seconds()
-            
             if diff < 900: is_online = True
             last_sync_str = last_sync_ist.strftime('%H:%M:%S IST')
 
@@ -98,27 +94,28 @@ with c_h1:
 
 with c_h2:
     m1, m2 = st.columns(2)
-    if not health_df.empty:
-        latest = health_df.iloc[-1]
-        
-        # 1. Clean Uptime (Short format: 1h 20m)
-        uptime_display = latest.get('uptime', '0h 0m')
-        
-        # 2. Mode-Based Gateway
-        if op_mode == "Mode A: Global Watchtower":
-            gateway_display = AWS_IP
-            label = "Cloud IP"
-        else:
-            gateway_display = latest.get('gateway_ip', 'Detecting...')
-            label = "Pi Gateway"
-            
-        m1.metric("Uptime", f"⏱️ {uptime_display}")
-        m2.metric(label, f"🌐 {gateway_display}")
+    
+    # Logic for Uptime
+    uptime_val = health_df.iloc[-1].get('uptime', '0h 0m') if not health_df.empty else "--"
+    m1.metric("Uptime", f"⏱️ {uptime_val}")
+    
+    # Fixed Gateway logic: Always show AWS IP in Mode A
+    if op_mode == "Mode A: Global Watchtower":
+        m2.metric("Cloud IP", f"🌐 {AWS_IP}")
     else:
-        m1.metric("Uptime", "⏱️ --")
-        m2.metric("Gateway", "🌐 --")
+        gw_val = health_df.iloc[-1].get('gateway_ip', 'Detecting...') if not health_df.empty else "--"
+        m2.metric("Pi Gateway", f"🌐 {gw_val}")
 
 st.divider()
+
+# --- HELPER: DISPLAY SECTION ---
+def display_attack_section(df, attack_key):
+    if not df.empty:
+        st.dataframe(df, use_container_width=True, hide_index=True)
+        if attack_key in PLAYBOOK:
+            st.markdown(f'<div class="playbook-card"><strong>🛡️ Automated Mitigation:</strong> {PLAYBOOK[attack_key]["solution"]}</div>', unsafe_allow_html=True)
+    else:
+        st.info(f"✅ System clear for {attack_key}.")
 
 # --- MODE A: GLOBAL WATCHTOWER ---
 if op_mode == "Mode A: Global Watchtower":
@@ -127,7 +124,6 @@ if op_mode == "Mode A: Global Watchtower":
 
     with col_map:
         st.markdown("#### Real-Time Attack Heatmap")
-        # Check if we have valid coordinates to map
         if not events_df.empty and 'latitude' in events_df.columns and not events_df['latitude'].isnull().all():
             st.map(events_df.dropna(subset=['latitude', 'longitude']), latitude='latitude', longitude='longitude', color='#ec4899', size=40)
         else:
@@ -135,24 +131,39 @@ if op_mode == "Mode A: Global Watchtower":
 
     with col_hist:
         st.markdown("#### Historical Botnet Archive")
-        if not events_df.empty and len(events_df) > 1: # len > 1 because header-only is len 1 or empty
+        if not events_df.empty and len(events_df) > 1:
             st.dataframe(events_df.sort_values("timestamp", ascending=False), height=450, use_container_width=True, hide_index=True)
         else:
             st.info("🗄️ Archive currently empty. Fresh logs will appear here.")
 
+    st.divider()
+    
+    # NEW: Global Detection & Mitigation Summary (The 4 Models)
+    st.markdown("### 🛰️ Global Automated Mitigation Summary")
+    g_tab1, g_tab2, g_tab3, g_tab4 = st.tabs(["🎯 Port Scans", "🦠 Malware", "🔑 Brute Force", "🌐 DNS Security"])
+    
+    with g_tab1:
+        data = events_df[events_df['attack_type'].str.contains('PortScan|Heartbeat', na=False)] if not events_df.empty else pd.DataFrame()
+        display_attack_section(data, "PortScan")
+    with g_tab2:
+        data = events_df[events_df['attack_type'].str.contains('Malware', na=False)] if not events_df.empty else pd.DataFrame()
+        display_attack_section(data, "Malware")
+    with g_tab3:
+        data = events_df[events_df['attack_type'].str.contains('Brute', na=False)] if not events_df.empty else pd.DataFrame()
+        display_attack_section(data, "Brute Force")
+    with g_tab4:
+        data = events_df[events_df['attack_type'].str.contains('DNS|Spoof', na=False)] if not events_df.empty else pd.DataFrame()
+        display_attack_section(data, "DNS_Spoof")
+
 # --- MODE B: LOCAL SENTINEL ---
 else:
     st.markdown("### 📱 Local Sentinel & Infection Zone")
-    
-    # 1. Network Census Section
-    # Check if we have actual data beyond just the header
     if not devices_df.empty:
         col_l, col_r = st.columns([1, 1.2])
         with col_l:
             st.markdown("**Discovered Local Assets**")
             selected_ip = st.selectbox("🎯 Select Target Device:", options=devices_df['ip_address'].unique())
             st.dataframe(devices_df, use_container_width=True, hide_index=True)
-        
         with col_r:
             st.markdown(f"#### 🔍 Deep Inspection: {selected_ip}")
             t_events, t_traffic = st.tabs(["🔴 Hostile History", "📊 Raw Telemetry"])
@@ -161,8 +172,7 @@ else:
                     ip_events = events_df[events_df['source_ip'] == selected_ip]
                     st.warning(f"Detected {len(ip_events)} malicious signatures.")
                     st.dataframe(ip_events, use_container_width=True, hide_index=True)
-                else:
-                    st.success("Clean: No hostile behavior found for this asset.")
+                else: st.success("Clean: No hostile behavior found.")
             with t_traffic:
                 if not traffic_df.empty and 'source_ip' in traffic_df.columns:
                     asset_traffic = traffic_df[traffic_df['source_ip'] == selected_ip]
@@ -174,33 +184,23 @@ else:
     
     st.divider()
 
-    # 2. Distinct Sections for the 4 Attack Types
     st.markdown("### 📡 Live Threat Intelligence")
-    
-    def display_section(df, attack_key):
-        if not df.empty and len(df) > 0:
-            st.dataframe(df, use_container_width=True, hide_index=True)
-            if attack_key in PLAYBOOK:
-                st.markdown(f'<div class="playbook-card"><strong>🛡️ Mitigation:</strong> {PLAYBOOK[attack_key]["solution"]}</div>', unsafe_allow_html=True)
-        else:
-            st.info(f"✅ System status clear for {attack_key}.")
-
     tab1, tab2, tab3, tab4, tab5 = st.tabs(["🎯 Port Scans", "🦠 Malware", "🔑 Brute Force", "🌐 DNS Security", "🚫 Banned List"])
 
     with tab1:
         scan_data = events_df[events_df['attack_type'].str.contains('PortScan|Heartbeat', na=False)] if not events_df.empty else pd.DataFrame()
-        display_section(scan_data, "PortScan")
+        display_attack_section(scan_data, "PortScan")
     with tab2:
         mal_data = events_df[events_df['attack_type'].str.contains('Malware', na=False)] if not events_df.empty else pd.DataFrame()
-        display_section(mal_data, "Malware")
+        display_attack_section(mal_data, "Malware")
     with tab3:
         brute_data = events_df[events_df['attack_type'].str.contains('Brute', na=False)] if not events_df.empty else pd.DataFrame()
-        display_section(brute_data, "Brute Force")
+        display_attack_section(brute_data, "Brute Force")
     with tab4:
         dns_data = events_df[events_df['attack_type'].str.contains('DNS|Spoof', na=False)] if not events_df.empty else pd.DataFrame()
-        display_section(dns_data, "DNS_Spoof")
+        display_attack_section(dns_data, "DNS_Spoof")
     with tab5:
         if not banned_df.empty: st.dataframe(banned_df, use_container_width=True, hide_index=True)
         else: st.info("🛡️ No active IP bans in the local kernel.")
 
-st.markdown("<center style='color: #475569; padding-top: 30px;'>Nexus System Build v2.5.1 </center>", unsafe_allow_html=True)
+st.markdown("<center style='color: #475569; padding-top: 30px;'>Nexus System Build v2.5.2 • SIES GST SOC Project</center>", unsafe_allow_html=True)
