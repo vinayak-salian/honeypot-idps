@@ -4,7 +4,8 @@ import numpy as np
 from datetime import datetime, timedelta
 import pytz
 
-# --- 1. CONFIGURATION ---
+# --- 1. CONFIGURATION (Update your AWS IP here) ---
+AWS_IP = "51.21.135.152" 
 RAW_URL = "https://raw.githubusercontent.com/vinayak-salian/honeypot-idps/main/logs/"
 ist = pytz.timezone('Asia/Kolkata')
 
@@ -68,7 +69,7 @@ op_mode = st.sidebar.radio(
     ["Mode A: Global Watchtower", "Mode B: Local Sentinel"]
 )
 
-# --- 7. HEADER & UPTIME TELEMETRY ---
+# --- 7. HEADER & DYNAMIC METRICS ---
 c_h1, c_h2 = st.columns([1.8, 1.2])
 
 with c_h1:
@@ -90,7 +91,7 @@ with c_h1:
             last_sync_str = last_sync_ist.strftime('%H:%M:%S IST')
 
     s_class = "status-online" if is_online else "status-offline"
-    s_text = f"🟢 PI NODE ACTIVE | Last Pulse: {last_sync_str}" if is_online else f"🔴 PI NODE OFFLINE | Last Pulse: {last_sync_str}"
+    s_text = f"🟢 PI NODE ACTIVE | Pulse: {last_sync_str}" if is_online else f"🔴 PI NODE OFFLINE | Pulse: {last_sync_str}"
     st.markdown(f'<span class="{s_class}">{s_text}</span>', unsafe_allow_html=True)
 
 with c_h2:
@@ -98,12 +99,22 @@ with c_h2:
         latest = health_df.iloc[-1]
         m1, m2 = st.columns(2)
         
-        # DEFENSIVE CHECK: Use .get() or check if column exists to prevent KeyError
-        uptime_display = latest['uptime'] if 'uptime' in latest else "Unknown"
-        gateway_display = latest['gateway_ip'] if 'gateway_ip' in latest else "0.0.0.0"
+        # 1. Clean Uptime
+        uptime_display = latest.get('uptime', 'Unknown')
         
+        # 2. Dynamic Gateway IP Logic
+        if op_mode == "Mode A: Global Watchtower":
+            gateway_display = AWS_IP
+            label = "Cloud Entry Point"
+        else:
+            # Pulls the actual Pi IP from the system_status.csv
+            gateway_display = latest.get('gateway_ip', '0.0.0.0')
+            label = "Local Gateway"
+            
         m1.metric("System Uptime", f"⏱️ {uptime_display}")
-        m2.metric("Sentry Gateway", f"🌐 {gateway_display}")
+        m2.metric(label, f"🌐 {gateway_display}")
+
+st.divider()
 
 # --- MODE A: GLOBAL WATCHTOWER ---
 if op_mode == "Mode A: Global Watchtower":
