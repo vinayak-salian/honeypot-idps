@@ -159,22 +159,7 @@ if op_mode == "Mode A: Global Watchtower":
 
     st.divider()
     
-    # NEW: Global Detection & Mitigation Summary (The 4 Models)
-    st.markdown("### 🛰️ Global Automated Mitigation Summary")
-    g_tab1, g_tab2, g_tab3, g_tab4 = st.tabs(["🎯 Port Scans", "🦠 Malware", "🔑 Brute Force", "🌐 DNS Security"])
     
-    with g_tab1:
-        data = events_df[events_df['attack_type'].str.contains('PortScan|Heartbeat', na=False)] if not events_df.empty else pd.DataFrame()
-        display_attack_section(data, "PortScan")
-    with g_tab2:
-        data = events_df[events_df['attack_type'].str.contains('Malware', na=False)] if not events_df.empty else pd.DataFrame()
-        display_attack_section(data, "Malware")
-    with g_tab3:
-        data = events_df[events_df['attack_type'].str.contains('Brute', na=False)] if not events_df.empty else pd.DataFrame()
-        display_attack_section(data, "Brute Force")
-    with g_tab4:
-        data = events_df[events_df['attack_type'].str.contains('DNS|Spoof', na=False)] if not events_df.empty else pd.DataFrame()
-        display_attack_section(data, "DNS_Spoof")
 
 
 # --- MODE B: LOCAL SENTINEL ---
