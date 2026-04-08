@@ -188,8 +188,9 @@ else:
                 st.dataframe(live_devices, use_container_width=True, hide_index=True)
             # ... [Rest of your column_r code]
         else:
+            st.info(f"📡 Waiting for devices to join the {gateway_prefix}.x network...")
     
-    if not devices_df.empty:
+   if not devices_df.empty:
         col_l, col_r = st.columns([1, 1.2])
         
         with col_l:
