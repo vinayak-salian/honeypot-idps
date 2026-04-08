@@ -166,3 +166,4 @@
 [2026-04-08 12:43:17.950508] Labels mapping: {'0': 'BENIGN', '1': 'PortScan'}
 [2026-04-08 12:45:33.282840] Prediction for 49.44.194.138: Class=0 (BENIGN) | Confidence: 0.89
 [2026-04-08 12:45:33.286898] ATTACK LOGGED: 49.44.194.138 - PortScan - 5 ports
+[2026-04-08 12:47:25.041996] Prediction for 68.183.90.120: Class=0 (BENIGN) | Confidence: 0.88
