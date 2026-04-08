@@ -169,43 +169,57 @@ if op_mode == "Mode A: Global Watchtower":
         data = events_df[events_df['attack_type'].str.contains('DNS|Spoof', na=False)] if not events_df.empty else pd.DataFrame()
         display_attack_section(data, "DNS_Spoof")
 
+
 # --- MODE B: LOCAL SENTINEL ---
 else:
     st.markdown("### 📱 Local Sentinel & Infection Zone")
+    
     if not devices_df.empty:
         col_l, col_r = st.columns([1, 1.2])
+        
         with col_l:
             st.markdown("**Discovered Local Assets**")
             selected_ip = st.selectbox("🎯 Select Target Device:", options=devices_df['ip_address'].unique())
             st.dataframe(devices_df, use_container_width=True, hide_index=True)
+            
         with col_r:
             st.markdown(f"#### 🔍 Deep Inspection: {selected_ip}")
-            t_events, t_traffic = st.tabs(["🔴 Hostile History", "📊 Raw Telemetry"])
+            
+            # 1. Define the Action Buttons inside col_r
             c1, c2 = st.columns(2)
             
-    if c1.button(f"🚫 Permanent Block {selected_ip}"):
-        send_command(selected_ip, "BLOCK")
-        
-    if c2.button(f"🔓 Manual Unblock {selected_ip}"):
-        send_command(selected_ip, "UNBLOCK")
-        
-        with t_events:
+            if c1.button(f"🚫 Permanent Block {selected_ip}"):
+                send_command(selected_ip, "BLOCK")
+            
+            if c2.button(f"🔓 Manual Unblock {selected_ip}"):
+                send_command(selected_ip, "UNBLOCK")
+            
+            # 2. Define the Tabs inside col_r
+            t_events, t_traffic = st.tabs(["🔴 Hostile History", "📊 Raw Telemetry"])
+            
+            with t_events:
                 if not events_df.empty and selected_ip in events_df['source_ip'].values:
                     ip_events = events_df[events_df['source_ip'] == selected_ip]
                     st.warning(f"Detected {len(ip_events)} malicious signatures.")
                     st.dataframe(ip_events, use_container_width=True, hide_index=True)
-                else: st.success("Clean: No hostile behavior found.")
-        with t_traffic:
+                else: 
+                    st.success("Clean: No hostile behavior found.")
+                    
+            with t_traffic:
                 if not traffic_df.empty and 'source_ip' in traffic_df.columns:
                     asset_traffic = traffic_df[traffic_df['source_ip'] == selected_ip]
-                    if not asset_traffic.empty: st.dataframe(asset_traffic, use_container_width=True, hide_index=True)
-                    else: st.info("Asset is currently silent.")
-                else: st.info("No raw telemetry captured yet.")
+                    if not asset_traffic.empty: 
+                        st.dataframe(asset_traffic, use_container_width=True, hide_index=True)
+                    else: 
+                        st.info("Asset is currently silent.")
+                else: 
+                    st.info("No raw telemetry captured yet.")
     else:
         st.info("📡 Scanning Local Network... Connect a device to the Sentry AP to begin.")
     
     st.divider()
 
+    # --- Live Threat Intelligence Section (Outside the IF-ELSE device block) ---
     st.markdown("### 📡 Live Threat Intelligence")
     tab1, tab2, tab3, tab4, tab5 = st.tabs(["🎯 Port Scans", "🦠 Malware", "🔑 Brute Force", "🌐 DNS Security", "🚫 Banned List"])
 
@@ -222,7 +236,7 @@ else:
         dns_data = events_df[events_df['attack_type'].str.contains('DNS|Spoof', na=False)] if not events_df.empty else pd.DataFrame()
         display_attack_section(dns_data, "DNS_Spoof")
     with tab5:
-        if not banned_df.empty: st.dataframe(banned_df, use_container_width=True, hide_index=True)
-        else: st.info("🛡️ No active IP bans in the local kernel.")
-
-st.markdown("<center style='color: #475569; padding-top: 30px;'>Nexus System Build v2.5.2 </center>", unsafe_allow_html=True)
+        if not banned_df.empty: 
+            st.dataframe(banned_df, use_container_width=True, hide_index=True)
+        else: 
+            st.info("🛡️ No active IP bans in the local kernel.")
