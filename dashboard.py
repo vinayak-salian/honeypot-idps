@@ -173,6 +173,21 @@ if op_mode == "Mode A: Global Watchtower":
 # --- MODE B: LOCAL SENTINEL ---
 else:
     st.markdown("### 📱 Local Sentinel & Infection Zone")
+
+    # NEW: Only show devices that match the current Pi Gateway's subnet
+    if not health_df.empty and not devices_df.empty:
+        gateway_prefix = ".".join(health_df.iloc[-1]['gateway_ip'].split('.')[:-1])
+        # This filters out old 192.168.0.x data if your gateway is 10.42.0.1
+        live_devices = devices_df[devices_df['ip_address'].str.startswith(gateway_prefix)]
+        
+        if not live_devices.empty:
+            col_l, col_r = st.columns([1, 1.2])
+            with col_l:
+                st.markdown("**Discovered Local Assets**")
+                selected_ip = st.selectbox("🎯 Select Target Device:", options=live_devices['ip_address'].unique())
+                st.dataframe(live_devices, use_container_width=True, hide_index=True)
+            # ... [Rest of your column_r code]
+        else:
     
     if not devices_df.empty:
         col_l, col_r = st.columns([1, 1.2])
