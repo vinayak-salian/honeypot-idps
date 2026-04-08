@@ -43,6 +43,13 @@ events_df = fetch_logs("security_events.csv")
 devices_df = fetch_logs("known_devices.csv")
 traffic_df = fetch_logs("traffic_metrics.csv")
 banned_df = fetch_logs("banned_ips.csv")
+if not devices_df.empty and 'last_seen' in devices_df.columns:
+    # 1. Ensure it's a datetime object
+    devices_df['last_seen'] = pd.to_datetime(devices_df['last_seen'], errors='coerce')
+    # 2. Convert UTC to IST (Add 5h 30m)
+    devices_df['last_seen'] = devices_df['last_seen'].dt.tz_localize('UTC').dt.tz_convert(ist)
+    # 3. Format it for the UI
+    devices_df['last_seen'] = devices_df['last_seen'].dt.strftime('%Y-%m-%d %H:%M:%S IST')
 
 # --- 4. MITIGATION PLAYBOOK ---
 PLAYBOOK = {
