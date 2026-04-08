@@ -192,7 +192,7 @@ else:
                     st.warning(f"Detected {len(ip_events)} malicious signatures.")
                     st.dataframe(ip_events, use_container_width=True, hide_index=True)
                 else: st.success("Clean: No hostile behavior found.")
-            with t_traffic:
+        with t_traffic:
                 if not traffic_df.empty and 'source_ip' in traffic_df.columns:
                     asset_traffic = traffic_df[traffic_df['source_ip'] == selected_ip]
                     if not asset_traffic.empty: st.dataframe(asset_traffic, use_container_width=True, hide_index=True)
