@@ -174,73 +174,67 @@ if op_mode == "Mode A: Global Watchtower":
 else:
     st.markdown("### 📱 Local Sentinel & Infection Zone")
 
-    # NEW: Only show devices that match the current Pi Gateway's subnet
+    # 1. GATEWAY-AWARE FILTERING (Solves Problem 1: Stale Data)
     if not health_df.empty and not devices_df.empty:
-        gateway_prefix = ".".join(health_df.iloc[-1]['gateway_ip'].split('.')[:-1])
-        # This filters out old 192.168.0.x data if your gateway is 10.42.0.1
+        # Get the first three octets of the Pi's current IP (e.g., "10.42.0")
+        gateway_ip = health_df.iloc[-1].get('gateway_ip', '0.0.0.0')
+        gateway_prefix = ".".join(gateway_ip.split('.')[:-1])
+        
+        # Only show devices that belong to the Pi's current Hotspot network
         live_devices = devices_df[devices_df['ip_address'].str.startswith(gateway_prefix)]
         
         if not live_devices.empty:
             col_l, col_r = st.columns([1, 1.2])
+            
             with col_l:
                 st.markdown("**Discovered Local Assets**")
                 selected_ip = st.selectbox("🎯 Select Target Device:", options=live_devices['ip_address'].unique())
                 st.dataframe(live_devices, use_container_width=True, hide_index=True)
-            # ... [Rest of your column_r code]
+            
+            with col_r:
+                st.markdown(f"#### 🔍 Deep Inspection: {selected_ip}")
+                
+                # --- ACTION BUTTONS (Interactive C2) ---
+                c1, c2 = st.columns(2)
+                if c1.button(f"🚫 Permanent Block {selected_ip}"):
+                    send_command(selected_ip, "BLOCK")
+                
+                if c2.button(f"🔓 Manual Unblock {selected_ip}"):
+                    send_command(selected_ip, "UNBLOCK")
+                
+                # --- DEEP INSPECTION TABS ---
+                t_events, t_traffic = st.tabs(["🔴 Hostile History", "📊 Raw Telemetry"])
+                
+                with t_events:
+                    if not events_df.empty and selected_ip in events_df['source_ip'].values:
+                        ip_events = events_df[events_df['source_ip'] == selected_ip]
+                        st.warning(f"Detected {len(ip_events)} malicious signatures.")
+                        st.dataframe(ip_events, use_container_width=True, hide_index=True)
+                    else: 
+                        st.success("Clean: No hostile behavior found.")
+                        
+                with t_traffic:
+                    if not traffic_df.empty and 'source_ip' in traffic_df.columns:
+                        asset_traffic = traffic_df[traffic_df['source_ip'] == selected_ip]
+                        if not asset_traffic.empty: 
+                            st.dataframe(asset_traffic, use_container_width=True, hide_index=True)
+                        else: 
+                            st.info("Asset is currently silent.")
+                    else: 
+                        st.info("No raw telemetry captured yet.")
         else:
             st.info(f"📡 Waiting for devices to join the {gateway_prefix}.x network...")
-    
-   if not devices_df.empty:
-        col_l, col_r = st.columns([1, 1.2])
-        
-        with col_l:
-            st.markdown("**Discovered Local Assets**")
-            selected_ip = st.selectbox("🎯 Select Target Device:", options=devices_df['ip_address'].unique())
-            st.dataframe(devices_df, use_container_width=True, hide_index=True)
-            
-        with col_r:
-            st.markdown(f"#### 🔍 Deep Inspection: {selected_ip}")
-            
-            # 1. Define the Action Buttons inside col_r
-            c1, c2 = st.columns(2)
-            
-            if c1.button(f"🚫 Permanent Block {selected_ip}"):
-                send_command(selected_ip, "BLOCK")
-            
-            if c2.button(f"🔓 Manual Unblock {selected_ip}"):
-                send_command(selected_ip, "UNBLOCK")
-            
-            # 2. Define the Tabs inside col_r
-            t_events, t_traffic = st.tabs(["🔴 Hostile History", "📊 Raw Telemetry"])
-            
-            with t_events:
-                if not events_df.empty and selected_ip in events_df['source_ip'].values:
-                    ip_events = events_df[events_df['source_ip'] == selected_ip]
-                    st.warning(f"Detected {len(ip_events)} malicious signatures.")
-                    st.dataframe(ip_events, use_container_width=True, hide_index=True)
-                else: 
-                    st.success("Clean: No hostile behavior found.")
-                    
-            with t_traffic:
-                if not traffic_df.empty and 'source_ip' in traffic_df.columns:
-                    asset_traffic = traffic_df[traffic_df['source_ip'] == selected_ip]
-                    if not asset_traffic.empty: 
-                        st.dataframe(asset_traffic, use_container_width=True, hide_index=True)
-                    else: 
-                        st.info("Asset is currently silent.")
-                else: 
-                    st.info("No raw telemetry captured yet.")
     else:
         st.info("📡 Scanning Local Network... Connect a device to the Sentry AP to begin.")
     
     st.divider()
 
-    # --- Live Threat Intelligence Section (Outside the IF-ELSE device block) ---
+    # --- LIVE THREAT INTELLIGENCE (Shared sections) ---
     st.markdown("### 📡 Live Threat Intelligence")
     tab1, tab2, tab3, tab4, tab5 = st.tabs(["🎯 Port Scans", "🦠 Malware", "🔑 Brute Force", "🌐 DNS Security", "🚫 Banned List"])
 
     with tab1:
-        scan_data = events_df[events_df['attack_type'].str.contains('PortScan|Heartbeat', na=False)] if not events_df.empty else pd.DataFrame()
+        scan_data = events_df[events_df['attack_type'].str.contains('PortScan|Heartbeat|SSH|Connection', na=False)] if not events_df.empty else pd.DataFrame()
         display_attack_section(scan_data, "PortScan")
     with tab2:
         mal_data = events_df[events_df['attack_type'].str.contains('Malware', na=False)] if not events_df.empty else pd.DataFrame()
