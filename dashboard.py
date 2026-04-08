@@ -236,24 +236,31 @@ else:
     
     st.divider()
 
-    # --- LIVE THREAT INTELLIGENCE (Shared sections) ---
-    st.markdown("### 📡 Live Threat Intelligence")
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(["🎯 Port Scans", "🦠 Malware", "🔑 Brute Force", "🌐 DNS Security", "🚫 Banned List"])
+# --- LIVE THREAT INTELLIGENCE (Shared sections) ---
+st.markdown("### 📡 Live Threat Intelligence")
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["🎯 Port Scans", "🦠 Malware", "🔑 Brute Force", "🌐 DNS Security", "🚫 Banned List"])
 
-    with tab1:
-        scan_data = events_df[events_df['attack_type'].str.contains('PortScan|Heartbeat|SSH|Connection', na=False)] if not events_df.empty else pd.DataFrame()
-        display_attack_section(scan_data, "PortScan")
-    with tab2:
-        mal_data = events_df[events_df['attack_type'].str.contains('Malware', na=False)] if not events_df.empty else pd.DataFrame()
-        display_attack_section(mal_data, "Malware")
-    with tab3:
-        brute_data = events_df[events_df['attack_type'].str.contains('Brute', na=False)] if not events_df.empty else pd.DataFrame()
-        display_attack_section(brute_data, "Brute Force")
-    with tab4:
-        dns_data = events_df[events_df['attack_type'].str.contains('DNS|Spoof', na=False)] if not events_df.empty else pd.DataFrame()
-        display_attack_section(dns_data, "DNS_Spoof")
-    with tab5:
-        if not banned_df.empty: 
-            st.dataframe(banned_df, use_container_width=True, hide_index=True)
-        else: 
-            st.info("🛡️ No active IP bans in the local kernel.")
+with tab1:
+    # Captures general noise and basic connections
+    scan_data = events_df[events_df['attack_type'].str.contains('PortScan|Heartbeat|Connection', na=False)] if not events_df.empty else pd.DataFrame()
+    display_attack_section(scan_data, "PortScan")
+
+with tab2:
+    mal_data = events_df[events_df['attack_type'].str.contains('Malware', na=False)] if not events_df.empty else pd.DataFrame()
+    display_attack_section(mal_data, "Malware")
+
+with tab3:
+    # UPDATED: Added SHARK and SSH to catch manual demo attempts even if ML threshold isn't hit
+    brute_data = events_df[events_df['attack_type'].str.contains('Brute|SHARK|SSH', na=False)] if not events_df.empty else pd.DataFrame()
+    display_attack_section(brute_data, "Brute Force")
+
+with tab4:
+    # UPDATED: Added Query and Poison to capture broader DNS telemetry for testing
+    dns_data = events_df[events_df['attack_type'].str.contains('DNS|Spoof|Query|Poison', na=False)] if not events_df.empty else pd.DataFrame()
+    display_attack_section(dns_data, "DNS_Spoof")
+
+with tab5:
+    if not banned_df.empty: 
+        st.dataframe(banned_df, use_container_width=True, hide_index=True)
+    else: 
+        st.info("🛡️ No active IP bans in the local kernel.")
