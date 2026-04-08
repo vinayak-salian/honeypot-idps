@@ -182,10 +182,13 @@ else:
             st.markdown(f"#### 🔍 Deep Inspection: {selected_ip}")
             t_events, t_traffic = st.tabs(["🔴 Hostile History", "📊 Raw Telemetry"])
             c1, c2 = st.columns(2)
+            
     if c1.button(f"🚫 Permanent Block {selected_ip}"):
         send_command(selected_ip, "BLOCK")
+        
     if c2.button(f"🔓 Manual Unblock {selected_ip}"):
         send_command(selected_ip, "UNBLOCK")
+        
         with t_events:
                 if not events_df.empty and selected_ip in events_df['source_ip'].values:
                     ip_events = events_df[events_df['source_ip'] == selected_ip]
