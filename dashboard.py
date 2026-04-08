@@ -23,6 +23,20 @@ def fetch_logs(filename):
     except Exception:
         return pd.DataFrame()
 
+def send_command(ip, action):
+    try:
+        g = Github(st.secrets["GITHUB_TOKEN"])
+        repo = g.get_repo("vinayak-salian/honeypot-idps")
+        contents = repo.get_contents("logs/action_queue.csv")
+        
+        new_line = f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')},{ip},{action}\n"
+        updated_content = contents.decoded_content.decode() + new_line
+        
+        repo.update_file(contents.path, f"C2-Command: {action} {ip}", updated_content, contents.sha)
+        st.success(f"Command '{action}' queued for {ip}")
+    except Exception as e:
+        st.error(f"Failed to send command: {e}")
+
 # --- 3. DATA ACQUISITION ---
 health_df = fetch_logs("system_status.csv")
 events_df = fetch_logs("security_events.csv")
@@ -167,6 +181,11 @@ else:
         with col_r:
             st.markdown(f"#### 🔍 Deep Inspection: {selected_ip}")
             t_events, t_traffic = st.tabs(["🔴 Hostile History", "📊 Raw Telemetry"])
+            c1, c2 = st.columns(2)
+    if c1.button(f"🚫 Permanent Block {selected_ip}"):
+        send_command(selected_ip, "BLOCK")
+    if c2.button(f"🔓 Manual Unblock {selected_ip}"):
+        send_command(selected_ip, "UNBLOCK")
             with t_events:
                 if not events_df.empty and selected_ip in events_df['source_ip'].values:
                     ip_events = events_df[events_df['source_ip'] == selected_ip]
