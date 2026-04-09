@@ -1,4 +1,6 @@
 timestamp,source_ip,domain
+"2026-04-09 21:12:04",10.42.0.48,1.0.42.10.in-addr.arpa
+"2026-04-09 21:12:04",10.42.0.48,1.0.42.10.in-addr.arpa
 "2026-04-09 21:11:59",10.42.0.48,unagi.amazon.in
 "2026-04-09 21:11:59",10.42.0.48,fls-eu.amazon.in
 "2026-04-09 21:11:59",10.42.0.48,unagi.amazon.in
@@ -97,5 +99,3 @@ timestamp,source_ip,domain
 "2026-04-09 21:09:33",10.42.0.48,c.pki.goog
 "2026-04-09 21:09:33",10.42.0.48,x1.c.lencr.org
 "2026-04-09 21:09:33",10.42.0.48,crl3.digicert.com
-"2026-04-09 21:09:33",10.42.0.48,safebrowsing.google.com
-"2026-04-09 21:09:33",10.42.0.48,clientservices.googleapis.com
