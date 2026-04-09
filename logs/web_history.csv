@@ -1,4 +1,7 @@
 timestamp,source_ip,domain
+"2026-04-09 20:27:08",10.42.0.89,www.samsung.com
+"2026-04-09 20:27:08",10.42.0.89,www.wikipedia.org
+"2026-04-09 20:27:04",10.42.0.48,unagi.amazon.in
 "2026-04-09 20:27:02",10.42.0.48,github.com
 "2026-04-09 20:26:59",10.42.0.48,alive.github.com
 "2026-04-09 20:26:58",10.42.0.48,fls-eu.amazon.in
@@ -96,6 +99,3 @@ timestamp,source_ip,domain
 "2026-04-09 20:25:34",10.42.0.48,github.com
 "2026-04-09 20:25:34",10.42.0.48,graph.microsoft.com
 "2026-04-09 20:25:27",10.42.0.48,crl3.digicert.com
-"2026-04-09 20:25:26",10.42.0.48,crl3.digicert.com
-"2026-04-09 20:25:23",10.42.0.48,accounts.google.com
-"2026-04-09 20:25:23",10.42.0.48,accounts.google.com
