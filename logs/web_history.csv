@@ -1,4 +1,8 @@
 timestamp,source_ip,domain
+"2026-04-09 20:45:26",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-09 20:45:26",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-09 20:45:25",10.42.0.48,accounts.google.com
+"2026-04-09 20:45:25",10.42.0.48,accounts.google.com
 "2026-04-09 20:45:06",10.42.0.48,signaler-pa.clients6.google.com
 "2026-04-09 20:45:06",10.42.0.48,signaler-pa.clients6.google.com
 "2026-04-09 20:45:04",10.42.0.48,unagi.amazon.in
@@ -95,7 +99,3 @@ timestamp,source_ip,domain
 "2026-04-09 20:39:25",10.42.0.48,opps-api.getwarmly.com
 "2026-04-09 20:39:23",10.42.0.48,www.amazon.in
 "2026-04-09 20:39:23",10.42.0.48,www.amazon.in
-"2026-04-09 20:39:23",10.42.0.48,www.amazon.in
-"2026-04-09 20:39:23",10.42.0.48,www.amazon.in
-"2026-04-09 20:39:23",10.42.0.48,events.launchdarkly.com
-"2026-04-09 20:39:23",10.42.0.48,events.launchdarkly.com
