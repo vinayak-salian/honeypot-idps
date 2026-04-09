@@ -154,21 +154,33 @@ else:
             with col_r:
                 st.markdown(f"#### 🔍 Deep Inspection: {selected_ip}")
                 
-                # --- PROFESSIONAL BUTTON LOGIC ---
-                c_block, c_web = st.columns(2)
+                # --- UPDATED: INSTANT BUTTON LOGIC WITH SESSION STATE ---
+                if 'manual_actions' not in st.session_state:
+                    st.session_state.manual_actions = {}
+
+                # Check Ground Truth (CSV) OR Temporary State (Session)
                 is_banned = False
                 if not banned_df.empty and 'Banned IP' in banned_df.columns:
                     is_banned = selected_ip in banned_df['Banned IP'].values
+                
+                # Override with current session action
+                if selected_ip in st.session_state.manual_actions:
+                    is_banned = (st.session_state.manual_actions[selected_ip] == "BLOCK")
 
+                c_block, c_web = st.columns(2)
                 with c_block:
                     if is_banned:
                         if st.button(f"🔓 RESTORE ACCESS: {selected_ip}", type="primary", use_container_width=True):
                             send_command(selected_ip, "UNBLOCK")
+                            st.session_state.manual_actions[selected_ip] = "UNBLOCK"
+                            st.rerun()
                     else:
                         if st.button(f"🚫 ISOLATE ASSET: {selected_ip}", use_container_width=True):
                             send_command(selected_ip, "BLOCK")
-                
-                # Use a toggle to ensure history stays visible during refresh
+                            st.session_state.manual_actions[selected_ip] = "BLOCK"
+                            st.rerun()
+
+                # Browsing History Toggle
                 show_web = st.toggle("🌐 View Browsing History", key="history_toggle")
                 if show_web:
                     st.info(f"Extracting DNS telemetry for {selected_ip}...")
@@ -178,7 +190,7 @@ else:
                         else: st.info("No browsing history found.")
                     else: st.warning("Web history log is currently empty.")
 
-                # --- HOSTILE HISTORY ---
+                # Hostile History
                 st.divider()
                 st.markdown("##### 🔴 Hostile History")
                 if not events_df.empty and 'source_ip' in events_df.columns:
@@ -188,7 +200,7 @@ else:
                         st.dataframe(ip_events[['timestamp', 'attack_type', 'evidence', 'confidence']], use_container_width=True, hide_index=True)
                     else: st.success("Clean: No hostile behavior found.")
         else: st.info(f"📡 Waiting for devices to join the {gateway_prefix}.x network...")
-    else: st.info("📡 Scanning Local Network... Connect a device to the Sentry AP to begin.")
+    else: st.info("📡 Scanning Local Network... Connect a device to begin.")
     st.divider()
 
 # --- LIVE THREAT INTELLIGENCE (Bottom Tabs) ---
