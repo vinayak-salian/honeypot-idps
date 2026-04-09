@@ -1,4 +1,9 @@
 timestamp,source_ip,domain
+"2026-04-09 19:12:37",10.42.0.48,gemini.google.com
+"2026-04-09 19:12:37",10.42.0.48,www.google.com
+"2026-04-09 19:12:37",10.42.0.48,gemini.google.com
+"2026-04-09 19:12:36",10.42.0.48,github.com
+"2026-04-09 19:12:36",10.42.0.48,github.com
 "2026-04-09 19:12:26",10.42.0.48,fonts.gstatic.com
 "2026-04-09 19:12:11",10.42.0.48,accounts.google.com
 "2026-04-09 19:12:11",10.42.0.48,accounts.google.com
@@ -94,8 +99,3 @@ timestamp,source_ip,domain
 "2026-04-09 19:08:34",10.42.0.89,www.google.com
 "2026-04-09 19:08:24",10.42.0.48,rr4---sn-h557sn6l.googlevideo.com
 "2026-04-09 19:08:23",10.42.0.89,graph.facebook.com
-"2026-04-09 19:08:23",10.42.0.89,graph.facebook.com
-"2026-04-09 19:08:23",10.42.0.48,rr4---sn-h557sn6l.googlevideo.com
-"2026-04-09 19:08:23",10.42.0.48,rr4---sn-h557sn6l.googlevideo.com
-"2026-04-09 19:08:23",10.42.0.48,rr4---sn-h557sn6l.googlevideo.com
-"2026-04-09 19:08:17",10.42.0.89,connectivitycheck.gstatic.com
