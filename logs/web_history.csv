@@ -1,4 +1,6 @@
 timestamp,source_ip,domain
+"2026-04-09 18:27:53",10.42.0.89,z-m-gateway.facebook.com
+"2026-04-09 18:27:53",10.42.0.89,z-m-gateway.facebook.com
 "2026-04-09 18:27:52",10.42.0.89,beacons4.gvt2.com
 "2026-04-09 18:27:52",10.42.0.89,beacons4.gvt2.com
 "2026-04-09 18:27:52",10.42.0.89,beacons5.gvt3.com
@@ -97,5 +99,3 @@ timestamp,source_ip,domain
 "2026-04-09 18:27:33",10.42.0.89,beacons5.gvt3.com
 "2026-04-09 18:27:32",10.42.0.89,z-m-gateway.facebook.com
 "2026-04-09 18:27:32",10.42.0.89,z-m-gateway.facebook.com
-"2026-04-09 18:27:32",10.42.0.89,www.wikipedia.org
-"2026-04-09 18:27:32",10.42.0.89,www.wikipedia.org
