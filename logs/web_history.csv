@@ -1,4 +1,14 @@
 timestamp,source_ip,domain
+"2026-04-09 18:45:59",10.42.0.48,github.com
+"2026-04-09 18:45:59",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-09 18:45:59",10.42.0.48,unagi.amazon.in
+"2026-04-09 18:45:59",10.42.0.48,fls-eu.amazon.in
+"2026-04-09 18:45:59",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-09 18:45:59",10.42.0.48,unagi.amazon.in
+"2026-04-09 18:45:59",10.42.0.48,fls-eu.amazon.in
+"2026-04-09 18:45:58",10.42.0.48,share.streamlit.io
+"2026-04-09 18:45:58",10.42.0.48,share.streamlit.io
+"2026-04-09 18:45:56",10.42.0.48,alive.github.com
 "2026-04-09 18:45:44",10.42.0.89,play.samsungcloud.com
 "2026-04-09 18:45:41",10.42.0.89,play.samsungcloud.com
 "2026-04-09 18:45:40",10.42.0.89,z-m-gateway.facebook.com
@@ -89,13 +99,3 @@ timestamp,source_ip,domain
 "2026-04-09 18:43:50",10.42.0.48,rtb.mfadsrvr.com
 "2026-04-09 18:43:50",10.42.0.48,pixel.rubiconproject.com
 "2026-04-09 18:43:50",10.42.0.48,cs.admanmedia.com
-"2026-04-09 18:43:50",10.42.0.48,t.adx.opera.com
-"2026-04-09 18:43:50",10.42.0.48,image8.pubmatic.com
-"2026-04-09 18:43:50",10.42.0.48,ssbsync-global.smartadserver.com
-"2026-04-09 18:43:50",10.42.0.48,sync.1rx.io
-"2026-04-09 18:43:50",10.42.0.48,cm.g.doubleclick.net
-"2026-04-09 18:43:49",10.42.0.48,sync.richaudience.com
-"2026-04-09 18:43:49",10.42.0.48,sync.quantumdex.io
-"2026-04-09 18:43:49",10.42.0.48,sync.richaudience.com
-"2026-04-09 18:43:49",10.42.0.48,sync.quantumdex.io
-"2026-04-09 18:43:49",10.42.0.48,ap.lijit.com
