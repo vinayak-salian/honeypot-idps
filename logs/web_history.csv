@@ -1,4 +1,11 @@
 timestamp,source_ip,domain
+"2026-04-09 20:30:52",10.42.0.89,youtubei.googleapis.com
+"2026-04-09 20:30:52",10.42.0.89,rr4---sn-poufvj5cax-cvhl.googlevideo.com
+"2026-04-09 20:30:51",10.42.0.48,cdn-checkout.joinhoney.com
+"2026-04-09 20:30:51",10.42.0.48,d.joinhoney.com
+"2026-04-09 20:30:51",10.42.0.48,cdn.honey.io
+"2026-04-09 20:30:51",10.42.0.89,i.ytimg.com
+"2026-04-09 20:30:49",10.42.0.89,www.google.com
 "2026-04-09 20:30:43",10.42.0.89,rr3---sn-gwpa-cvhek.googlevideo.com
 "2026-04-09 20:30:15",10.42.0.48,unagi.amazon.in
 "2026-04-09 20:30:14",10.42.0.48,unagi.amazon.in
@@ -92,10 +99,3 @@ timestamp,source_ip,domain
 "2026-04-09 20:26:07",10.42.0.48,log.tailscale.com
 "2026-04-09 20:26:07",10.42.0.48,log.tailscale.com
 "2026-04-09 20:26:07",10.42.0.48,log.tailscale.com
-"2026-04-09 20:26:07",10.42.0.48,log.tailscale.com
-"2026-04-09 20:26:07",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-09 20:26:07",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-09 20:25:53",10.42.0.48,unagi.amazon.in
-"2026-04-09 20:25:51",10.42.0.48,unagi.amazon.in
-"2026-04-09 20:25:49",10.42.0.48,signaler-pa.clients6.google.com
-"2026-04-09 20:25:49",10.42.0.48,signaler-pa.clients6.google.com
