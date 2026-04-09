@@ -9,3 +9,4 @@ timestamp,src_ip,unique_ports,packet_count,scan_speed,ml_confidence
 2026-04-04 16:06:48,209.177.156.94,PortScan,5,0.9500
 2026-04-04 16:31:42,185.34.3.75,PortScan,5,0.9500
 2026-04-08 12:45:33,49.44.194.138,PortScan,5,0.9500
+2026-04-09 11:42:48,35.203.65.95,PortScan,5,0.9500
