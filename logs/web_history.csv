@@ -1,4 +1,8 @@
 timestamp,source_ip,domain
+"2026-04-09 20:43:37",10.42.0.48,settings-win.data.microsoft.com
+"2026-04-09 20:43:37",10.42.0.48,settings-win.data.microsoft.com
+"2026-04-09 20:43:35",10.42.0.48,mobile.events.data.microsoft.com
+"2026-04-09 20:43:35",10.42.0.48,mobile.events.data.microsoft.com
 "2026-04-09 20:42:59",10.42.0.48,www.linkedin.com
 "2026-04-09 20:42:59",10.42.0.48,www.linkedin.com
 "2026-04-09 20:42:59",10.42.0.48,fls-eu.amazon.in
@@ -95,7 +99,3 @@ timestamp,source_ip,domain
 "2026-04-09 20:38:59",10.42.0.48,fls-eu.amazon.in
 "2026-04-09 20:38:53",10.42.0.48,unagi.amazon.in
 "2026-04-09 20:38:53",10.42.0.48,unagi.amazon.in
-"2026-04-09 20:38:53",10.42.0.48,1.0.42.10.in-addr.arpa
-"2026-04-09 20:38:53",10.42.0.48,1.0.42.10.in-addr.arpa
-"2026-04-09 20:38:52",10.42.0.48,unagi.amazon.in
-"2026-04-09 20:38:52",10.42.0.48,unagi.amazon.in
