@@ -1,4 +1,12 @@
 timestamp,source_ip,domain
+"2026-04-09 21:04:17",10.42.0.48,oauthaccountmanager.googleapis.com
+"2026-04-09 21:04:17",10.42.0.48,oauthaccountmanager.googleapis.com
+"2026-04-09 21:04:17",10.42.0.48,yt3.ggpht.com
+"2026-04-09 21:04:17",10.42.0.48,yt3.ggpht.com
+"2026-04-09 21:04:17",10.42.0.48,fp-afd-nocache-ccp.azureedge.net
+"2026-04-09 21:04:17",10.42.0.48,accounts.youtube.com
+"2026-04-09 21:04:17",10.42.0.48,fp-afd-nocache-ccp.azureedge.net
+"2026-04-09 21:04:17",10.42.0.48,accounts.youtube.com
 "2026-04-09 21:04:04",10.42.0.48,accounts.youtube.com
 "2026-04-09 21:04:04",10.42.0.48,accounts.youtube.com
 "2026-04-09 21:04:03",10.42.0.48,oauthaccountmanager.googleapis.com
@@ -91,11 +99,3 @@ timestamp,source_ip,domain
 "2026-04-09 21:03:48",10.42.0.48,fls-eu.amazon.in
 "2026-04-09 21:03:48",10.42.0.48,fls-eu.amazon.in
 "2026-04-09 21:03:48",10.42.0.48,fls-eu.amazon.in
-"2026-04-09 21:03:38",10.42.0.48,i.ytimg.com
-"2026-04-09 21:03:38",10.42.0.48,i.ytimg.com
-"2026-04-09 21:03:37",10.42.0.48,i.ytimg.com
-"2026-04-09 21:03:37",10.42.0.48,i.ytimg.com
-"2026-04-09 21:03:37",10.42.0.48,i.ytimg.com
-"2026-04-09 21:03:37",10.42.0.48,i.ytimg.com
-"2026-04-09 21:03:37",10.42.0.48,i.ytimg.com
-"2026-04-09 21:03:37",10.42.0.48,i.ytimg.com
