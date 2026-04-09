@@ -1,4 +1,5 @@
 timestamp,source_ip,domain
+"2026-04-09 20:28:36",10.42.0.89,2.android.pool.ntp.org
 "2026-04-09 20:28:08",10.42.0.89,roughtime.sandbox.google.com
 "2026-04-09 20:28:03",10.42.0.89,time.cloudflare.com
 "2026-04-09 20:28:03",10.42.0.89,roughtime.cloudflare.com
@@ -97,5 +98,4 @@ timestamp,source_ip,domain
 "2026-04-09 20:25:37",10.42.0.48,mr-prod-t.msedge.net
 "2026-04-09 20:25:35",10.42.0.48,alive.github.com
 "2026-04-09 20:25:35",10.42.0.48,github.com
-"2026-04-09 20:25:35",10.42.0.48,substrate.office.com
 "2026-04-09 20:25:35",10.42.0.48,substrate.office.com
