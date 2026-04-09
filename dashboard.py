@@ -24,27 +24,25 @@ def fetch_logs(filename):
     except Exception:
         return pd.DataFrame()
 
-# FIXED BUTTON LOGIC: Added 404 safety check and file initialization
 def send_command(ip, action):
     try:
         g = Github(st.secrets["GITHUB_TOKEN"])
         repo = g.get_repo("vinayak-salian/honeypot-idps")
         file_path = "logs/action_queue.csv"
         
-        # Check if the file exists to avoid the 404 error
+        # FIX: 404 Safety check. Get file, or create it if missing.
         try:
             contents = repo.get_contents(file_path)
             existing_data = contents.decoded_content.decode()
-        except Exception:
-            # If file is missing (404), create it first
+        except:
             existing_data = "timestamp,ip,action\n"
             repo.create_file(file_path, "Initialize action queue", existing_data)
             contents = repo.get_contents(file_path)
-
+        
         new_line = f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')},{ip},{action}\n"
         updated_content = existing_data + new_line
         
-        repo.update_file(contents.path, f"C2-{action}: {ip}", updated_content, contents.sha)
+        repo.update_file(contents.path, f"C2-Command: {action} {ip}", updated_content, contents.sha)
         st.success(f"Command '{action}' queued for {ip}")
     except Exception as e:
         st.error(f"Failed to send command: {e}")
@@ -55,7 +53,7 @@ events_df = fetch_logs("security_events.csv")
 devices_df = fetch_logs("known_devices.csv")
 traffic_df = fetch_logs("traffic_metrics.csv")
 banned_df = fetch_logs("banned_ips.csv")
-web_df = fetch_logs("web_history.csv") # ADDED: Fetching web history for traffic analysis
+web_df = fetch_logs("web_history.csv") # Fetched for the browsing history feature
 
 if not devices_df.empty and 'last_seen' in devices_df.columns:
     devices_df['last_seen'] = pd.to_datetime(devices_df['last_seen'], errors='coerce')
@@ -188,23 +186,23 @@ else:
             with col_r:
                 st.markdown(f"#### 🔍 Deep Inspection: {selected_ip}")
                 
-                # --- FIXED: SMART TOGGLE & TRAFFIC ANALYSIS BUTTONS ---
-                btn_col, tel_col = st.columns(2)
-
+                # --- FIXED: SMART TOGGLE & BROWSING HISTORY BUTTONS ---
+                c_block, c_web = st.columns(2)
+                
+                # Toggle logic based on banned list
                 is_banned = False
                 if not banned_df.empty and 'Banned IP' in banned_df.columns:
                     is_banned = selected_ip in banned_df['Banned IP'].values
 
-                with btn_col:
+                with c_block:
                     if is_banned:
                         if st.button(f"🔓 Manual Unblock {selected_ip}", type="primary", use_container_width=True):
                             send_command(selected_ip, "UNBLOCK")
                     else:
                         if st.button(f"🚫 Permanent Block {selected_ip}", use_container_width=True):
                             send_command(selected_ip, "BLOCK")
-
-                with tel_col:
-                    # ADDED BUTTON: Toggles the display of Browsing History (Traffic Analysis)
+                
+                with c_web:
                     show_web = st.button("🌐 View Browsing History", use_container_width=True)
 
                 if show_web:
@@ -217,29 +215,18 @@ else:
                             st.info("No browsing history found for this device.")
                     else:
                         st.warning("Web history log is currently empty.")
-                
-                # --- DEEP INSPECTION TABS ---
-                t_events, t_traffic = st.tabs(["🔴 Hostile History", "📊 Raw Telemetry"])
-                
-                with t_events:
-                    if not events_df.empty and selected_ip in events_df['source_ip'].values:
-                        ip_events = events_df[events_df['source_ip'] == selected_ip]
+
+                # --- DEEP INSPECTION TAB (Removed Raw Telemetry) ---
+                st.divider()
+                st.markdown("##### 🔴 Hostile History")
+                if not events_df.empty and 'source_ip' in events_df.columns:
+                    # FIX: Explicit IP string comparison for filtering
+                    ip_events = events_df[events_df['source_ip'].astype(str) == str(selected_ip)]
+                    if not ip_events.empty:
                         st.warning(f"Detected {len(ip_events)} malicious signatures.")
-                        st.dataframe(ip_events, use_container_width=True, hide_index=True)
+                        st.dataframe(ip_events[['timestamp', 'attack_type', 'evidence', 'confidence']], use_container_width=True, hide_index=True)
                     else: 
                         st.success("Clean: No hostile behavior found.")
-                        
-                with t_traffic:
-                    if not traffic_df.empty and 'source_ip' in traffic_df.columns:
-                        asset_traffic = traffic_df[traffic_df['source_ip'] == selected_ip]
-                        if not asset_traffic.empty: 
-                            st.dataframe(asset_traffic, use_container_width=True, hide_index=True)
-                        else: 
-                            st.info("Asset is currently silent.")
-                    else: 
-                        st.info("No raw telemetry captured yet.")
-        else:
-            st.info(f"📡 Waiting for devices to join the {gateway_prefix}.x network...")
     else:
         st.info("📡 Scanning Local Network... Connect a device to the Sentry AP to begin.")
     
