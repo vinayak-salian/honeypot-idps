@@ -212,7 +212,8 @@ if __name__ == "__main__":
     print("\n[+] Unified Dispatcher activated. Monitoring global network traffic...")
 
     try:
-        sniff(prn=master_dispatcher, store=False)
+        # UPDATED: Explicitly set iface to "wlan0"
+        sniff(iface="wlan0", prn=master_dispatcher, store=False)
     except KeyboardInterrupt:
         print("\n\n[!] Master shutdown sequence initiated...")
         if malware_process:
