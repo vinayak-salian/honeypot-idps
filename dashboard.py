@@ -134,7 +134,7 @@ def display_attack_section(df, attack_key):
     if not df.empty:
         st.dataframe(df, use_container_width=True, hide_index=True)
         if attack_key in PLAYBOOK:
-            st.markdown(f'<div class="playbook-card"><strong>🛡️ Automated Mitigation:</strong> {PLAYBOOK[attack_key]["solution"]}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="playbook-card"><strong></strong> {PLAYBOOK[attack_key]["solution"]}</div>', unsafe_allow_html=True)
     else:
         st.info(f"✅ System clear for {attack_key}.")
 
