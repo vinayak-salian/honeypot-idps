@@ -1,4 +1,5 @@
 timestamp,source_ip,domain
+"2026-04-09 20:24:04",10.42.0.48,beacons.gcp.gvt2.com
 "2026-04-09 20:23:59",10.42.0.48,events.launchdarkly.com
 "2026-04-09 20:23:59",10.42.0.48,unagi.amazon.in
 "2026-04-09 20:23:59",10.42.0.48,bam.nr-data.net
