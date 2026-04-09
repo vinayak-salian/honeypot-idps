@@ -97,23 +97,25 @@ def analyze_and_block(src_ip):
  
 def packet_callback(pkt):
     if IP not in pkt or TCP not in pkt: return
- 
-    # Identify local gateway IP to filter out outgoing traffic
-    try: MY_IP = get_if_addr("wlan0")
-    except: MY_IP = "10.42.0.1"
- 
-    if pkt[IP].dst == MY_IP:
-        src_ip = pkt[IP].src
+    
+    src_ip = pkt[IP].src
+    dst_ip = pkt[IP].dst
+    
+    # DEBUG: Print everything from the laptop to see it working
+    # print(f"[DEBUG] {src_ip} -> {dst_ip} on port {pkt[TCP].dport}")
+
+    # If it's incoming traffic (not from the Pi itself)
+    if src_ip != "127.0.0.1" and src_ip != "10.42.0.1":
         pkt_time = float(pkt.time)
- 
+        
         if flows[src_ip]['start_time'] is None: 
             flows[src_ip]['start_time'] = pkt_time
- 
+            
         flows[src_ip]['last_pkt_time'] = pkt_time
         flows[src_ip]['dest_ports'].add(pkt[TCP].dport)
- 
-        # Check every time a new port is added once we are over the threshold
-        if len(flows[src_ip]['dest_ports']) >= PORT_THRESHOLD:
+        
+        # Trigger alert as soon as they touch 3 different ports
+        if len(flows[src_ip]['dest_ports']) >= 3:
             analyze_and_block(src_ip)
  
 if __name__ == "__main__":
