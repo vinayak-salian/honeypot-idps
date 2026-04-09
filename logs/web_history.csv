@@ -1,4 +1,16 @@
 timestamp,source_ip,domain
+"2026-04-09 21:15:59",10.42.0.48,fls-eu.amazon.in
+"2026-04-09 21:15:59",10.42.0.48,bam.nr-data.net
+"2026-04-09 21:15:59",10.42.0.48,fls-eu.amazon.in
+"2026-04-09 21:15:59",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-09 21:15:59",10.42.0.48,fls-eu.amazon.in
+"2026-04-09 21:15:59",10.42.0.48,bam.nr-data.net
+"2026-04-09 21:15:59",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-09 21:15:59",10.42.0.48,fls-eu.amazon.in
+"2026-04-09 21:15:59",10.42.0.48,bam.nr-data.net
+"2026-04-09 21:15:58",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-09 21:15:58",10.42.0.48,bam.nr-data.net
+"2026-04-09 21:15:58",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-09 21:15:50",10.42.0.48,unagi.amazon.in
 "2026-04-09 21:15:50",10.42.0.48,unagi.amazon.in
 "2026-04-09 21:15:30",10.42.0.48,google.com
@@ -87,15 +99,3 @@ timestamp,source_ip,domain
 "2026-04-09 21:11:35",10.42.0.48,oajs.openx.net
 "2026-04-09 21:11:35",10.42.0.48,connectid.analytics.yahoo.com
 "2026-04-09 21:11:35",10.42.0.48,sync6.im-apps.net
-"2026-04-09 21:11:35",10.42.0.48,spadsync.com
-"2026-04-09 21:11:35",10.42.0.48,id5-sync.com
-"2026-04-09 21:11:35",10.42.0.48,cm.g.doubleclick.net
-"2026-04-09 21:11:35",10.42.0.48,oajs.openx.net
-"2026-04-09 21:11:35",10.42.0.48,connectid.analytics.yahoo.com
-"2026-04-09 21:11:35",10.42.0.48,gumi.criteo.com
-"2026-04-09 21:11:35",10.42.0.48,gumi.criteo.com
-"2026-04-09 21:11:35",10.42.0.48,google-bidout-d.openx.net
-"2026-04-09 21:11:34",10.42.0.48,cm.g.doubleclick.net
-"2026-04-09 21:11:25",10.42.0.48,play.google.com
-"2026-04-09 21:11:25",10.42.0.48,play.google.com
-"2026-04-09 21:11:21",10.42.0.48,google.com
