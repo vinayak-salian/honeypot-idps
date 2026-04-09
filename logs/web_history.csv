@@ -1,4 +1,8 @@
 timestamp,source_ip,domain
+"2026-04-09 21:16:59",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-09 21:16:59",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-09 21:16:58",10.42.0.48,www.linkedin.com
+"2026-04-09 21:16:58",10.42.0.48,www.linkedin.com
 "2026-04-09 21:16:38",10.42.0.48,gemini.google.com
 "2026-04-09 21:16:38",10.42.0.48,gemini.google.com
 "2026-04-09 21:16:26",10.42.0.48,signaler-pa.clients6.google.com
@@ -95,7 +99,3 @@ timestamp,source_ip,domain
 "2026-04-09 21:11:59",10.42.0.48,bam.nr-data.net
 "2026-04-09 21:11:59",10.42.0.48,unagi.amazon.in
 "2026-04-09 21:11:59",10.42.0.48,fls-eu.amazon.in
-"2026-04-09 21:11:58",10.42.0.48,bam.nr-data.net
-"2026-04-09 21:11:58",10.42.0.48,bam.nr-data.net
-"2026-04-09 21:11:52",10.42.0.48,edge.microsoft.com
-"2026-04-09 21:11:52",10.42.0.48,edge.microsoft.com
