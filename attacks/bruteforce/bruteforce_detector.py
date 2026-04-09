@@ -62,7 +62,13 @@ def load_labels_json():
  
 def get_port_name(port):
     return {SSH_PORT: "SSH", FTP_PORT: "FTP"}.get(port, f"Port {port}")
- 
+    
+    
+ # --- SAFE INITIALIZATION ---
+model = None
+scaler = None
+required_features = []
+labels_dict = {}
 # ============================================================================
 # 5. INITIALIZATION
 # ============================================================================

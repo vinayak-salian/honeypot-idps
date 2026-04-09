@@ -46,6 +46,11 @@ def load_labels_json():
         data = json.load(f)
     return {str(k): v for k, v in data.items()}
  
+# --- SAFE INITIALIZATION ---
+model = None
+scaler = None
+required_features = [] # Ensures this name always exists
+labels_dict = {}
 # ============================================================================
 # INITIALIZATION
 # ============================================================================

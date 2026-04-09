@@ -56,7 +56,12 @@ def smart_setter(data, feature_name, value):
             data[variant] = value
             return
     data[feature_name] = value
- 
+
+# --- SAFE INITIALIZATION ---
+model = None
+scaler = None
+required_features = []
+labels_dict = {}
 # ============================================================================
 # INITIALIZATION
 # ============================================================================
