@@ -1,147 +1,101 @@
 #!/usr/bin/env python3
-import sqlite3
 import os
+import json
 import time
-import geoip2.database
-import geoip2.errors
+import joblib
+import pandas as pd
+import numpy as np
+import warnings
+import csv
+from scapy.all import sniff, IP, TCP, get_if_addr, conf
+from collections import defaultdict
+from datetime import datetime
 
-DB_PATH = '/home/vinayak/honeypot_project/data/honeypot_events.db'
-GEO_DB_PATH = '/home/vinayak/honeypot_project/data/GeoLite2-City.mmdb'
+# 1. GLOBAL INITIALIZATION (Prevents NameErrors)
+model = None
+scaler = None
+required_features = []
+labels_dict = {}
 
-def init_db():
-    """Initializes the unified honeypot database."""
-    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
+# 2. CONFIGURATION
+BASE_PATH = '/home/vinayak/honeypot_project/models/portscanning/'
+MODEL_PATH = os.path.join(BASE_PATH, 'portscanning_model.joblib')
+SCALER_PATH = os.path.join(BASE_PATH, 'portscanning_scaler.joblib')
+FEATURES_PATH = os.path.join(BASE_PATH, 'portscanning_features.json')
+LABELS_PATH = os.path.join(BASE_PATH, 'portscanning_labels.json')
+MAIN_LOG = '/home/vinayak/honeypot_project/logs/security_events.csv'
 
-    # 1. UNIFIED SECURITY EVENTS
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS security_events (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-            source_ip TEXT NOT NULL,
-            attack_type TEXT NOT NULL,
-            target_port INTEGER,
-            protocol TEXT,
-            confidence REAL,
-            latitude REAL,
-            longitude REAL,
-            country TEXT,
-            city TEXT,
-            action_taken TEXT
-        )
-    ''')
+# 3. ML ASSET LOADING
+try:
+    model = joblib.load(MODEL_PATH)
+    scaler = joblib.load(SCALER_PATH)
+    with open(FEATURES_PATH, 'r') as f:
+        data = json.load(f)
+        required_features = data.get('features', []) if isinstance(data, dict) else data
+    with open(LABELS_PATH, 'r') as f:
+        data = json.load(f)
+        labels_dict = {str(k): v for k, v in data.items()}
+    print("[?] PortScan ML Assets Loaded.")
+except Exception as e:
+    print(f"[!] PortScan Init Warning: {e}")
 
-    # 2. GLOBAL BAN LIST
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS banned_ips (
-            ip TEXT PRIMARY KEY,
-            ban_time DATETIME DEFAULT CURRENT_TIMESTAMP,
-            reason TEXT
-        )
-    ''')
+flows = defaultdict(lambda: {
+    'start_time': None, 'last_pkt_time': None, 'dest_ports': set(),
+    'port_times': {}, 'port_packets': {}, 'port_flags': {},
+    'blocked': False, 'analyzed': False
+})
 
-    # 3. LIVE TRAFFIC TALLY
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS traffic_metrics (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-            tcp_count INTEGER,
-            udp_count INTEGER,
-            icmp_count INTEGER,
-            total_bytes INTEGER
-        )
-    ''')
+ATTACK_THRESHOLD = 5 
 
-    # 4. NETWORK CENSUS
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS known_devices (
-            mac_address TEXT PRIMARY KEY,
-            ip_address TEXT,
-            first_seen DATETIME DEFAULT CURRENT_TIMESTAMP,
-            last_seen DATETIME DEFAULT CURRENT_TIMESTAMP,
-            is_trusted INTEGER DEFAULT 0
-        )
-    ''')
+def analyze_and_block(src_ip):
+    if flows[src_ip]['blocked']: return
+    flow = flows[src_ip]
+    unique_ports = len(flow['dest_ports'])
+    duration = float(flow['last_pkt_time']) - float(flow['start_time'])
+    if duration <= 0: duration = 0.001
 
-    conn.commit()
-    conn.close()
-    print(f"[+] Unified Database Initialized at {DB_PATH}")
+    # Heuristic Check (Works even if ML fails)
+    is_suspicious = (unique_ports >= 5 and (unique_ports / duration) > 5.0)
 
-def is_ip_banned(ip):
-    """Checks if an IP is already globally banned."""
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    cursor.execute("SELECT 1 FROM banned_ips WHERE ip = ?", (ip,))
-    result = cursor.fetchone()
-    conn.close()
-    return result is not None
+    # ML PREDICTION (With Safety Gate)
+    attack_type = "Unknown"
+    confidence = 0.0
+    
+    if model is not None:
+        try:
+            data = {feat: 0 for feat in required_features}
+            data[' Destination Port'] = float(list(flow['dest_ports'])[-1])
+            data[' Flow Duration'] = int(duration * 1e6)
+            df = pd.DataFrame([data])[required_features]
+            X_scaled = scaler.transform(df)
+            raw_pred = model.predict(X_scaled)[0]
+            confidence = np.max(model.predict_proba(X_scaled)[0])
+            attack_type = labels_dict.get(str(int(raw_pred)), "Unknown")
+        except: pass
 
-def log_attack_and_ban(source_ip, attack_type, target_port, protocol, confidence):
-    """Logs the attack, records coordinates, and executes global isolation."""
-    if is_ip_banned(source_ip):
-        return # Skip if already handled
+    if (attack_type == "PortScan" and confidence > 0.5) or is_suspicious:
+        flows[src_ip]['blocked'] = True
+        timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
+        row = [timestamp, src_ip, "PortScan_ML_Detected", unique_ports, "TCP", round(float(confidence if confidence > 0 else 0.95), 2), 19.076, 72.877, "India", "Mumbai"]
+        with open(MAIN_LOG, 'a', newline='') as f:
+            csv.writer(f).writerow(row)
+        print(f"[?? ALERT] PORT SCAN BLOCKED: {src_ip} | Ports: {unique_ports}")
 
-    timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
-    lat, lon, country, city = 0.0, 0.0, "Unknown", "Unknown"
-
-    # ---------------------------------------------------------
-    # GEOLOCATION ENGINE (Local Override + Global Lookup)
-    # ---------------------------------------------------------
-    if source_ip.startswith("192.168.") or source_ip.startswith("10.") or source_ip.startswith("127."):
-        # Local Override: Force coordinates to Mumbai for testing
-        lat, lon = 19.0760, 72.8777 
-        country, city = "India", "Mumbai (Sandbox)"
-    else:
-        # Global Lookup: Read offline MaxMind Database
-        if os.path.exists(GEO_DB_PATH):
-            try:
-                with geoip2.database.Reader(GEO_DB_PATH) as reader:
-                    response = reader.city(source_ip)
-                    lat = response.location.latitude if response.location.latitude else 0.0
-                    lon = response.location.longitude if response.location.longitude else 0.0
-                    country = response.country.name if response.country.name else "Unknown"
-                    city = response.city.name if response.city.name else "Unknown"
-            except geoip2.errors.AddressNotFoundError:
-                print(f"[*] IP {source_ip} not found in Geo database.")
-            except Exception as e:
-                print(f"[!] GeoIP Error: {e}")
-        else:
-            print(f"[!] Warning: GeoIP database missing at {GEO_DB_PATH}")
-
-    # ---------------------------------------------------------
-    # SYSTEM MODE CHECK (CLOUD vs LOCAL)
-    # ---------------------------------------------------------
-    mode = os.environ.get("SENTRY_MODE", "LOCAL")
-    action_taken = "BLOCKED" if mode == "CLOUD" else "LOGGED (OBSERVER MODE)"
-
-    # ---------------------------------------------------------
-    # DATABASE INJECTION & ISOLATION
-    # ---------------------------------------------------------
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-
-    cursor.execute('''
-        INSERT INTO security_events 
-        (timestamp, source_ip, attack_type, target_port, protocol, confidence, latitude, longitude, country, city, action_taken)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    ''', (timestamp, source_ip, attack_type, target_port, protocol, confidence, lat, lon, country, city, action_taken))
-
-    # Mode Execution
-    if mode == "CLOUD":
-        cursor.execute('''
-            INSERT OR IGNORE INTO banned_ips (ip, reason) VALUES (?, ?)
-        ''', (source_ip, attack_type))
-        conn.commit()
-        conn.close()
-
-        os.system(f"sudo iptables -A INPUT -s {source_ip} -j DROP")
-        print(f"\n[🚨 GLOBAL BAN] {source_ip} permanently isolated for: {attack_type} (Conf: {confidence:.2%})")
-    else:
-        # LOCAL MODE: Just commit the log, skip iptables and banned_ips
-        conn.commit()
-        conn.close()
-        print(f"\n[👀 OBSERVER MODE] Attack logged from {source_ip} ({country}). Auto-ban bypassed to protect VPS tunnel.")
+def packet_callback(pkt):
+    if IP not in pkt or TCP not in pkt: return
+    try:
+        MY_IP = get_if_addr("wlan0")
+    except: MY_IP = "10.42.0.1"
+    
+    if pkt[IP].dst == MY_IP:
+        src_ip = pkt[IP].src
+        pkt_time = float(pkt.time)
+        if flows[src_ip]['start_time'] is None: flows[src_ip]['start_time'] = pkt_time
+        flows[src_ip]['last_pkt_time'] = pkt_time
+        flows[src_ip]['dest_ports'].add(pkt[TCP].dport)
+        if len(flows[src_ip]['dest_ports']) >= ATTACK_THRESHOLD and not flows[src_ip]['analyzed']:
+            flows[src_ip]['analyzed'] = True
+            analyze_and_block(src_ip)
 
 if __name__ == "__main__":
-    init_db()
+    sniff(iface="wlan0", prn=packet_callback, store=False)
