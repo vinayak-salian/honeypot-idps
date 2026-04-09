@@ -181,3 +181,4 @@
 [2026-04-09 11:45:13.939370] ATTACK LOGGED: 151.101.210.132 - PortScan - 5 ports
 [2026-04-09 11:45:58.724278] Prediction for 192.73.244.245: Class=0 (BENIGN) | Confidence: 0.89
 [2026-04-09 11:47:23.313636] Prediction for 35.201.127.49: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-09 11:51:02.260463] Prediction for 102.67.167.245: Class=0 (BENIGN) | Confidence: 0.89
