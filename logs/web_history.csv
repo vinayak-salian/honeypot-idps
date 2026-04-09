@@ -1,4 +1,6 @@
 timestamp,source_ip,domain
+"2026-04-09 19:06:40",10.42.0.89,www.google.com
+"2026-04-09 19:06:40",10.42.0.89,www.google.com
 "2026-04-09 19:06:04",10.42.0.48,unagi.amazon.in
 "2026-04-09 19:06:04",10.42.0.48,unagi.amazon.in
 "2026-04-09 19:06:02",10.42.0.89,test-gateway.instagram.com
@@ -97,5 +99,3 @@ timestamp,source_ip,domain
 "2026-04-09 19:03:17",10.42.0.89,i.instagram.com
 "2026-04-09 19:03:17",10.42.0.89,graph.facebook.com
 "2026-04-09 19:03:17",10.42.0.89,graph-fallback.instagram.com
-"2026-04-09 19:03:17",10.42.0.89,graph.instagram.com
-"2026-04-09 19:03:16",10.42.0.48,accounts.youtube.com
