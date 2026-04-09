@@ -1,4 +1,16 @@
 timestamp,source_ip,domain
+"2026-04-09 21:14:27",10.42.0.48,adblock.telemetry.eyeo.com
+"2026-04-09 21:14:27",10.42.0.48,adblock.telemetry.eyeo.com
+"2026-04-09 21:14:27",10.42.0.48,adblock.telemetry.eyeo.com
+"2026-04-09 21:14:27",10.42.0.48,adblock.telemetry.eyeo.com
+"2026-04-09 21:14:26",10.42.0.48,adblockplus.telemetry.eyeo.com
+"2026-04-09 21:14:26",10.42.0.48,adblockplus.telemetry.eyeo.com
+"2026-04-09 21:14:26",10.42.0.48,adblockplus.telemetry.eyeo.com
+"2026-04-09 21:14:26",10.42.0.48,adblockplus.telemetry.eyeo.com
+"2026-04-09 21:14:21",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-09 21:14:21",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-09 21:14:20",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-09 21:14:20",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-09 21:14:10",10.42.0.48,www.google-analytics.com
 "2026-04-09 21:14:10",10.42.0.48,analytics.google.com
 "2026-04-09 21:14:10",10.42.0.48,www.google-analytics.com
@@ -87,15 +99,3 @@ timestamp,source_ip,domain
 "2026-04-09 21:11:01",10.42.0.48,aax.amazon-adsystem.com
 "2026-04-09 21:10:59",10.42.0.48,events.launchdarkly.com
 "2026-04-09 21:10:59",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-09 21:10:59",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-09 21:10:58",10.42.0.48,events.launchdarkly.com
-"2026-04-09 21:10:43",10.42.0.48,sadownload.mcafee.com
-"2026-04-09 21:10:39",10.42.0.48,csync-apac.smilewanted.com
-"2026-04-09 21:10:39",10.42.0.48,sync.sharethis.com
-"2026-04-09 21:10:38",10.42.0.48,edgedl.me.gvt1.com
-"2026-04-09 21:10:38",10.42.0.48,csync.smilewanted.com
-"2026-04-09 21:10:35",10.42.0.48,lb.eu-1-id5-sync.com
-"2026-04-09 21:10:34",10.42.0.48,id.a-mx.com
-"2026-04-09 21:10:34",10.42.0.48,id.a-mx.com
-"2026-04-09 21:10:25",10.42.0.48,challenges.cloudflare.com
-"2026-04-09 21:10:24",10.42.0.48,optimizationguide-pa.googleapis.com
