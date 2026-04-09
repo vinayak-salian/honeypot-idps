@@ -1,4 +1,14 @@
 timestamp,source_ip,domain
+"2026-04-09 20:16:24",10.42.0.48,analytics.google.com
+"2026-04-09 20:16:24",10.42.0.48,www.google-analytics.com
+"2026-04-09 20:16:24",10.42.0.48,analytics.google.com
+"2026-04-09 20:16:24",10.42.0.48,analytics.google.com
+"2026-04-09 20:16:24",10.42.0.48,www.google-analytics.com
+"2026-04-09 20:16:24",10.42.0.48,signaler-pa.clients6.google.com
+"2026-04-09 20:16:24",10.42.0.48,signaler-pa.clients6.google.com
+"2026-04-09 20:16:23",10.42.0.48,www.google-analytics.com
+"2026-04-09 20:16:23",10.42.0.48,www.google-analytics.com
+"2026-04-09 20:16:23",10.42.0.48,analytics.google.com
 "2026-04-09 20:16:09",10.42.0.48,gemini.google.com
 "2026-04-09 20:16:09",10.42.0.48,gemini.google.com
 "2026-04-09 20:16:09",10.42.0.48,gemini.google.com
@@ -89,13 +99,3 @@ timestamp,source_ip,domain
 "2026-04-09 20:12:51",10.42.0.48,gfe.nvidia.com
 "2026-04-09 20:12:46",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-09 20:12:46",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-09 20:12:37",10.42.0.48,version.bind
-"2026-04-09 20:12:37",10.42.0.48,version.bind
-"2026-04-09 20:12:36",10.42.0.48,www.msftconnecttest.com
-"2026-04-09 20:12:36",10.42.0.48,www.msftconnecttest.com
-"2026-04-09 20:12:36",10.42.0.48,www.msftconnecttest.com
-"2026-04-09 20:12:36",10.42.0.48,www.msftconnecttest.com
-"2026-04-09 20:12:33",10.42.0.48,ipv6.msftconnecttest.com
-"2026-04-09 20:12:33",10.42.0.48,ipv6.msftconnecttest.com
-"2026-04-09 20:12:32",10.42.0.48,ipv6.msftconnecttest.com
-"2026-04-09 20:12:32",10.42.0.48,www.msftconnecttest.com
