@@ -1,5 +1,8 @@
 #!/bin/bash
 echo "[*] IGNITING NEXUS SENTRY CORE..."
+# Clean the logs before starting
+echo "timestamp,source_ip,attack_type,target_port,protocol,confidence,latitude,longitude,country,city" > logs/security_events.csv
+echo "mac_address,ip_address,last_seen" > logs/known_devices.csv
 
 # Nexus Dynamic Scanner v1.1
 
