@@ -167,3 +167,6 @@
 [2026-04-08 12:45:33.282840] Prediction for 49.44.194.138: Class=0 (BENIGN) | Confidence: 0.89
 [2026-04-08 12:45:33.286898] ATTACK LOGGED: 49.44.194.138 - PortScan - 5 ports
 [2026-04-08 12:47:25.041996] Prediction for 68.183.90.120: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-08 13:02:42.685204] Prediction for 209.177.158.15: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-08 13:07:48.559747] Prediction for 162.248.221.248: Class=0 (BENIGN) | Confidence: 0.88
+[2026-04-08 13:12:57.193092] Prediction for 192.73.244.245: Class=0 (BENIGN) | Confidence: 0.88
