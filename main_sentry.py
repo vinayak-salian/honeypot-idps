@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 IOT SENTRY | MASTER ORCHESTRATOR & DISPATCHER
-Captures all traffic, handles global Bouncer/Heartbeat, routes to ML models,
-and manages the Cloud/Local mode state.
+Version 4.7: Fixed Syntax, Integrated DNS Web Tracking & Device Discovery.
 """
 import requests
 import sys
@@ -13,21 +12,21 @@ import warnings
 import json
 import subprocess
 import os
-from scapy.all import sniff, IP, TCP, UDP, ICMP
-
-# Suppress warnings from scikit-learn version mismatches
+from scapy.all import sniff, IP, TCP, UDP, ICMP, Ether, DNS, DNSQR
+ 
+# Suppress warnings
 warnings.filterwarnings("ignore", category=UserWarning)
-
+ 
 # Connect to the Unified Database
 sys.path.append('/home/vinayak/honeypot_project')
 from honeypot_db import DB_PATH
-
+ 
 print("\n" + "="*60)
-print("    IOT SENTRY | MASTER ORCHESTRATOR INITIALIZING")
+print("    NEXUS SENTRY | MASTER ORCHESTRATOR INITIALIZING")
 print("="*60)
-
+ 
 # ============================================================================
-# 1. LOAD CONFIGURATION (CLOUD VS LOCAL MODE)
+# 1. LOAD CONFIGURATION
 # ============================================================================
 CONFIG_PATH = '/home/vinayak/honeypot_project/sentry_config.json'
 try:
@@ -35,15 +34,13 @@ try:
         config = json.load(f)
     mode = config.get("SYSTEM_MODE", "LOCAL")
     print(f"[*] Booting Sentry Core in {mode} MODE.")
-    
-    # Set an environment variable so honeypot_db.py knows the mode without reading the file
     os.environ["SENTRY_MODE"] = mode
-except Exception as e:
-    print(f"[!] Warning: Could not load config. Defaulting to LOCAL mode. Error: {e}")
+except Exception:
+    print(f"[*] Defaulting to LOCAL mode.")
     os.environ["SENTRY_MODE"] = "LOCAL"
-
+ 
 # ============================================================================
-# 2. START THE MALWARE ENGINE (Subprocess)
+# 2. START THE MALWARE ENGINE
 # ============================================================================
 print("[*] Igniting Port 8080 Malware Trap...")
 malware_process = None
@@ -53,11 +50,9 @@ try:
     if os.path.exists(MALWARE_SCRIPT):
         malware_process = subprocess.Popen(['sudo', PYTHON_BIN, MALWARE_SCRIPT], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         print("[+] Malware Trap online.")
-    else:
-        print("[-] Malware script not found.")
 except Exception as e:
     print(f"[-] Failed to start Malware Engine: {e}")
-
+ 
 # ============================================================================
 # 3. IMPORT THE PASSIVE ML BRAINS
 # ============================================================================
@@ -69,155 +64,108 @@ try:
     print("[+] All ML Brains successfully linked.")
 except ImportError as e:
     print(f"\n[!] Failed to import ML brains: {e}")
-    print("    Ensure your file paths are correct.")
     if malware_process: malware_process.terminate()
     sys.exit(1)
-
+ 
 # ============================================================================
 # 4. GLOBAL TRACKERS
 # ============================================================================
 locally_cached_bans = set()
 traffic_stats = {"tcp": 0, "udp": 0, "icmp": 0, "bytes": 0}
-
+ 
 # ============================================================================
-# 5. THE LIVE TRAFFIC HEARTBEAT (Runs in Background)
+# 5. HEARTBEATS
 # ============================================================================
 def traffic_heartbeat():
-    """Commits traffic stats to the DB every 5 seconds for the Dashboard Matrix."""
     while True:
         time.sleep(5)
-        c_tcp = traffic_stats["tcp"]
-        c_udp = traffic_stats["udp"]
-        c_icmp = traffic_stats["icmp"]
-        c_bytes = traffic_stats["bytes"]
-
-        traffic_stats["tcp"] = 0
-        traffic_stats["udp"] = 0
-        traffic_stats["icmp"] = 0
-        traffic_stats["bytes"] = 0
-
-        if c_tcp > 0 or c_udp > 0 or c_icmp > 0:
-            try:
-                conn = sqlite3.connect(DB_PATH)
-                cursor = conn.cursor()
-                cursor.execute('''
-                    INSERT INTO traffic_metrics (tcp_count, udp_count, icmp_count, total_bytes)
-                    VALUES (?, ?, ?, ?)
-                ''', (c_tcp, c_udp, c_icmp, c_bytes))
-                conn.commit()
-                conn.close()
-            except sqlite3.OperationalError:
-                pass 
-                
-    processed_c2_commands = set()
-
+        try:
+            conn = sqlite3.connect(DB_PATH)
+            cursor = conn.cursor()
+            cursor.execute('INSERT INTO traffic_metrics (tcp_count, udp_count, icmp_count, total_bytes) VALUES (?, ?, ?, ?)', 
+                           (traffic_stats["tcp"], traffic_stats["udp"], traffic_stats["icmp"], traffic_stats["bytes"]))
+            conn.commit()
+            conn.close()
+            for key in ["tcp", "udp", "icmp", "bytes"]: traffic_stats[key] = 0
+        except: pass
+ 
 def c2_polling_heartbeat():
-    """Polls the GitHub block_queue.txt every 10 seconds for remote commands."""
-    queue_url = "https://raw.githubusercontent.com/vinayak-salian/honeypot-idps/main/logs/block_queue.txt"
+    """Syncs local ban cache with DB every 10 seconds for the Bouncer."""
     while True:
         time.sleep(10)
         try:
-            resp = requests.get(queue_url, timeout=5)
-            if resp.status_code == 200:
-                lines = resp.text.strip().split('\n')
-                for line in lines:
-                    if not line.strip(): continue
-                    parts = line.split(',')
-                    ip_to_ban = parts[0].strip()
-                    
-                    # If we haven't seen this command yet, execute it!
-                    if ip_to_ban and ip_to_ban not in processed_c2_commands and ip_to_ban not in locally_cached_bans:
-                        print(f"\n[? C2 COMMAND RECEIVED] Executing remote isolation for {ip_to_ban}")
-                        
-                        # 1. Execute Kernel Drop
-                        os.system(f"sudo iptables -A INPUT -s {ip_to_ban} -j DROP")
-                        
-                        # 2. Add to RAM cache
-                        locally_cached_bans.add(ip_to_ban)
-                        processed_c2_commands.add(ip_to_ban)
-                        
-                        # 3. Save to local Database so it persists across reboots
-                        try:
-                            conn = sqlite3.connect(DB_PATH)
-                            cursor = conn.cursor()
-                            reason = parts[1].strip() if len(parts) > 1 else "Remote C2 Intervention"
-                            timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
-                            cursor.execute("INSERT OR IGNORE INTO banned_ips (ip, ban_time, reason) VALUES (?, ?, ?)", (ip_to_ban, timestamp, reason))
-                            conn.commit()
-                            conn.close()
-                        except sqlite3.OperationalError:
-                            pass # Handle brief DB locks
-        except Exception:
-            pass # Ignore network blips during polling            
-
+            conn = sqlite3.connect(DB_PATH)
+            cursor = conn.cursor()
+            cursor.execute("SELECT ip FROM banned_ips")
+            rows = cursor.fetchall()
+            locally_cached_bans.clear()
+            for row in rows: locally_cached_bans.add(row[0])
+            conn.close()
+        except: pass
+ 
 # ============================================================================
-# 6. THE DISPATCHER (The Master Sniffer)
+# 6. THE DISPATCHER
 # ============================================================================
 def master_dispatcher(pkt):
-    """Captures traffic ONCE and routes it to the correct ML model."""
-    if IP not in pkt:
-        return
-
+    if IP in pkt and TCP in pkt:
+        # TEMP DEBUG PRINT
+        print(f"[DEBUG] TCP Packet from {pkt[IP].src} to port {pkt[TCP].dport}")
+    if IP not in pkt: return
+ 
     src_ip = pkt[IP].src
-
-    # --- A. THE BOUNCER (Eliminate Redundancy) ---
-    if src_ip in locally_cached_bans:
-        return 
-
-    # --- B. TRAFFIC TALLY (For the Matrix Dashboard) ---
+    src_mac = pkt[Ether].src if Ether in pkt else "Unknown"
+ 
+    # --- A. WEB BROWSING HISTORY (DNS SNIFFING) ---
+    if pkt.haslayer(DNS) and pkt.getlayer(DNS).qr == 0:
+        try:
+            query_domain = pkt.getlayer(DNSQR).qname.decode('utf-8').rstrip('.')
+            conn = sqlite3.connect(DB_PATH)
+            cursor = conn.cursor()
+            cursor.execute('INSERT INTO web_history (timestamp, source_ip, domain) VALUES (?, ?, ?)', 
+                           (time.strftime('%Y-%m-%d %H:%M:%S'), src_ip, query_domain))
+            conn.commit()
+            conn.close()
+        except: pass
+ 
+    # --- B. DEVICE DISCOVERY ---
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        cursor.execute('''
+            INSERT INTO known_devices (mac_address, ip_address, last_seen)
+            VALUES (?, ?, ?)
+            ON CONFLICT(mac_address) DO UPDATE SET ip_address=excluded.ip_address, last_seen=excluded.last_seen
+        ''', (src_mac, src_ip, time.strftime('%Y-%m-%d %H:%M:%S')))
+        conn.commit()
+        conn.close()
+    except: pass
+ 
+    # --- C. THE BOUNCER ---
+    if src_ip in locally_cached_bans: return 
+ 
+    # --- D. TRAFFIC TALLY & ML ROUTING ---
     traffic_stats["bytes"] += len(pkt)
     if TCP in pkt:
         traffic_stats["tcp"] += 1
+        portscan_brain(pkt)
+        if pkt[TCP].dport in [22, 21, 2222]: bruteforce_brain(pkt)
     elif UDP in pkt:
         traffic_stats["udp"] += 1
+        if pkt[UDP].dport == 53 or pkt[UDP].sport == 53: dns_brain(pkt)
     elif ICMP in pkt:
         traffic_stats["icmp"] += 1
-
-    # --- C. ROUTE TO ML BRAINS (The Traffic Cop) ---
-    if TCP in pkt:
-        portscan_brain(pkt)
-        dport = pkt[TCP].dport
-        sport = pkt[TCP].sport
-        if dport in [22, 21] or sport in [22, 21]:
-            bruteforce_brain(pkt)
-    elif UDP in pkt:
-        dport = pkt[UDP].dport
-        sport = pkt[UDP].sport
-        if dport == 53 or sport == 53:
-            dns_brain(pkt)
-
+ 
 # ============================================================================
 # 7. EXECUTION
 # ============================================================================
 if __name__ == "__main__":
-    # Start C2 Polling Thread
-    c2_thread = threading.Thread(target=c2_polling_heartbeat, daemon=True)
-    c2_thread.start()
-    print("[+] Remote C2 Polling Link established.")
+    threading.Thread(target=c2_polling_heartbeat, daemon=True).start()
+    threading.Thread(target=traffic_heartbeat, daemon=True).start()
+ 
+    print("\n[+] Unified Dispatcher activated. Monitoring wlan0...")
     try:
-        conn = sqlite3.connect(DB_PATH)
-        cursor = conn.cursor()
-        cursor.execute("SELECT ip FROM banned_ips")
-        for row in cursor.fetchall():
-            locally_cached_bans.add(row[0])
-        conn.close()
-        print(f"[+] The Bouncer loaded {len(locally_cached_bans)} existing bans into RAM cache.")
-    except Exception as e:
-        print(f"[*] The Bouncer starting with empty cache.")
-
-    heartbeat_thread = threading.Thread(target=traffic_heartbeat, daemon=True)
-    heartbeat_thread.start()
-    print("[+] Live Traffic Matrix Heartbeat initialized.")
-
-    print("\n[+] Unified Dispatcher activated. Monitoring global network traffic...")
-
-    try:
-        # UPDATED: Explicitly set iface to "wlan0"
-        sniff(iface="wlan0", prn=master_dispatcher, store=False)
+        # Wider filter to ensure we catch DNS on any port it might be hiding on
+     sniff(iface="wlan0", filter="udp port 53 or tcp port 53", prn=master_dispatcher, store=False)
     except KeyboardInterrupt:
-        print("\n\n[!] Master shutdown sequence initiated...")
-        if malware_process:
-            print("[*] Terminating Malware Trap...")
-            malware_process.terminate()
-        print("[+] System offline. Stay safe.")
+        if malware_process: malware_process.terminate()
         sys.exit(0)

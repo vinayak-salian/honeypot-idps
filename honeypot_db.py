@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-IOT SENTRY | UNIFIED DATABASE HANDLER
-Manages SQLite storage for banned IPs, attack logs, and traffic metrics.
+IOT SENTRY | UNIFIED DATABASE HANDLER v4.2
+Manages SQLite storage for banned IPs, attack logs, known devices, and traffic metrics.
 """
 
 import sqlite3
@@ -12,6 +12,22 @@ import time
 DB_PATH = '/home/vinayak/honeypot_project/nexus_security.db'
 
 def init_db():
+    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    # ... (other tables: banned_ips, attack_logs, traffic_metrics, known_devices) ...
+    
+    # ADD THIS TABLE:
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS web_history (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            timestamp TEXT,
+            source_ip TEXT,
+            domain TEXT
+        )
+    ''')
+    conn.commit()
+    conn.close()
     """Initializes the database and creates required tables if they don't exist."""
     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
@@ -26,7 +42,7 @@ def init_db():
         )
     ''')
 
-    # Table for detailed attack logs (for historical analysis)
+    # UPDATED: Added 'evidence' and 'geolocation' columns for the Dashboard
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS attack_logs (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -35,7 +51,12 @@ def init_db():
             attack_type TEXT,
             target_port INTEGER,
             protocol TEXT,
-            confidence REAL
+            confidence REAL,
+            evidence TEXT,
+            latitude REAL,
+            longitude REAL,
+            country TEXT,
+            city TEXT
         )
     ''')
 
@@ -51,28 +72,41 @@ def init_db():
         )
     ''')
 
+    # ADDED: Table for known devices (Fixes the "missing devices" dashboard issue)
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS known_devices (
+            mac_address TEXT PRIMARY KEY,
+            ip_address TEXT,
+            last_seen TEXT
+        )
+    ''')
+
     conn.commit()
     conn.close()
-    # print(f"[?] Database initialized at {DB_PATH}")
 
-def log_attack_and_ban(source_ip, attack_type, target_port, protocol, confidence):
+def log_attack_and_ban(source_ip, attack_type, target_port, protocol, confidence, evidence="ML Analysis"):
     """
-    Logs an attack to the DB and adds the IP to the banned list.
-    Used by all ML detectors (DNS, BruteForce, PortScan, Malware).
+    Logs an attack to the DB. 
+    Includes 'evidence' to show the 'Why' on the dashboard.
     """
     timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
     
+    # Geolocation for SIES GST (Mumbai)
+    LAT, LONG = 19.076, 72.877
+    COUNTRY, CITY = "India", "Mumbai"
+
     try:
         conn = sqlite3.connect(DB_PATH)
         cursor = conn.cursor()
 
-        # 1. Log the individual attack event
+        # 1. Log with full columns for Dashboard
         cursor.execute('''
-            INSERT INTO attack_logs (timestamp, source_ip, attack_type, target_port, protocol, confidence)
-            VALUES (?, ?, ?, ?, ?, ?)
-        ''', (timestamp, source_ip, attack_type, target_port, protocol, confidence))
+            INSERT INTO attack_logs 
+            (timestamp, source_ip, attack_type, target_port, protocol, confidence, evidence, latitude, longitude, country, city)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', (timestamp, source_ip, attack_type, target_port, protocol, confidence, evidence, LAT, LONG, COUNTRY, CITY))
 
-        # 2. Add to banned_ips table (Persistence)
+        # 2. Add to banned_ips table (Optional: You can comment this if you want strictly manual bans)
         cursor.execute('''
             INSERT OR IGNORE INTO banned_ips (ip, ban_time, reason)
             VALUES (?, ?, ?)
@@ -84,10 +118,8 @@ def log_attack_and_ban(source_ip, attack_type, target_port, protocol, confidence
     except Exception as e:
         print(f"[!] Database Logging Error: {e}")
         return False
+        
+        
 
 # Automatically initialize on import
-if not os.path.exists(DB_PATH):
-    init_db()
-else:
-    # Ensure tables exist even if file exists
-    init_db()
+init_db()

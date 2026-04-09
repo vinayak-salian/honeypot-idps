@@ -1,5 +1,5 @@
 {
-    "SYSTEM_MODE": "LOCAL", 
+    "SYSTEM_MODE": "CLOUD", 
     "CLOUD_SETTINGS": {
         "AUTO_BAN": true,
         "GEO_TRACKING": true
