@@ -1,4 +1,6 @@
 timestamp,source_ip,domain
+"2026-04-09 18:42:25",10.42.0.48,safebrowsing.googleapis.com
+"2026-04-09 18:42:25",10.42.0.48,safebrowsing.googleapis.com
 "2026-04-09 18:42:15",10.42.0.48,signaler-pa.clients6.google.com
 "2026-04-09 18:42:15",10.42.0.48,signaler-pa.clients6.google.com
 "2026-04-09 18:41:49",10.42.0.89,z-m-gateway.facebook.com
@@ -96,6 +98,4 @@ timestamp,source_ip,domain
 "2026-04-09 18:40:01",10.42.0.48,cdn.honey.io
 "2026-04-09 18:40:00",10.42.0.48,github.com
 "2026-04-09 18:40:00",10.42.0.48,github.com
-"2026-04-09 18:39:59",10.42.0.48,bam.nr-data.net
-"2026-04-09 18:39:59",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-09 18:39:59",10.42.0.48,bam.nr-data.net
