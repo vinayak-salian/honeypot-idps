@@ -1,4 +1,23 @@
 timestamp,source_ip,domain
+"2026-04-09 20:54:26",10.42.0.48,1.0.42.10.in-addr.arpa
+"2026-04-09 20:54:26",10.42.0.48,1.0.42.10.in-addr.arpa
+"2026-04-09 20:54:20",10.42.0.48,bx-ring.msedge.net
+"2026-04-09 20:54:20",10.42.0.48,bx-ring.msedge.net
+"2026-04-09 20:54:20",10.42.0.48,s-ring.msedge.net
+"2026-04-09 20:54:20",10.42.0.48,s-ring.msedge.net
+"2026-04-09 20:54:20",10.42.0.48,www.bing.com
+"2026-04-09 20:54:20",10.42.0.48,www.bing.com
+"2026-04-09 20:54:20",10.42.0.48,fp.msedge.net
+"2026-04-09 20:54:20",10.42.0.48,fp.msedge.net
+"2026-04-09 20:54:19",10.42.0.48,fd.api.iris.microsoft.com
+"2026-04-09 20:54:19",10.42.0.48,t-ring-fallback-s2.msedge.net
+"2026-04-09 20:54:19",10.42.0.48,t-ring-fallback-s2.msedge.net
+"2026-04-09 20:54:19",10.42.0.48,t-ring-fallback-s2.msedge.net
+"2026-04-09 20:54:19",10.42.0.48,t-ring-fallback-s2.msedge.net
+"2026-04-09 20:54:18",10.42.0.48,odc.officeapps.live.com
+"2026-04-09 20:54:17",10.42.0.48,officeclient.microsoft.com
+"2026-04-09 20:54:17",10.42.0.48,officeclient.microsoft.com
+"2026-04-09 20:54:15",10.42.0.48,graph.microsoft.com
 "2026-04-09 20:54:04",10.42.0.48,unagi.amazon.in
 "2026-04-09 20:54:04",10.42.0.48,unagi.amazon.in
 "2026-04-09 20:53:59",10.42.0.48,www.linkedin.com
