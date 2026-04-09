@@ -1,4 +1,6 @@
 timestamp,source_ip,domain
+"2026-04-09 21:13:32",10.42.0.48,lightstep.kaizen.nvidia.com
+"2026-04-09 21:13:32",10.42.0.48,lightstep.kaizen.nvidia.com
 "2026-04-09 21:13:14",10.42.0.48,webhooks.fivetran.com
 "2026-04-09 21:13:14",10.42.0.48,webhooks.fivetran.com
 "2026-04-09 21:13:12",10.42.0.48,honeypot-idps-mproject.streamlit.app
@@ -97,5 +99,3 @@ timestamp,source_ip,domain
 "2026-04-09 21:10:05",10.42.0.48,www.googletagmanager.com
 "2026-04-09 21:10:05",10.42.0.48,services.vlitag.com
 "2026-04-09 21:10:05",10.42.0.48,securepubads.g.doubleclick.net
-"2026-04-09 21:10:05",10.42.0.48,script.4dex.io
-"2026-04-09 21:10:04",10.42.0.48,pastebin.com
