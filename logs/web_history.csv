@@ -1,4 +1,14 @@
 timestamp,source_ip,domain
+"2026-04-09 19:08:24",10.42.0.48,rr4---sn-h557sn6l.googlevideo.com
+"2026-04-09 19:08:23",10.42.0.89,graph.facebook.com
+"2026-04-09 19:08:23",10.42.0.89,graph.facebook.com
+"2026-04-09 19:08:23",10.42.0.48,rr4---sn-h557sn6l.googlevideo.com
+"2026-04-09 19:08:23",10.42.0.48,rr4---sn-h557sn6l.googlevideo.com
+"2026-04-09 19:08:23",10.42.0.48,rr4---sn-h557sn6l.googlevideo.com
+"2026-04-09 19:08:17",10.42.0.89,connectivitycheck.gstatic.com
+"2026-04-09 19:08:17",10.42.0.89,connectivitycheck.gstatic.com
+"2026-04-09 19:08:11",10.42.0.89,edge-mqtt.facebook.com
+"2026-04-09 19:08:11",10.42.0.89,edge-mqtt.facebook.com
 "2026-04-09 19:07:59",10.42.0.48,unagi.amazon.in
 "2026-04-09 19:07:59",10.42.0.48,fls-eu.amazon.in
 "2026-04-09 19:07:59",10.42.0.48,unagi.amazon.in
@@ -89,13 +99,3 @@ timestamp,source_ip,domain
 "2026-04-09 19:04:44",10.42.0.48,googleads.g.doubleclick.net
 "2026-04-09 19:04:44",10.42.0.48,googleads.g.doubleclick.net
 "2026-04-09 19:04:43",10.42.0.48,googleads.g.doubleclick.net
-"2026-04-09 19:04:41",10.42.0.48,optimizationguide-pa.googleapis.com
-"2026-04-09 19:04:41",10.42.0.48,optimizationguide-pa.googleapis.com
-"2026-04-09 19:04:39",10.42.0.48,i.ytimg.com
-"2026-04-09 19:04:39",10.42.0.48,i.ytimg.com
-"2026-04-09 19:04:38",10.42.0.48,rr6---sn-gwpa-cvhr.googlevideo.com
-"2026-04-09 19:04:38",10.42.0.48,rr6---sn-gwpa-cvhr.googlevideo.com
-"2026-04-09 19:04:37",10.42.0.48,www.google.com
-"2026-04-09 19:04:37",10.42.0.48,www.youtube.com
-"2026-04-09 19:04:37",10.42.0.48,www.youtube.com
-"2026-04-09 19:04:36",10.42.0.48,www.google.com
