@@ -49,7 +49,7 @@ flows = defaultdict(lambda: {
     'fwd_lengths': [], 'blocked': False, 'analyzed': False
 })
 
-PACKET_THRESHOLD = 50
+PACKET_THRESHOLD = 1
 
 def analyze_and_block(external_ip, flow_key):
     if flows[flow_key]['blocked']: return
