@@ -1,4 +1,8 @@
 timestamp,source_ip,domain
+"2026-04-09 20:32:52",10.42.0.48,signaler-pa.clients6.google.com
+"2026-04-09 20:32:51",10.42.0.89,www.google.com
+"2026-04-09 20:32:51",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-09 20:32:51",10.42.0.48,beacons.gcp.gvt2.com
 "2026-04-09 20:32:13",10.42.0.48,google.com
 "2026-04-09 20:31:59",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-09 20:31:59",10.42.0.48,unagi.amazon.in
@@ -95,7 +99,3 @@ timestamp,source_ip,domain
 "2026-04-09 20:26:50",10.42.0.89,google.com
 "2026-04-09 20:26:50",10.42.0.89,www.goooooooooooooooooooooooooooooooooooooooooooooooooooooooooogle.com
 "2026-04-09 20:26:50",10.42.0.89,216.58.202.4.in-addr.arpa
-"2026-04-09 20:26:50",10.42.0.89,google.com
-"2026-04-09 20:26:50",10.42.0.89,*google.com
-"2026-04-09 20:26:50",10.42.0.89,GOOGLE.COM
-"2026-04-09 20:26:50",10.42.0.89,google.com
