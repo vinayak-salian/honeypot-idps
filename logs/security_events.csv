@@ -1,0 +1,2 @@
+id,timestamp,source_ip,attack_type,target_port,protocol,confidence,evidence,latitude,longitude,country,city
+1,"2026-04-09 15:28:19",10.42.0.48,PortScan_ML_Detected,5,TCP,0.89,"Scanned 5 ports in 0.01s (Rate: 833.2 ports/s)",19.076,72.877,India,Mumbai
