@@ -1,4 +1,7 @@
 timestamp,source_ip,domain
+"2026-04-10 18:17:39",10.42.0.48,ipv6.msftconnecttest.com
+"2026-04-10 18:17:39",10.42.0.48,www.msftconnecttest.com
+"2026-04-10 18:17:39",10.42.0.48,ipv6.msftconnecttest.com
 "2026-04-10 18:17:20",10.42.0.48,_googlecast._tcp.local
 "2026-04-10 18:17:20",10.42.0.48,_googlecast._tcp.local
 "2026-04-10 18:17:20",10.42.0.48,_googlecast._tcp.local
@@ -96,6 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:47:52",10.42.0.48,cdn-checkout.joinhoney.com
 "2026-04-10 16:47:52",10.42.0.48,d.joinhoney.com
 "2026-04-10 16:47:52",10.42.0.48,d.joinhoney.com
-"2026-04-10 16:47:27",10.42.0.1,_ipps._tcp.local
-"2026-04-10 16:47:11",10.42.0.48,www.youtube.com
-"2026-04-10 16:47:11",10.42.0.48,www.youtube.com
