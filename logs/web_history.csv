@@ -1,4 +1,16 @@
 timestamp,source_ip,domain
+"2026-04-10 14:35:43",10.42.0.48,safebrowsing.googleapis.com
+"2026-04-10 14:35:42",10.42.0.48,ocelot.pushbullet.com
+"2026-04-10 14:35:42",10.42.0.48,api.pushbullet.com
+"2026-04-10 14:35:41",10.42.0.48,websocket.pushbullet.com
+"2026-04-10 14:35:40",10.42.0.48,www.google-analytics.com
+"2026-04-10 14:35:40",10.42.0.48,analytics.google.com
+"2026-04-10 14:35:38",10.42.0.48,accounts.google.com
+"2026-04-10 14:35:33",10.42.0.48,www.msftconnecttest.com
+"2026-04-10 14:35:33",10.42.0.48,ipv6.msftconnecttest.com
+"2026-04-10 14:35:32",10.42.0.48,ipv6.msftconnecttest.com
+"2026-04-10 14:35:32",10.42.0.48,www.msftconnecttest.com
+"2026-04-10 14:35:30",10.42.0.48,log.tailscale.com
 "2026-04-10 14:35:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-10 14:35:11",10.42.0.48,unagi.amazon.in
 "2026-04-10 14:35:08",10.42.0.48,_googlecast._tcp.local
@@ -87,15 +99,3 @@ timestamp,source_ip,domain
 "2026-04-09 21:09:59",10.42.0.48,shb.richaudience.com
 "2026-04-09 21:09:59",10.42.0.48,useast.quantumdex.io
 "2026-04-09 21:09:58",10.42.0.48,www.google.com
-"2026-04-09 21:09:58",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-09 21:09:58",10.42.0.48,fls-eu.amazon.in
-"2026-04-09 21:09:51",10.42.0.48,services.gfe.nvidia.com
-"2026-04-09 21:09:50",10.42.0.48,edge.microsoft.com
-"2026-04-09 21:09:49",10.42.0.48,google.com
-"2026-04-09 21:09:34",10.42.0.48,oneocsp.microsoft.com
-"2026-04-09 21:09:33",10.42.0.48,c.pki.goog
-"2026-04-09 21:09:33",10.42.0.48,x1.c.lencr.org
-"2026-04-09 21:09:33",10.42.0.48,crl3.digicert.com
-"2026-04-09 21:09:33",10.42.0.48,safebrowsing.google.com
-"2026-04-09 21:09:33",10.42.0.48,clientservices.googleapis.com
-"2026-04-09 21:09:33",10.42.0.48,clientservices.googleapis.com
