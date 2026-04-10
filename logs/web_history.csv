@@ -1,4 +1,13 @@
 timestamp,source_ip,domain
+"2026-04-10 16:43:54",10.42.0.48,stats.g.doubleclick.net
+"2026-04-10 16:43:54",10.42.0.48,stats.g.doubleclick.net
+"2026-04-10 16:43:54",10.42.0.48,cdn.heapanalytics.com
+"2026-04-10 16:43:53",10.42.0.48,www.streamlitstatus.com
+"2026-04-10 16:43:53",10.42.0.48,google-ohttp-relay-safebrowsing.fastly-edge.com
+"2026-04-10 16:43:53",10.42.0.48,google-ohttp-relay-safebrowsing.fastly-edge.com
+"2026-04-10 16:43:53",10.42.0.48,www.streamlitstatus.com
+"2026-04-10 16:43:53",10.42.0.48,cdn.segment.com
+"2026-04-10 16:43:53",10.42.0.48,cdn.segment.com
 "2026-04-10 16:43:33",10.42.0.48,easylist-downloads.adblockplus.org
 "2026-04-10 16:43:32",10.42.0.48,easylist-downloads.adblockplus.org
 "2026-04-10 16:43:30",10.42.0.48,qjmnz4vd2y07.statuspage.io
@@ -90,12 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:39:26",10.42.0.48,www.google.com
 "2026-04-10 16:27:04",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-10 16:26:18",10.42.0.48,clients4.google.com
-"2026-04-10 16:26:11",10.42.0.48,www.youtube.com
-"2026-04-10 16:26:04",10.42.0.48,cdn.segment.com
-"2026-04-10 16:26:04",10.42.0.48,stats.g.doubleclick.net
-"2026-04-10 16:26:04",10.42.0.48,cdn.heapanalytics.com
-"2026-04-10 16:26:04",10.42.0.48,cdn.heapanalytics.com
-"2026-04-10 16:26:04",10.42.0.48,heapanalytics.com
-"2026-04-10 16:26:04",10.42.0.48,heapanalytics.com
-"2026-04-10 16:26:03",10.42.0.48,www.streamlitstatus.com
-"2026-04-10 16:26:03",10.42.0.48,safebrowsing.google.com
