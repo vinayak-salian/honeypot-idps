@@ -1,4 +1,8 @@
 timestamp,source_ip,domain
+"2026-04-10 18:44:39",10.42.0.48,google.com
+"2026-04-10 18:44:39",10.42.0.48,google.com
+"2026-04-10 18:44:24",10.42.0.48,cdn-checkout.joinhoney.com
+"2026-04-10 18:44:24",10.42.0.48,cdn-checkout.joinhoney.com
 "2026-04-10 18:44:13",10.42.0.48,fp.msedge.net
 "2026-04-10 18:44:13",10.42.0.48,fp.msedge.net
 "2026-04-10 18:44:12",10.42.0.48,store-images.s-microsoft.com
@@ -95,7 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 18:40:31",10.42.0.48,relay-ff3900cd.net.anydesk.com
 "2026-04-10 18:40:31",10.42.0.48,mtalk.google.com
 "2026-04-10 18:40:31",10.42.0.48,honeypot-idps-mproject.streamlit.app
-"2026-04-10 18:40:31",10.42.0.48,substrate.office.com
-"2026-04-10 18:40:31",10.42.0.48,skydrive.wns.windows.com
-"2026-04-10 18:40:31",10.42.0.48,www.msftconnecttest.com
-"2026-04-10 18:21:35",10.42.0.1,_ipps._tcp.local
