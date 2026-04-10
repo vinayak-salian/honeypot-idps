@@ -1,4 +1,16 @@
 timestamp,source_ip,domain
+"2026-04-10 18:18:23",10.42.0.48,relay-ff3900cd.net.anydesk.com
+"2026-04-10 18:18:19",10.42.0.48,boot.net.anydesk.com
+"2026-04-10 18:18:19",10.42.0.48,www.msftconnecttest.com
+"2026-04-10 18:18:19",10.42.0.48,www.msftconnecttest.com
+"2026-04-10 18:18:17",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-10 18:18:15",10.42.0.48,ipv6.msftconnecttest.com
+"2026-04-10 18:18:15",10.42.0.48,www.msftconnecttest.com
+"2026-04-10 18:18:15",10.42.0.48,ipv6.msftconnecttest.com
+"2026-04-10 18:18:11",10.42.0.48,eu-north-1.prod.pl.panorama.console.api.aws
+"2026-04-10 18:18:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 18:18:11",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
+"2026-04-10 18:18:10",10.42.0.48,ctldl.windowsupdate.com
 "2026-04-10 18:18:08",10.42.0.48,google.com
 "2026-04-10 18:17:59",10.42.0.48,log.tailscale.com
 "2026-04-10 18:17:52",10.42.0.48,ocelot.pushbullet.com
@@ -87,15 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:49:50",10.42.0.48,signaler-pa.clients6.google.com
 "2026-04-10 16:49:11",10.42.0.48,google.com
 "2026-04-10 16:49:11",10.42.0.48,google.com
-"2026-04-10 16:48:54",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-10 16:48:54",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-10 16:48:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-10 16:48:01",10.42.0.48,push.clients6.google.com
-"2026-04-10 16:48:01",10.42.0.48,push.clients6.google.com
-"2026-04-10 16:47:57",10.42.0.48,www.bing.com
-"2026-04-10 16:47:57",10.42.0.48,www.bing.com
-"2026-04-10 16:47:56",10.42.0.48,ow1.res.office365.com
-"2026-04-10 16:47:56",10.42.0.48,fp.msedge.net
-"2026-04-10 16:47:55",10.42.0.48,bx-ring.msedge.net
-"2026-04-10 16:47:55",10.42.0.48,t-ring-fallback-s2.msedge.net
-"2026-04-10 16:47:55",10.42.0.48,t-ring-fallback-s2.msedge.net
