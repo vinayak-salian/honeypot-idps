@@ -1,4 +1,16 @@
 id,timestamp,source_ip,attack_type,target_port,protocol,confidence,evidence,latitude,longitude,country,city
+400,"2026-04-10 13:43:40",74.125.24.188,PortScan,,,0.99,"Probed 2 ports | Rate: 0.59 p/s",37.4225,-122.085,"United States","Mountain View"
+399,"2026-04-10 13:43:39",192.200.0.116,PortScan,,,0.99,"Probed 2 ports | Rate: 0.44 p/s",51.5072,-0.127586,"United Kingdom",London
+398,"2026-04-10 13:43:38",13.107.138.254,PortScan,,,0.99,"Probed 2 ports | Rate: 0.0 p/s",47.6722,-122.1257,"United States",Redmond
+397,"2026-04-10 13:43:37",172.202.64.254,PortScan,,,0.99,"Probed 2 ports | Rate: 0.0 p/s",41.5908,-93.6208,"United States","Des Moines"
+396,"2026-04-10 13:43:36",172.188.155.25,PortScan,,,0.99,"Probed 2 ports | Rate: 0.0 p/s",1.283,103.833,Singapore,Singapore
+395,"2026-04-10 13:43:35",4.213.25.242,PortScan,,,0.99,"Probed 2 ports | Rate: 23.75 p/s",18.5144,73.864235,India,Pune
+394,"2026-04-10 13:43:34",148.113.8.206,PortScan,,,0.99,"Probed 2 ports | Rate: 0.0 p/s",19.0748,72.8856,India,Mumbai
+393,"2026-04-10 13:36:20",20.190.175.88,PortScan,,,0.99,"Probed 2 ports | Rate: 0.0 p/s",18.5144,73.864235,India,Pune
+392,"2026-04-10 13:36:11",142.250.70.37,PortScan,,,0.99,"Probed 2 ports | Rate: 5.88 p/s",37.4225,-122.085,"United States","Mountain View"
+391,"2026-04-10 13:34:35",49.44.130.8,PortScan,,,0.99,"Probed 2 ports | Rate: 1.12 p/s",19.1258,73.0004,India,"Navi Mumbai"
+389,"2026-04-10 13:34:21",20.207.73.85,PortScan,,,0.99,"Probed 2 ports | Rate: 0.01 p/s",18.5144,73.864235,India,Pune
+390,"2026-04-10 13:34:21",20.207.73.85,PortScan,,,0.99,"Probed 2 ports | Rate: 0.01 p/s",18.5144,73.864235,India,Pune
 387,"2026-04-10 13:34:13",3.253.183.169,PortScan,,,0.99,"Probed 2 ports | Rate: 78.56 p/s",53.3498,-6.26031,Ireland,Dublin
 388,"2026-04-10 13:34:13",3.253.183.169,PortScan,,,0.99,"Probed 2 ports | Rate: 78.56 p/s",53.3498,-6.26031,Ireland,Dublin
 385,"2026-04-10 13:31:29",49.44.130.24,PortScan,,,0.99,"Probed 2 ports | Rate: 1351.91 p/s",19.1258,73.0004,India,"Navi Mumbai"
