@@ -1,4 +1,9 @@
 timestamp,source_ip,domain
+"2026-04-10 18:55:31",10.42.0.48,v10.events.data.microsoft.com
+"2026-04-10 18:55:30",10.42.0.48,logs.eu-north-1.amazonaws.com
+"2026-04-10 18:55:30",10.42.0.48,logs.eu-north-1.amazonaws.com
+"2026-04-10 18:55:20",10.42.0.48,github.com
+"2026-04-10 18:55:20",10.42.0.48,easylist-downloads.adblockplus.org
 "2026-04-10 18:55:11",10.42.0.48,www.linkedin.com
 "2026-04-10 18:55:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-10 18:55:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
@@ -94,8 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 18:49:40",10.42.0.48,edb927c962d8dadabba350194156d784.azr.footprintdns.com
 "2026-04-10 18:49:40",10.42.0.48,edb927c962d8dadabba350194156d784.azr.footprintdns.com
 "2026-04-10 18:49:39",10.42.0.48,bx-ring.msedge.net
-"2026-04-10 18:49:39",10.42.0.48,bx-ring.msedge.net
-"2026-04-10 18:49:39",10.42.0.48,c-ring.msedge.net
-"2026-04-10 18:49:11",10.42.0.48,www.linkedin.com
-"2026-04-10 18:49:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-10 18:49:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
