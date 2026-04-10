@@ -1,4 +1,5 @@
 id,timestamp,source_ip,attack_type,target_port,protocol,confidence,evidence,latitude,longitude,country,city
+298,"2026-04-10 13:09:53",20.207.73.85,PortScan,,,0.99,"Probed 2 ports | Rate: 0.01 p/s",18.5144,73.864235,India,Pune
 296,"2026-04-10 13:09:27",184.86.248.210,PortScan,,,0.99,"Probed 2 ports | Rate: 0.0 p/s",19.0748,72.8856,India,Mumbai
 297,"2026-04-10 13:09:27",184.86.248.210,PortScan,,,0.99,"Probed 2 ports | Rate: 0.0 p/s",19.0748,72.8856,India,Mumbai
 295,"2026-04-10 13:09:25",67.202.105.22,PortScan,,,0.99,"Probed 2 ports | Rate: 0.19 p/s",28.0199,-82.5246,"United States",Tampa
