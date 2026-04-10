@@ -1,4 +1,6 @@
 timestamp,source_ip,domain
+"2026-04-10 17:03:19",10.42.0.48,crl.anydesk.com
+"2026-04-10 17:03:19",10.42.0.48,crl.anydesk.com
 "2026-04-10 17:02:57",10.42.0.48,www.msftconnecttest.com
 "2026-04-10 17:02:56",10.42.0.48,www.msftconnecttest.com
 "2026-04-10 17:02:56",10.42.0.48,ipv6.msftconnecttest.com
@@ -97,5 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:45:19",10.42.0.48,gemini.google.com
 "2026-04-10 16:45:17",10.42.0.48,accounts.youtube.com
 "2026-04-10 16:45:17",10.42.0.48,accounts.youtube.com
-"2026-04-10 16:45:17",10.42.0.48,v10.events.data.microsoft.com
-"2026-04-10 16:45:17",10.42.0.48,v10.events.data.microsoft.com
