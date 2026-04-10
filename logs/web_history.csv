@@ -1,4 +1,13 @@
 timestamp,source_ip,domain
+"2026-04-10 17:02:57",10.42.0.48,www.msftconnecttest.com
+"2026-04-10 17:02:56",10.42.0.48,www.msftconnecttest.com
+"2026-04-10 17:02:56",10.42.0.48,ipv6.msftconnecttest.com
+"2026-04-10 17:02:56",10.42.0.48,ipv6.msftconnecttest.com
+"2026-04-10 17:02:56",10.42.0.48,ipv6.msftconnecttest.com
+"2026-04-10 17:02:54",10.42.0.48,google.com
+"2026-04-10 17:02:50",10.42.0.48,siescms-my.sharepoint.com
+"2026-04-10 17:02:49",10.42.0.48,193455-ipv4fdsmte.gr.global.aa-rt.sharepoint.com
+"2026-04-10 17:02:49",10.42.0.48,196615-ipv4v6fdse.gr.global.aa-rt.sharepoint.com
 "2026-04-10 17:02:31",10.42.0.48,t-ring-fallback.msedge.net
 "2026-04-10 17:02:31",10.42.0.48,80cc9669e211a2975395ed84a3ab4208.azr.footprintdns.com
 "2026-04-10 17:02:30",10.42.0.48,bx-ring.msedge.net
@@ -90,12 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:45:17",10.42.0.48,accounts.youtube.com
 "2026-04-10 16:45:17",10.42.0.48,v10.events.data.microsoft.com
 "2026-04-10 16:45:17",10.42.0.48,v10.events.data.microsoft.com
-"2026-04-10 16:45:14",10.42.0.48,signaler-pa.clients6.google.com
-"2026-04-10 16:45:13",10.42.0.48,signaler-pa.clients6.google.com
-"2026-04-10 16:44:57",10.42.0.48,www.bing.com
-"2026-04-10 16:44:56",10.42.0.48,www.bing.com
-"2026-04-10 16:44:55",10.42.0.48,b-ring.msedge.net
-"2026-04-10 16:44:55",10.42.0.48,fp.msedge.net
-"2026-04-10 16:44:52",10.42.0.48,graph.microsoft.com
-"2026-04-10 16:44:41",10.42.0.48,honeypot-idps-mproject.streamlit.app
-"2026-04-10 16:44:41",10.42.0.48,webhooks.fivetran.com
