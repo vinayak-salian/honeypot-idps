@@ -1,4 +1,6 @@
 timestamp,source_ip,domain
+"2026-04-10 18:42:28",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 18:42:28",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-10 18:42:19",10.42.0.48,easylist-downloads.adblockplus.org
 "2026-04-10 18:42:19",10.42.0.48,easylist-downloads.adblockplus.org
 "2026-04-10 18:42:18",10.42.0.48,ogs.google.com
@@ -97,5 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 18:19:48",10.42.0.48,fp-afd-nocache.azureedge.net
 "2026-04-10 18:19:48",10.42.0.48,l-ring.msedge.net
 "2026-04-10 18:19:48",10.42.0.48,arm-ring.msedge.net
-"2026-04-10 18:19:43",10.42.0.48,www.bing.com
-"2026-04-10 18:19:42",10.42.0.48,signaler-pa.clients6.google.com
