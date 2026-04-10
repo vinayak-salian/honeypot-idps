@@ -1,4 +1,10 @@
 timestamp,source_ip,domain
+"2026-04-10 18:46:16",10.42.0.48,eu-north-1.console.aws.amazon.com
+"2026-04-10 18:46:16",10.42.0.48,eu-north-1.console.aws.amazon.com
+"2026-04-10 18:46:11",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
+"2026-04-10 18:46:11",10.42.0.48,us-east-1.ctrl.prod.os.notifications.aws.dev
+"2026-04-10 18:46:01",10.42.0.48,accounts.google.com
+"2026-04-10 18:46:01",10.42.0.48,accounts.google.com
 "2026-04-10 18:45:47",10.42.0.48,beacons5.gvt3.com
 "2026-04-10 18:45:38",10.42.0.48,accounts.youtube.com
 "2026-04-10 18:45:38",10.42.0.48,accounts.youtube.com
@@ -93,9 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 18:40:36",10.42.0.48,stream.pushbullet.com
 "2026-04-10 18:40:35",10.42.0.48,aks-prod-southeastasia.access-point.cloudmessaging.edge.microsoft.com
 "2026-04-10 18:40:33",10.42.0.48,aks-prod-southeastasia.access-point.cloudmessaging.edge.microsoft.com
-"2026-04-10 18:40:33",10.42.0.48,3.28.0.417-LAPPY-VINVIC06.dc45e0c3-909e-43e6-af66-8ddf819c4e3a._nvstream_dbd._tcp.local
-"2026-04-10 18:40:33",10.42.0.48,settings-win.data.microsoft.com
-"2026-04-10 18:40:33",10.42.0.48,3.28.0.417-LAPPY-VINVIC06.dc45e0c3-909e-43e6-af66-8ddf819c4e3a._nvstream_dbd._tcp.local
-"2026-04-10 18:40:33",10.42.0.48,3.28.0.417-LAPPY-VINVIC06.dc45e0c3-909e-43e6-af66-8ddf819c4e3a._nvstream_dbd._tcp.local
-"2026-04-10 18:40:32",10.42.0.48,siescms-my.sharepoint.com
-"2026-04-10 18:40:32",10.42.0.48,193455-ipv4fdsmte.gr.global.aa-rt.sharepoint.com
