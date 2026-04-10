@@ -1,4 +1,12 @@
 id,timestamp,source_ip,attack_type,target_port,protocol,confidence,evidence,latitude,longitude,country,city
+326,"2026-04-10 13:25:22",140.82.112.26,PortScan,,,0.99,"Probed 2 ports | Rate: 0.52 p/s",37.7823,-122.391,"United States","San Francisco"
+325,"2026-04-10 13:25:21",40.79.189.58,PortScan,,,0.99,"Probed 2 ports | Rate: 588.8 p/s",35.68,139.77,Japan,Tokyo
+324,"2026-04-10 13:25:20",20.207.73.82,PortScan,,,0.99,"Probed 2 ports | Rate: 0.0 p/s",18.5144,73.864235,India,Pune
+323,"2026-04-10 13:25:17",184.86.248.169,PortScan,,,0.99,"Probed 2 ports | Rate: 0.0 p/s",19.0748,72.8856,India,Mumbai
+322,"2026-04-10 13:25:16",172.188.155.25,PortScan,,,0.99,"Probed 2 ports | Rate: 0.0 p/s",1.283,103.833,Singapore,Singapore
+320,"2026-04-10 13:25:13",4.213.25.240,PortScan,,,0.99,"Probed 2 ports | Rate: 8738.13 p/s",18.5144,73.864235,India,Pune
+321,"2026-04-10 13:25:13",192.178.211.188,PortScan,,,0.99,"Probed 2 ports | Rate: 0.0 p/s",37.4225,-122.085,"United States","Mountain View"
+319,"2026-04-10 13:25:12",3.254.239.146,PortScan,,,0.99,"Probed 2 ports | Rate: 248.99 p/s",53.3498,-6.26031,Ireland,Dublin
 318,"2026-04-10 13:11:11",49.44.130.24,PortScan,,,0.99,"Probed 2 ports | Rate: 33.73 p/s",19.1258,73.0004,India,"Navi Mumbai"
 316,"2026-04-10 13:10:21",3.124.101.217,PortScan,,,0.99,"Probed 2 ports | Rate: 0.14 p/s",50.1109,8.68213,Germany,"Frankfurt am Main"
 317,"2026-04-10 13:10:21",3.124.101.217,PortScan,,,0.99,"Probed 2 ports | Rate: 0.14 p/s",50.1109,8.68213,Germany,"Frankfurt am Main"
