@@ -1,4 +1,12 @@
 timestamp,source_ip,domain
+"2026-04-10 16:21:13",10.42.0.48,teams-ring.msedge.net
+"2026-04-10 16:21:09",10.42.0.48,t-ring-s2.msedge.net
+"2026-04-10 16:21:09",10.42.0.48,t-ring-s2.msedge.net
+"2026-04-10 16:21:07",10.42.0.48,graph.microsoft.com
+"2026-04-10 16:21:06",10.42.0.48,graph.microsoft.com
+"2026-04-10 16:21:02",10.42.0.48,settings-win.data.microsoft.com
+"2026-04-10 16:21:02",10.42.0.48,settings-win.data.microsoft.com
+"2026-04-10 16:20:50",10.42.0.48,webhooks.fivetran.com
 "2026-04-10 16:20:49",10.42.0.48,gemini.google.com
 "2026-04-10 16:20:49",10.42.0.48,honeypot-idps-mproject.streamlit.app
 "2026-04-10 16:20:49",10.42.0.48,gemini.google.com
@@ -91,11 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:15:30",10.42.0.48,aks-prod-southeastasia.access-point.cloudmessaging.edge.microsoft.com
 "2026-04-10 16:15:30",10.42.0.48,stream.pushbullet.com
 "2026-04-10 16:15:29",10.42.0.48,fp.msedge.net
-"2026-04-10 16:15:29",10.42.0.48,fp.msedge.net
-"2026-04-10 16:15:28",10.42.0.48,a-ring-fallback.msedge.net
-"2026-04-10 16:15:27",10.42.0.48,mtalk.google.com
-"2026-04-10 16:15:27",10.42.0.48,aks-prod-southeastasia.access-point.cloudmessaging.edge.microsoft.com
-"2026-04-10 16:15:27",10.42.0.48,aks-prod-southeastasia.access-point.cloudmessaging.edge.microsoft.com
-"2026-04-10 16:15:27",10.42.0.48,196615-ipv4v6fdse.gr.global.aa-rt.sharepoint.com
-"2026-04-10 16:15:27",10.42.0.48,196615-ipv4v6fdse.gr.global.aa-rt.sharepoint.com
-"2026-04-10 16:15:27",10.42.0.48,3.28.0.417-LAPPY-VINVIC06.dc45e0c3-909e-43e6-af66-8ddf819c4e3a._nvstream_dbd._tcp.local
