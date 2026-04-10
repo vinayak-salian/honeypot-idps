@@ -1,4 +1,11 @@
 timestamp,source_ip,attack_type,confidence,evidence,latitude,longitude,country,city
+"2026-04-10 18:41:57",13.63.251.216,PortScan,0.83,"Probed 4 ports | Rate: 0.09 p/s",19.076,72.877,India,Mumbai
+"2026-04-10 18:41:45",162.248.221.248,PortScan,0.81,"Probed 3 ports | Rate: 0.96 p/s",19.076,72.877,India,Mumbai
+"2026-04-10 18:41:44",162.248.221.215,PortScan,0.81,"Probed 3 ports | Rate: 1.29 p/s",19.076,72.877,India,Mumbai
+"2026-04-10 18:41:43",199.38.181.104,PortScan,0.81,"Probed 3 ports | Rate: 0.04 p/s",19.076,72.877,India,Mumbai
+"2026-04-10 18:41:43",162.248.221.199,PortScan,0.81,"Probed 3 ports | Rate: 0.04 p/s",19.076,72.877,India,Mumbai
+"2026-04-10 18:41:42",49.44.50.10,PortScan,0.81,"Probed 3 ports | Rate: 0.09 p/s",19.076,72.877,India,Mumbai
+"2026-04-10 18:41:42",68.183.90.120,PortScan,0.81,"Probed 3 ports | Rate: 0.04 p/s",19.076,72.877,India,Mumbai
 "2026-04-10 18:41:26",13.49.143.42,PortScan,0.81,"Probed 3 ports | Rate: 0.19 p/s",19.076,72.877,India,Mumbai
 "2026-04-10 18:41:26",35.208.197.37,PortScan,0.81,"Probed 3 ports | Rate: 0.06 p/s",19.076,72.877,India,Mumbai
 "2026-04-10 18:41:11",13.63.251.216,PortScan,0.81,"Probed 3 ports | Rate: 28.13 p/s",19.076,72.877,India,Mumbai
