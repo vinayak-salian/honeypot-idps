@@ -1,4 +1,16 @@
 timestamp,source_ip,domain
+"2026-04-10 14:11:36",10.42.0.48,ssl.gstatic.com
+"2026-04-10 14:11:36",10.42.0.48,ssl.gstatic.com
+"2026-04-10 14:11:33",10.42.0.48,easylist-downloads.adblockplus.org
+"2026-04-10 14:11:33",10.42.0.48,easylist-downloads.adblockplus.org
+"2026-04-10 14:11:29",10.42.0.48,fp.msedge.net
+"2026-04-10 14:11:29",10.42.0.48,fp.msedge.net
+"2026-04-10 14:11:28",10.42.0.48,wac-ring.msedge.net
+"2026-04-10 14:11:28",10.42.0.48,wac-ring.msedge.net
+"2026-04-10 14:11:28",10.42.0.48,a-ring.msedge.net
+"2026-04-10 14:11:28",10.42.0.48,a-ring.msedge.net
+"2026-04-10 14:11:28",10.42.0.48,mcr-ring.msedge.net
+"2026-04-10 14:11:28",10.42.0.48,mcr-ring.msedge.net
 "2026-04-10 14:11:19",10.42.0.48,aefd.nelreports.net
 "2026-04-10 14:11:19",10.42.0.48,aefd.nelreports.net
 "2026-04-10 14:11:16",10.42.0.48,unagi.amazon.in
@@ -87,15 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 14:09:22",10.42.0.48,ipv6.msftconnecttest.com
 "2026-04-10 14:09:22",10.42.0.48,ipv6.msftconnecttest.com
 "2026-04-10 14:09:22",10.42.0.48,www.msftconnecttest.com
-"2026-04-10 14:09:20",10.42.0.48,499a6af7926a25ad7b94f3fba18e59b8.azr.footprintdns.com
-"2026-04-10 14:09:20",10.42.0.48,functional.events.data.microsoft.com
-"2026-04-10 14:09:20",10.42.0.48,499a6af7926a25ad7b94f3fba18e59b8.azr.footprintdns.com
-"2026-04-10 14:09:20",10.42.0.48,functional.events.data.microsoft.com
-"2026-04-10 14:09:19",10.42.0.48,q-ring-fallback.msedge.net
-"2026-04-10 14:09:19",10.42.0.48,q-ring-fallback.msedge.net
-"2026-04-10 14:09:19",10.42.0.48,dual-s-ring.msedge.net
-"2026-04-10 14:09:19",10.42.0.48,dual-s-ring.msedge.net
-"2026-04-10 14:09:18",10.42.0.48,www.bing.com
-"2026-04-10 14:09:17",10.42.0.48,www.bing.com
-"2026-04-10 14:09:16",10.42.0.48,edge.microsoft.com
-"2026-04-10 14:09:16",10.42.0.48,edge.microsoft.com
