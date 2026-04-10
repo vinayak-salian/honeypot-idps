@@ -1,4 +1,22 @@
 timestamp,source_ip,domain
+"2026-04-10 13:03:00",10.42.0.48,easylist-downloads.adblockplus.org
+"2026-04-10 13:03:00",10.42.0.48,easylist-downloads.adblockplus.org
+"2026-04-10 13:02:59",10.42.0.48,easylist-downloads.adblockplus.org
+"2026-04-10 13:02:59",10.42.0.48,easylist-downloads.adblockplus.org
+"2026-04-10 13:02:52",10.42.0.48,www.bing.com
+"2026-04-10 13:02:52",10.42.0.48,www.bing.com
+"2026-04-10 13:02:51",10.42.0.48,teams-ring.msedge.net
+"2026-04-10 13:02:51",10.42.0.48,teams-ring.msedge.net
+"2026-04-10 13:02:51",10.42.0.48,p-ring.msedge.net
+"2026-04-10 13:02:51",10.42.0.48,p-ring.msedge.net
+"2026-04-10 13:02:51",10.42.0.48,p-ring.msedge.net
+"2026-04-10 13:02:51",10.42.0.48,fp.msedge.net
+"2026-04-10 13:02:50",10.42.0.48,arm-ring.msedge.net
+"2026-04-10 13:02:50",10.42.0.48,arm-ring.msedge.net
+"2026-04-10 13:02:50",10.42.0.48,arm-ring.msedge.net
+"2026-04-10 13:02:50",10.42.0.48,arm-ring.msedge.net
+"2026-04-10 13:02:50",10.42.0.48,teams-ring.msedge.net
+"2026-04-10 13:02:50",10.42.0.48,teams-ring.msedge.net
 "2026-04-10 13:02:41",10.42.0.1,_ipps._tcp.local
 "2026-04-10 13:02:41",10.42.0.1,_ipps._tcp.local
 "2026-04-10 13:02:33",10.42.0.48,1.0.42.10.in-addr.arpa
