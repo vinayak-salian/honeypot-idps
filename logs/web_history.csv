@@ -1,4 +1,8 @@
 timestamp,source_ip,domain
+"2026-04-10 18:47:48",10.42.0.48,google.com
+"2026-04-10 18:47:48",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-10 18:47:30",10.42.0.48,crl.anydesk.com
+"2026-04-10 18:47:30",10.42.0.48,crl.anydesk.com
 "2026-04-10 18:47:22",10.42.0.48,www.bing.com
 "2026-04-10 18:47:20",10.42.0.48,v20.events.data.microsoft.com
 "2026-04-10 18:47:19",10.42.0.48,bx-ring.msedge.net
@@ -95,7 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 18:42:04",10.42.0.48,www.google-analytics.com
 "2026-04-10 18:42:04",10.42.0.48,www.google-analytics.com
 "2026-04-10 18:41:59",10.42.0.48,gemini.google.com
-"2026-04-10 18:41:56",10.42.0.48,mobile.events.data.microsoft.com
-"2026-04-10 18:41:50",10.42.0.48,self.events.data.microsoft.com
-"2026-04-10 18:41:42",10.42.0.48,www.msftconnecttest.com
-"2026-04-10 18:41:42",10.42.0.48,www.msftconnecttest.com
