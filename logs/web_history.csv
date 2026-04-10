@@ -1,4 +1,15 @@
 timestamp,source_ip,domain
+"2026-04-10 13:45:57",10.42.0.48,ipv6.msftncsi.com
+"2026-04-10 13:45:57",10.42.0.48,ipv6.msftncsi.com
+"2026-04-10 13:45:56",10.42.0.48,www.msftncsi.com
+"2026-04-10 13:45:56",10.42.0.48,www.msftncsi.com
+"2026-04-10 13:45:55",10.42.0.48,ipv6.msftncsi.com
+"2026-04-10 13:45:55",10.42.0.48,www.msftncsi.com
+"2026-04-10 13:45:55",10.42.0.48,ipv6.msftncsi.com
+"2026-04-10 13:45:51",10.42.0.48,beacons.gvt2.com
+"2026-04-10 13:45:50",10.42.0.48,mobile.events.data.microsoft.com
+"2026-04-10 13:45:50",10.42.0.48,mobile.events.data.microsoft.com
+"2026-04-10 13:45:49",10.42.0.48,e2c8.gcp.gvt2.com
 "2026-04-10 13:45:29",10.42.0.48,teams-ring.msedge.net
 "2026-04-10 13:45:29",10.42.0.48,siescms-my.sharepoint.com
 "2026-04-10 13:45:29",10.42.0.48,14b8a470d63b9d82e5eda97ea5ad24f9.azr.footprintdns.com
