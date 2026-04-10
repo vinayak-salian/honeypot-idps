@@ -1,4 +1,17 @@
 timestamp,source_ip,domain
+"2026-04-10 16:40:24",10.42.0.48,gemini.google.com
+"2026-04-10 16:40:24",10.42.0.48,google.com
+"2026-04-10 16:40:24",10.42.0.48,google.com
+"2026-04-10 16:40:23",10.42.0.48,gemini.google.com
+"2026-04-10 16:40:12",10.42.0.48,b1.nel.goog
+"2026-04-10 16:40:12",10.42.0.48,b1.nel.goog
+"2026-04-10 16:40:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 16:40:09",10.42.0.48,www.msftconnecttest.com
+"2026-04-10 16:40:09",10.42.0.48,ipv6.msftconnecttest.com
+"2026-04-10 16:40:08",10.42.0.48,ipv6.msftconnecttest.com
+"2026-04-10 16:40:08",10.42.0.48,www.msftconnecttest.com
+"2026-04-10 16:40:08",10.42.0.48,www.msftconnecttest.com
+"2026-04-10 16:40:08",10.42.0.48,intezer.com
 "2026-04-10 16:40:04",10.42.0.48,ecs.office.com
 "2026-04-10 16:40:04",10.42.0.48,ecs.office.com
 "2026-04-10 16:40:03",10.42.0.48,clients4.google.com
@@ -86,16 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:21:38",10.42.0.48,crl.anydesk.com
 "2026-04-10 16:21:38",10.42.0.48,crl.anydesk.com
 "2026-04-10 16:21:38",10.42.0.48,crl.anydesk.com
-"2026-04-10 16:21:30",10.42.0.48,crl3.digicert.com
-"2026-04-10 16:21:30",10.42.0.48,crl3.digicert.com
-"2026-04-10 16:21:30",10.42.0.48,crl4.digicert.com
-"2026-04-10 16:21:30",10.42.0.48,crl4.digicert.com
-"2026-04-10 16:21:22",10.42.0.48,cdn-checkout.joinhoney.com
-"2026-04-10 16:21:22",10.42.0.48,d.joinhoney.com
-"2026-04-10 16:21:22",10.42.0.48,d.joinhoney.com
-"2026-04-10 16:21:21",10.42.0.48,github.com
-"2026-04-10 16:21:13",10.42.0.48,teams-ring.msedge.net
-"2026-04-10 16:21:09",10.42.0.48,t-ring-s2.msedge.net
-"2026-04-10 16:21:09",10.42.0.48,t-ring-s2.msedge.net
-"2026-04-10 16:21:07",10.42.0.48,graph.microsoft.com
-"2026-04-10 16:21:06",10.42.0.48,graph.microsoft.com
