@@ -1,4 +1,10 @@
 timestamp,source_ip,domain
+"2026-04-10 18:21:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 18:21:11",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
+"2026-04-10 18:21:11",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
+"2026-04-10 18:21:10",10.42.0.48,fp.msedge.net
+"2026-04-10 18:21:08",10.42.0.48,push.clients6.google.com
+"2026-04-10 18:21:08",10.42.0.48,wac-ring.msedge.net
 "2026-04-10 18:20:42",10.42.0.48,clients4.google.com
 "2026-04-10 18:20:30",10.42.0.48,webhooks.fivetran.com
 "2026-04-10 18:20:28",10.42.0.48,www.google-analytics.com
@@ -93,9 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 17:02:31",10.42.0.48,t-ring-fallback.msedge.net
 "2026-04-10 17:02:31",10.42.0.48,80cc9669e211a2975395ed84a3ab4208.azr.footprintdns.com
 "2026-04-10 17:02:30",10.42.0.48,bx-ring.msedge.net
-"2026-04-10 17:02:27",10.42.0.48,v10.events.data.microsoft.com
-"2026-04-10 17:02:23",10.42.0.48,ocelot.pushbullet.com
-"2026-04-10 17:02:22",10.42.0.48,websocket.pushbullet.com
-"2026-04-10 17:02:21",10.42.0.48,ipv6.msftconnecttest.com
-"2026-04-10 17:02:21",10.42.0.48,www.msftconnecttest.com
-"2026-04-10 17:02:21",10.42.0.48,www.msftconnecttest.com
