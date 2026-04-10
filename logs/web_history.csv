@@ -1,4 +1,13 @@
 timestamp,source_ip,domain
+"2026-04-10 18:44:13",10.42.0.48,fp.msedge.net
+"2026-04-10 18:44:13",10.42.0.48,fp.msedge.net
+"2026-04-10 18:44:12",10.42.0.48,store-images.s-microsoft.com
+"2026-04-10 18:44:11",10.42.0.48,images-eds-ssl.xboxlive.com
+"2026-04-10 18:44:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 18:44:10",10.42.0.48,www.bing.com
+"2026-04-10 18:44:10",10.42.0.48,www.bing.com
+"2026-04-10 18:44:10",10.42.0.48,substrate.office.com
+"2026-04-10 18:44:10",10.42.0.48,substrate.office.com
 "2026-04-10 18:43:37",10.42.0.48,analytics.google.com
 "2026-04-10 18:43:37",10.42.0.48,analytics.google.com
 "2026-04-10 18:43:28",10.42.0.48,www.msftncsi.com
@@ -90,12 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 18:40:31",10.42.0.48,skydrive.wns.windows.com
 "2026-04-10 18:40:31",10.42.0.48,www.msftconnecttest.com
 "2026-04-10 18:21:35",10.42.0.1,_ipps._tcp.local
-"2026-04-10 18:21:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-10 18:21:11",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
-"2026-04-10 18:21:11",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
-"2026-04-10 18:21:10",10.42.0.48,fp.msedge.net
-"2026-04-10 18:21:08",10.42.0.48,push.clients6.google.com
-"2026-04-10 18:21:08",10.42.0.48,wac-ring.msedge.net
-"2026-04-10 18:20:42",10.42.0.48,clients4.google.com
-"2026-04-10 18:20:30",10.42.0.48,webhooks.fivetran.com
-"2026-04-10 18:20:28",10.42.0.48,www.google-analytics.com
