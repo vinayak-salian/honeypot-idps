@@ -1,4 +1,13 @@
 timestamp,source_ip,domain
+"2026-04-10 18:53:35",10.42.0.48,google.com
+"2026-04-10 18:53:35",10.42.0.48,www.google-analytics.com
+"2026-04-10 18:53:35",10.42.0.48,analytics.google.com
+"2026-04-10 18:53:35",10.42.0.48,analytics.google.com
+"2026-04-10 18:53:22",10.42.0.48,browser.events.data.msn.com
+"2026-04-10 18:53:22",10.42.0.48,browser.events.data.msn.com
+"2026-04-10 18:53:20",10.42.0.48,eu-north-1.console.aws.amazon.com
+"2026-04-10 18:53:19",10.42.0.48,push.clients6.google.com
+"2026-04-10 18:53:19",10.42.0.48,push.clients6.google.com
 "2026-04-10 18:53:13",10.42.0.48,th.bing.com
 "2026-04-10 18:53:12",10.42.0.48,assets.msn.com
 "2026-04-10 18:53:11",10.42.0.48,www.youtube.com
@@ -90,12 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 18:47:16",10.42.0.48,graph.microsoft.com
 "2026-04-10 18:47:15",10.42.0.48,graph.microsoft.com
 "2026-04-10 18:47:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-10 18:47:11",10.42.0.48,www.linkedin.com
-"2026-04-10 18:47:11",10.42.0.48,eu-north-1.prod.pl.panorama.console.api.aws
-"2026-04-10 18:47:11",10.42.0.48,www.linkedin.com
-"2026-04-10 18:47:11",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
-"2026-04-10 18:47:07",10.42.0.48,webhooks.fivetran.com
-"2026-04-10 18:47:04",10.42.0.48,honeypot-idps-mproject.streamlit.app
-"2026-04-10 18:47:04",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-10 18:47:04",10.42.0.48,www.google.com
-"2026-04-10 18:47:04",10.42.0.48,honeypot-idps-mproject.streamlit.app
