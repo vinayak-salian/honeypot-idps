@@ -1,4 +1,8 @@
 timestamp,source_ip,domain
+"2026-04-10 18:49:11",10.42.0.48,www.linkedin.com
+"2026-04-10 18:49:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 18:49:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 18:49:02",10.42.0.48,beacons.gcp.gvt2.com
 "2026-04-10 18:48:13",10.42.0.48,play.google.com
 "2026-04-10 18:48:12",10.42.0.48,ogs.google.com
 "2026-04-10 18:48:12",10.42.0.48,ogs.google.com
@@ -95,7 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 18:42:16",10.42.0.48,signaler-pa.clients6.google.com
 "2026-04-10 18:42:15",10.42.0.48,play.google.com
 "2026-04-10 18:42:15",10.42.0.48,safebrowsing.google.com
-"2026-04-10 18:42:15",10.42.0.48,safebrowsing.google.com
-"2026-04-10 18:42:15",10.42.0.48,www.gstatic.com
-"2026-04-10 18:42:13",10.42.0.48,www.google.com
-"2026-04-10 18:42:12",10.42.0.48,self.events.data.microsoft.com
