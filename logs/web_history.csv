@@ -1,4 +1,9 @@
 timestamp,source_ip,domain
+"2026-04-10 16:22:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 16:22:11",10.42.0.48,www.youtube.com
+"2026-04-10 16:22:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 16:22:11",10.42.0.48,www.youtube.com
+"2026-04-10 16:22:01",10.42.0.48,www.google.com
 "2026-04-10 16:21:51",10.42.0.1,_ipps._tcp.local
 "2026-04-10 16:21:49",10.42.0.48,1.0.42.10.in-addr.arpa
 "2026-04-10 16:21:38",10.42.0.48,crl.anydesk.com
@@ -94,8 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:15:34",10.42.0.48,_googlecast._tcp.local
 "2026-04-10 16:15:34",10.42.0.48,_googlecast._tcp.local
 "2026-04-10 16:15:34",10.42.0.48,_googlecast._tcp.local
-"2026-04-10 16:15:33",10.42.0.48,_googlecast._tcp.local
-"2026-04-10 16:15:33",10.42.0.48,_googlecast._tcp.local
-"2026-04-10 16:15:33",10.42.0.48,_googlecast._tcp.local
-"2026-04-10 16:15:33",10.42.0.48,_googlecast._tcp.local
-"2026-04-10 16:15:33",10.42.0.48,mobile.events.data.microsoft.com
