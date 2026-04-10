@@ -137,3 +137,6 @@ timestamp,source_ip,attack_type,target_port,protocol,confidence,evidence,latitud
 "2026-04-10 12:31:25",172.188.155.25,PortScan,,,0.99,"Probed 2 ports | Rate: 0.61 p/s",1.283,103.833,Singapore,Singapore
 "2026-04-10 12:31:29",20.247.184.142,PortScan,,,0.99,"Probed 2 ports | Rate: 0.24 p/s",1.283,103.833,Singapore,Singapore
 "2026-04-10 12:31:31",35.203.65.95,PortScan,,,0.99,"Probed 2 ports | Rate: 4.01 p/s",45.5016,-73.5672,Canada,Montreal
+"2026-04-10 12:31:55",49.44.50.19,PortScan,,,0.99,"Probed 2 ports | Rate: 0.47 p/s",19.1258,73.0004,India,"Navi Mumbai"
+"2026-04-10 12:32:00",18.67.195.53,PortScan,,,0.99,"Probed 2 ports | Rate: 0.11 p/s",19.076,72.8777,India,Mumbai
+"2026-04-10 12:32:01",192.178.168.94,PortScan,,,0.99,"Probed 2 ports | Rate: 0.07 p/s",37.4225,-122.085,"United States","Mountain View"

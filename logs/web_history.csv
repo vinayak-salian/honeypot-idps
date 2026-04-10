@@ -1,4 +1,9 @@
 timestamp,source_ip,domain
+"2026-04-10 12:32:00",10.42.0.48,www.linkedin.com
+"2026-04-10 12:31:55",10.42.0.48,www.msftconnecttest.com
+"2026-04-10 12:31:51",10.42.0.48,ipv6.msftconnecttest.com
+"2026-04-10 12:31:51",10.42.0.48,www.msftconnecttest.com
+"2026-04-10 12:31:51",10.42.0.48,ipv6.msftconnecttest.com
 "2026-04-10 12:31:42",10.42.0.48,www.google.com
 "2026-04-10 12:31:42",10.42.0.48,ogs.google.com
 "2026-04-10 12:31:42",10.42.0.48,qjmnz4vd2y07.statuspage.io
