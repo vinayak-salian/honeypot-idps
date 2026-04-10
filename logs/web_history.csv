@@ -1,4 +1,12 @@
 timestamp,source_ip,domain
+"2026-04-10 16:21:30",10.42.0.48,crl3.digicert.com
+"2026-04-10 16:21:30",10.42.0.48,crl3.digicert.com
+"2026-04-10 16:21:30",10.42.0.48,crl4.digicert.com
+"2026-04-10 16:21:30",10.42.0.48,crl4.digicert.com
+"2026-04-10 16:21:22",10.42.0.48,cdn-checkout.joinhoney.com
+"2026-04-10 16:21:22",10.42.0.48,d.joinhoney.com
+"2026-04-10 16:21:22",10.42.0.48,d.joinhoney.com
+"2026-04-10 16:21:21",10.42.0.48,github.com
 "2026-04-10 16:21:13",10.42.0.48,teams-ring.msedge.net
 "2026-04-10 16:21:09",10.42.0.48,t-ring-s2.msedge.net
 "2026-04-10 16:21:09",10.42.0.48,t-ring-s2.msedge.net
@@ -91,11 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:15:31",10.42.0.48,aefd.nelreports.net
 "2026-04-10 16:15:31",10.42.0.48,api.pushbullet.com
 "2026-04-10 16:15:30",10.42.0.48,alive.github.com
-"2026-04-10 16:15:30",10.42.0.48,_googlecast._tcp.local
-"2026-04-10 16:15:30",10.42.0.48,_googlecast._tcp.local
-"2026-04-10 16:15:30",10.42.0.48,_googlecast._tcp.local
-"2026-04-10 16:15:30",10.42.0.48,_googlecast._tcp.local
-"2026-04-10 16:15:30",10.42.0.48,mtalk.google.com
-"2026-04-10 16:15:30",10.42.0.48,aks-prod-southeastasia.access-point.cloudmessaging.edge.microsoft.com
-"2026-04-10 16:15:30",10.42.0.48,stream.pushbullet.com
-"2026-04-10 16:15:29",10.42.0.48,fp.msedge.net
