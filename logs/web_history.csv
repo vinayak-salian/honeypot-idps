@@ -1,4 +1,12 @@
 timestamp,source_ip,domain
+"2026-04-10 18:20:06",10.42.0.48,www.msftncsi.com
+"2026-04-10 18:20:02",10.42.0.48,ipv6.msftncsi.com
+"2026-04-10 18:20:01",10.42.0.48,www.msftncsi.com
+"2026-04-10 18:20:01",10.42.0.48,ipv6.msftncsi.com
+"2026-04-10 18:19:48",10.42.0.48,fp-afd-nocache.azureedge.net
+"2026-04-10 18:19:48",10.42.0.48,l-ring.msedge.net
+"2026-04-10 18:19:48",10.42.0.48,arm-ring.msedge.net
+"2026-04-10 18:19:43",10.42.0.48,www.bing.com
 "2026-04-10 18:19:42",10.42.0.48,signaler-pa.clients6.google.com
 "2026-04-10 18:19:42",10.42.0.48,fp.msedge.net
 "2026-04-10 18:19:41",10.42.0.48,arc-ring.msedge.net
@@ -91,11 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:52:54",10.42.0.48,crl.anydesk.com
 "2026-04-10 16:52:54",10.42.0.48,crl.anydesk.com
 "2026-04-10 16:52:22",10.42.0.48,cdn-checkout.joinhoney.com
-"2026-04-10 16:52:22",10.42.0.48,d.joinhoney.com
-"2026-04-10 16:52:22",10.42.0.48,cdn-checkout.joinhoney.com
-"2026-04-10 16:52:22",10.42.0.48,d.joinhoney.com
-"2026-04-10 16:52:11",10.42.0.48,www.youtube.com
-"2026-04-10 16:52:11",10.42.0.48,www.youtube.com
-"2026-04-10 16:51:52",10.42.0.48,gemini.google.com
-"2026-04-10 16:51:52",10.42.0.48,gemini.google.com
-"2026-04-10 16:51:21",10.42.0.48,my.microsoftpersonalcontent.com
