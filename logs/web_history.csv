@@ -1,4 +1,5 @@
 timestamp,source_ip,domain
+"2026-04-10 18:21:35",10.42.0.1,_ipps._tcp.local
 "2026-04-10 18:21:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-10 18:21:11",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
 "2026-04-10 18:21:11",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
@@ -98,4 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 17:02:49",10.42.0.48,196615-ipv4v6fdse.gr.global.aa-rt.sharepoint.com
 "2026-04-10 17:02:31",10.42.0.48,t-ring-fallback.msedge.net
 "2026-04-10 17:02:31",10.42.0.48,80cc9669e211a2975395ed84a3ab4208.azr.footprintdns.com
-"2026-04-10 17:02:30",10.42.0.48,bx-ring.msedge.net
