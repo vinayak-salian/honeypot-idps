@@ -1,4 +1,5 @@
 timestamp,source_ip,attack_type,confidence,evidence,latitude,longitude,country,city
+"2026-04-10 14:19:12",3.254.238.163,PortScan,0.99,"Probed 3 ports | Rate: 0.2 p/s",53.3498,-6.26031,Ireland,Dublin
 "2026-04-10 14:19:04",49.44.130.10,PortScan,0.99,"Probed 3 ports | Rate: 0.22 p/s",19.1258,73.0004,India,"Navi Mumbai"
 "2026-04-10 14:18:13",52.178.17.232,PortScan,0.99,"Probed 3 ports | Rate: 0.01 p/s",52.3667,4.9,Netherlands,Amsterdam
 "2026-04-10 14:17:58",204.79.197.222,PortScan,0.99,"Probed 3 ports | Rate: 0.01 p/s",45.5019,-73.5674,Canada,Montreal
