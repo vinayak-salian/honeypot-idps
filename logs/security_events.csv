@@ -1,4 +1,6 @@
 id,timestamp,source_ip,attack_type,target_port,protocol,confidence,evidence,latitude,longitude,country,city
+387,"2026-04-10 13:34:13",3.253.183.169,PortScan,,,0.99,"Probed 2 ports | Rate: 78.56 p/s",53.3498,-6.26031,Ireland,Dublin
+388,"2026-04-10 13:34:13",3.253.183.169,PortScan,,,0.99,"Probed 2 ports | Rate: 78.56 p/s",53.3498,-6.26031,Ireland,Dublin
 385,"2026-04-10 13:31:29",49.44.130.24,PortScan,,,0.99,"Probed 2 ports | Rate: 1351.91 p/s",19.1258,73.0004,India,"Navi Mumbai"
 386,"2026-04-10 13:31:29",49.44.130.24,PortScan,,,0.99,"Probed 2 ports | Rate: 1351.91 p/s",19.1258,73.0004,India,"Navi Mumbai"
 383,"2026-04-10 13:31:23",185.34.3.232,PortScan,,,0.99,"Probed 2 ports | Rate: 1.32 p/s",25.0734,55.2979,"United Arab Emirates",Dubai
