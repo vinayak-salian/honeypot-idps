@@ -1,2 +1,0 @@
-timestamp,source_ip,attack_type,confidence,evidence,latitude,longitude,country,city
-"2026-04-10 14:46:07",10.42.0.48,PortScan,0.99,"Probed 2 ports | Rate: 3.91 p/s",19.076,72.877,India,Mumbai
