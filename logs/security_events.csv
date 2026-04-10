@@ -129,3 +129,7 @@ timestamp,source_ip,attack_type,target_port,protocol,confidence,evidence,latitud
 "2026-04-09 23:35:19",8.8.4.4,PortScan,,,0.99,"Probed 2 ports | Rate: 6.38 p/s",19.076,72.877,India,Mumbai
 "2026-04-09 23:35:19",8.8.8.8,PortScan,,,0.99,"Probed 2 ports | Rate: 4.4 p/s",19.076,72.877,India,Mumbai
 "2026-04-09 23:46:01",172.237.72.8,PortScan,,,0.99,"Probed 2 ports | Rate: 0.0 p/s",19.076,72.877,India,Mumbai
+"2026-04-10 12:31:20",35.201.127.49,PortScan,,,0.99,"Probed 2 ports | Rate: 5.13 p/s",39.0997,-94.5785,"United States","Kansas City"
+"2026-04-10 12:31:21",10.42.0.48,PortScan,,,0.99,"Probed 2 ports | Rate: 2.75 p/s",19.076,72.877,India,Mumbai
+"2026-04-10 12:31:21",4.213.25.242,PortScan,,,0.99,"Probed 2 ports | Rate: 15.71 p/s",18.5144,73.864235,India,Pune
+"2026-04-10 12:31:23",35.208.197.37,PortScan,,,0.99,"Probed 2 ports | Rate: 8.02 p/s",41.2619,-95.8608,"United States","Council Bluffs"

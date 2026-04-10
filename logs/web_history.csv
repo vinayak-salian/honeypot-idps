@@ -1,2 +1,11 @@
 timestamp,source_ip,domain
+"2026-04-10 12:31:22",10.42.0.48,aks-prod-southeastasia.access-point.cloudmessaging.edge.microsoft.com
+"2026-04-10 12:31:22",10.42.0.48,mtalk.google.com
+"2026-04-10 12:31:21",10.42.0.48,management.azure.com
+"2026-04-10 12:31:21",10.42.0.48,licensing.mp.microsoft.com
+"2026-04-10 12:31:20",10.42.0.48,clientstream.launchdarkly.com
+"2026-04-10 12:31:19",10.42.0.48,www.google.com
+"2026-04-10 12:31:19",10.42.0.48,honeypot-idps-mproject.streamlit.app
+"2026-04-10 12:31:19",10.42.0.48,www.google.com
+"2026-04-10 12:31:19",10.42.0.48,honeypot-idps-mproject.streamlit.app
 "2026-04-10 12:30:41",10.42.0.1,_ipps._tcp.local
