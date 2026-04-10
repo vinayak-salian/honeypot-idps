@@ -1,4 +1,14 @@
 timestamp,source_ip,domain
+"2026-04-10 18:41:11",10.42.0.48,www.linkedin.com
+"2026-04-10 18:41:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 18:41:11",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
+"2026-04-10 18:41:11",10.42.0.48,www.youtube.com
+"2026-04-10 18:41:09",10.42.0.48,eu-north-1.console.aws.amazon.com
+"2026-04-10 18:41:09",10.42.0.48,logs.eu-north-1.amazonaws.com
+"2026-04-10 18:41:06",10.42.0.48,www.msftconnecttest.com
+"2026-04-10 18:41:06",10.42.0.48,ipv6.msftconnecttest.com
+"2026-04-10 18:41:06",10.42.0.48,ipv6.msftconnecttest.com
+"2026-04-10 18:41:06",10.42.0.48,www.msftconnecttest.com
 "2026-04-10 18:40:47",10.42.0.48,beacons.gcp.gvt2.com
 "2026-04-10 18:40:41",10.42.0.48,_googlecast._tcp.local
 "2026-04-10 18:40:41",10.42.0.48,_googlecast._tcp.local
@@ -89,13 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 18:18:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-10 18:18:11",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
 "2026-04-10 18:18:10",10.42.0.48,ctldl.windowsupdate.com
-"2026-04-10 18:18:08",10.42.0.48,google.com
-"2026-04-10 18:17:59",10.42.0.48,log.tailscale.com
-"2026-04-10 18:17:52",10.42.0.48,ocelot.pushbullet.com
-"2026-04-10 18:17:51",10.42.0.48,websocket.pushbullet.com
-"2026-04-10 18:17:49",10.42.0.48,eu-north-1.console.aws.amazon.com
-"2026-04-10 18:17:49",10.42.0.48,cloudshell.eu-north-1.amazonaws.com
-"2026-04-10 18:17:39",10.42.0.48,ipv6.msftconnecttest.com
-"2026-04-10 18:17:39",10.42.0.48,www.msftconnecttest.com
-"2026-04-10 18:17:39",10.42.0.48,ipv6.msftconnecttest.com
-"2026-04-10 18:17:20",10.42.0.48,_googlecast._tcp.local
