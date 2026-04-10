@@ -1,4 +1,8 @@
 timestamp,source_ip,domain
+"2026-04-10 18:46:39",10.42.0.48,www.google-analytics.com
+"2026-04-10 18:46:39",10.42.0.48,www.google-analytics.com
+"2026-04-10 18:46:38",10.42.0.48,gemini.google.com
+"2026-04-10 18:46:38",10.42.0.48,gemini.google.com
 "2026-04-10 18:46:16",10.42.0.48,eu-north-1.console.aws.amazon.com
 "2026-04-10 18:46:16",10.42.0.48,eu-north-1.console.aws.amazon.com
 "2026-04-10 18:46:11",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
@@ -95,7 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 18:40:39",10.42.0.48,_googlecast._tcp.local
 "2026-04-10 18:40:39",10.42.0.48,_googlecast._tcp.local
 "2026-04-10 18:40:37",10.42.0.48,api.pushbullet.com
-"2026-04-10 18:40:36",10.42.0.48,_googlecast._tcp.local
-"2026-04-10 18:40:36",10.42.0.48,stream.pushbullet.com
-"2026-04-10 18:40:35",10.42.0.48,aks-prod-southeastasia.access-point.cloudmessaging.edge.microsoft.com
-"2026-04-10 18:40:33",10.42.0.48,aks-prod-southeastasia.access-point.cloudmessaging.edge.microsoft.com
