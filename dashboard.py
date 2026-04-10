@@ -16,8 +16,11 @@ st.set_page_config(page_title="Nexus Security Core", page_icon="🛡️", layout
 @st.cache_data(ttl=10)
 def fetch_logs(filename):
     try:
+        # We append a unique timestamp to the URL to bypass GitHub/Streamlit caching
         url = f"{RAW_URL}{filename}?t={datetime.now().timestamp()}"
         df = pd.read_csv(url)
+        # Clean up column names (removes potential leading/trailing spaces from SQLite export)
+        df.columns = df.columns.str.strip()
         if 'timestamp' in df.columns:
             df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
         return df
@@ -46,20 +49,22 @@ def send_command(ip, action):
     except Exception as e:
         st.error(f"Failed to send command: {e}")
 
-# --- 3. DATA ACQUISITION (Dual-Stream Ingestion) ---
+# --- 3. DATA ACQUISITION ---
+# SIDEBAR REFRESH BUTTON
+if st.sidebar.button("🔄 Force Data Sync"):
+    st.cache_data.clear()
+    st.rerun()
+
 health_df = fetch_logs("system_status.csv")
-global_events_df = fetch_logs("security_events.csv") # Mode A: All-time Global Botnets
-local_events_df = fetch_logs("local_events.csv")    # Mode B: Current Session Local Demo
+global_events_df = fetch_logs("security_events.csv") 
+local_events_df = fetch_logs("local_events.csv")    
 devices_df = fetch_logs("known_devices.csv")
 traffic_df = fetch_logs("traffic_metrics.csv")
 banned_df = fetch_logs("banned_ips.csv")
 web_df = fetch_logs("web_history.csv") 
 
-# Process timestamps for devices
-# FIX: Remove the tz_convert logic that adds 5.5 hours
 if not devices_df.empty and 'last_seen' in devices_df.columns:
     devices_df['last_seen'] = pd.to_datetime(devices_df['last_seen'], errors='coerce')
-    # Just format it directly since the Pi is already sending IST strings
     devices_df['last_seen'] = devices_df['last_seen'].dt.strftime('%Y-%m-%d %H:%M:%S IST')
 
 # --- 4. MITIGATION PLAYBOOK ---
@@ -194,19 +199,18 @@ else:
                 st.divider()
                 st.markdown("##### 🔴 Hostile History")
                 if not active_events_df.empty and 'source_ip' in active_events_df.columns:
+                    # Filter for the selected IP to ensure historical data is focused
                     ip_events = active_events_df[active_events_df['source_ip'].astype(str) == str(selected_ip)]
                     if not ip_events.empty:
                         st.warning(f"Detected {len(ip_events)} malicious signatures in this session.")
                         st.dataframe(ip_events[['timestamp', 'attack_type', 'evidence', 'confidence']], use_container_width=True, hide_index=True)
                     else: st.success("Clean: No hostile behavior found in this session.")
-        else: st.info(f"📡 Waiting for devices to join the {gateway_prefix}.x network...")
+        else: st.info(f"📡 Waiting for devices to join the network...")
     else: st.info("📡 Scanning Local Network... Connect a device to begin.")
     st.divider()
 
 # --- LIVE THREAT INTELLIGENCE (Dynamic Tabs) ---
 st.markdown("### 📡 Live Threat Intelligence")
-
-# REMOVED: Banned List from Global Mode A tabs
 if op_mode == "Mode A: Global Watchtower":
     tab_titles = ["🎯 Port Scans", "🦠 Malware", "🔑 Brute Force", "🌐 DNS Security"]
 else:
@@ -223,7 +227,6 @@ with tabs[2]:
 with tabs[3]: 
     display_attack_section(active_events_df[active_events_df['attack_type'].str.contains('DNS|Spoof', na=False)] if not active_events_df.empty else pd.DataFrame(), "DNS_Spoof")
 
-# Show Banned List only in Mode B
 if op_mode == "Mode B: Local Sentinel":
     with tabs[4]:
         if not banned_df.empty: st.dataframe(banned_df, use_container_width=True, hide_index=True)
