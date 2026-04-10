@@ -1,4 +1,8 @@
 id,timestamp,source_ip,attack_type,target_port,protocol,confidence,evidence,latitude,longitude,country,city
+331,"2026-04-10 13:25:47",49.44.50.10,PortScan,,,0.99,"Probed 2 ports | Rate: 2.56 p/s",19.1258,73.0004,India,"Navi Mumbai"
+332,"2026-04-10 13:25:47",49.44.50.10,PortScan,,,0.99,"Probed 2 ports | Rate: 2.56 p/s",19.1258,73.0004,India,"Navi Mumbai"
+328,"2026-04-10 13:25:43",35.201.127.49,PortScan,,,0.99,"Probed 2 ports | Rate: 0.37 p/s",39.0997,-94.5785,"United States","Kansas City"
+327,"2026-04-10 13:25:33",35.201.127.49,PortScan,,,0.99,"Probed 2 ports | Rate: 6.57 p/s",39.0997,-94.5785,"United States","Kansas City"
 326,"2026-04-10 13:25:22",140.82.112.26,PortScan,,,0.99,"Probed 2 ports | Rate: 0.52 p/s",37.7823,-122.391,"United States","San Francisco"
 325,"2026-04-10 13:25:21",40.79.189.58,PortScan,,,0.99,"Probed 2 ports | Rate: 588.8 p/s",35.68,139.77,Japan,Tokyo
 324,"2026-04-10 13:25:20",20.207.73.82,PortScan,,,0.99,"Probed 2 ports | Rate: 0.0 p/s",18.5144,73.864235,India,Pune
