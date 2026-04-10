@@ -56,9 +56,10 @@ banned_df = fetch_logs("banned_ips.csv")
 web_df = fetch_logs("web_history.csv") 
 
 # Process timestamps for devices
+# FIX: Remove the tz_convert logic that adds 5.5 hours
 if not devices_df.empty and 'last_seen' in devices_df.columns:
     devices_df['last_seen'] = pd.to_datetime(devices_df['last_seen'], errors='coerce')
-    devices_df['last_seen'] = devices_df['last_seen'].dt.tz_localize('UTC', ambiguous='infer').dt.tz_convert(ist)
+    # Just format it directly since the Pi is already sending IST strings
     devices_df['last_seen'] = devices_df['last_seen'].dt.strftime('%Y-%m-%d %H:%M:%S IST')
 
 # --- 4. MITIGATION PLAYBOOK ---
