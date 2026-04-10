@@ -1,4 +1,8 @@
 timestamp,source_ip,domain
+"2026-04-10 16:24:08",10.42.0.48,push.clients6.google.com
+"2026-04-10 16:24:08",10.42.0.48,push.clients6.google.com
+"2026-04-10 16:24:05",10.42.0.48,share.streamlit.io
+"2026-04-10 16:24:05",10.42.0.48,share.streamlit.io
 "2026-04-10 16:23:50",10.42.0.48,easylist-downloads.adblockplus.org
 "2026-04-10 16:23:50",10.42.0.48,easylist-downloads.adblockplus.org
 "2026-04-10 16:23:47",10.42.0.48,webhooks.fivetran.com
@@ -95,7 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:16:08",10.42.0.48,log.tailscale.com
 "2026-04-10 16:16:05",10.42.0.48,ocelot.pushbullet.com
 "2026-04-10 16:16:04",10.42.0.48,websocket.pushbullet.com
-"2026-04-10 16:16:04",10.42.0.48,self.events.data.microsoft.com
-"2026-04-10 16:16:01",10.42.0.48,www.msftconnecttest.com
-"2026-04-10 16:16:01",10.42.0.48,ipv6.msftconnecttest.com
-"2026-04-10 16:16:00",10.42.0.48,www.linkedin.com
