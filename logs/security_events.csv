@@ -1,4 +1,9 @@
 id,timestamp,source_ip,attack_type,target_port,protocol,confidence,evidence,latitude,longitude,country,city
+234,"2026-04-10 13:00:56",18.67.195.68,PortScan,,,0.99,"Probed 2 ports | Rate: 0.18 p/s",19.076,72.8777,India,Mumbai
+231,"2026-04-10 13:00:55",35.208.197.37,PortScan,,,0.99,"Probed 2 ports | Rate: 2.63 p/s",41.2619,-95.8608,"United States","Council Bluffs"
+232,"2026-04-10 13:00:55",35.208.124.80,PortScan,,,0.99,"Probed 2 ports | Rate: 0.15 p/s",41.2619,-95.8608,"United States","Council Bluffs"
+230,"2026-04-10 13:00:50",130.211.30.54,PortScan,,,0.99,"Probed 2 ports | Rate: 0.28 p/s",39.0997,-94.5785,"United States","Kansas City"
+229,"2026-04-10 13:00:43",49.44.130.10,PortScan,,,0.99,"Probed 2 ports | Rate: 1053.18 p/s",19.1258,73.0004,India,"Navi Mumbai"
 227,"2026-04-10 12:59:56",176.58.90.147,PortScan,,,0.99,"Probed 2 ports | Rate: 3.12 p/s",48.8558,2.3494,France,Paris
 228,"2026-04-10 12:59:56",176.58.90.104,PortScan,,,0.99,"Probed 2 ports | Rate: 0.0 p/s",48.8558,2.3494,France,Paris
 226,"2026-04-10 12:59:55",176.58.90.207,PortScan,,,0.99,"Probed 2 ports | Rate: 2.66 p/s",48.8558,2.3494,France,Paris
