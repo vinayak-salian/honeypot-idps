@@ -1,4 +1,5 @@
 timestamp,source_ip,domain
+"2026-04-10 14:47:00",10.42.0.48,log.tailscale.com
 "2026-04-10 14:46:42",10.42.0.48,ipv6.msftconnecttest.com
 "2026-04-10 14:46:42",10.42.0.48,www.msftconnecttest.com
 "2026-04-10 14:46:42",10.42.0.48,www.msftconnecttest.com
