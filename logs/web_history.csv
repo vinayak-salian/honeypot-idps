@@ -1,4 +1,8 @@
 timestamp,source_ip,domain
+"2026-04-10 13:30:21",10.42.0.48,v20.events.data.microsoft.com
+"2026-04-10 13:30:21",10.42.0.48,v20.events.data.microsoft.com
+"2026-04-10 13:30:21",10.42.0.48,v20.events.data.microsoft.com
+"2026-04-10 13:30:21",10.42.0.48,v20.events.data.microsoft.com
 "2026-04-10 13:29:51",10.42.0.48,log.tailscale.com
 "2026-04-10 13:29:51",10.42.0.48,log.tailscale.com
 "2026-04-10 13:29:51",10.42.0.48,log.tailscale.com
@@ -95,7 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 13:28:02",10.42.0.48,collector.github.com
 "2026-04-10 13:27:56",10.42.0.48,api.github.com
 "2026-04-10 13:27:56",10.42.0.48,api.github.com
-"2026-04-10 13:27:51",10.42.0.48,beacons.gcp.gvt2.com
-"2026-04-10 13:27:51",10.42.0.48,beacons.gcp.gvt2.com
-"2026-04-10 13:27:33",10.42.0.48,www.msftncsi.com
-"2026-04-10 13:27:33",10.42.0.48,www.msftncsi.com

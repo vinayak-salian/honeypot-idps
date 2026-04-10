@@ -1,4 +1,6 @@
 id,timestamp,source_ip,attack_type,target_port,protocol,confidence,evidence,latitude,longitude,country,city
+373,"2026-04-10 13:30:21",3.254.236.135,PortScan,,,0.99,"Probed 2 ports | Rate: 926.71 p/s",53.3498,-6.26031,Ireland,Dublin
+374,"2026-04-10 13:30:21",3.254.236.135,PortScan,,,0.99,"Probed 2 ports | Rate: 926.71 p/s",53.3498,-6.26031,Ireland,Dublin
 371,"2026-04-10 13:29:39",34.117.201.170,PortScan,,,0.99,"Probed 2 ports | Rate: 0.01 p/s",39.0997,-94.5785,"United States","Kansas City"
 372,"2026-04-10 13:29:39",34.117.201.170,PortScan,,,0.99,"Probed 2 ports | Rate: 0.01 p/s",39.0997,-94.5785,"United States","Kansas City"
 370,"2026-04-10 13:29:14",34.36.73.246,PortScan,,,0.99,"Probed 2 ports | Rate: 4.05 p/s",39.0997,-94.5785,"United States","Kansas City"
