@@ -1,1 +1,3 @@
 timestamp,tcp_count,udp_count,icmp_count,total_bytes
+"2026-04-10 07:30:28",24,705,0,120032
+"2026-04-10 07:30:23",55,310,5,128816
