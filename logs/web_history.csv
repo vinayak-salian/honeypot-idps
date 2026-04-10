@@ -1,4 +1,31 @@
 timestamp,source_ip,domain
+"2026-04-10 14:09:11",10.42.0.48,bam.nr-data.net
+"2026-04-10 14:09:11",10.42.0.48,bam.nr-data.net
+"2026-04-10 14:09:11",10.42.0.48,www.youtube.com
+"2026-04-10 14:09:11",10.42.0.48,www.youtube.com
+"2026-04-10 14:09:08",10.42.0.48,t-ring-s2.msedge.net
+"2026-04-10 14:09:07",10.42.0.48,crisis-geographic-atm.trafficmanager.net
+"2026-04-10 14:09:07",10.42.0.48,crisis-geographic-atm.trafficmanager.net
+"2026-04-10 14:09:07",10.42.0.48,t-ring-fallback-s2.msedge.net
+"2026-04-10 14:09:07",10.42.0.48,t-ring-fallback-s2.msedge.net
+"2026-04-10 14:09:07",10.42.0.48,t-ring-s2.msedge.net
+"2026-04-10 14:09:06",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 14:09:06",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 14:09:01",10.42.0.48,ocelot.pushbullet.com
+"2026-04-10 14:09:01",10.42.0.48,ocelot.pushbullet.com
+"2026-04-10 14:09:00",10.42.0.48,websocket.pushbullet.com
+"2026-04-10 14:09:00",10.42.0.48,websocket.pushbullet.com
+"2026-04-10 14:08:57",10.42.0.48,webhooks.fivetran.com
+"2026-04-10 14:08:57",10.42.0.48,webhooks.fivetran.com
+"2026-04-10 14:08:56",10.42.0.48,honeypot-idps-mproject.streamlit.app
+"2026-04-10 14:08:56",10.42.0.48,mobile.events.data.microsoft.com
+"2026-04-10 14:08:56",10.42.0.48,honeypot-idps-mproject.streamlit.app
+"2026-04-10 14:08:56",10.42.0.48,mobile.events.data.microsoft.com
+"2026-04-10 14:08:56",10.42.0.48,log.tailscale.com
+"2026-04-10 14:08:56",10.42.0.48,log.tailscale.com
+"2026-04-10 14:08:55",10.42.0.48,github.com
+"2026-04-10 14:08:55",10.42.0.48,github.com
+"2026-04-10 14:08:51",10.42.0.48,www.google.com
 "2026-04-10 14:08:48",10.42.0.48,ipv6.msftconnecttest.com
 "2026-04-10 14:08:48",10.42.0.48,ipv6.msftconnecttest.com
 "2026-04-10 14:08:47",10.42.0.48,www.msftconnecttest.com
@@ -11,3 +38,5 @@ timestamp,source_ip,domain
 "2026-04-10 14:08:42",10.42.0.48,config.teams.microsoft.com
 "2026-04-10 14:08:34",10.42.0.48,beacons.gcp.gvt2.com
 "2026-04-10 14:08:34",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-10 14:08:19",10.42.0.48,www.bing.com
+"2026-04-10 14:08:19",10.42.0.48,aefd.nelreports.net
