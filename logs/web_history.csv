@@ -1,4 +1,12 @@
 timestamp,source_ip,domain
+"2026-04-10 13:06:15",10.42.0.48,www.youtube.com
+"2026-04-10 13:06:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 13:06:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 13:06:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 13:06:11",10.42.0.48,www.youtube.com
+"2026-04-10 13:06:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 13:06:11",10.42.0.48,www.youtube.com
+"2026-04-10 13:06:11",10.42.0.48,www.youtube.com
 "2026-04-10 13:06:01",10.42.0.48,signaler-pa.clients6.google.com
 "2026-04-10 13:06:01",10.42.0.48,signaler-pa.clients6.google.com
 "2026-04-10 13:06:01",10.42.0.48,signaler-pa.clients6.google.com
@@ -91,11 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 13:04:38",10.42.0.48,content-autofill.googleapis.com
 "2026-04-10 13:04:38",10.42.0.48,content-autofill.googleapis.com
 "2026-04-10 13:04:38",10.42.0.48,yt3.ggpht.com
-"2026-04-10 13:04:36",10.42.0.48,www.google.co.in
-"2026-04-10 13:04:36",10.42.0.48,www.google.com
-"2026-04-10 13:04:36",10.42.0.48,accounts.youtube.com
-"2026-04-10 13:04:36",10.42.0.48,www.google.co.in
-"2026-04-10 13:04:36",10.42.0.48,www.google.co.in
-"2026-04-10 13:04:36",10.42.0.48,www.google.com
-"2026-04-10 13:04:36",10.42.0.48,accounts.youtube.com
-"2026-04-10 13:04:36",10.42.0.48,www.google.com

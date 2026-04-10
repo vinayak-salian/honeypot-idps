@@ -1,4 +1,6 @@
 id,timestamp,source_ip,attack_type,target_port,protocol,confidence,evidence,latitude,longitude,country,city
+277,"2026-04-10 13:06:15",162.247.243.29,PortScan,,,0.99,"Probed 2 ports | Rate: 0.01 p/s",37.7913,-122.393,"United States","San Francisco"
+276,"2026-04-10 13:06:13",162.247.243.29,PortScan,,,0.99,"Probed 2 ports | Rate: 0.01 p/s",37.7913,-122.393,"United States","San Francisco"
 274,"2026-04-10 13:06:05",192.178.193.94,PortScan,,,0.99,"Probed 2 ports | Rate: 0.08 p/s",37.4225,-122.085,"United States","Mountain View"
 275,"2026-04-10 13:06:05",192.178.193.94,PortScan,,,0.99,"Probed 2 ports | Rate: 0.08 p/s",37.4225,-122.085,"United States","Mountain View"
 272,"2026-04-10 13:05:17",140.82.113.22,PortScan,,,0.99,"Probed 2 ports | Rate: 7.97 p/s",37.7823,-122.391,"United States","San Francisco"
