@@ -1,4 +1,6 @@
 timestamp,source_ip,domain
+"2026-04-10 16:52:11",10.42.0.48,www.youtube.com
+"2026-04-10 16:52:11",10.42.0.48,www.youtube.com
 "2026-04-10 16:51:52",10.42.0.48,gemini.google.com
 "2026-04-10 16:51:52",10.42.0.48,gemini.google.com
 "2026-04-10 16:51:21",10.42.0.48,my.microsoftpersonalcontent.com
@@ -97,5 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:42:29",10.42.0.48,crl.anydesk.com
 "2026-04-10 16:42:29",10.42.0.48,crl.anydesk.com
 "2026-04-10 16:42:13",10.42.0.48,mobile.events.data.microsoft.com
-"2026-04-10 16:42:12",10.42.0.48,self.events.data.microsoft.com
-"2026-04-10 16:42:12",10.42.0.48,self.events.data.microsoft.com
