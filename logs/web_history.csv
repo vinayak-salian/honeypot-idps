@@ -1,4 +1,12 @@
 timestamp,source_ip,domain
+"2026-04-10 16:39:35",10.42.0.48,ocelot.pushbullet.com
+"2026-04-10 16:39:34",10.42.0.48,websocket.pushbullet.com
+"2026-04-10 16:39:33",10.42.0.48,www.msftconnecttest.com
+"2026-04-10 16:39:33",10.42.0.48,ipv6.msftconnecttest.com
+"2026-04-10 16:39:32",10.42.0.48,ipv6.msftconnecttest.com
+"2026-04-10 16:39:32",10.42.0.48,www.msftconnecttest.com
+"2026-04-10 16:39:29",10.42.0.48,webhooks.fivetran.com
+"2026-04-10 16:39:26",10.42.0.48,www.google.com
 "2026-04-10 16:27:04",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-10 16:26:18",10.42.0.48,clients4.google.com
 "2026-04-10 16:26:11",10.42.0.48,www.youtube.com
@@ -91,11 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:20:33",10.42.0.48,google.com
 "2026-04-10 16:19:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-10 16:19:08",10.42.0.48,siescms-my.sharepoint.com
-"2026-04-10 16:18:46",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-10 16:18:43",10.42.0.48,www.google.com
-"2026-04-10 16:18:36",10.42.0.48,webhooks.fivetran.com
-"2026-04-10 16:18:24",10.42.0.48,ipv6.msftncsi.com
-"2026-04-10 16:18:24",10.42.0.48,signaler-pa.clients6.google.com
-"2026-04-10 16:18:23",10.42.0.48,www.msftncsi.com
-"2026-04-10 16:18:22",10.42.0.48,www.msftncsi.com
-"2026-04-10 16:18:22",10.42.0.48,ipv6.msftncsi.com
