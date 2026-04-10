@@ -1,4 +1,5 @@
 timestamp,source_ip,domain
+"2026-04-10 17:04:39",10.42.0.48,googleads.g.doubleclick.net
 "2026-04-10 17:04:08",10.42.0.48,www.msftncsi.com
 "2026-04-10 17:04:08",10.42.0.48,www.msftncsi.com
 "2026-04-10 17:04:08",10.42.0.48,ipv6.msftncsi.com
@@ -98,4 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:45:54",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-10 16:45:54",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-10 16:45:50",10.42.0.48,accounts.google.com
-"2026-04-10 16:45:49",10.42.0.48,beacons.gcp.gvt2.com
