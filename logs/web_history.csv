@@ -1,4 +1,6 @@
 timestamp,source_ip,domain
+"2026-04-10 16:50:16",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-10 16:50:15",10.42.0.48,beacons.gcp.gvt2.com
 "2026-04-10 16:49:50",10.42.0.48,signaler-pa.clients6.google.com
 "2026-04-10 16:49:50",10.42.0.48,signaler-pa.clients6.google.com
 "2026-04-10 16:49:11",10.42.0.48,google.com
@@ -97,5 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:41:55",10.42.0.48,ipv6.msftncsi.com
 "2026-04-10 16:41:54",10.42.0.48,ipv6.msftncsi.com
 "2026-04-10 16:41:54",10.42.0.48,www.msftncsi.com
-"2026-04-10 16:41:54",10.42.0.48,www.msftncsi.com
-"2026-04-10 16:41:50",10.42.0.48,self.events.data.microsoft.com
