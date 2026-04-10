@@ -1,4 +1,12 @@
 timestamp,source_ip,domain
+"2026-04-10 18:58:11",10.42.0.48,www.linkedin.com
+"2026-04-10 18:58:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 18:58:11",10.42.0.48,www.bing.com
+"2026-04-10 18:58:11",10.42.0.48,us-east-1.ctrl.prod.os.notifications.aws.dev
+"2026-04-10 18:58:11",10.42.0.48,www.youtube.com
+"2026-04-10 18:58:11",10.42.0.48,www.bing.com
+"2026-04-10 18:58:05",10.42.0.48,gemini.google.com
+"2026-04-10 18:58:05",10.42.0.48,gemini.google.com
 "2026-04-10 18:57:54",10.42.0.48,crl.anydesk.com
 "2026-04-10 18:57:54",10.42.0.48,crl.anydesk.com
 "2026-04-10 18:57:11",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
@@ -91,11 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 18:51:11",10.42.0.48,eu-north-1.prod.pl.panorama.console.api.aws
 "2026-04-10 18:50:53",10.42.0.48,api.onedrive.com
 "2026-04-10 18:50:48",10.42.0.48,gemini.google.com
-"2026-04-10 18:50:28",10.42.0.48,logs.eu-north-1.amazonaws.com
-"2026-04-10 18:50:27",10.42.0.48,clients4.google.com
-"2026-04-10 18:50:27",10.42.0.48,clients4.google.com
-"2026-04-10 18:50:16",10.42.0.48,webhooks.fivetran.com
-"2026-04-10 18:50:13",10.42.0.48,stats.g.doubleclick.net
-"2026-04-10 18:50:13",10.42.0.48,www.google-analytics.com
-"2026-04-10 18:50:13",10.42.0.48,cdn.heapanalytics.com
-"2026-04-10 18:50:12",10.42.0.48,www.streamlitstatus.com
