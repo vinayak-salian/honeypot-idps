@@ -1,4 +1,17 @@
 timestamp,source_ip,domain
+"2026-04-10 16:16:46",10.42.0.48,heapanalytics.com
+"2026-04-10 16:16:45",10.42.0.48,cdn.segment.com
+"2026-04-10 16:16:45",10.42.0.48,www.googletagmanager.com
+"2026-04-10 16:16:45",10.42.0.48,www.google-analytics.com
+"2026-04-10 16:16:44",10.42.0.48,honeypot-idps-mproject.streamlit.app
+"2026-04-10 16:16:44",10.42.0.48,www.streamlitstatus.com
+"2026-04-10 16:16:44",10.42.0.48,safebrowsing.google.com
+"2026-04-10 16:16:37",10.42.0.48,ipv6.msftconnecttest.com
+"2026-04-10 16:16:37",10.42.0.48,signaler-pa.clients6.google.com
+"2026-04-10 16:16:36",10.42.0.48,ipv6.msftconnecttest.com
+"2026-04-10 16:16:36",10.42.0.48,www.msftconnecttest.com
+"2026-04-10 16:16:36",10.42.0.48,www.msftconnecttest.com
+"2026-04-10 16:16:33",10.42.0.48,gemini.google.com
 "2026-04-10 16:16:28",10.42.0.48,arc.msn.com
 "2026-04-10 16:16:28",10.42.0.48,fd.api.iris.microsoft.com
 "2026-04-10 16:16:25",10.42.0.48,www.google.com
