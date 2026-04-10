@@ -1,4 +1,17 @@
 timestamp,source_ip,domain
+"2026-04-10 18:19:42",10.42.0.48,signaler-pa.clients6.google.com
+"2026-04-10 18:19:42",10.42.0.48,fp.msedge.net
+"2026-04-10 18:19:41",10.42.0.48,arc-ring.msedge.net
+"2026-04-10 18:19:41",10.42.0.48,42c4e31dc61645b7ba057df1ea8fd362.azr.footprintdns.com
+"2026-04-10 18:19:40",10.42.0.48,t-ring-fallback-s2.msedge.net
+"2026-04-10 18:19:30",10.42.0.48,www.msftncsi.com
+"2026-04-10 18:19:30",10.42.0.48,www.msftncsi.com
+"2026-04-10 18:19:26",10.42.0.48,ipv6.msftncsi.com
+"2026-04-10 18:19:25",10.42.0.48,ipv6.msftncsi.com
+"2026-04-10 18:19:25",10.42.0.48,www.msftncsi.com
+"2026-04-10 18:19:19",10.42.0.48,www.google.com
+"2026-04-10 18:19:19",10.42.0.48,honeypot-idps-mproject.streamlit.app
+"2026-04-10 18:19:19",10.42.0.48,adblock.telemetry.eyeo.com
 "2026-04-10 18:18:23",10.42.0.48,relay-ff3900cd.net.anydesk.com
 "2026-04-10 18:18:19",10.42.0.48,boot.net.anydesk.com
 "2026-04-10 18:18:19",10.42.0.48,www.msftconnecttest.com
@@ -86,16 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:51:52",10.42.0.48,gemini.google.com
 "2026-04-10 16:51:52",10.42.0.48,gemini.google.com
 "2026-04-10 16:51:21",10.42.0.48,my.microsoftpersonalcontent.com
-"2026-04-10 16:51:21",10.42.0.48,my.microsoftpersonalcontent.com
-"2026-04-10 16:51:12",10.42.0.48,b1.nel.goog
-"2026-04-10 16:51:12",10.42.0.48,b1.nel.goog
-"2026-04-10 16:51:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-10 16:51:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-10 16:50:44",10.42.0.48,google.com
-"2026-04-10 16:50:44",10.42.0.48,google.com
-"2026-04-10 16:50:16",10.42.0.48,beacons.gcp.gvt2.com
-"2026-04-10 16:50:15",10.42.0.48,beacons.gcp.gvt2.com
-"2026-04-10 16:49:50",10.42.0.48,signaler-pa.clients6.google.com
-"2026-04-10 16:49:50",10.42.0.48,signaler-pa.clients6.google.com
-"2026-04-10 16:49:11",10.42.0.48,google.com
-"2026-04-10 16:49:11",10.42.0.48,google.com
