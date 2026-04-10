@@ -1,4 +1,11 @@
 timestamp,source_ip,domain
+"2026-04-10 18:55:50",10.42.0.48,www.google-analytics.com
+"2026-04-10 18:55:45",10.42.0.48,lh3.googleusercontent.com
+"2026-04-10 18:55:45",10.42.0.48,lh3.googleusercontent.com
+"2026-04-10 18:55:45",10.42.0.48,lh3.google.com
+"2026-04-10 18:55:45",10.42.0.48,lh3.google.com
+"2026-04-10 18:55:40",10.42.0.48,accounts.youtube.com
+"2026-04-10 18:55:40",10.42.0.48,accounts.youtube.com
 "2026-04-10 18:55:31",10.42.0.48,v10.events.data.microsoft.com
 "2026-04-10 18:55:30",10.42.0.48,logs.eu-north-1.amazonaws.com
 "2026-04-10 18:55:30",10.42.0.48,logs.eu-north-1.amazonaws.com
@@ -92,10 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 18:50:09",10.42.0.48,honeypot-idps-mproject.streamlit.app
 "2026-04-10 18:49:54",10.42.0.48,cdn-checkout.joinhoney.com
 "2026-04-10 18:49:54",10.42.0.48,s.joinhoney.com
-"2026-04-10 18:49:41",10.42.0.48,wdcp.microsoft.com
-"2026-04-10 18:49:41",10.42.0.48,wdcp.microsoft.com
-"2026-04-10 18:49:41",10.42.0.48,fp.msedge.net
-"2026-04-10 18:49:40",10.42.0.48,www.bing.com
-"2026-04-10 18:49:40",10.42.0.48,edb927c962d8dadabba350194156d784.azr.footprintdns.com
-"2026-04-10 18:49:40",10.42.0.48,edb927c962d8dadabba350194156d784.azr.footprintdns.com
-"2026-04-10 18:49:39",10.42.0.48,bx-ring.msedge.net
