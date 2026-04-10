@@ -1,4 +1,9 @@
 timestamp,source_ip,domain
+"2026-04-10 18:48:13",10.42.0.48,play.google.com
+"2026-04-10 18:48:12",10.42.0.48,ogs.google.com
+"2026-04-10 18:48:12",10.42.0.48,ogs.google.com
+"2026-04-10 18:48:11",10.42.0.48,www.youtube.com
+"2026-04-10 18:48:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-10 18:47:48",10.42.0.48,google.com
 "2026-04-10 18:47:48",10.42.0.48,beacons.gcp.gvt2.com
 "2026-04-10 18:47:30",10.42.0.48,crl.anydesk.com
@@ -94,8 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 18:42:15",10.42.0.48,www.gstatic.com
 "2026-04-10 18:42:13",10.42.0.48,www.google.com
 "2026-04-10 18:42:12",10.42.0.48,self.events.data.microsoft.com
-"2026-04-10 18:42:12",10.42.0.48,mobile.events.data.microsoft.com
-"2026-04-10 18:42:11",10.42.0.48,us-east-1.ctrl.prod.os.notifications.aws.dev
-"2026-04-10 18:42:04",10.42.0.48,www.google-analytics.com
-"2026-04-10 18:42:04",10.42.0.48,www.google-analytics.com
-"2026-04-10 18:41:59",10.42.0.48,gemini.google.com
