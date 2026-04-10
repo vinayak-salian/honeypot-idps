@@ -1,4 +1,15 @@
 timestamp,source_ip,domain
+"2026-04-10 16:41:57",10.42.0.48,mobile.events.data.microsoft.com
+"2026-04-10 16:41:56",10.42.0.48,1.0.42.10.in-addr.arpa
+"2026-04-10 16:41:55",10.42.0.48,www.msftncsi.com
+"2026-04-10 16:41:55",10.42.0.48,ipv6.msftncsi.com
+"2026-04-10 16:41:54",10.42.0.48,ipv6.msftncsi.com
+"2026-04-10 16:41:54",10.42.0.48,www.msftncsi.com
+"2026-04-10 16:41:54",10.42.0.48,www.msftncsi.com
+"2026-04-10 16:41:50",10.42.0.48,self.events.data.microsoft.com
+"2026-04-10 16:41:50",10.42.0.48,self.events.data.microsoft.com
+"2026-04-10 16:41:44",10.42.0.48,clients4.google.com
+"2026-04-10 16:41:44",10.42.0.48,clients4.google.com
 "2026-04-10 16:41:38",10.42.0.48,angrystaffofficer.com
 "2026-04-10 16:41:38",10.42.0.48,angrystaffofficer.com
 "2026-04-10 16:41:37",10.42.0.48,fp.msedge.net
@@ -88,14 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:25:50",10.42.0.48,accounts.google.com
 "2026-04-10 16:25:50",10.42.0.48,beacons.gcp.gvt2.com
 "2026-04-10 16:25:45",10.42.0.48,signaler-pa.clients6.google.com
-"2026-04-10 16:25:45",10.42.0.48,signaler-pa.clients6.google.com
-"2026-04-10 16:25:14",10.42.0.48,accounts.youtube.com
-"2026-04-10 16:25:14",10.42.0.48,accounts.youtube.com
-"2026-04-10 16:24:46",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-10 16:24:42",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-10 16:24:42",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-10 16:24:08",10.42.0.48,push.clients6.google.com
-"2026-04-10 16:24:08",10.42.0.48,push.clients6.google.com
-"2026-04-10 16:24:05",10.42.0.48,share.streamlit.io
-"2026-04-10 16:24:05",10.42.0.48,share.streamlit.io
-"2026-04-10 16:23:50",10.42.0.48,easylist-downloads.adblockplus.org
