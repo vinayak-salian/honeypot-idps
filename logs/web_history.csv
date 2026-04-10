@@ -1,4 +1,17 @@
 timestamp,source_ip,domain
+"2026-04-10 18:20:28",10.42.0.48,www.google-analytics.com
+"2026-04-10 18:20:28",10.42.0.48,stats.g.doubleclick.net
+"2026-04-10 18:20:27",10.42.0.48,safebrowsing.google.com
+"2026-04-10 18:20:27",10.42.0.48,www.googletagmanager.com
+"2026-04-10 18:20:27",10.42.0.48,cdn.segment.com
+"2026-04-10 18:20:27",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 18:20:27",10.42.0.48,cdn.heapanalytics.com
+"2026-04-10 18:20:26",10.42.0.48,www.streamlitstatus.com
+"2026-04-10 18:20:26",10.42.0.48,oauthaccountmanager.googleapis.com
+"2026-04-10 18:20:19",10.42.0.48,eu-north-1.console.aws.amazon.com
+"2026-04-10 18:20:19",10.42.0.48,logs.eu-north-1.amazonaws.com
+"2026-04-10 18:20:11",10.42.0.48,www.youtube.com
+"2026-04-10 18:20:07",10.42.0.48,angrystaffofficer.com
 "2026-04-10 18:20:06",10.42.0.48,www.msftncsi.com
 "2026-04-10 18:20:02",10.42.0.48,ipv6.msftncsi.com
 "2026-04-10 18:20:01",10.42.0.48,www.msftncsi.com
@@ -86,16 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 17:02:21",10.42.0.48,www.msftconnecttest.com
 "2026-04-10 17:02:20",10.42.0.48,ipv6.msftconnecttest.com
 "2026-04-10 17:02:20",10.42.0.48,www.msftconnecttest.com
-"2026-04-10 17:02:17",10.42.0.48,webhooks.fivetran.com
-"2026-04-10 16:53:59",10.42.0.48,www.bing.com
-"2026-04-10 16:53:59",10.42.0.48,www.bing.com
-"2026-04-10 16:53:42",10.42.0.48,easylist-downloads.adblockplus.org
-"2026-04-10 16:53:41",10.42.0.48,easylist-downloads.adblockplus.org
-"2026-04-10 16:53:12",10.42.0.48,b1.nel.goog
-"2026-04-10 16:53:12",10.42.0.48,b1.nel.goog
-"2026-04-10 16:53:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-10 16:53:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-10 16:52:54",10.42.0.48,crl.anydesk.com
-"2026-04-10 16:52:54",10.42.0.48,crl.anydesk.com
-"2026-04-10 16:52:54",10.42.0.48,crl.anydesk.com
-"2026-04-10 16:52:22",10.42.0.48,cdn-checkout.joinhoney.com
