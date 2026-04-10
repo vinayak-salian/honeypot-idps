@@ -1,4 +1,9 @@
 timestamp,source_ip,domain
+"2026-04-10 16:45:54",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 16:45:54",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 16:45:50",10.42.0.48,accounts.google.com
+"2026-04-10 16:45:49",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-10 16:45:49",10.42.0.48,beacons.gcp.gvt2.com
 "2026-04-10 16:45:19",10.42.0.48,gemini.google.com
 "2026-04-10 16:45:19",10.42.0.48,gemini.google.com
 "2026-04-10 16:45:17",10.42.0.48,accounts.youtube.com
@@ -94,8 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:40:12",10.42.0.48,b1.nel.goog
 "2026-04-10 16:40:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-10 16:40:09",10.42.0.48,www.msftconnecttest.com
-"2026-04-10 16:40:09",10.42.0.48,ipv6.msftconnecttest.com
-"2026-04-10 16:40:08",10.42.0.48,ipv6.msftconnecttest.com
-"2026-04-10 16:40:08",10.42.0.48,www.msftconnecttest.com
-"2026-04-10 16:40:08",10.42.0.48,www.msftconnecttest.com
-"2026-04-10 16:40:08",10.42.0.48,intezer.com
