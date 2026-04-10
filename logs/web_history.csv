@@ -1,4 +1,11 @@
 timestamp,source_ip,domain
+"2026-04-10 16:42:13",10.42.0.48,mobile.events.data.microsoft.com
+"2026-04-10 16:42:12",10.42.0.48,self.events.data.microsoft.com
+"2026-04-10 16:42:12",10.42.0.48,self.events.data.microsoft.com
+"2026-04-10 16:42:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 16:42:11",10.42.0.48,www.youtube.com
+"2026-04-10 16:42:11",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-10 16:42:11",10.42.0.48,www.youtube.com
 "2026-04-10 16:41:57",10.42.0.48,mobile.events.data.microsoft.com
 "2026-04-10 16:41:56",10.42.0.48,1.0.42.10.in-addr.arpa
 "2026-04-10 16:41:55",10.42.0.48,www.msftncsi.com
@@ -92,10 +99,3 @@ timestamp,source_ip,domain
 "2026-04-10 16:25:55",10.42.0.48,gemini.google.com
 "2026-04-10 16:25:55",10.42.0.48,gemini.google.com
 "2026-04-10 16:25:55",10.42.0.48,www.google-analytics.com
-"2026-04-10 16:25:55",10.42.0.48,analytics.google.com
-"2026-04-10 16:25:55",10.42.0.48,www.google-analytics.com
-"2026-04-10 16:25:55",10.42.0.48,analytics.google.com
-"2026-04-10 16:25:50",10.42.0.48,accounts.google.com
-"2026-04-10 16:25:50",10.42.0.48,accounts.google.com
-"2026-04-10 16:25:50",10.42.0.48,beacons.gcp.gvt2.com
-"2026-04-10 16:25:45",10.42.0.48,signaler-pa.clients6.google.com
