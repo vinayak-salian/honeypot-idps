@@ -1,4 +1,13 @@
 timestamp,source_ip,domain
+"2026-04-18 19:53:48",10.42.0.48,graph.microsoft.com
+"2026-04-18 19:53:46",10.42.0.48,www.google.com
+"2026-04-18 19:53:46",10.42.0.48,chatgpt.com
+"2026-04-18 19:53:29",10.42.0.48,settings-win.data.microsoft.com
+"2026-04-18 19:53:24",10.42.0.48,crl.anydesk.com
+"2026-04-18 19:53:24",10.42.0.48,crl.anydesk.com
+"2026-04-18 19:53:18",10.42.0.48,webhooks.fivetran.com
+"2026-04-18 19:53:12",10.42.0.48,ctldl.windowsupdate.com
+"2026-04-18 19:53:10",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-18 19:52:50",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-18 19:52:18",10.42.0.48,gemini.google.com
 "2026-04-18 19:52:04",10.42.0.48,webhooks.fivetran.com
@@ -90,12 +99,3 @@ timestamp,source_ip,domain
 "2026-04-18 19:47:36",10.42.0.48,_uscans._tcp.local
 "2026-04-18 19:47:35",10.42.0.48,cdn.heapanalytics.com
 "2026-04-18 19:47:34",10.42.0.48,chatgpt.com
-"2026-04-18 19:47:33",10.42.0.48,intezer.com
-"2026-04-18 19:47:33",10.42.0.48,cdn.segment.com
-"2026-04-18 19:47:33",10.42.0.48,www.google-analytics.com
-"2026-04-18 19:47:33",10.42.0.48,stats.g.doubleclick.net
-"2026-04-18 19:47:33",10.42.0.48,fp-afd.azurefd.us
-"2026-04-18 19:47:32",10.42.0.48,www.streamlitstatus.com
-"2026-04-18 19:47:32",10.42.0.48,share.streamlit.io
-"2026-04-18 19:47:30",10.42.0.1,_ipps._tcp.local
-"2026-04-18 19:47:28",10.42.0.48,_ipp._tcp.local
