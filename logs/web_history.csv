@@ -1,4 +1,5 @@
 timestamp,source_ip,domain
+"2026-04-18 19:52:18",10.42.0.48,gemini.google.com
 "2026-04-18 19:52:04",10.42.0.48,webhooks.fivetran.com
 "2026-04-18 19:51:51",10.42.0.48,lightstep.kaizen.nvidia.com
 "2026-04-18 19:51:49",10.42.0.48,services.gfe.nvidia.com
@@ -98,4 +99,3 @@ timestamp,source_ip,domain
 "2026-04-18 19:47:30",10.42.0.1,_ipps._tcp.local
 "2026-04-18 19:47:28",10.42.0.48,_ipp._tcp.local
 "2026-04-18 19:47:28",10.42.0.48,_ipp._tcp.local
-"2026-04-18 19:47:28",10.42.0.48,_ipps._tcp.local
