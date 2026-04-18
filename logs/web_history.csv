@@ -1,4 +1,9 @@
 timestamp,source_ip,domain
+"2026-04-18 19:50:10",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-18 19:50:05",10.42.0.48,www.msftncsi.com
+"2026-04-18 19:50:01",10.42.0.48,ipv6.msftncsi.com
+"2026-04-18 19:50:00",10.42.0.48,www.msftncsi.com
+"2026-04-18 19:50:00",10.42.0.48,ipv6.msftncsi.com
 "2026-04-18 19:49:50",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-18 19:49:34",10.42.0.48,gemini.google.com
 "2026-04-18 19:49:29",10.42.0.48,www.msftncsi.com
@@ -94,8 +99,3 @@ timestamp,source_ip,domain
 "2026-04-18 19:47:16",10.42.0.48,ogs.google.com
 "2026-04-18 19:47:16",10.42.0.48,classics.mit.edu
 "2026-04-18 19:47:16",10.42.0.48,_googlecast._tcp.local
-"2026-04-18 19:47:16",10.42.0.48,_googlecast._tcp.local
-"2026-04-18 19:47:15",10.42.0.48,_googlecast._tcp.local
-"2026-04-18 19:47:15",10.42.0.48,_googlecast._tcp.local
-"2026-04-18 19:47:14",10.42.0.48,196615-ipv4v6fdse.gr.global.aa-rt.sharepoint.com
-"2026-04-18 19:47:14",10.42.0.48,disc601.prod.do.dsp.mp.microsoft.com
