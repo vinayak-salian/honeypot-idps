@@ -1,4 +1,6 @@
 timestamp,source_ip,domain
+"2026-04-18 19:53:51",10.42.0.48,ws.chatgpt.com
+"2026-04-18 19:53:50",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-18 19:53:48",10.42.0.48,graph.microsoft.com
 "2026-04-18 19:53:46",10.42.0.48,www.google.com
 "2026-04-18 19:53:46",10.42.0.48,chatgpt.com
@@ -97,5 +99,3 @@ timestamp,source_ip,domain
 "2026-04-18 19:47:36",10.42.0.48,_ipps._tcp.local
 "2026-04-18 19:47:36",10.42.0.48,_uscan._tcp.local
 "2026-04-18 19:47:36",10.42.0.48,_uscans._tcp.local
-"2026-04-18 19:47:35",10.42.0.48,cdn.heapanalytics.com
-"2026-04-18 19:47:34",10.42.0.48,chatgpt.com
