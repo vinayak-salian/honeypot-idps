@@ -1,4 +1,12 @@
 timestamp,source_ip,domain
+"2026-04-18 19:51:51",10.42.0.48,lightstep.kaizen.nvidia.com
+"2026-04-18 19:51:49",10.42.0.48,services.gfe.nvidia.com
+"2026-04-18 19:51:46",10.42.0.1,_ipps._tcp.local
+"2026-04-18 19:51:41",10.42.0.48,lightstep.kaizen.nvidia.com
+"2026-04-18 19:51:36",10.42.0.48,adblockplus.telemetry.eyeo.com
+"2026-04-18 19:51:34",10.42.0.48,services.gfe.nvidia.com
+"2026-04-18 19:51:34",10.42.0.48,signaler-pa.clients6.google.com
+"2026-04-18 19:51:29",10.42.0.48,safebrowsing.googleapis.com
 "2026-04-18 19:51:23",10.42.0.48,edge.microsoft.com
 "2026-04-18 19:51:17",10.42.0.48,mobile.events.data.microsoft.com
 "2026-04-18 19:51:17",10.42.0.48,services.gfe.nvidia.com
@@ -91,11 +99,3 @@ timestamp,source_ip,domain
 "2026-04-18 19:47:28",10.42.0.48,_ipp._tcp.local
 "2026-04-18 19:47:28",10.42.0.48,_ipps._tcp.local
 "2026-04-18 19:47:28",10.42.0.48,_uscan._tcp.local
-"2026-04-18 19:47:28",10.42.0.48,_uscans._tcp.local
-"2026-04-18 19:47:28",10.42.0.48,mobile.events.data.microsoft.com
-"2026-04-18 19:47:24",10.42.0.48,_ipp._tcp.local
-"2026-04-18 19:47:24",10.42.0.48,_ipp._tcp.local
-"2026-04-18 19:47:24",10.42.0.48,_uscan._tcp.local
-"2026-04-18 19:47:24",10.42.0.48,_ipps._tcp.local
-"2026-04-18 19:47:24",10.42.0.48,_uscans._tcp.local
-"2026-04-18 19:47:22",10.42.0.48,_ipp._tcp.local
