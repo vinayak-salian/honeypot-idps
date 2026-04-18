@@ -1,4 +1,12 @@
 timestamp,source_ip,domain
+"2026-04-18 19:49:29",10.42.0.48,www.msftncsi.com
+"2026-04-18 19:49:26",10.42.0.48,ipv6.msftncsi.com
+"2026-04-18 19:49:25",10.42.0.48,www.msftncsi.com
+"2026-04-18 19:49:25",10.42.0.48,ipv6.msftncsi.com
+"2026-04-18 19:49:21",10.42.0.48,6b89d1404963044111598f53c50a9e35.azr.footprintdns.com
+"2026-04-18 19:49:21",10.42.0.48,6b89d1404963044111598f53c50a9e35.azr.footprintdns.com
+"2026-04-18 19:49:20",10.42.0.48,arm-ring.msedge.net
+"2026-04-18 19:49:10",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-18 19:49:05",10.42.0.48,clients4.google.com
 "2026-04-18 19:48:54",10.42.0.48,fp.msedge.net
 "2026-04-18 19:48:52",10.42.0.48,cdn-checkout.joinhoney.com
@@ -91,11 +99,3 @@ timestamp,source_ip,domain
 "2026-04-18 19:47:14",10.42.0.48,disc601.prod.do.dsp.mp.microsoft.com
 "2026-04-18 19:47:13",10.42.0.48,3.28.0.417-LAPPY-VINVIC06.dc45e0c3-909e-43e6-af66-8ddf819c4e3a._nvstream_dbd._tcp.local
 "2026-04-18 19:47:13",10.42.0.48,3.28.0.417-LAPPY-VINVIC06.dc45e0c3-909e-43e6-af66-8ddf819c4e3a._nvstream_dbd._tcp.local
-"2026-04-18 19:47:13",10.42.0.48,signaler-pa.clients6.google.com
-"2026-04-18 19:47:13",10.42.0.48,193455-ipv4fdsmte.gr.global.aa-rt.sharepoint.com
-"2026-04-18 19:47:12",10.42.0.48,licensing.mp.microsoft.com
-"2026-04-18 19:47:12",10.42.0.48,play.google.com
-"2026-04-18 19:47:12",10.42.0.48,3.28.0.417-LAPPY-VINVIC06.dc45e0c3-909e-43e6-af66-8ddf819c4e3a._nvstream_dbd._tcp.local
-"2026-04-18 19:47:11",10.42.0.48,aefd.nelreports.net
-"2026-04-18 19:47:11",10.42.0.48,www.bing.com
-"2026-04-18 19:47:11",10.42.0.48,www.google.com
