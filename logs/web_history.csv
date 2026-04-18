@@ -1,4 +1,5 @@
 timestamp,source_ip,domain
+"2026-04-18 20:17:22",10.42.0.1,_ipps._tcp.local
 "2026-04-18 20:00:18",10.42.0.1,_ipps._tcp.local
 "2026-04-18 19:53:51",10.42.0.48,ws.chatgpt.com
 "2026-04-18 19:53:50",10.42.0.48,qjmnz4vd2y07.statuspage.io
@@ -98,4 +99,3 @@ timestamp,source_ip,domain
 "2026-04-18 19:47:36",10.42.0.48,_ipp._tcp.local
 "2026-04-18 19:47:36",10.42.0.48,_ipp._tcp.local
 "2026-04-18 19:47:36",10.42.0.48,_ipps._tcp.local
-"2026-04-18 19:47:36",10.42.0.48,_uscan._tcp.local
