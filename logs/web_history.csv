@@ -1,4 +1,15 @@
 timestamp,source_ip,domain
+"2026-04-18 19:51:23",10.42.0.48,edge.microsoft.com
+"2026-04-18 19:51:17",10.42.0.48,mobile.events.data.microsoft.com
+"2026-04-18 19:51:17",10.42.0.48,services.gfe.nvidia.com
+"2026-04-18 19:51:13",10.42.0.48,www.google.com
+"2026-04-18 19:51:12",10.42.0.48,onedriveclubprodbn20003.blob.core.windows.net
+"2026-04-18 19:51:11",10.42.0.48,storage.live.com
+"2026-04-18 19:51:10",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-18 19:51:08",10.42.0.48,adblock.telemetry.eyeo.com
+"2026-04-18 19:51:06",10.42.0.48,lightstep.kaizen.nvidia.com
+"2026-04-18 19:51:05",10.42.0.48,accounts.google.com
+"2026-04-18 19:51:05",10.42.0.48,easylist-downloads.adblockplus.org
 "2026-04-18 19:51:03",10.42.0.48,browser.events.data.msn.com
 "2026-04-18 19:51:01",10.42.0.48,angrystaffofficer.com
 "2026-04-18 19:51:01",10.42.0.48,events.gfe.nvidia.com
@@ -88,14 +99,3 @@ timestamp,source_ip,domain
 "2026-04-18 19:47:24",10.42.0.48,_ipps._tcp.local
 "2026-04-18 19:47:24",10.42.0.48,_uscans._tcp.local
 "2026-04-18 19:47:22",10.42.0.48,_ipp._tcp.local
-"2026-04-18 19:47:22",10.42.0.48,_uscan._tcp.local
-"2026-04-18 19:47:22",10.42.0.48,_ipp._tcp.local
-"2026-04-18 19:47:22",10.42.0.48,_uscans._tcp.local
-"2026-04-18 19:47:22",10.42.0.48,_ipps._tcp.local
-"2026-04-18 19:47:22",10.42.0.48,fp.msedge.net
-"2026-04-18 19:47:21",10.42.0.48,35e1389f2fc28cc532aab3d67f555a2a.azr.footprintdns.com
-"2026-04-18 19:47:21",10.42.0.48,_ipp._tcp.local
-"2026-04-18 19:47:21",10.42.0.48,_uscan._tcp.local
-"2026-04-18 19:47:21",10.42.0.48,_ipp._tcp.local
-"2026-04-18 19:47:21",10.42.0.48,_uscans._tcp.local
-"2026-04-18 19:47:21",10.42.0.48,_ipps._tcp.local
