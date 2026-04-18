@@ -1,2 +1,7 @@
 timestamp,source_ip,domain
+"2026-04-18 19:47:09",10.42.0.48,aks-prod-southeastasia.access-point.cloudmessaging.edge.microsoft.com
+"2026-04-18 19:47:09",10.42.0.48,mtalk.google.com
+"2026-04-18 19:47:08",10.42.0.48,www.google.com
+"2026-04-18 19:47:07",10.42.0.48,kv601.prod.do.dsp.mp.microsoft.com
+"2026-04-18 19:47:07",10.42.0.48,kv601.prod.do.dsp.mp.microsoft.com
 "2026-04-18 19:45:22",10.42.0.1,_ipps._tcp.local
