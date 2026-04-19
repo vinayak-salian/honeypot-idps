@@ -1,4 +1,8 @@
 timestamp,source_ip,domain
+"2026-04-19 22:22:12",10.42.0.48,relay-df2973aa.net.anydesk.com
+"2026-04-19 22:22:10",10.42.0.48,boot.net.anydesk.com
+"2026-04-19 22:22:02",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-19 22:22:02",10.42.0.48,us-east-1.ctrl.prod.os.notifications.aws.dev
 "2026-04-19 22:21:55",10.42.0.48,oneocsp.microsoft.com
 "2026-04-19 22:21:55",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-19 22:21:54",10.42.0.48,qjmnz4vd2y07.statuspage.io
@@ -95,7 +99,3 @@ timestamp,source_ip,domain
 "2026-04-19 20:40:17",10.42.0.48,onedriveclucprodbn20024.blob.core.windows.net
 "2026-04-19 20:40:16",10.42.0.48,onedriveclubprodbn20007.blob.core.windows.net
 "2026-04-19 20:40:16",10.42.0.48,onedriveclubprodbn20007.blob.core.windows.net
-"2026-04-19 20:40:16",10.42.0.48,lightstep.kaizen.nvidia.com
-"2026-04-19 20:40:14",10.42.0.48,login.microsoftonline.com
-"2026-04-19 20:40:14",10.42.0.48,login.microsoftonline.com
-"2026-04-19 20:40:14",10.42.0.48,events.gfe.nvidia.com
