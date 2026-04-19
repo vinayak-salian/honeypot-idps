@@ -1,4 +1,15 @@
 timestamp,source_ip,domain
+"2026-04-19 22:35:04",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-19 22:35:04",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-19 22:35:03",10.42.0.48,fp.msedge.net
+"2026-04-19 22:35:02",10.42.0.48,www.bing.com
+"2026-04-19 22:35:02",10.42.0.48,www.bing.com
+"2026-04-19 22:35:01",10.42.0.48,t-ring.msedge.net
+"2026-04-19 22:35:01",10.42.0.48,t-ring.msedge.net
+"2026-04-19 22:34:59",10.42.0.48,fp-afd.azurefd.net
+"2026-04-19 22:34:59",10.42.0.48,fp-afd.azurefd.net
+"2026-04-19 22:34:56",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-19 22:34:56",10.42.0.48,beacons.gcp.gvt2.com
 "2026-04-19 22:34:53",10.42.0.48,heapanalytics.com
 "2026-04-19 22:34:53",10.42.0.48,heapanalytics.com
 "2026-04-19 22:34:37",10.42.0.48,webhooks.fivetran.com
@@ -88,14 +99,3 @@ timestamp,source_ip,domain
 "2026-04-19 22:31:03",10.42.0.48,www.bing.com
 "2026-04-19 22:31:03",10.42.0.48,www.bing.com
 "2026-04-19 22:30:59",10.42.0.48,graph.microsoft.com
-"2026-04-19 22:30:59",10.42.0.48,graph.microsoft.com
-"2026-04-19 22:30:57",10.42.0.48,clients4.google.com
-"2026-04-19 22:30:57",10.42.0.48,clients4.google.com
-"2026-04-19 22:30:47",10.42.0.48,github.com
-"2026-04-19 22:30:45",10.42.0.48,angrystaffofficer.com
-"2026-04-19 22:30:43",10.42.0.48,intezer.com
-"2026-04-19 22:30:43",10.42.0.48,intezer.com
-"2026-04-19 22:30:43",10.42.0.48,cdn.heapanalytics.com
-"2026-04-19 22:30:41",10.42.0.48,www.streamlitstatus.com
-"2026-04-19 22:30:41",10.42.0.48,safebrowsing.google.com
-"2026-04-19 22:30:41",10.42.0.48,safebrowsing.google.com
