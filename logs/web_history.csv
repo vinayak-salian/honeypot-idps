@@ -1,4 +1,8 @@
 timestamp,source_ip,domain
+"2026-04-19 20:38:01",10.42.0.48,logs.eu-north-1.amazonaws.com
+"2026-04-19 20:37:49",10.42.0.48,ssm.eu-north-1.amazonaws.com
+"2026-04-19 20:37:48",10.42.0.48,compute-optimizer.eu-north-1.amazonaws.com
+"2026-04-19 20:37:39",10.42.0.48,target.aws.amazon.com
 "2026-04-19 20:37:38",10.42.0.48,eu-north-1.prod.personalization.console.api.aws
 "2026-04-19 20:37:38",10.42.0.48,ap-south-1.prod.personalization.console.api.aws
 "2026-04-19 20:37:37",10.42.0.48,global.prod.personalization.console.api.aws
@@ -95,7 +99,3 @@ timestamp,source_ip,domain
 "2026-04-19 20:33:40",10.42.0.48,lh3.googleusercontent.com
 "2026-04-19 20:33:40",10.42.0.48,www.googleadservices.com
 "2026-04-19 20:33:36",10.42.0.48,www.msftconnecttest.com
-"2026-04-19 20:33:35",10.42.0.48,ssl.gstatic.com
-"2026-04-19 20:33:35",10.42.0.48,www.gstatic.com
-"2026-04-19 20:33:35",10.42.0.48,www.msftconnecttest.com
-"2026-04-19 20:33:34",10.42.0.48,settings-win.data.microsoft.com
