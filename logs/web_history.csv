@@ -1,4 +1,5 @@
 timestamp,source_ip,domain
+"2026-04-19 22:37:41",10.42.0.48,github.com
 "2026-04-19 22:37:30",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-19 22:37:22",10.42.0.48,b1.nel.goog
 "2026-04-19 22:37:22",10.42.0.48,b1.nel.goog
@@ -98,4 +99,3 @@ timestamp,source_ip,domain
 "2026-04-19 22:31:48",10.42.0.48,cdn-checkout.joinhoney.com
 "2026-04-19 22:31:48",10.42.0.48,d.joinhoney.com
 "2026-04-19 22:31:48",10.42.0.48,d.joinhoney.com
-"2026-04-19 22:31:46",10.42.0.48,settings-win.data.microsoft.com
