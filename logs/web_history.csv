@@ -1,4 +1,8 @@
 timestamp,source_ip,domain
+"2026-04-19 14:10:32",10.42.0.1,_ipps._tcp.local
+"2026-04-19 14:10:21",10.42.0.48,log.tailscale.com
+"2026-04-19 14:10:14",10.42.0.48,a.nel.cloudflare.com
+"2026-04-19 14:10:13",10.42.0.48,beacons.gvt2.com
 "2026-04-19 14:10:05",10.42.0.48,tiles-b.basemaps.cartocdn.com
 "2026-04-19 14:10:03",10.42.0.48,tiles-c.basemaps.cartocdn.com
 "2026-04-19 14:10:03",10.42.0.48,tiles-d.basemaps.cartocdn.com
@@ -95,7 +99,3 @@ timestamp,source_ip,domain
 "2026-04-19 14:09:09",10.42.0.48,chatgpt.com
 "2026-04-19 14:09:08",10.42.0.48,google.com
 "2026-04-19 14:09:08",10.42.0.48,beacons.gcp.gvt2.com
-"2026-04-19 14:09:07",10.42.0.48,google.com
-"2026-04-19 14:09:07",10.42.0.48,beacons.gcp.gvt2.com
-"2026-04-19 14:09:06",10.42.0.48,log.tailscale.com
-"2026-04-19 14:09:06",10.42.0.48,google.com
