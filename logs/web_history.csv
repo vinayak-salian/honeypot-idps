@@ -1,4 +1,8 @@
 timestamp,source_ip,domain
+"2026-04-19 14:11:34",10.42.0.48,o-ring-fallback.msedge.net
+"2026-04-19 14:11:33",10.42.0.48,t-ring-fallback.msedge.net
+"2026-04-19 14:11:33",10.42.0.48,fp-afd.azureedge.net
+"2026-04-19 14:11:29",10.42.0.48,substrate.office.com
 "2026-04-19 14:11:20",10.42.0.48,www.msftncsi.com
 "2026-04-19 14:11:19",10.42.0.48,googleads.g.doubleclick.net
 "2026-04-19 14:11:19",10.42.0.48,collector.github.com
@@ -95,7 +99,3 @@ timestamp,source_ip,domain
 "2026-04-19 14:09:21",10.42.0.48,dns.msftncsi.com
 "2026-04-19 14:09:18",10.42.0.48,dns.msftncsi.com
 "2026-04-19 14:09:17",10.42.0.48,boot.net.anydesk.com
-"2026-04-19 14:09:17",10.42.0.48,dns.msftncsi.com
-"2026-04-19 14:09:17",10.42.0.48,clients4.google.com
-"2026-04-19 14:09:16",10.42.0.48,dns.msftncsi.com
-"2026-04-19 14:09:15",10.42.0.48,boot.net.anydesk.com
