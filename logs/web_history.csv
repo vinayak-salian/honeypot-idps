@@ -1,4 +1,14 @@
 timestamp,source_ip,domain
+"2026-04-19 20:34:06",10.42.0.48,www.msftconnecttest.com
+"2026-04-19 20:34:06",10.42.0.48,ipv6.msftconnecttest.com
+"2026-04-19 20:34:05",10.42.0.48,honeypot-idps-mproject.streamlit.app
+"2026-04-19 20:34:03",10.42.0.48,safebrowsing.googleapis.com
+"2026-04-19 20:34:02",10.42.0.48,music.youtube.com
+"2026-04-19 20:33:55",10.42.0.48,clients4.google.com
+"2026-04-19 20:33:55",10.42.0.48,relay-6e244daa.net.anydesk.com
+"2026-04-19 20:33:54",10.42.0.48,relay-c1fb3e6c.net.anydesk.com
+"2026-04-19 20:33:53",10.42.0.48,boot.net.anydesk.com
+"2026-04-19 20:33:45",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-19 20:33:41",10.42.0.48,www.googletagmanager.com
 "2026-04-19 20:33:41",10.42.0.48,tunnel.googlezip.net
 "2026-04-19 20:33:40",10.42.0.48,optimizationguide-pa.googleapis.com
@@ -89,13 +99,3 @@ timestamp,source_ip,domain
 "2026-04-19 14:14:39",10.42.0.48,array812.prod.do.dsp.mp.microsoft.com
 "2026-04-19 14:14:04",10.42.0.48,c.go-mpulse.net
 "2026-04-19 14:14:03",10.42.0.48,c.go-mpulse.net
-"2026-04-19 14:14:03",10.42.0.48,c.go-mpulse.net
-"2026-04-19 14:13:59",10.42.0.48,alive.github.com
-"2026-04-19 14:13:59",10.42.0.48,alive.github.com
-"2026-04-19 14:13:59",10.42.0.48,collector.github.com
-"2026-04-19 14:13:58",10.42.0.48,api.github.com
-"2026-04-19 14:13:58",10.42.0.48,github.githubassets.com
-"2026-04-19 14:13:58",10.42.0.48,api.github.com
-"2026-04-19 14:13:58",10.42.0.48,avatars.githubusercontent.com
-"2026-04-19 14:13:58",10.42.0.48,user-images.githubusercontent.com
-"2026-04-19 14:13:58",10.42.0.48,github-cloud.s3.amazonaws.com
