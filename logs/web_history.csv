@@ -1,4 +1,8 @@
 timestamp,source_ip,domain
+"2026-04-19 20:42:03",10.42.0.48,mobile.events.data.microsoft.com
+"2026-04-19 20:42:03",10.42.0.48,mobile.events.data.microsoft.com
+"2026-04-19 20:42:02",10.42.0.48,music.youtube.com
+"2026-04-19 20:42:02",10.42.0.48,music.youtube.com
 "2026-04-19 20:41:49",10.42.0.48,oauthaccountmanager.googleapis.com
 "2026-04-19 20:41:40",10.42.0.48,a.nel.cloudflare.com
 "2026-04-19 20:41:38",10.42.0.48,ws.chatgpt.com
@@ -95,7 +99,3 @@ timestamp,source_ip,domain
 "2026-04-19 20:37:22",10.42.0.48,eu-north-1.prod.pl.panorama.console.api.aws
 "2026-04-19 20:37:22",10.42.0.48,continuum.console.api.aws
 "2026-04-19 20:37:22",10.42.0.48,ap-south-1.ccs.console.api.aws
-"2026-04-19 20:37:22",10.42.0.48,ap-south-1.ccs.console.api.aws
-"2026-04-19 20:37:21",10.42.0.48,a.b.cdn.console.awsstatic.com
-"2026-04-19 20:37:21",10.42.0.48,global.console.aws.amazon.com
-"2026-04-19 20:37:19",10.42.0.48,eu-north-1.signin.aws.amazon.com
