@@ -1,4 +1,6 @@
 timestamp,source_ip,domain
+"2026-04-19 20:35:21",10.42.0.48,www.msftncsi.com
+"2026-04-19 20:35:18",10.42.0.48,ipv6.msftncsi.com
 "2026-04-19 20:35:17",10.42.0.48,www.msftncsi.com
 "2026-04-19 20:35:16",10.42.0.48,ipv6.msftncsi.com
 "2026-04-19 20:35:12",10.42.0.48,api.segment.io
@@ -97,5 +99,3 @@ timestamp,source_ip,domain
 "2026-04-19 20:25:29",10.42.0.1,_ipps._tcp.local
 "2026-04-19 20:24:57",10.42.0.1,_ipps._tcp.local
 "2026-04-19 14:57:46",10.42.0.48,relay-592fb171.net.anydesk.com
-"2026-04-19 14:57:46",10.42.0.48,relay-592fb171.net.anydesk.com
-"2026-04-19 14:54:36",10.42.0.1,_ipps._tcp.local
