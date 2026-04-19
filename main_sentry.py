@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 IOT SENTRY | MASTER ORCHESTRATOR & DISPATCHER
-Version 4.7: Fixed Syntax, Integrated DNS Web Tracking & Device Discovery.
+Version 4.9: Integrated GCM Filter (Port 5228) for Mobile Stability.
 """
 import requests
 import sys
@@ -13,18 +13,18 @@ import json
 import subprocess
 import os
 from scapy.all import sniff, IP, TCP, UDP, ICMP, Ether, DNS, DNSQR
- 
+
 # Suppress warnings
 warnings.filterwarnings("ignore", category=UserWarning)
- 
+
 # Connect to the Unified Database
 sys.path.append('/home/vinayak/honeypot_project')
 from honeypot_db import DB_PATH
- 
+
 print("\n" + "="*60)
 print("    NEXUS SENTRY | MASTER ORCHESTRATOR INITIALIZING")
 print("="*60)
- 
+
 # ============================================================================
 # 1. LOAD CONFIGURATION
 # ============================================================================
@@ -38,7 +38,7 @@ try:
 except Exception:
     print(f"[*] Defaulting to LOCAL mode.")
     os.environ["SENTRY_MODE"] = "LOCAL"
- 
+
 # ============================================================================
 # 2. START THE MALWARE ENGINE
 # ============================================================================
@@ -52,7 +52,7 @@ try:
         print("[+] Malware Trap online.")
 except Exception as e:
     print(f"[-] Failed to start Malware Engine: {e}")
- 
+
 # ============================================================================
 # 3. IMPORT THE PASSIVE ML BRAINS
 # ============================================================================
@@ -66,13 +66,13 @@ except ImportError as e:
     print(f"\n[!] Failed to import ML brains: {e}")
     if malware_process: malware_process.terminate()
     sys.exit(1)
- 
+
 # ============================================================================
 # 4. GLOBAL TRACKERS
 # ============================================================================
 locally_cached_bans = set()
 traffic_stats = {"tcp": 0, "udp": 0, "icmp": 0, "bytes": 0}
- 
+
 # ============================================================================
 # 5. HEARTBEATS
 # ============================================================================
@@ -88,7 +88,7 @@ def traffic_heartbeat():
             conn.close()
             for key in ["tcp", "udp", "icmp", "bytes"]: traffic_stats[key] = 0
         except: pass
- 
+
 def c2_polling_heartbeat():
     """Syncs local ban cache with DB every 10 seconds for the Bouncer."""
     while True:
@@ -102,19 +102,26 @@ def c2_polling_heartbeat():
             for row in rows: locally_cached_bans.add(row[0])
             conn.close()
         except: pass
- 
+
 # ============================================================================
 # 6. THE DISPATCHER
 # ============================================================================
 def master_dispatcher(pkt):
     if IP in pkt and TCP in pkt:
-        # TEMP DEBUG PRINT
-        print(f"[DEBUG] TCP Packet from {pkt[IP].src} to port {pkt[TCP].dport}")
+        src_ip = pkt[IP].src
+        dst_port = pkt[TCP].dport
+        # SILENCE: Ignore the Pi (10.42.0.1) and common noisy ports
+        if src_ip == "10.42.0.1" or dst_port in [53, 5228]:
+            return
+        
+        if src_ip.startswith("10.42.0") and dst_port not in [80, 443]:
+            print(f"[DEBUG] LOCAL TRAFFIC: {src_ip} -> Port {dst_port}")
+
     if IP not in pkt: return
- 
+
     src_ip = pkt[IP].src
     src_mac = pkt[Ether].src if Ether in pkt else "Unknown"
- 
+
     # --- A. WEB BROWSING HISTORY (DNS SNIFFING) ---
     if pkt.haslayer(DNS) and pkt.getlayer(DNS).qr == 0:
         try:
@@ -126,7 +133,7 @@ def master_dispatcher(pkt):
             conn.commit()
             conn.close()
         except: pass
- 
+
     # --- B. DEVICE DISCOVERY ---
     try:
         conn = sqlite3.connect(DB_PATH)
@@ -139,10 +146,10 @@ def master_dispatcher(pkt):
         conn.commit()
         conn.close()
     except: pass
- 
+
     # --- C. THE BOUNCER ---
     if src_ip in locally_cached_bans: return 
- 
+
     # --- D. TRAFFIC TALLY & ML ROUTING ---
     traffic_stats["bytes"] += len(pkt)
     if TCP in pkt:
@@ -154,18 +161,20 @@ def master_dispatcher(pkt):
         if pkt[UDP].dport == 53 or pkt[UDP].sport == 53: dns_brain(pkt)
     elif ICMP in pkt:
         traffic_stats["icmp"] += 1
- 
+
 # ============================================================================
 # 7. EXECUTION
 # ============================================================================
 if __name__ == "__main__":
     threading.Thread(target=c2_polling_heartbeat, daemon=True).start()
     threading.Thread(target=traffic_heartbeat, daemon=True).start()
- 
+
     print("\n[+] Unified Dispatcher activated. Monitoring wlan0...")
     try:
-        # Wider filter to ensure we catch DNS on any port it might be hiding on
-     sniff(iface="wlan0", filter="udp port 53 or tcp port 53", prn=master_dispatcher, store=False)
+        sniff(iface="wlan0", filter="ip", prn=master_dispatcher, store=False)
     except KeyboardInterrupt:
-        if malware_process: malware_process.terminate()
+        if malware_process: 
+            print("[*] Terminating Malware Engine...")
+            malware_process.terminate()
+        print("\n[!] System offline. Stay safe.")
         sys.exit(0)
