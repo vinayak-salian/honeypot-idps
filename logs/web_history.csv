@@ -1,4 +1,6 @@
 timestamp,source_ip,domain
+"2026-04-19 20:36:49",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-19 20:36:42",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-19 20:36:23",10.42.0.48,us-east-1.prod.pr.analytics.console.aws.a2z.com
 "2026-04-19 20:36:05",10.42.0.48,signin.aws.amazon.com
 "2026-04-19 20:36:02",10.42.0.48,music.youtube.com
@@ -97,5 +99,3 @@ timestamp,source_ip,domain
 "2026-04-19 20:33:11",10.42.0.48,_uscan._tcp.local
 "2026-04-19 20:33:11",10.42.0.48,_ipp._tcp.local
 "2026-04-19 20:33:11",10.42.0.48,_ipps._tcp.local
-"2026-04-19 20:33:11",10.42.0.48,_uscans._tcp.local
-"2026-04-19 20:33:10",10.42.0.48,_googlecast._tcp.local
