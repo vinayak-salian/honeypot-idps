@@ -1,4 +1,17 @@
 timestamp,source_ip,domain
+"2026-04-19 14:10:54",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-19 14:10:50",10.42.0.48,fp.msedge.net
+"2026-04-19 14:10:49",10.42.0.48,9b86725d3526c471e17c5061d936fdad.clo.footprintdns.com
+"2026-04-19 14:10:49",10.42.0.48,www.bing.com
+"2026-04-19 14:10:48",10.42.0.48,a2aa93b8b19b10064d51056b4fa4eea9.azr.footprintdns.com
+"2026-04-19 14:10:47",10.42.0.48,b-ring.msedge.net
+"2026-04-19 14:10:45",10.42.0.48,graph.microsoft.com
+"2026-04-19 14:10:44",10.42.0.48,www.msftncsi.com
+"2026-04-19 14:10:44",10.42.0.48,www.msftncsi.com
+"2026-04-19 14:10:42",10.42.0.48,ipv6.msftncsi.com
+"2026-04-19 14:10:40",10.42.0.48,ipv6.msftncsi.com
+"2026-04-19 14:10:40",10.42.0.48,www.msftncsi.com
+"2026-04-19 14:10:37",10.42.0.48,ctldl.windowsupdate.com
 "2026-04-19 14:10:32",10.42.0.1,_ipps._tcp.local
 "2026-04-19 14:10:21",10.42.0.48,log.tailscale.com
 "2026-04-19 14:10:14",10.42.0.48,a.nel.cloudflare.com
@@ -86,16 +99,3 @@ timestamp,source_ip,domain
 "2026-04-19 14:09:14",10.42.0.48,clients4.google.com
 "2026-04-19 14:09:13",10.42.0.48,accounts.google.com
 "2026-04-19 14:09:13",10.42.0.48,clients4.google.com
-"2026-04-19 14:09:13",10.42.0.48,boot.net.anydesk.com
-"2026-04-19 14:09:12",10.42.0.48,accounts.google.com
-"2026-04-19 14:09:12",10.42.0.48,boot.net.anydesk.com
-"2026-04-19 14:09:11",10.42.0.48,accounts.google.com
-"2026-04-19 14:09:10",10.42.0.48,log.tailscale.com
-"2026-04-19 14:09:10",10.42.0.48,log.tailscale.com
-"2026-04-19 14:09:10",10.42.0.48,beacons.gcp.gvt2.com
-"2026-04-19 14:09:10",10.42.0.48,google.com
-"2026-04-19 14:09:10",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-19 14:09:09",10.42.0.48,clients4.google.com
-"2026-04-19 14:09:09",10.42.0.48,chatgpt.com
-"2026-04-19 14:09:08",10.42.0.48,google.com
-"2026-04-19 14:09:08",10.42.0.48,beacons.gcp.gvt2.com
