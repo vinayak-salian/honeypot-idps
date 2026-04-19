@@ -1,4 +1,16 @@
 timestamp,source_ip,domain
+"2026-04-19 20:41:49",10.42.0.48,oauthaccountmanager.googleapis.com
+"2026-04-19 20:41:40",10.42.0.48,a.nel.cloudflare.com
+"2026-04-19 20:41:38",10.42.0.48,ws.chatgpt.com
+"2026-04-19 20:41:38",10.42.0.48,ws.chatgpt.com
+"2026-04-19 20:41:34",10.42.0.48,content-autofill.googleapis.com
+"2026-04-19 20:41:34",10.42.0.48,content-autofill.googleapis.com
+"2026-04-19 20:41:33",10.42.0.48,optimizationguide-pa.googleapis.com
+"2026-04-19 20:41:33",10.42.0.48,chatgpt.com
+"2026-04-19 20:41:33",10.42.0.48,optimizationguide-pa.googleapis.com
+"2026-04-19 20:41:33",10.42.0.48,chatgpt.com
+"2026-04-19 20:41:33",10.42.0.48,ab.chatgpt.com
+"2026-04-19 20:41:33",10.42.0.48,ab.chatgpt.com
 "2026-04-19 20:41:29",10.42.0.1,_ipps._tcp.local
 "2026-04-19 20:41:14",10.42.0.48,webhooks.fivetran.com
 "2026-04-19 20:41:14",10.42.0.48,webhooks.fivetran.com
@@ -87,15 +99,3 @@ timestamp,source_ip,domain
 "2026-04-19 20:37:21",10.42.0.48,a.b.cdn.console.awsstatic.com
 "2026-04-19 20:37:21",10.42.0.48,global.console.aws.amazon.com
 "2026-04-19 20:37:19",10.42.0.48,eu-north-1.signin.aws.amazon.com
-"2026-04-19 20:37:19",10.42.0.48,eu-north-1.signin.aws.amazon.com
-"2026-04-19 20:37:18",10.42.0.48,eu-north-1.console.aws.amazon.com
-"2026-04-19 20:37:18",10.42.0.48,eu-north-1.console.aws.amazon.com
-"2026-04-19 20:37:06",10.42.0.48,d1.awsstatic.com
-"2026-04-19 20:37:05",10.42.0.48,signin.aws.amazon.com
-"2026-04-19 20:37:05",10.42.0.48,signin.aws.amazon.com
-"2026-04-19 20:37:02",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-19 20:36:57",10.42.0.48,amcs-captcha-prod-us-east-1.s3.dualstack.us-east-1.amazonaws.com
-"2026-04-19 20:36:57",10.42.0.48,passwordsleakcheck-pa.googleapis.com
-"2026-04-19 20:36:49",10.42.0.48,beacons.gcp.gvt2.com
-"2026-04-19 20:36:42",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-19 20:36:23",10.42.0.48,us-east-1.prod.pr.analytics.console.aws.a2z.com
