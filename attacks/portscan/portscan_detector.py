@@ -138,6 +138,6 @@ def packet_callback(pkt):
         analyze_and_log(src_ip)
 
 if __name__ == "__main__":
-    # Remove iface restriction entirely to catch local (wlan0) and tunnel (tailscale0)
-    print("[*] PortScan Engine LIVE - Monitoring Global + Local TCP traffic...")
-    sniff(filter="tcp", prn=packet_callback, store=False)
+    # Explicitly monitor the local hotspot and the AWS tunnel
+    print("[*] PortScan Engine LIVE: Monitoring wlan0 + tailscale0...")
+    sniff(iface=["wlan0", "tailscale0"], filter="tcp", prn=packet_callback, store=False)
