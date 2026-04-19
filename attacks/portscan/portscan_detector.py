@@ -285,11 +285,6 @@ def packet_callback(pkt):
 
 
 if __name__ == "__main__":
-
-    # Remove iface="wlan0". Using no interface lets Scapy sniff ALL interfaces
-
-    # including wlan0 (local) and tailscale0 (AWS Tunnel).
-
-    print("[*] PortScan Detector Engine starting (Global + Local monitoring)...")
-
-    sniff(prn=packet_callback, store=False)
+    # Monitor both the local Wi-Fi and the AWS Tunnel
+    print("[*] PortScan Engine Monitoring wlan0 + tailscale0...")
+    sniff(iface=["wlan0", "tailscale0"], filter="tcp", prn=packet_callback, store=False)

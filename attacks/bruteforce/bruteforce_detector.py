@@ -10,6 +10,8 @@ import sys
 import sqlite3
 from scapy.all import sniff, IP, TCP, get_if_addr, conf
 from collections import defaultdict
+import pytz
+from datetime import datetime
 
 # --- 1. INTEGRATE GEO UTILS ---
 sys.path.append('/home/vinayak/honeypot_project')
@@ -90,7 +92,8 @@ def analyze_and_log(src_ip, dest_port, flow_key):
     if is_brute or (flow['fwd_pkts'] > 20 and psh_count > 3):
         # DYNAMIC CONFIDENCE: Blends ML with packet intensity
         final_conf = round(max(ml_confidence, min(0.70 + (psh_count * 0.05), 0.97)), 2)
-        timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
+        IST = pytz.timezone('Asia/Kolkata')
+        timestamp = datetime.now(IST).strftime('%Y-%m-%d %H:%M:%S')
         
         # --- DYNAMIC GEO LOOKUP ---
         # returns None, None for local IPs (Heatmap ignores)

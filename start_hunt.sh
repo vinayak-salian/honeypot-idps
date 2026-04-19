@@ -29,8 +29,8 @@ TARGET_PREFIX=$(ip -o -f inet addr show wlan0 | awk '{print $4}' | cut -d. -f1-3
 TARGET_RANGE="${TARGET_PREFIX}.0/24"
 
 # 4. Active Discovery
-echo "[*] Scanning for local assets..."
-nmap -sn --min-parallelism 100 $TARGET_RANGE > /dev/null
+echo "[*] Running Deep ARP Discovery..."
+sudo nmap -sn -PR $TARGET_RANGE > /dev/null
 
 # 5. KILL OLD SESSIONS & ZOMBIES
 echo "[*] Cleaning environment..."
