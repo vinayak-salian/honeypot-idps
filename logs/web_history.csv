@@ -1,4 +1,8 @@
 timestamp,source_ip,domain
+"2026-04-19 20:35:17",10.42.0.48,www.msftncsi.com
+"2026-04-19 20:35:16",10.42.0.48,ipv6.msftncsi.com
+"2026-04-19 20:35:12",10.42.0.48,api.segment.io
+"2026-04-19 20:35:04",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-19 20:34:42",10.42.0.48,safebrowsing.google.com
 "2026-04-19 20:34:42",10.42.0.48,cdn.segment.com
 "2026-04-19 20:34:42",10.42.0.48,www.google-analytics.com
@@ -95,7 +99,3 @@ timestamp,source_ip,domain
 "2026-04-19 14:57:46",10.42.0.48,relay-592fb171.net.anydesk.com
 "2026-04-19 14:57:46",10.42.0.48,relay-592fb171.net.anydesk.com
 "2026-04-19 14:54:36",10.42.0.1,_ipps._tcp.local
-"2026-04-19 14:52:28",10.42.0.1,_ipps._tcp.local
-"2026-04-19 14:51:24",10.42.0.1,_ipps._tcp.local
-"2026-04-19 14:50:52",10.42.0.1,_ipps._tcp.local
-"2026-04-19 14:15:10",10.42.0.48,api-chat.hirist.tech
