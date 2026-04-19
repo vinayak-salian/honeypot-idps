@@ -1,4 +1,13 @@
 timestamp,source_ip,domain
+"2026-04-19 14:11:20",10.42.0.48,www.msftncsi.com
+"2026-04-19 14:11:19",10.42.0.48,googleads.g.doubleclick.net
+"2026-04-19 14:11:19",10.42.0.48,collector.github.com
+"2026-04-19 14:11:18",10.42.0.48,ipv6.msftncsi.com
+"2026-04-19 14:11:18",10.42.0.48,gemini.google.com
+"2026-04-19 14:11:18",10.42.0.48,api.github.com
+"2026-04-19 14:11:16",10.42.0.48,ipv6.msftncsi.com
+"2026-04-19 14:11:16",10.42.0.48,www.msftncsi.com
+"2026-04-19 14:11:03",10.42.0.48,api-chat.hirist.tech
 "2026-04-19 14:10:54",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-19 14:10:50",10.42.0.48,fp.msedge.net
 "2026-04-19 14:10:49",10.42.0.48,9b86725d3526c471e17c5061d936fdad.clo.footprintdns.com
@@ -90,12 +99,3 @@ timestamp,source_ip,domain
 "2026-04-19 14:09:17",10.42.0.48,clients4.google.com
 "2026-04-19 14:09:16",10.42.0.48,dns.msftncsi.com
 "2026-04-19 14:09:15",10.42.0.48,boot.net.anydesk.com
-"2026-04-19 14:09:15",10.42.0.48,accounts.google.com
-"2026-04-19 14:09:15",10.42.0.48,log.tailscale.com
-"2026-04-19 14:09:15",10.42.0.48,log.tailscale.com
-"2026-04-19 14:09:15",10.42.0.48,clients4.google.com
-"2026-04-19 14:09:14",10.42.0.48,beacons.gcp.gvt2.com
-"2026-04-19 14:09:14",10.42.0.48,google.com
-"2026-04-19 14:09:14",10.42.0.48,clients4.google.com
-"2026-04-19 14:09:13",10.42.0.48,accounts.google.com
-"2026-04-19 14:09:13",10.42.0.48,clients4.google.com
