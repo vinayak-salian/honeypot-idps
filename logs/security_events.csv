@@ -1,4 +1,7 @@
 timestamp,source_ip,attack_type,confidence,evidence,latitude,longitude,country,city
+"2026-04-19 23:29:28",35.203.65.95,PortScan,0.9,"Probed 4 ports | Rate: 12.31 p/s",45.4995,-73.5848,Canada,Montreal
+"2026-04-19 23:29:23",40.126.17.134,PortScan,0.89,"Probed 4 ports | Rate: 14.7 p/s",13.0895,80.2739,India,Chennai
+"2026-04-19 23:29:23",49.44.145.204,PortScan,0.89,"Probed 4 ports | Rate: 15.51 p/s",21.9974,79.0011,India,
 "2026-04-19 14:14:45",35.201.127.49,PortScan,0.81,"Probed 3 ports | Rate: 0.12 p/s",19.076,72.877,India,Mumbai
 "2026-04-19 14:14:44",4.213.25.241,PortScan,0.81,"Probed 3 ports | Rate: 0.02 p/s",19.076,72.877,India,Mumbai
 "2026-04-19 14:14:38",151.101.210.132,PortScan,0.81,"Probed 3 ports | Rate: 12.31 p/s",19.076,72.877,India,Mumbai
