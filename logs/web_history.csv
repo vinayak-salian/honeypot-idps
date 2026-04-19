@@ -1,4 +1,10 @@
 timestamp,source_ip,domain
+"2026-04-19 22:27:28",10.42.0.48,ecs.office.com
+"2026-04-19 22:27:28",10.42.0.48,ecs.office.com
+"2026-04-19 22:27:11",10.42.0.48,github.com
+"2026-04-19 22:27:11",10.42.0.48,github.com
+"2026-04-19 22:27:07",10.42.0.48,www.google.com
+"2026-04-19 22:27:07",10.42.0.48,www.google.com
 "2026-04-19 22:27:02",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
 "2026-04-19 22:27:02",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
 "2026-04-19 22:26:55",10.42.0.48,mobile.events.data.microsoft.com
@@ -93,9 +99,3 @@ timestamp,source_ip,domain
 "2026-04-19 22:21:26",10.42.0.48,ftp.hp.com
 "2026-04-19 22:21:26",10.42.0.48,mr-prod-t.msedge.net
 "2026-04-19 22:21:26",10.42.0.48,o-ring.msedge.net
-"2026-04-19 22:21:24",10.42.0.48,_googlecast._tcp.local
-"2026-04-19 22:21:24",10.42.0.48,_googlecast._tcp.local
-"2026-04-19 22:21:22",10.42.0.48,_googlecast._tcp.local
-"2026-04-19 22:21:22",10.42.0.48,_googlecast._tcp.local
-"2026-04-19 22:21:21",10.42.0.48,github.com
-"2026-04-19 22:21:21",10.42.0.48,_googlecast._tcp.local
