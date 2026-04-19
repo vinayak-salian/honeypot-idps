@@ -1,4 +1,14 @@
 timestamp,source_ip,domain
+"2026-04-19 22:23:53",10.42.0.48,heapanalytics.com
+"2026-04-19 22:23:53",10.42.0.48,heapanalytics.com
+"2026-04-19 22:23:53",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-19 22:23:43",10.42.0.48,logs.eu-north-1.amazonaws.com
+"2026-04-19 22:23:42",10.42.0.48,eu-north-1.console.aws.amazon.com
+"2026-04-19 22:23:36",10.42.0.48,www.msftncsi.com
+"2026-04-19 22:23:34",10.42.0.48,github.com
+"2026-04-19 22:23:32",10.42.0.48,ipv6.msftncsi.com
+"2026-04-19 22:23:31",10.42.0.48,www.msftncsi.com
+"2026-04-19 22:23:31",10.42.0.48,ipv6.msftncsi.com
 "2026-04-19 22:23:30",10.42.0.48,ecs.office.com
 "2026-04-19 22:23:02",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
 "2026-04-19 22:22:50",10.42.0.48,signaler-pa.clients6.google.com
@@ -89,13 +99,3 @@ timestamp,source_ip,domain
 "2026-04-19 20:41:33",10.42.0.48,ab.chatgpt.com
 "2026-04-19 20:41:29",10.42.0.1,_ipps._tcp.local
 "2026-04-19 20:41:14",10.42.0.48,webhooks.fivetran.com
-"2026-04-19 20:41:14",10.42.0.48,webhooks.fivetran.com
-"2026-04-19 20:41:07",10.42.0.48,www.google.com
-"2026-04-19 20:41:07",10.42.0.48,www.google.com
-"2026-04-19 20:41:02",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-19 20:41:02",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-19 20:40:24",10.42.0.48,adblock.telemetry.eyeo.com
-"2026-04-19 20:40:24",10.42.0.48,adblock.telemetry.eyeo.com
-"2026-04-19 20:40:24",10.42.0.48,adblockplus.telemetry.eyeo.com
-"2026-04-19 20:40:24",10.42.0.48,adblockplus.telemetry.eyeo.com
-"2026-04-19 20:40:22",10.42.0.48,services.gfe.nvidia.com
