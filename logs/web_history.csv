@@ -1,4 +1,7 @@
 timestamp,source_ip,domain
+"2026-04-19 20:41:29",10.42.0.1,_ipps._tcp.local
+"2026-04-19 20:41:14",10.42.0.48,webhooks.fivetran.com
+"2026-04-19 20:41:14",10.42.0.48,webhooks.fivetran.com
 "2026-04-19 20:41:07",10.42.0.48,www.google.com
 "2026-04-19 20:41:07",10.42.0.48,www.google.com
 "2026-04-19 20:41:02",10.42.0.48,qjmnz4vd2y07.statuspage.io
@@ -96,6 +99,3 @@ timestamp,source_ip,domain
 "2026-04-19 20:36:49",10.42.0.48,beacons.gcp.gvt2.com
 "2026-04-19 20:36:42",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-19 20:36:23",10.42.0.48,us-east-1.prod.pr.analytics.console.aws.a2z.com
-"2026-04-19 20:36:05",10.42.0.48,signin.aws.amazon.com
-"2026-04-19 20:36:02",10.42.0.48,music.youtube.com
-"2026-04-19 20:35:59",10.42.0.48,clients4.google.com
