@@ -1,4 +1,15 @@
 timestamp,source_ip,domain
+"2026-04-20 23:37:35",10.42.0.48,signaler-pa.clients6.google.com
+"2026-04-20 23:37:21",10.42.0.48,analytics.google.com
+"2026-04-20 23:37:19",10.42.0.48,gemini.google.com
+"2026-04-20 23:37:16",10.42.0.48,telemetry.canva.com
+"2026-04-20 23:37:16",10.42.0.48,telemetry.canva.com
+"2026-04-20 23:37:14",10.42.0.48,b.6sc.co
+"2026-04-20 23:37:14",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-20 23:37:14",10.42.0.48,us-east-1.ctrl.prod.os.notifications.aws.dev
+"2026-04-20 23:37:14",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-20 23:37:14",10.42.0.48,b.6sc.co
+"2026-04-20 23:37:14",10.42.0.48,us-east-1.ctrl.prod.os.notifications.aws.dev
 "2026-04-20 23:37:03",10.42.0.48,ctldl.windowsupdate.com
 "2026-04-20 23:37:03",10.42.0.48,ctldl.windowsupdate.com
 "2026-04-20 23:37:00",10.42.0.48,ecs.office.com
@@ -88,14 +99,3 @@ timestamp,source_ip,domain
 "2026-04-20 23:30:33",10.42.0.48,csptoken.ccs.mcafee.com
 "2026-04-20 23:30:33",10.42.0.48,csptoken.ccs.mcafee.com
 "2026-04-20 23:30:14",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-20 23:30:14",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
-"2026-04-20 23:30:14",10.42.0.48,bam.nr-data.net
-"2026-04-20 23:30:14",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-20 23:30:14",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
-"2026-04-20 23:30:14",10.42.0.48,bam.nr-data.net
-"2026-04-20 23:30:09",10.42.0.48,beacons.gcp.gvt2.com
-"2026-04-20 23:30:09",10.42.0.48,beacons.gcp.gvt2.com
-"2026-04-20 23:29:51",10.42.0.48,www.google-analytics.com
-"2026-04-20 23:29:51",10.42.0.48,www.google-analytics.com
-"2026-04-20 23:29:35",10.42.0.48,logs.eu-north-1.amazonaws.com
-"2026-04-20 23:29:35",10.42.0.48,logs.eu-north-1.amazonaws.com
