@@ -146,4 +146,4 @@ def packet_callback(pkt):
 
 if __name__ == "__main__":
     print("[*] BruteForce Bouncer starting on wlan0 (Monitoring 21, 22, 2222)...")
-    sniff(iface="wlan0", prn=packet_callback, store=False)
+    sniff(iface=["wlan0","tailscale0"], prn=packet_callback, store=False)

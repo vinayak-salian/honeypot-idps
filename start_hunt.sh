@@ -1,5 +1,5 @@
 #!/bin/bash
-# Nexus Sentry v7.1 - Final Demo Stability Patch
+# Nexus Sentry v7.2 - Final Demo Stability Patch (Full Suite)
 
 DB_PATH="/home/vinayak/honeypot_project/nexus_security.db"
 
@@ -32,7 +32,7 @@ echo "[*] Launching Engines..."
 # Create session
 tmux new-session -d -s sentry_hunt -n "Main" "sudo /home/vinayak/honeypot_project/venv/bin/python /home/vinayak/honeypot_project/main_sentry.py; read"
 
-# Window 1: Continuous Census (Discovery) - ADDED THIS BACK
+# Window 1: Continuous Census (Discovery)
 tmux new-window -t sentry_hunt:1 -n "Census" "sudo /home/vinayak/honeypot_project/venv/bin/python /home/vinayak/honeypot_project/network_census.py; read"
 
 # Window 2: Brute Force
@@ -47,4 +47,11 @@ tmux new-window -t sentry_hunt:4 -n "DNS" "sudo /home/vinayak/honeypot_project/v
 # Window 5: Cloud Sync (Background Loop)
 tmux new-window -t sentry_hunt:5 -n "Sync" "while true; do /home/vinayak/honeypot_project/sync_to_cloud.sh; sleep 60; done"
 
+# Window 6: Vulnerable Server (Malware Delivery Honeypot)
+tmux new-window -t sentry_hunt:6 -n "Malware" "sudo /home/vinayak/honeypot_project/venv/bin/python /home/vinayak/honeypot_project/vulnerable_server.py; read"
+
+# Window 7: Active Mitigator (IPS Action Engine)
+tmux new-window -t sentry_hunt:7 -n "Mitigate" "while true; do sudo /home/vinayak/honeypot_project/venv/bin/python /home/vinayak/honeypot_project/mitigator.py; sleep 5; done"
+
 echo "[?] ALL ENGINES INITIALIZED."
+echo "[*] Run 'tmux attach -t sentry_hunt' to monitor the system."
