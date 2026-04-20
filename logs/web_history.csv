@@ -1,4 +1,10 @@
 timestamp,source_ip,domain
+"2026-04-20 23:51:21",10.42.0.48,b1.nel.goog
+"2026-04-20 23:51:16",10.42.0.48,telemetry.canva.com
+"2026-04-20 23:51:16",10.42.0.48,telemetry.canva.com
+"2026-04-20 23:51:14",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-20 23:51:09",10.42.0.48,ssl.gstatic.com
+"2026-04-20 23:51:09",10.42.0.48,ssl.gstatic.com
 "2026-04-20 23:50:38",10.42.0.48,analytics.apis.mcafee.com
 "2026-04-20 23:50:37",10.42.0.48,csptoken.ccs.mcafee.com
 "2026-04-20 23:50:37",10.42.0.48,csptoken.ccs.mcafee.com
@@ -93,9 +99,3 @@ timestamp,source_ip,domain
 "2026-04-20 23:44:40",10.42.0.48,logs.eu-north-1.amazonaws.com
 "2026-04-20 23:44:40",10.42.0.48,logs.eu-north-1.amazonaws.com
 "2026-04-20 23:44:39",10.42.0.48,crl.anydesk.com
-"2026-04-20 23:44:39",10.42.0.48,crl.anydesk.com
-"2026-04-20 23:44:37",10.42.0.48,crl4.digicert.com
-"2026-04-20 23:44:36",10.42.0.48,sadownload.mcafee.com
-"2026-04-20 23:44:36",10.42.0.48,csptoken.ccs.mcafee.com
-"2026-04-20 23:44:36",10.42.0.48,csptoken.ccs.mcafee.com
-"2026-04-20 23:44:36",10.42.0.48,analytics.apis.mcafee.com
