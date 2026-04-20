@@ -1,4 +1,9 @@
 timestamp,source_ip,domain
+"2026-04-20 23:27:25",10.42.0.48,telemetry.canva.com
+"2026-04-20 23:27:25",10.42.0.48,telemetry.canva.com
+"2026-04-20 23:27:21",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-20 23:27:21",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-20 23:27:14",10.42.0.48,b.6sc.co
 "2026-04-20 23:26:33",10.42.0.48,analytics.apis.mcafee.com
 "2026-04-20 23:26:32",10.42.0.48,csptoken.ccs.mcafee.com
 "2026-04-20 23:26:22",10.42.0.48,docs.google.com
@@ -94,8 +99,3 @@ timestamp,source_ip,domain
 "2026-04-20 23:22:14",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
 "2026-04-20 23:22:14",10.42.0.48,q-ring-fallback.msedge.net
 "2026-04-20 23:22:14",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
-"2026-04-20 23:22:13",10.42.0.48,substrate.office.com
-"2026-04-20 23:22:13",10.42.0.48,substrate.office.com
-"2026-04-20 23:22:11",10.42.0.48,graph.microsoft.com
-"2026-04-20 23:22:11",10.42.0.48,graph.microsoft.com
-"2026-04-20 23:22:10",10.42.0.48,safebrowsing.googleapis.com
