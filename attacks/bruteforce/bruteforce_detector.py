@@ -101,7 +101,7 @@ def analyze_and_log(src_ip, dest_port, flow_key):
         
         # SQLITE LOGGING
         try:
-            conn = sqlite3.connect(DB_PATH, timeout=5)
+            conn = sqlite3.connect(DB_PATH, timeout=30)
             cursor = conn.cursor()
             cursor.execute('''
                 INSERT INTO attack_logs (timestamp, source_ip, attack_type, confidence, evidence, latitude, longitude, country, city)

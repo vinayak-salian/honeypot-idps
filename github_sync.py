@@ -19,7 +19,7 @@ os.makedirs(LOGS_DIR, exist_ok=True)
 def export_data():
     """Extracts data from SQLite and overwrites the CSV files."""
     try:
-        conn = sqlite3.connect(DB_PATH)
+        conn = sqlite3.connect(DB_PATH, timeout=30)
         
         # SQL Queries mapped exactly to your Cloud Dashboard's expected filenames
         exports = {

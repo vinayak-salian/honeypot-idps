@@ -99,7 +99,7 @@ def analyze_and_log(src_ip):
         lat, lon, country, city = get_geo_data(src_ip)
 
         try:
-            conn = sqlite3.connect(DB_PATH)
+            conn = sqlite3.connect(DB_PATH, timeout=30)
             cursor = conn.cursor()
             cursor.execute('''
                 INSERT INTO attack_logs (timestamp, source_ip, attack_type, confidence, evidence, latitude, longitude, country, city)

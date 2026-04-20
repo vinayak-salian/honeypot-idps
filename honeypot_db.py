@@ -13,7 +13,7 @@ DB_PATH = '/home/vinayak/honeypot_project/nexus_security.db'
 
 def init_db():
     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30)
     cursor = conn.cursor()
     # ... (other tables: banned_ips, attack_logs, traffic_metrics, known_devices) ...
     

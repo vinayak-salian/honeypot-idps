@@ -58,5 +58,5 @@ while true; do
     fi
 
     echo "[*] Sleeping for 20 seconds..."
-    sleep 20
+    sleep 60
 done

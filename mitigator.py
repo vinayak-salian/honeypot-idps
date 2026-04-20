@@ -15,7 +15,7 @@ def process_queue():
         df = pd.read_csv(QUEUE_PATH)
         if df.empty: return
 
-        conn = sqlite3.connect(DB_PATH)
+        conn = sqlite3.connect(DB_PATH, timeout=30)
         cursor = conn.cursor()
 
         for index, row in df.iterrows():

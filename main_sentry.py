@@ -80,7 +80,7 @@ def traffic_heartbeat():
     while True:
         time.sleep(5)
         try:
-            conn = sqlite3.connect(DB_PATH)
+            conn = sqlite3.connect(DB_PATH, timeout=30)
             cursor = conn.cursor()
             cursor.execute('INSERT INTO traffic_metrics (tcp_count, udp_count, icmp_count, total_bytes) VALUES (?, ?, ?, ?)', 
                            (traffic_stats["tcp"], traffic_stats["udp"], traffic_stats["icmp"], traffic_stats["bytes"]))

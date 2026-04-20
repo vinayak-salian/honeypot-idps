@@ -16,8 +16,7 @@ DB_PATH="/home/vinayak/honeypot_project/nexus_security.db"
 echo "[*] Cleaning Local Noise..."
 # Removes local test logs (10.42.0.x) to keep the dashboard clean for the demo
 # Preserves the Global Botnet data (ips that aren't local)
-sqlite3 $DB_PATH "DELETE FROM attack_logs WHERE source_ip LIKE '10.42.0.%' OR source_ip LIKE '192.168.%' OR source_ip = '127.0.0.1';"
-sqlite3 $DB_PATH "DELETE FROM known_devices;"
+sqlite3 $DB_PATH "DELETE FROM attack_logs WHERE source_ip LIKE '10.42.0.%' AND timestamp < datetime('now', '-1 hour');"
 
 # Re-insert Gateway manually to ensure the map always shows the router
 GATEWAY_IP="10.42.0.1"
