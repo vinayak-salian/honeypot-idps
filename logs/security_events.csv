@@ -1,4 +1,8 @@
 timestamp,source_ip,attack_type,confidence,evidence,latitude,longitude,country,city
+"2026-04-21 00:13:15",166.117.166.206,PortScan,0.89,"Probed 6 ports | Rate: 0.52 p/s",37.751,-97.822,"United States",
+"2026-04-21 00:13:14",166.117.166.206,PortScan,0.89,"Probed 6 ports | Rate: 0.52 p/s",37.751,-97.822,"United States",
+"2026-04-21 00:13:03",166.117.166.206,PortScan,0.89,"Probed 4 ports | Rate: 11.34 p/s",37.751,-97.822,"United States",
+"2026-04-21 00:13:03",166.117.166.206,PortScan,0.89,"Probed 4 ports | Rate: 11.34 p/s",37.751,-97.822,"United States",
 "2026-04-21 00:04:50",13.49.143.23,PortScan,0.9,"Probed 4 ports | Rate: 20.37 p/s",59.3287,18.0717,Sweden,Stockholm
 "2026-04-21 00:04:49",13.49.143.23,PortScan,0.9,"Probed 4 ports | Rate: 10.63 p/s",59.3287,18.0717,Sweden,Stockholm
 "2026-04-20 23:55:25",4.240.189.79,PortScan,0.89,"Probed 10 ports | Rate: 0.98 p/s",21.1463,79.0849,India,Nagpur
