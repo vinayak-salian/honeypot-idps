@@ -1,4 +1,14 @@
 timestamp,source_ip,domain
+"2026-04-20 23:50:38",10.42.0.48,analytics.apis.mcafee.com
+"2026-04-20 23:50:37",10.42.0.48,csptoken.ccs.mcafee.com
+"2026-04-20 23:50:37",10.42.0.48,csptoken.ccs.mcafee.com
+"2026-04-20 23:50:14",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-20 23:50:14",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
+"2026-04-20 23:50:14",10.42.0.48,b.6sc.co
+"2026-04-20 23:50:14",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
+"2026-04-20 23:50:14",10.42.0.48,b.6sc.co
+"2026-04-20 23:50:12",10.42.0.48,clients4.google.com
+"2026-04-20 23:50:12",10.42.0.48,clients4.google.com
 "2026-04-20 23:49:51",10.42.0.48,clientservices.googleapis.com
 "2026-04-20 23:49:51",10.42.0.48,clientservices.googleapis.com
 "2026-04-20 23:49:49",10.42.0.48,mobile.events.data.microsoft.com
@@ -89,13 +99,3 @@ timestamp,source_ip,domain
 "2026-04-20 23:44:36",10.42.0.48,csptoken.ccs.mcafee.com
 "2026-04-20 23:44:36",10.42.0.48,csptoken.ccs.mcafee.com
 "2026-04-20 23:44:36",10.42.0.48,analytics.apis.mcafee.com
-"2026-04-20 23:44:36",10.42.0.48,crl3.digicert.com
-"2026-04-20 23:44:36",10.42.0.48,crl3.digicert.com
-"2026-04-20 23:44:22",10.42.0.48,b1.nel.goog
-"2026-04-20 23:44:21",10.42.0.48,signaler-pa.clients6.google.com
-"2026-04-20 23:44:14",10.42.0.48,b.6sc.co
-"2026-04-20 23:44:14",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-20 23:43:49",10.42.0.48,adblock.telemetry.eyeo.com
-"2026-04-20 23:43:49",10.42.0.48,adblock.telemetry.eyeo.com
-"2026-04-20 23:43:48",10.42.0.48,settings-win.data.microsoft.com
-"2026-04-20 23:43:48",10.42.0.48,settings-win.data.microsoft.com
