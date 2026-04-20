@@ -1,4 +1,13 @@
 timestamp,source_ip,domain
+"2026-04-20 23:49:51",10.42.0.48,clientservices.googleapis.com
+"2026-04-20 23:49:51",10.42.0.48,clientservices.googleapis.com
+"2026-04-20 23:49:49",10.42.0.48,mobile.events.data.microsoft.com
+"2026-04-20 23:49:49",10.42.0.48,mobile.events.data.microsoft.com
+"2026-04-20 23:49:45",10.42.0.48,logs.eu-north-1.amazonaws.com
+"2026-04-20 23:49:41",10.42.0.48,eu-north-1.console.aws.amazon.com
+"2026-04-20 23:49:41",10.42.0.48,eu-north-1.console.aws.amazon.com
+"2026-04-20 23:49:37",10.42.0.48,mobile.events.data.microsoft.com
+"2026-04-20 23:49:14",10.42.0.48,us-east-1.ctrl.prod.os.notifications.aws.dev
 "2026-04-20 23:48:57",10.42.0.48,th.bing.com
 "2026-04-20 23:48:57",10.42.0.48,img-s-msn-com.akamaized.net
 "2026-04-20 23:48:54",10.42.0.48,assets.msn.com
@@ -90,12 +99,3 @@ timestamp,source_ip,domain
 "2026-04-20 23:43:49",10.42.0.48,adblock.telemetry.eyeo.com
 "2026-04-20 23:43:48",10.42.0.48,settings-win.data.microsoft.com
 "2026-04-20 23:43:48",10.42.0.48,settings-win.data.microsoft.com
-"2026-04-20 23:43:48",10.42.0.48,adblockplus.telemetry.eyeo.com
-"2026-04-20 23:43:48",10.42.0.48,adblockplus.telemetry.eyeo.com
-"2026-04-20 23:43:35",10.42.0.48,settings-win.data.microsoft.com
-"2026-04-20 23:43:35",10.42.0.48,settings-win.data.microsoft.com
-"2026-04-20 23:43:15",10.42.0.48,bam.nr-data.net
-"2026-04-20 23:43:15",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-20 23:43:01",10.42.0.48,gemini.google.com
-"2026-04-20 23:43:01",10.42.0.48,gemini.google.com
-"2026-04-20 23:43:00",10.42.0.48,ocsp.digicert.com
