@@ -29,7 +29,7 @@ DB_PATH = '/home/vinayak/honeypot_project/nexus_security.db'
 MAIN_LOG = '/home/vinayak/honeypot_project/logs/security_events.csv'
 
 # Whitelist: Logged for history, but quiet in console and off the heatmap
-WHITELIST = ["10.42.0.48", "127.0.0.1", "10.42.0.1"]
+WHITELIST = ["127.0.0.1",]
 
 # 3. ML ASSET LOADING
 model, scaler, required_features, labels_dict = None, None, [], {}
