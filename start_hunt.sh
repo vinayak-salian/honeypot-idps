@@ -48,7 +48,7 @@ tmux new-window -t sentry_hunt:4 -n "DNS" "sudo /home/vinayak/honeypot_project/v
 tmux new-window -t sentry_hunt:5 -n "Sync" "while true; do /home/vinayak/honeypot_project/sync_to_cloud.sh; sleep 60; done"
 
 # Window 6: Vulnerable Server (Malware Delivery Honeypot)
-tmux new-window -t sentry_hunt:6 -n "Malware" "sudo /home/vinayak/honeypot_project/venv/bin/python /home/vinayak/honeypot_project/vulnerable_server.py; read"
+tmux new-window -t sentry_hunt:6 -n "Malware" "sudo /home/vinayak/honeypot_project/venv/bin/python /home/vinayak/honeypot_project/attacks/malware/vulnerable_server.py; read"
 
 # Window 7: Active Mitigator (IPS Action Engine)
 tmux new-window -t sentry_hunt:7 -n "Mitigate" "while true; do sudo /home/vinayak/honeypot_project/venv/bin/python /home/vinayak/honeypot_project/mitigator.py; sleep 5; done"
