@@ -1,4 +1,11 @@
 timestamp,source_ip,domain
+"2026-04-20 23:32:48",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-20 23:32:34",10.42.0.48,analytics.apis.mcafee.com
+"2026-04-20 23:32:33",10.42.0.48,csptoken.ccs.mcafee.com
+"2026-04-20 23:32:20",10.42.0.48,events.launchdarkly.com
+"2026-04-20 23:32:20",10.42.0.48,events.launchdarkly.com
+"2026-04-20 23:32:14",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-20 23:32:14",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-20 23:31:43",10.42.0.48,analytics.google.com
 "2026-04-20 23:31:21",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-20 23:31:21",10.42.0.48,qjmnz4vd2y07.statuspage.io
@@ -92,10 +99,3 @@ timestamp,source_ip,domain
 "2026-04-20 23:25:15",10.42.0.48,us-east-1.ctrl.prod.os.notifications.aws.dev
 "2026-04-20 23:25:14",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-20 23:25:14",10.42.0.48,b.6sc.co
-"2026-04-20 23:25:14",10.42.0.48,bam.nr-data.net
-"2026-04-20 23:25:14",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
-"2026-04-20 23:25:14",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-20 23:25:08",10.42.0.48,clients4.google.com
-"2026-04-20 23:24:58",10.42.0.48,www.youtube.com
-"2026-04-20 23:24:46",10.42.0.48,honeypot-idps-mproject.streamlit.app
-"2026-04-20 23:24:46",10.42.0.48,honeypot-idps-mproject.streamlit.app
