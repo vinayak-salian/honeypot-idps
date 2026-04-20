@@ -1,4 +1,13 @@
 timestamp,source_ip,attack_type,confidence,evidence,latitude,longitude,country,city
+"2026-04-20 23:55:14",4.240.189.79,PortScan,0.89,"Probed 6 ports | Rate: 0.79 p/s",21.1463,79.0849,India,Nagpur
+"2026-04-20 23:55:13",4.240.189.79,PortScan,0.89,"Probed 11 ports | Rate: 1.14 p/s",21.1463,79.0849,India,Nagpur
+"2026-04-20 23:55:11",104.122.216.93,PortScan,0.89,"Probed 6 ports | Rate: 0.61 p/s",21.1463,79.0849,India,Nagpur
+"2026-04-20 23:55:04",4.240.189.79,PortScan,0.89,"Probed 4 ports | Rate: 1.68 p/s",21.1463,79.0849,India,Nagpur
+"2026-04-20 23:55:03",104.122.216.93,PortScan,0.89,"Probed 4 ports | Rate: 1.57 p/s",21.1463,79.0849,India,Nagpur
+"2026-04-20 23:55:03",4.240.189.79,PortScan,0.89,"Probed 4 ports | Rate: 1.68 p/s",21.1463,79.0849,India,Nagpur
+"2026-04-20 23:55:00",104.122.216.93,PortScan,0.89,"Probed 4 ports | Rate: 1.57 p/s",21.1463,79.0849,India,Nagpur
+"2026-04-20 23:54:44",13.49.143.4,PortScan,0.9,"Probed 4 ports | Rate: 355.1 p/s",59.3287,18.0717,Sweden,Stockholm
+"2026-04-20 23:54:43",13.49.143.4,PortScan,0.9,"Probed 4 ports | Rate: 355.1 p/s",59.3287,18.0717,Sweden,Stockholm
 "2026-04-20 23:54:15",13.107.213.68,PortScan,0.89,"Probed 4 ports | Rate: 4.89 p/s",37.751,-97.822,"United States",
 "2026-04-20 23:54:12",13.107.213.68,PortScan,0.89,"Probed 4 ports | Rate: 4.89 p/s",37.751,-97.822,"United States",
 "2026-04-20 23:52:50",150.171.109.130,PortScan,0.89,"Probed 4 ports | Rate: 8.67 p/s",37.751,-97.822,"United States",
