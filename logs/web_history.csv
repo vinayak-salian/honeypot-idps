@@ -1,4 +1,17 @@
 timestamp,source_ip,domain
+"2026-04-20 23:33:58",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-20 23:33:58",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-20 23:33:56",10.42.0.48,gemini.google.com
+"2026-04-20 23:33:56",10.42.0.48,gemini.google.com
+"2026-04-20 23:33:19",10.42.0.48,opps-api.getwarmly.com
+"2026-04-20 23:33:19",10.42.0.48,opps-api.getwarmly.com
+"2026-04-20 23:33:17",10.42.0.48,telemetry.canva.com
+"2026-04-20 23:33:17",10.42.0.48,telemetry.canva.com
+"2026-04-20 23:33:15",10.42.0.48,google.com
+"2026-04-20 23:33:15",10.42.0.48,b.6sc.co
+"2026-04-20 23:33:15",10.42.0.48,eu-north-1.console.aws.amazon.com
+"2026-04-20 23:33:14",10.42.0.48,b.6sc.co
+"2026-04-20 23:33:14",10.42.0.48,eu-north-1.console.aws.amazon.com
 "2026-04-20 23:32:48",10.42.0.48,beacons.gcp.gvt2.com
 "2026-04-20 23:32:34",10.42.0.48,analytics.apis.mcafee.com
 "2026-04-20 23:32:33",10.42.0.48,csptoken.ccs.mcafee.com
@@ -86,16 +99,3 @@ timestamp,source_ip,domain
 "2026-04-20 23:26:16",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-20 23:26:11",10.42.0.48,honeypot-idps-mproject.streamlit.app
 "2026-04-20 23:26:10",10.42.0.48,angrystaffofficer.com
-"2026-04-20 23:26:08",10.42.0.48,beacons.gcp.gvt2.com
-"2026-04-20 23:26:08",10.42.0.48,accounts.google.com
-"2026-04-20 23:26:08",10.42.0.48,accounts.google.com
-"2026-04-20 23:26:05",10.42.0.48,ssl.gstatic.com
-"2026-04-20 23:26:05",10.42.0.48,drive.google.com
-"2026-04-20 23:26:03",10.42.0.48,github.com
-"2026-04-20 23:26:03",10.42.0.48,github.com
-"2026-04-20 23:25:26",10.42.0.48,www.google-analytics.com
-"2026-04-20 23:25:26",10.42.0.48,www.google-analytics.com
-"2026-04-20 23:25:26",10.42.0.48,accounts.youtube.com
-"2026-04-20 23:25:15",10.42.0.48,us-east-1.ctrl.prod.os.notifications.aws.dev
-"2026-04-20 23:25:14",10.42.0.48,qjmnz4vd2y07.statuspage.io
-"2026-04-20 23:25:14",10.42.0.48,b.6sc.co
