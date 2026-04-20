@@ -9,7 +9,8 @@ import warnings
 import sys
 import csv
 import sqlite3
-from scapy.all import sniff, IP, UDP, get_if_addr, conf
+import math
+from scapy.all import sniff, IP, UDP, DNS, get_if_addr, conf
 from collections import defaultdict
 
 # --- 1. INTEGRATE GEO UTILS ---
@@ -17,7 +18,7 @@ sys.path.append('/home/vinayak/honeypot_project')
 try:
     from geo_utils import get_geo_data
 except ImportError:
-    print("[!] Error: geo_utils.py not found in project folder.")
+    print("[!] Error: geo_utils.py not found.")
 
 # 2. CONFIGURATION & PATHS
 BASE_PATH = '/home/vinayak/honeypot_project/models/dns/'
@@ -28,8 +29,8 @@ LABELS_PATH = os.path.join(BASE_PATH, 'dns_labels.json')
 DB_PATH = '/home/vinayak/honeypot_project/nexus_security.db'
 MAIN_LOG = '/home/vinayak/honeypot_project/logs/security_events.csv'
 
-# Whitelist: Logged for history, but quiet in console and off the heatmap
-WHITELIST = ["127.0.0.1",]
+# Whitelist: Your laptop is removed so we can see the alert during demo
+WHITELIST = ["127.0.0.1"]
 
 # 3. ML ASSET LOADING
 model, scaler, required_features, labels_dict = None, None, [], {}
@@ -46,92 +47,115 @@ try:
 except Exception as e:
     print(f"[!] DNS Init Warning: {e}")
 
+# --- 4. TUNNELING & FLOW STATE ---
 flows = defaultdict(lambda: {
-    'start_time': None, 'last_pkt_time': None, 'fwd_pkts': 0, 'bwd_pkts': 0,
-    'fwd_lengths': [], 'analyzed': False
+    'start_time': None, 'last_pkt_time': None, 'fwd_pkts': 0, 
+    'fwd_lengths': [], 'analyzed': False, 'query_count': 0
 })
 
-PACKET_THRESHOLD = 1
+# Thresholds for Tunneling Detection
+ENTROPY_THRESHOLD = 3.5
+TUNNEL_FREQ_THRESHOLD = 20  # Alert every 20 suspicious queries
 
-def analyze_and_log(external_ip, flow_key):
-    flow = flows[flow_key]
-    duration = float(flow['last_pkt_time']) - float(flow['start_time'])
-    if duration <= 0: duration = 0.001
+def calculate_entropy(text):
+    if not text: return 0
+    entropy = 0
+    for x in range(256):
+        p_x = float(text.count(chr(x)))/len(text)
+        if p_x > 0:
+            entropy += - p_x * math.log(p_x, 2)
+    return entropy
 
-    attack_type = "DNS_Query"
-    confidence = 0.60
+def log_attack(ip, attack_type, confidence, evidence):
+    timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
+    lat, lon, country, city = get_geo_data(ip)
+    
+    # 1. CSV Logging
+    row = [timestamp, ip, attack_type, 53, "UDP", round(float(confidence), 2), lat, lon, country, city]
+    with open(MAIN_LOG, 'a', newline='') as f:
+        csv.writer(f).writerow(row)
 
-    # --- FEATURE 1: ML PREDICTION ---
-    if model is not None:
-        try:
-            data = {feat: 0 for feat in required_features}
-            data['Flow Duration'] = int(duration * 1e6)
-            df = pd.DataFrame([data])[required_features].fillna(0)
-            raw_pred = model.predict(df)[0]
-            confidence = np.max(model.predict_proba(df)[0])
-            attack_type = labels_dict.get(str(int(raw_pred)), "Unknown")
-        except: pass
+    # 2. SQLite Logging
+    try:
+        conn = sqlite3.connect(DB_PATH, timeout=30)
+        cursor = conn.cursor()
+        cursor.execute('''
+            INSERT INTO attack_logs (timestamp, source_ip, attack_type, confidence, evidence, latitude, longitude, country, city)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', (timestamp, ip, attack_type, round(float(confidence), 2), evidence, lat, lon, country, city))
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        print(f"[!] DNS DB Error: {e}")
 
-    # --- FEATURE 2: HEURISTIC (Amplification) ---
-    avg_size = np.mean(flow['fwd_lengths']) if flow['fwd_lengths'] else 0
-    total_packets = flow['fwd_pkts']
-    if total_packets > 40 and avg_size > 200:
-        attack_type = "DrDoS_DNS_Amplification"
-        confidence = 0.95
-
-    # --- LOGGING GATE ---
-    if "DNS" in attack_type or "DrDoS" in attack_type or "Unknown" in attack_type:
-        timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
-        
-        # Get dynamic geo-location (None for local IPs = Hidden from Heatmap)
-        lat, lon, country, city = get_geo_data(external_ip)
-
-        # 1. Log to CSV (for Hostile History)
-        row = [timestamp, external_ip, attack_type, 53, "UDP", round(float(confidence), 2), lat, lon, country, city]
-        with open(MAIN_LOG, 'a', newline='') as f:
-            csv.writer(f).writerow(row)
-
-        # 2. Log to SQLite (for Dashboard Tables)
-        try:
-            conn = sqlite3.connect(DB_PATH, timeout=30)
-            cursor = conn.cursor()
-            cursor.execute('''
-                INSERT INTO attack_logs (timestamp, source_ip, attack_type, confidence, evidence, latitude, longitude, country, city)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ''', (timestamp, external_ip, attack_type, round(float(confidence), 2), 
-                  f"Avg Size: {int(avg_size)}B | Pkts: {total_packets}", lat, lon, country, city))
-            conn.commit()
-            conn.close()
-        except Exception as e:
-            print(f"[!] DNS DB Error: {e}")
-
-        # Console Alert (Only for non-whitelisted IPs)
-        if external_ip not in WHITELIST:
-            print(f"[🚨 ALERT] DNS ATTACK LOGGED: {external_ip} | Type: {attack_type} | Conf: {confidence:.2%}")
+    # 3. Console Alert
+    if ip not in WHITELIST:
+        print(f"[🚨 ALERT] {attack_type} DETECTED: {ip} | Conf: {confidence:.2%} | {evidence[:50]}")
 
 def packet_callback(pkt):
     if IP not in pkt or UDP not in pkt: return
+    
+    # Identify local gateway IP
     try: MY_IP = get_if_addr("wlan0")
     except: MY_IP = "10.42.0.1"
     
     src_ip, dst_ip = pkt[IP].src, pkt[IP].dst
-    
-    # Target: UDP Port 53
-    if dst_ip == MY_IP and pkt[UDP].dport == 53:
-        flow_key = src_ip
+
+    # Only process queries heading TO the Pi on port 53
+    if dst_ip == MY_IP and pkt[UDP].dport == 53 and pkt.haslayer(DNS):
+        flow = flows[src_ip]
         pkt_time = float(pkt.time)
         
-        if flows[flow_key]['start_time'] is None: 
-            flows[flow_key]['start_time'] = pkt_time
+        # Initialize Flow
+        if flow['start_time'] is None: flow['start_time'] = pkt_time
+        flow['last_pkt_time'] = pkt_time
+        flow['fwd_pkts'] += 1
+        flow['fwd_lengths'].append(len(pkt))
+
+        # --- A. ML & AMPLIFICATION CHECK (One-shot per session) ---
+        if flow['fwd_pkts'] >= 5 and not flow['analyzed']:
+            flow['analyzed'] = True
+            # [Previous ML Logic Preserved]
+            duration = pkt_time - flow['start_time']
+            avg_size = np.mean(flow['fwd_lengths'])
             
-        flows[flow_key]['last_pkt_time'] = pkt_time
-        flows[flow_key]['fwd_pkts'] += 1
-        flows[flow_key]['fwd_lengths'].append(len(pkt))
-        
-        if flows[flow_key]['fwd_pkts'] >= PACKET_THRESHOLD and not flows[flow_key]['analyzed']:
-            flows[flow_key]['analyzed'] = True
-            analyze_and_log(src_ip, flow_key)
+            attack_type = "DNS_Query"
+            confidence = 0.60
+            
+            if model is not None:
+                try:
+                    data = {feat: 0 for feat in required_features}
+                    data['Flow Duration'] = int(duration * 1e6)
+                    df = pd.DataFrame([data])[required_features].fillna(0)
+                    raw_pred = model.predict(df)[0]
+                    confidence = np.max(model.predict_proba(df)[0])
+                    attack_type = labels_dict.get(str(int(raw_pred)), "Unknown")
+                except: pass
+            
+            if flow['fwd_pkts'] > 40 and avg_size > 200:
+                attack_type = "DrDoS_DNS_Amplification"
+                confidence = 0.95
+            
+            if attack_type != "DNS_Query":
+                log_attack(src_ip, attack_type, confidence, f"Avg Size: {int(avg_size)}B")
+
+        # --- B. TUNNELING CHECK (Continuous Stream Monitoring) ---
+        try:
+            query_name = pkt[DNS].qd.qname.decode().strip('.')
+            subdomain = query_name.split('.')[0]
+            entropy = calculate_entropy(subdomain)
+
+            # If entropy is high, treat it as a tunneling attempt
+            if entropy > ENTROPY_THRESHOLD:
+                flow['query_count'] += 1
+                
+                # Alert when we reach the threshold or it's extremely high entropy
+                if flow['query_count'] >= TUNNEL_FREQ_THRESHOLD or entropy > 4.5:
+                    log_attack(src_ip, "DNS_Tunneling", 0.92, f"Entropy: {entropy:.2f} | Query: {query_name}")
+                    flow['query_count'] = 0 # Reset for next burst
+        except:
+            pass
 
 if __name__ == "__main__":
-    print("[*] DNS Sentry starting on wlan0 (Monitoring UDP 53)...")
-    sniff(iface="wlan0", prn=packet_callback, store=False)
+    print("[*] DNS Sentry starting on wlan0 (Monitoring UDP 53 + Tunneling Logic)...")
+    sniff(iface="wlan0", prn=packet_callback, store=False, filter="udp port 53")
