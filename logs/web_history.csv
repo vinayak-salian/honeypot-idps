@@ -1,4 +1,17 @@
 timestamp,source_ip,domain
+"2026-04-20 21:36:06",10.42.0.48,ssl.gstatic.com
+"2026-04-20 21:36:01",10.42.0.48,v10.events.data.microsoft.com
+"2026-04-20 21:35:59",10.42.0.48,accounts.google.com
+"2026-04-20 21:35:59",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-20 21:35:59",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-20 21:35:58",10.42.0.48,accounts.google.com
+"2026-04-20 21:35:33",10.42.0.48,csptoken.ccs.mcafee.com
+"2026-04-20 21:35:33",10.42.0.48,csptoken.ccs.mcafee.com
+"2026-04-20 21:35:33",10.42.0.48,analytics.apis.mcafee.com
+"2026-04-20 21:35:33",10.42.0.48,analytics.apis.mcafee.com
+"2026-04-20 21:35:22",10.42.0.48,crl4.digicert.com
+"2026-04-20 21:35:21",10.42.0.48,crl3.digicert.com
+"2026-04-20 21:35:21",10.42.0.48,crl3.digicert.com
 "2026-04-20 21:34:58",10.42.0.48,google.com
 "2026-04-20 21:34:41",10.42.0.48,webhooks.fivetran.com
 "2026-04-20 21:34:38",10.42.0.48,beacons.gcp.gvt2.com
