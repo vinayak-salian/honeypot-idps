@@ -1,4 +1,7 @@
 timestamp,source_ip,domain
+"2026-04-20 21:38:50",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-20 21:38:50",10.42.0.48,analytics.google.com
+"2026-04-20 21:38:50",10.42.0.48,analytics.google.com
 "2026-04-20 21:38:22",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-20 21:38:22",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-20 21:38:06",10.42.0.48,settings-win.data.microsoft.com
@@ -96,6 +99,3 @@ timestamp,source_ip,domain
 "2026-04-20 21:31:14",10.42.0.48,heapanalytics.com
 "2026-04-20 21:31:11",10.42.0.48,www.google.com
 "2026-04-20 21:31:11",10.42.0.48,honeypot-idps-mproject.streamlit.app
-"2026-04-20 21:31:09",10.42.0.48,b1.nel.goog
-"2026-04-20 21:31:08",10.42.0.48,b1.nel.goog
-"2026-04-20 21:31:05",10.42.0.48,ssl.gstatic.com
