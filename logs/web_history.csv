@@ -1,4 +1,9 @@
 timestamp,source_ip,domain
+"2026-04-20 23:35:17",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
+"2026-04-20 23:35:15",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-20 23:35:14",10.42.0.48,bam.nr-data.net
+"2026-04-20 23:35:14",10.42.0.48,b.6sc.co
+"2026-04-20 23:35:06",10.42.0.48,www.google-analytics.com
 "2026-04-20 23:34:39",10.42.0.48,logs.eu-north-1.amazonaws.com
 "2026-04-20 23:34:38",10.42.0.48,eu-north-1.console.aws.amazon.com
 "2026-04-20 23:34:34",10.42.0.48,csptoken.ccs.mcafee.com
@@ -94,8 +99,3 @@ timestamp,source_ip,domain
 "2026-04-20 23:28:14",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-20 23:28:14",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-20 23:28:11",10.42.0.48,collector.github.com
-"2026-04-20 23:28:11",10.42.0.48,collector.github.com
-"2026-04-20 23:28:11",10.42.0.48,gemini.google.com
-"2026-04-20 23:28:11",10.42.0.48,honeypot-idps-mproject.streamlit.app
-"2026-04-20 23:27:25",10.42.0.48,telemetry.canva.com
-"2026-04-20 23:27:25",10.42.0.48,telemetry.canva.com
