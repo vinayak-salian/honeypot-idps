@@ -1,4 +1,14 @@
 timestamp,source_ip,domain
+"2026-04-20 21:33:04",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-20 21:32:54",10.42.0.48,heapanalytics.com
+"2026-04-20 21:32:49",10.42.0.48,webhooks.fivetran.com
+"2026-04-20 21:32:44",10.42.0.48,collector.github.com
+"2026-04-20 21:32:44",10.42.0.48,api.github.com
+"2026-04-20 21:32:43",10.42.0.48,www.google.com
+"2026-04-20 21:32:43",10.42.0.48,www.google.com
+"2026-04-20 21:32:34",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-20 21:32:11",10.42.0.48,gemini.google.com
+"2026-04-20 21:32:03",10.42.0.48,github.com
 "2026-04-20 21:31:37",10.42.0.48,webhooks.fivetran.com
 "2026-04-20 21:31:34",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-20 21:31:33",10.42.0.48,analytics.apis.mcafee.com
