@@ -21,7 +21,7 @@ sqlite3 $DB_PATH "DELETE FROM attack_logs WHERE source_ip LIKE '10.42.0.%' AND t
 # Re-insert Gateway manually to ensure the map always shows the router
 GATEWAY_IP="10.42.0.1"
 GATEWAY_MAC="2c:cf:67:6c:72:6c" 
-sqlite3 $DB_PATH "INSERT INTO known_devices (ip_address, mac_address, last_seen) VALUES ('$GATEWAY_IP', '$GATEWAY_MAC', datetime('now', 'localtime'));"
+sqlite3 $DB_PATH "INSERT OR REPLACE INTO known_devices (ip_address, mac_address, last_seen) VALUES ('$GATEWAY_IP', '$GATEWAY_MAC', datetime('now', 'localtime'));"
 
 echo "[+] Local Assets/Logs cleared. Global Botnet history preserved."
 
