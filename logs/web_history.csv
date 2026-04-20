@@ -1,4 +1,17 @@
 timestamp,source_ip,domain
+"2026-04-21 00:05:33",10.42.0.48,crl.anydesk.com
+"2026-04-21 00:05:32",10.42.0.48,crl.anydesk.com
+"2026-04-21 00:05:16",10.42.0.48,telemetry.canva.com
+"2026-04-21 00:05:14",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
+"2026-04-21 00:05:14",10.42.0.48,us-east-1.ctrl.prod.os.notifications.aws.dev
+"2026-04-21 00:05:14",10.42.0.48,cell-0.eu-north-1.prod.telemetry.console.api.aws
+"2026-04-21 00:05:14",10.42.0.48,us-east-1.ctrl.prod.os.notifications.aws.dev
+"2026-04-21 00:05:12",10.42.0.48,analytics.apis.mcafee.com
+"2026-04-21 00:05:12",10.42.0.48,analytics.apis.mcafee.com
+"2026-04-21 00:05:11",10.42.0.48,csptoken.ccs.mcafee.com
+"2026-04-21 00:05:11",10.42.0.48,csptoken.ccs.mcafee.com
+"2026-04-21 00:05:07",10.42.0.48,signaler-pa.clients6.google.com
+"2026-04-21 00:05:02",10.42.0.48,google.com
 "2026-04-21 00:04:46",10.42.0.48,eu-north-1.console.aws.amazon.com
 "2026-04-21 00:04:46",10.42.0.48,eu-north-1.console.aws.amazon.com
 "2026-04-21 00:04:45",10.42.0.48,beacons.gcp.gvt2.com
@@ -86,16 +99,3 @@ timestamp,source_ip,domain
 "2026-04-21 00:04:30",10.42.0.48,1.0.42.10.in-addr.arpa
 "2026-04-21 00:04:30",10.42.0.48,RGF0YUJsb2NrODVDcml0aWNhbEV4ZmlsdHJhdGlvbg==.tunnel-demo.com
 "2026-04-21 00:04:30",10.42.0.48,RGF0YUJsb2NrODVDcml0aWNhbEV4ZmlsdHJhdGlvbg==.tunnel-demo.com
-"2026-04-21 00:04:30",10.42.0.48,RGF0YUJsb2NrODVDcml0aWNhbEV4ZmlsdHJhdGlvbg==.tunnel-demo.com
-"2026-04-21 00:04:30",10.42.0.48,RGF0YUJsb2NrODVDcml0aWNhbEV4ZmlsdHJhdGlvbg==.tunnel-demo.com
-"2026-04-21 00:04:30",10.42.0.48,1.0.42.10.in-addr.arpa
-"2026-04-21 00:04:30",10.42.0.48,RGF0YUJsb2NrODZDcml0aWNhbEV4ZmlsdHJhdGlvbg==.tunnel-demo.com
-"2026-04-21 00:04:30",10.42.0.48,RGF0YUJsb2NrODZDcml0aWNhbEV4ZmlsdHJhdGlvbg==.tunnel-demo.com
-"2026-04-21 00:04:30",10.42.0.48,RGF0YUJsb2NrODZDcml0aWNhbEV4ZmlsdHJhdGlvbg==.tunnel-demo.com
-"2026-04-21 00:04:30",10.42.0.48,RGF0YUJsb2NrODZDcml0aWNhbEV4ZmlsdHJhdGlvbg==.tunnel-demo.com
-"2026-04-21 00:04:30",10.42.0.48,1.0.42.10.in-addr.arpa
-"2026-04-21 00:04:30",10.42.0.48,RGF0YUJsb2NrODdDcml0aWNhbEV4ZmlsdHJhdGlvbg==.tunnel-demo.com
-"2026-04-21 00:04:30",10.42.0.48,RGF0YUJsb2NrODdDcml0aWNhbEV4ZmlsdHJhdGlvbg==.tunnel-demo.com
-"2026-04-21 00:04:30",10.42.0.48,RGF0YUJsb2NrODdDcml0aWNhbEV4ZmlsdHJhdGlvbg==.tunnel-demo.com
-"2026-04-21 00:04:30",10.42.0.48,RGF0YUJsb2NrODdDcml0aWNhbEV4ZmlsdHJhdGlvbg==.tunnel-demo.com
-"2026-04-21 00:04:30",10.42.0.48,1.0.42.10.in-addr.arpa
