@@ -1,4 +1,9 @@
 timestamp,source_ip,attack_type,confidence,evidence,latitude,longitude,country,city
+"2026-04-21 22:46:35",10.42.0.89,PortScan,0.89,"Probed 6 ports | Rate: 0.6 p/s",,,India,Local_Network
+"2026-04-21 22:46:26",10.42.0.89,PortScan,0.89,"Probed 4 ports | Rate: 25.54 p/s",,,India,Local_Network
+"2026-04-21 22:46:25",10.42.0.89,Benign,0.99,"Avg Size: 79B",,,India,Local_Network
+"2026-04-21 22:46:25",10.42.0.89,PortScan,0.89,"Probed 4 ports | Rate: 29.1 p/s",,,India,Local_Network
+"2026-04-21 22:46:25",10.42.0.89,Benign,0.99,"Avg Size: 79B",,,India,Local_Network
 "2026-04-21 22:22:28",10.42.0.48,Malware,0.5,"File: backdoor.sh.txt | Suspicious_File_Upload",,,India,Local_Network
 "2026-04-21 22:22:14",10.42.0.48,DNS_Tunneling,0.92,"Entropy: 4.65 | Query: U3RyZXNzVGVzdEJsb2NrNjBDcml0aWNhbERhdGE=.demo-tunnel.com",,,India,Local_Network
 "2026-04-21 22:22:14",10.42.0.48,DNS_Tunneling,0.92,"Entropy: 4.65 | Query: U3RyZXNzVGVzdEJsb2NrNjBDcml0aWNhbERhdGE=.demo-tunnel.com",,,India,Local_Network
