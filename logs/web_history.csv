@@ -1,4 +1,8 @@
 timestamp,source_ip,domain
+"2026-04-21 22:48:25",10.42.0.89,firebaseremoteconfig.googleapis.com
+"2026-04-21 22:48:24",10.42.0.89,www.google.com
+"2026-04-21 22:48:24",10.42.0.89,crashlyticsreports-pa.googleapis.com
+"2026-04-21 22:48:23",10.42.0.89,s-in.ls.glanceapis.com
 "2026-04-21 22:47:07",10.42.0.89,www.samsung.com
 "2026-04-21 22:47:07",10.42.0.89,www.rsc.org
 "2026-04-21 22:47:05",10.42.0.89,roughtime.cloudflare.com
@@ -94,8 +98,4 @@ timestamp,source_ip,domain
 "2026-04-21 22:22:12",10.42.0.48,U3RyZXNzVGVzdEJsb2NrNjBDcml0aWNhbERhdGE=.demo-tunnel.com
 "2026-04-21 22:22:12",10.42.0.48,U3RyZXNzVGVzdEJsb2NrNjBDcml0aWNhbERhdGE=.demo-tunnel.com
 "2026-04-21 22:22:10",10.42.0.48,U3RyZXNzVGVzdEJsb2NrNTlDcml0aWNhbERhdGE=.demo-tunnel.com
-"2026-04-21 22:22:10",10.42.0.48,U3RyZXNzVGVzdEJsb2NrNTlDcml0aWNhbERhdGE=.demo-tunnel.com
-"2026-04-21 22:22:10",10.42.0.48,ssl.gstatic.com
-"2026-04-21 22:22:10",10.42.0.48,U3RyZXNzVGVzdEJsb2NrNTlDcml0aWNhbERhdGE=.demo-tunnel.com
-"2026-04-21 22:22:10",10.42.0.48,ssl.gstatic.com
 "2026-04-21 22:22:10",10.42.0.48,U3RyZXNzVGVzdEJsb2NrNTlDcml0aWNhbERhdGE=.demo-tunnel.com
