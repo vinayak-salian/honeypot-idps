@@ -4,7 +4,6 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 import pytz
-import time
 
 # --- 1. CONFIGURATION ---
 AWS_IP = "51.21.135.152" 
@@ -14,11 +13,10 @@ ist = pytz.timezone('Asia/Kolkata')
 st.set_page_config(page_title="Nexus Security Core", page_icon="🛡️", layout="wide")
 
 # --- 2. LOG FETCHING FUNCTION ---
-@st.cache_data(ttl=5) # Reduced to 5s for faster demo updates
+@st.cache_data(ttl=10)
 def fetch_logs(filename):
     try:
-        # FIXED: Added 'nocache' parameter with an integer to force GitHub to bypass its 5-min CDN cache
-        url = f"{RAW_URL}{filename}?nocache={int(time.time())}"
+        url = f"{RAW_URL}{filename}?t={datetime.now().timestamp()}"
         df = pd.read_csv(url)
         if 'timestamp' in df.columns:
             df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
@@ -45,30 +43,31 @@ def send_command(ip, action):
         
         repo.update_file(contents.path, f"C2-Command: {action} {ip}", updated_content, contents.sha)
         st.success(f"Command '{action}' queued for {ip}")
-        st.cache_data.clear() # Clear cache so we see the action immediately
     except Exception as e:
         st.error(f"Failed to send command: {e}")
 
-# --- 3. DATA ACQUISITION ---
+# --- 3. DATA ACQUISITION (Dual-Stream Ingestion) ---
 health_df = fetch_logs("system_status.csv")
-global_events_df = fetch_logs("security_events.csv")
-local_events_df = fetch_logs("local_events.csv")
+global_events_df = fetch_logs("security_events.csv") # Mode A: All-time Global Botnets
+local_events_df = fetch_logs("local_events.csv")    # Mode B: Current Session Local Demo
 devices_df = fetch_logs("known_devices.csv")
 traffic_df = fetch_logs("traffic_metrics.csv")
 banned_df = fetch_logs("banned_ips.csv")
 web_df = fetch_logs("web_history.csv") 
 
 # Process timestamps for devices
+# FIX: Remove the tz_convert logic that adds 5.5 hours
 if not devices_df.empty and 'last_seen' in devices_df.columns:
     devices_df['last_seen'] = pd.to_datetime(devices_df['last_seen'], errors='coerce')
-    devices_df['last_seen'] = devices_df['last_seen'].dt.strftime('%H:%M:%S IST')
+    # Just format it directly since the Pi is already sending IST strings
+    devices_df['last_seen'] = devices_df['last_seen'].dt.strftime('%Y-%m-%d %H:%M:%S IST')
 
 # --- 4. MITIGATION PLAYBOOK ---
 PLAYBOOK = {
     "PortScan": {"label": "🎯 Port Scanning Detected", "solution": "Action: Deploy IPTables DROP rule for source. Enable rate-limiting on edge firewall."},
     "Malware": {"label": "🦠 Malware Activity", "solution": "Action: Isolate asset. Run ClamAV scan. Block outgoing C2 connections."},
     "Brute Force": {"label": "🔑 Brute Force / SSH Attack", "solution": "Action: Enforce SSH Key Auth. Install Fail2Ban. Reset credentials."},
-    "DNS_Spoof": {"label": "📡 DNS Spoofing / Poisoning", "solution": "Action: Flush DNS cache. Enforce DNSSEC."}
+    "DNS_Spoof": {"label": "📡 DNS Spoofing / Poisoning", "solution": "Action: Flush DNS cache (sudo systemd-resolve --flush-caches). Enforce DNSSEC."}
 }
 
 # --- 5. CUSTOM CSS ---
@@ -79,14 +78,12 @@ st.markdown("""
     .status-online { color: #10b981; background: rgba(16, 185, 129, 0.1); padding: 5px 15px; border-radius: 20px; border: 1px solid #10b981; font-size: 0.8rem; }
     .status-offline { color: #ef4444; background: rgba(239, 68, 68, 0.1); padding: 5px 15px; border-radius: 20px; border: 1px solid #ef4444; font-size: 0.8rem; }
     .playbook-card { background: rgba(59, 130, 246, 0.1); border-left: 5px solid #3b82f6; padding: 15px; border-radius: 5px; margin-bottom: 10px; font-size: 0.9rem; }
+    [data-testid="stMetricValue"] { font-family: 'Fira Code', monospace; font-size: 1.6rem; color: #3b82f6; }
 </style>
 """, unsafe_allow_html=True)
 
 # --- 6. SIDEBAR MODE TOGGLE ---
 st.sidebar.title("🎮 Command Center")
-if st.sidebar.button("🔄 Force Refresh Data"):
-    st.cache_data.clear()
-    st.rerun()
 op_mode = st.sidebar.radio("Select Operational Mode:", ["Mode A: Global Watchtower", "Mode B: Local Sentinel"])
 
 # --- 7. HEADER & DYNAMIC METRICS ---
@@ -100,14 +97,11 @@ with c_h1:
         latest = health_df.iloc[-1]
         last_sync = latest['timestamp']
         if pd.notnull(last_sync):
-            # FIXED: Handle timezone comparison safely
             last_sync_ist = ist.localize(last_sync.replace(tzinfo=None))
             now_ist = datetime.now(ist)
-            # Use absolute value to prevent "future time" bugs from Pi clock drift
-            diff = abs((now_ist - last_sync_ist).total_seconds())
-            if diff < 600: is_online = True
+            diff = (now_ist - last_sync_ist).total_seconds()
+            if diff < 900: is_online = True
             last_sync_str = last_sync_ist.strftime('%H:%M:%S IST')
-    
     s_class = "status-online" if is_online else "status-offline"
     s_text = f"🟢 PI NODE ACTIVE | Pulse: {last_sync_str}" if is_online else f"🔴 PI NODE OFFLINE | Pulse: {last_sync_str}"
     st.markdown(f'<span class="{s_class}">{s_text}</span>', unsafe_allow_html=True)
@@ -117,16 +111,14 @@ with c_h2:
     uptime_val = health_df.iloc[-1].get('uptime', '0h 0m') if not health_df.empty else "--"
     m1.metric("Uptime", f"⏱️ {uptime_val}")
     if op_mode == "Mode A: Global Watchtower": m2.metric("Cloud IP", f"🌐 {AWS_IP}")
-    else: m2.metric("Pi Gateway", f"🌐 {health_df.iloc[-1].get('gateway_ip', '--') if not health_df.empty else '--'}")
+    else: m2.metric("Pi Gateway", f"🌐 {health_df.iloc[-1].get('gateway_ip', 'Detecting...') if not health_df.empty else '--'}")
 
 st.divider()
 
 # --- HELPER: DISPLAY SECTION ---
 def display_attack_section(df, attack_key):
     if not df.empty:
-        # FILTER: Remove Benign logs from view
-        display_df = df[df['attack_type'] != 'Benign'] if 'attack_type' in df.columns else df
-        st.dataframe(display_df, use_container_width=True, hide_index=True)
+        st.dataframe(df, use_container_width=True, hide_index=True)
         if attack_key in PLAYBOOK:
             st.markdown(f'<div class="playbook-card"><strong>Recommendation:</strong> {PLAYBOOK[attack_key]["solution"]}</div>', unsafe_allow_html=True)
     else: st.info(f"✅ System clear for {attack_key}.")
@@ -137,15 +129,15 @@ if op_mode == "Mode A: Global Watchtower":
     st.markdown("### 🌐 Global Threat Intelligence & Research")
     col_map, col_hist = st.columns([1.2, 1])
     with col_map:
+        st.markdown("#### Real-Time Attack Heatmap")
         if not active_events_df.empty and 'latitude' in active_events_df.columns:
-            st.map(active_events_df.dropna(subset=['latitude', 'longitude']), color='#ec4899', size=40)
-        else: st.info("📡 System Ready. Awaiting global telemetry...")
+            st.map(active_events_df.dropna(subset=['latitude', 'longitude']), latitude='latitude', longitude='longitude', color='#ec4899', size=40)
+        else: st.info("📡 System Ready. Awaiting global telemetry from AWS VPS...")
     with col_hist:
+        st.markdown("#### Historical Botnet Archive")
         if not active_events_df.empty:
-            # Filter Benign out here too
-            hist_df = active_events_df[active_events_df['attack_type'] != 'Benign'].sort_values("timestamp", ascending=False)
-            st.dataframe(hist_df, height=450, use_container_width=True, hide_index=True)
-        else: st.info("🗄️ Archive currently empty.")
+            st.dataframe(active_events_df.sort_values("timestamp", ascending=False), height=450, use_container_width=True, hide_index=True)
+        else: st.info("🗄️ Archive currently empty. Fresh logs will appear here.")
     st.divider()
 
 # --- MODE B: LOCAL SENTINEL ---
@@ -153,46 +145,86 @@ else:
     active_events_df = local_events_df
     st.markdown("### 📱 Local Sentinel & Infection Zone")
     if not health_df.empty and not devices_df.empty:
-        selected_ip = st.selectbox("🎯 Select Target Device:", options=devices_df['ip_address'].unique())
-        col_l, col_r = st.columns([1, 1.2])
-        with col_l:
-            st.dataframe(devices_df, use_container_width=True, hide_index=True)
-        with col_r:
-            st.markdown(f"#### 🔍 Deep Inspection: {selected_ip}")
-            if 'manual_actions' not in st.session_state: st.session_state.manual_actions = {}
-            is_banned = selected_ip in banned_df['ip'].values if not banned_df.empty else False
-            if selected_ip in st.session_state.manual_actions: is_banned = (st.session_state.manual_actions[selected_ip] == "BLOCK")
+        gateway_ip = health_df.iloc[-1].get('gateway_ip', '0.0.0.0')
+        gateway_prefix = ".".join(gateway_ip.split('.')[:-1])
+        live_devices = devices_df[devices_df['ip_address'].str.startswith(gateway_prefix)]
+        
+        if not live_devices.empty:
+            col_l, col_r = st.columns([1, 1.2])
+            with col_l:
+                st.markdown("**Discovered Local Assets**")
+                selected_ip = st.selectbox("🎯 Select Target Device:", options=live_devices['ip_address'].unique())
+                st.dataframe(live_devices, use_container_width=True, hide_index=True)
+            
+            with col_r:
+                st.markdown(f"#### 🔍 Deep Inspection: {selected_ip}")
+                
+                if 'manual_actions' not in st.session_state:
+                    st.session_state.manual_actions = {}
 
-            c_block, c_web = st.columns(2)
-            with c_block:
-                if is_banned:
-                    if st.button(f"🔓 RESTORE ACCESS: {selected_ip}", type="primary", use_container_width=True):
-                        send_command(selected_ip, "UNBLOCK"); st.session_state.manual_actions[selected_ip] = "UNBLOCK"; st.rerun()
-                else:
-                    if st.button(f"🚫 ISOLATE ASSET: {selected_ip}", use_container_width=True):
-                        send_command(selected_ip, "BLOCK"); st.session_state.manual_actions[selected_ip] = "BLOCK"; st.rerun()
+                is_banned = False
+                if not banned_df.empty and 'Banned IP' in banned_df.columns:
+                    is_banned = selected_ip in banned_df['Banned IP'].values
+                
+                if selected_ip in st.session_state.manual_actions:
+                    is_banned = (st.session_state.manual_actions[selected_ip] == "BLOCK")
 
-            show_web = st.toggle("🌐 View Browsing History", key="history_toggle")
-            if show_web:
-                if not web_df.empty and 'source_ip' in web_df.columns:
-                    user_history = web_df[web_df['source_ip'].astype(str) == str(selected_ip)]
-                    if not user_history.empty: st.table(user_history[['timestamp', 'domain']].head(10))
-                    else: st.info("No browsing history found.")
+                c_block, c_web = st.columns(2)
+                with c_block:
+                    if is_banned:
+                        if st.button(f"🔓 RESTORE ACCESS: {selected_ip}", type="primary", use_container_width=True):
+                            send_command(selected_ip, "UNBLOCK")
+                            st.session_state.manual_actions[selected_ip] = "UNBLOCK"
+                            st.rerun()
+                    else:
+                        if st.button(f"🚫 ISOLATE ASSET: {selected_ip}", use_container_width=True):
+                            send_command(selected_ip, "BLOCK")
+                            st.session_state.manual_actions[selected_ip] = "BLOCK"
+                            st.rerun()
 
-            st.divider()
-            st.markdown("##### 🔴 Hostile History")
-            if not active_events_df.empty and 'source_ip' in active_events_df.columns:
-                ip_events = active_events_df[(active_events_df['source_ip'].astype(str) == str(selected_ip)) & (active_events_df['attack_type'] != 'Benign')]
-                if not ip_events.empty: st.dataframe(ip_events[['timestamp', 'attack_type', 'evidence', 'confidence']], use_container_width=True, hide_index=True)
-                else: st.success("Clean: No hostile behavior found.")
+                show_web = st.toggle("🌐 View Browsing History", key="history_toggle")
+                if show_web:
+                    st.info(f"Extracting DNS telemetry for {selected_ip}...")
+                    if not web_df.empty and 'source_ip' in web_df.columns:
+                        user_history = web_df[web_df['source_ip'].astype(str) == str(selected_ip)]
+                        if not user_history.empty: st.table(user_history[['timestamp', 'domain']].head(10))
+                        else: st.info("No browsing history found.")
+                    else: st.warning("Web history log is currently empty.")
+
+                st.divider()
+                st.markdown("##### 🔴 Hostile History")
+                if not active_events_df.empty and 'source_ip' in active_events_df.columns:
+                    ip_events = active_events_df[active_events_df['source_ip'].astype(str) == str(selected_ip)]
+                    if not ip_events.empty:
+                        st.warning(f"Detected {len(ip_events)} malicious signatures in this session.")
+                        st.dataframe(ip_events[['timestamp', 'attack_type', 'evidence', 'confidence']], use_container_width=True, hide_index=True)
+                    else: st.success("Clean: No hostile behavior found in this session.")
+        else: st.info(f"📡 Waiting for devices to join the {gateway_prefix}.x network...")
+    else: st.info("📡 Scanning Local Network... Connect a device to begin.")
+    st.divider()
 
 # --- LIVE THREAT INTELLIGENCE (Dynamic Tabs) ---
-st.divider(); st.markdown("### 📡 Live Threat Intelligence")
-tabs = st.tabs(["🎯 Port Scans", "🦠 Malware", "🔑 Brute Force", "🌐 DNS Security", "🚫 Banned List"])
-with tabs[0]: display_attack_section(active_events_df[active_events_df['attack_type'].str.contains('PortScan|Scan', na=False)] if not active_events_df.empty else pd.DataFrame(), "PortScan")
-with tabs[1]: display_attack_section(active_events_df[active_events_df['attack_type'].str.contains('Malware', na=False)] if not active_events_df.empty else pd.DataFrame(), "Malware")
-with tabs[2]: display_attack_section(active_events_df[active_events_df['attack_type'].str.contains('Brute|SSH', na=False)] if not active_events_df.empty else pd.DataFrame(), "Brute Force")
-with tabs[3]: display_attack_section(active_events_df[active_events_df['attack_type'].str.contains('DNS|Spoof|Tunnel', na=False)] if not active_events_df.empty else pd.DataFrame(), "DNS_Spoof")
-with tabs[4]: 
-    if not banned_df.empty: st.dataframe(banned_df, use_container_width=True, hide_index=True)
-    else: st.info("🛡️ No active IP bans.")
+st.markdown("### 📡 Live Threat Intelligence")
+
+# REMOVED: Banned List from Global Mode A tabs
+if op_mode == "Mode A: Global Watchtower":
+    tab_titles = ["🎯 Port Scans", "🦠 Malware", "🔑 Brute Force", "🌐 DNS Security"]
+else:
+    tab_titles = ["🎯 Port Scans", "🦠 Malware", "🔑 Brute Force", "🌐 DNS Security", "🚫 Banned List"]
+
+tabs = st.tabs(tab_titles)
+
+with tabs[0]: 
+    display_attack_section(active_events_df[active_events_df['attack_type'].str.contains('PortScan|Scan', na=False)] if not active_events_df.empty else pd.DataFrame(), "PortScan")
+with tabs[1]: 
+    display_attack_section(active_events_df[active_events_df['attack_type'].str.contains('Malware', na=False)] if not active_events_df.empty else pd.DataFrame(), "Malware")
+with tabs[2]: 
+    display_attack_section(active_events_df[active_events_df['attack_type'].str.contains('Brute|SSH', na=False)] if not active_events_df.empty else pd.DataFrame(), "Brute Force")
+with tabs[3]: 
+    display_attack_section(active_events_df[active_events_df['attack_type'].str.contains('DNS|Spoof', na=False)] if not active_events_df.empty else pd.DataFrame(), "DNS_Spoof")
+
+# Show Banned List only in Mode B
+if op_mode == "Mode B: Local Sentinel":
+    with tabs[4]:
+        if not banned_df.empty: st.dataframe(banned_df, use_container_width=True, hide_index=True)
+        else: st.info("🛡️ No active IP bans.")
