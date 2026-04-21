@@ -9,7 +9,7 @@ from datetime import datetime
 QUEUE_PATH = "/home/vinayak/honeypot_project/logs/action_queue.csv"
 DB_PATH = "/home/vinayak/honeypot_project/nexus_security.db"
 
-# 1. LOCAL FILTER: Only process these IPs for the banned list/firewall
+# 1. LOCAL FILTER: Only process these IPs for the local firewall
 LOCAL_PREFIX = "10.42.0."
 PROTECTED_IPS = ["127.0.0.1", "10.42.0.1"]
 
@@ -36,8 +36,9 @@ def process_queue():
             action = row['action']
             
             # --- THE GLOBAL IP FILTER ---
+            # Ignores Tailscale/AWS IPs to keep local banned list clean
             if not ip.startswith(LOCAL_PREFIX):
-                print(f"[*] IGNORING: {ip} is a Global/Remote IP (Not in Local Mode scope).")
+                print(f"[*] IGNORING: {ip} is a Global/Remote IP.")
                 continue
 
             # --- SELF-BLOCK PROTECTION ---
@@ -48,35 +49,44 @@ def process_queue():
             mac = get_mac_for_ip(cursor, ip)
             
             if action == "BLOCK":
-                print(f"[?? MITIGATOR] LOCAL ISOLATION: {ip} " + (f"[{mac}]" if mac else ""))
+                print(f"[?? MITIGATOR] ISOLATING ASSET: {ip} " + (f"[{mac}]" if mac else ""))
                 
-                # Layer 3 Block (IP)
+                # Use -I (Insert) to put rules at the TOP of the chain (Priority #1)
+                # 1. Block Incoming traffic (INPUT)
                 subprocess.run(["sudo", "iptables", "-I", "INPUT", "-s", ip, "-j", "DROP"])
+                # 2. Block Transit traffic (FORWARDing through the Pi)
                 subprocess.run(["sudo", "iptables", "-I", "FORWARD", "-s", ip, "-j", "DROP"])
+                # 3. Block Outgoing traffic (OUTPUT - Pi won't talk back)
+                subprocess.run(["sudo", "iptables", "-I", "OUTPUT", "-d", ip, "-j", "DROP"])
                 
-                # Layer 2 Block (MAC - The 100% Fix)
+                # Layer 2 Block (MAC - prevents IP spoofing bypass)
                 if mac:
                     subprocess.run(["sudo", "iptables", "-I", "INPUT", "-m", "mac", "--mac-source", mac, "-j", "DROP"])
                 
-                # Update Local Banned List
+                # Sync with SQLite Table
                 cursor.execute("""
                     INSERT OR REPLACE INTO banned_ips (ip, mac, ban_time, reason) 
                     VALUES (?, ?, ?, ?)
-                """, (ip, mac, datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "Manual Local Block"))
+                """, (ip, mac, datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "C2 Manual Block"))
                 
             elif action == "UNBLOCK":
                 print(f"[?? MITIGATOR] RELEASING ASSET: {ip}")
+                
+                # Use -D (Delete) to remove the specific rules
                 subprocess.run(["sudo", "iptables", "-D", "INPUT", "-s", ip, "-j", "DROP"])
                 subprocess.run(["sudo", "iptables", "-D", "FORWARD", "-s", ip, "-j", "DROP"])
+                subprocess.run(["sudo", "iptables", "-D", "OUTPUT", "-d", ip, "-j", "DROP"])
+                
                 if mac:
                     subprocess.run(["sudo", "iptables", "-D", "INPUT", "-m", "mac", "--mac-source", mac, "-j", "DROP"])
                 
+                # Remove from Database
                 cursor.execute("DELETE FROM banned_ips WHERE ip = ?", (ip,))
         
         conn.commit()
         conn.close()
 
-        # Reset the queue file headers
+        # Clear the queue file so we don't repeat actions
         with open(QUEUE_PATH, "w") as f:
             f.write("timestamp,ip,action\n")
             
