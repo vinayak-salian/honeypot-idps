@@ -1,4 +1,17 @@
 timestamp,source_ip,domain
+"2026-04-21 22:54:28",10.42.0.89,www.google.com
+"2026-04-21 22:54:23",10.42.0.89,wikipedia.org
+"2026-04-21 22:54:23",10.42.0.89,wikipedia.org
+"2026-04-21 22:54:21",10.42.0.89,meta.wikimedia.org
+"2026-04-21 22:54:21",10.42.0.89,meta.wikimedia.org
+"2026-04-21 22:54:21",10.42.0.89,content-autofill.googleapis.com
+"2026-04-21 22:54:11",10.42.0.89,www.wikifunctions.org
+"2026-04-21 22:54:11",10.42.0.89,www.wikifunctions.org
+"2026-04-21 22:54:10",10.42.0.89,upload.wikimedia.org
+"2026-04-21 22:54:10",10.42.0.89,upload.wikimedia.org
+"2026-04-21 22:54:09",10.42.0.89,beacons.gcp.gvt2.com
+"2026-04-21 22:54:09",10.42.0.89,beacons.gcp.gvt2.com
+"2026-04-21 22:53:48",10.42.0.89,play.googleapis.com
 "2026-04-21 22:53:32",10.42.0.89,s-in-mob.glance-cdn.com
 "2026-04-21 22:53:31",10.42.0.89,s-in.ls.glanceapis.com
 "2026-04-21 22:53:28",10.42.0.89,www.google.com
@@ -86,16 +99,3 @@ timestamp,source_ip,domain
 "2026-04-21 22:49:53",10.42.0.89,test-gateway.instagram.com
 "2026-04-21 22:49:53",10.42.0.89,web.facebook.com
 "2026-04-21 22:49:53",10.42.0.89,z-p42-chat-e2ee-ig-fallback.facebook.com
-"2026-04-21 22:49:28",10.42.0.89,www.google.com
-"2026-04-21 22:48:25",10.42.0.89,firebaseremoteconfig.googleapis.com
-"2026-04-21 22:48:24",10.42.0.89,www.google.com
-"2026-04-21 22:48:24",10.42.0.89,crashlyticsreports-pa.googleapis.com
-"2026-04-21 22:48:23",10.42.0.89,s-in.ls.glanceapis.com
-"2026-04-21 22:47:07",10.42.0.89,www.samsung.com
-"2026-04-21 22:47:07",10.42.0.89,www.rsc.org
-"2026-04-21 22:47:05",10.42.0.89,roughtime.cloudflare.com
-"2026-04-21 22:47:05",10.42.0.89,www.google.com
-"2026-04-21 22:47:04",10.42.0.89,2.android.pool.ntp.org
-"2026-04-21 22:46:46",10.42.0.89,www.samsung.com
-"2026-04-21 22:46:46",10.42.0.89,www.code.org
-"2026-04-21 22:46:46",10.42.0.89,www.acm.org
