@@ -51,6 +51,6 @@ tmux new-window -t sentry_hunt:5 -n "Sync" "while true; do \
 tmux new-window -t sentry_hunt:6 -n "Malware" "sudo $PROJECT_DIR/venv/bin/python $PROJECT_DIR/attacks/malware/vulnerable_server.py; read"
 
 # WINDOW 7: MITIGATOR (Internal Loop)
-tmux new-window -t sentry_hunt:7 -n "Mitigate" "sudo $PROJECT_DIR/venv/bin/python $PROJECT_DIR/attacks/mitigator.py; read"
+tmux new-window -t sentry_hunt:7 -n "Mitigate" "sudo $PROJECT_DIR/venv/bin/python $PROJECT_DIR/mitigator.py; read"
 
 echo "[?] SYSTEM STABILIZED. Dashboard turns green in 20s."
