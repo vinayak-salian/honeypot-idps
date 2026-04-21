@@ -46,18 +46,20 @@ def send_command(ip, action):
     except Exception as e:
         st.error(f"Failed to send command: {e}")
 
-# --- 3. DATA ACQUISITION ---
+# --- 3. DATA ACQUISITION (Dual-Stream Ingestion) ---
 health_df = fetch_logs("system_status.csv")
-global_events_df = fetch_logs("security_events.csv")
-local_events_df = fetch_logs("local_events.csv")   
+global_events_df = fetch_logs("security_events.csv") # Mode A: All-time Global Botnets
+local_events_df = fetch_logs("local_events.csv")    # Mode B: Current Session Local Demo
 devices_df = fetch_logs("known_devices.csv")
 traffic_df = fetch_logs("traffic_metrics.csv")
 banned_df = fetch_logs("banned_ips.csv")
 web_df = fetch_logs("web_history.csv") 
 
 # Process timestamps for devices
+# FIX: Remove the tz_convert logic that adds 5.5 hours
 if not devices_df.empty and 'last_seen' in devices_df.columns:
     devices_df['last_seen'] = pd.to_datetime(devices_df['last_seen'], errors='coerce')
+    # Just format it directly since the Pi is already sending IST strings
     devices_df['last_seen'] = devices_df['last_seen'].dt.strftime('%Y-%m-%d %H:%M:%S IST')
 
 # --- 4. MITIGATION PLAYBOOK ---
@@ -65,7 +67,7 @@ PLAYBOOK = {
     "PortScan": {"label": "🎯 Port Scanning Detected", "solution": "Action: Deploy IPTables DROP rule for source. Enable rate-limiting on edge firewall."},
     "Malware": {"label": "🦠 Malware Activity", "solution": "Action: Isolate asset. Run ClamAV scan. Block outgoing C2 connections."},
     "Brute Force": {"label": "🔑 Brute Force / SSH Attack", "solution": "Action: Enforce SSH Key Auth. Install Fail2Ban. Reset credentials."},
-    "DNS_Tunneling": {"label": "📡 DNS Tunneling / Exfiltration", "solution": "Action: Isolate asset. Reset DNS cache. Enforce Shannon Entropy thresholds."}
+    "DNS_Spoof": {"label": "📡 DNS Spoofing / Poisoning", "solution": "Action: Flush DNS cache (sudo systemd-resolve --flush-caches). Enforce DNSSEC."}
 }
 
 # --- 5. CUSTOM CSS ---
@@ -115,20 +117,15 @@ st.divider()
 
 # --- HELPER: DISPLAY SECTION ---
 def display_attack_section(df, attack_key):
-    # FILTER NOISE: Remove 'Benign' from threat intelligence tabs
     if not df.empty:
-        df_filtered = df[df['attack_type'] != 'Benign']
-        if not df_filtered.empty:
-            st.dataframe(df_filtered, use_container_width=True, hide_index=True)
-            if attack_key in PLAYBOOK:
-                st.markdown(f'<div class="playbook-card"><strong>Recommendation:</strong> {PLAYBOOK[attack_key]["solution"]}</div>', unsafe_allow_html=True)
-        else: st.info(f"✅ System clear for {attack_key}.")
+        st.dataframe(df, use_container_width=True, hide_index=True)
+        if attack_key in PLAYBOOK:
+            st.markdown(f'<div class="playbook-card"><strong>Recommendation:</strong> {PLAYBOOK[attack_key]["solution"]}</div>', unsafe_allow_html=True)
     else: st.info(f"✅ System clear for {attack_key}.")
 
 # --- MODE A: GLOBAL WATCHTOWER ---
 if op_mode == "Mode A: Global Watchtower":
-    # Global Mode Filter: Hide benign hits
-    active_events_df = global_events_df[global_events_df['attack_type'] != 'Benign'] if not global_events_df.empty else global_events_df
+    active_events_df = global_events_df
     st.markdown("### 🌐 Global Threat Intelligence & Research")
     col_map, col_hist = st.columns([1.2, 1])
     with col_map:
@@ -145,7 +142,6 @@ if op_mode == "Mode A: Global Watchtower":
 
 # --- MODE B: LOCAL SENTINEL ---
 else:
-    # Local Mode Filter: Keep full dataframe but we will filter individual views
     active_events_df = local_events_df
     st.markdown("### 📱 Local Sentinel & Infection Zone")
     if not health_df.empty and not devices_df.empty:
@@ -190,33 +186,15 @@ else:
                 if show_web:
                     st.info(f"Extracting DNS telemetry for {selected_ip}...")
                     if not web_df.empty and 'source_ip' in web_df.columns:
-                        # 1. Filter for User IP
                         user_history = web_df[web_df['source_ip'].astype(str) == str(selected_ip)]
-                        
-                        # 2. FILTER NOISE: Remove common background domains for "Accuracy"
-                        noise = ['googleapis.com', 'doubleclick.net', 'arpa', 'local', 'internal', 'broadcast', 'localhost']
-                        user_history = user_history[~user_history['domain'].str.contains('|'.join(noise), na=False, case=False)]
-                        
-                        if not user_history.empty:
-                            # 3. GROUP BY logic: Consolidate visits for cleaner view
-                            history_grouped = user_history.groupby('domain').agg(
-                                last_visited=('timestamp', 'max'),
-                                frequency=('domain', 'count')
-                            ).reset_index().sort_values('last_visited', ascending=False)
-                            
-                            st.table(history_grouped.head(10))
-                        else: st.info("No meaningful browsing activity detected.")
-                    else: st.info("Web history log is currently empty.")
+                        if not user_history.empty: st.table(user_history[['timestamp', 'domain']].head(10))
+                        else: st.info("No browsing history found.")
+                    else: st.warning("Web history log is currently empty.")
 
                 st.divider()
                 st.markdown("##### 🔴 Hostile History")
                 if not active_events_df.empty and 'source_ip' in active_events_df.columns:
-                    # FILTER NOISE: Filter IP and exclude 'Benign' classifications
-                    ip_events = active_events_df[
-                        (active_events_df['source_ip'].astype(str) == str(selected_ip)) & 
-                        (active_events_df['attack_type'] != 'Benign')
-                    ]
-                    
+                    ip_events = active_events_df[active_events_df['source_ip'].astype(str) == str(selected_ip)]
                     if not ip_events.empty:
                         st.warning(f"Detected {len(ip_events)} malicious signatures in this session.")
                         st.dataframe(ip_events[['timestamp', 'attack_type', 'evidence', 'confidence']], use_container_width=True, hide_index=True)
@@ -225,9 +203,10 @@ else:
     else: st.info("📡 Scanning Local Network... Connect a device to begin.")
     st.divider()
 
-# --- LIVE THREAT INTELLIGENCE ---
+# --- LIVE THREAT INTELLIGENCE (Dynamic Tabs) ---
 st.markdown("### 📡 Live Threat Intelligence")
 
+# REMOVED: Banned List from Global Mode A tabs
 if op_mode == "Mode A: Global Watchtower":
     tab_titles = ["🎯 Port Scans", "🦠 Malware", "🔑 Brute Force", "🌐 DNS Security"]
 else:
@@ -235,18 +214,16 @@ else:
 
 tabs = st.tabs(tab_titles)
 
-# Global filtering for tabs: Remove Benign hits
-threats_df = active_events_df[active_events_df['attack_type'] != 'Benign'] if not active_events_df.empty else pd.DataFrame()
-
 with tabs[0]: 
-    display_attack_section(threats_df[threats_df['attack_type'].str.contains('PortScan|Scan', na=False)] if not threats_df.empty else pd.DataFrame(), "PortScan")
+    display_attack_section(active_events_df[active_events_df['attack_type'].str.contains('PortScan|Scan', na=False)] if not active_events_df.empty else pd.DataFrame(), "PortScan")
 with tabs[1]: 
-    display_attack_section(threats_df[threats_df['attack_type'].str.contains('Malware', na=False)] if not threats_df.empty else pd.DataFrame(), "Malware")
+    display_attack_section(active_events_df[active_events_df['attack_type'].str.contains('Malware', na=False)] if not active_events_df.empty else pd.DataFrame(), "Malware")
 with tabs[2]: 
-    display_attack_section(threats_df[threats_df['attack_type'].str.contains('Brute|SSH', na=False)] if not threats_df.empty else pd.DataFrame(), "Brute Force")
+    display_attack_section(active_events_df[active_events_df['attack_type'].str.contains('Brute|SSH', na=False)] if not active_events_df.empty else pd.DataFrame(), "Brute Force")
 with tabs[3]: 
-    display_attack_section(threats_df[threats_df['attack_type'].str.contains('DNS|Tunnel|Spoof', na=False)] if not threats_df.empty else pd.DataFrame(), "DNS_Tunneling")
+    display_attack_section(active_events_df[active_events_df['attack_type'].str.contains('DNS|Spoof', na=False)] if not active_events_df.empty else pd.DataFrame(), "DNS_Spoof")
 
+# Show Banned List only in Mode B
 if op_mode == "Mode B: Local Sentinel":
     with tabs[4]:
         if not banned_df.empty: st.dataframe(banned_df, use_container_width=True, hide_index=True)

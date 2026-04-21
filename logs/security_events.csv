@@ -1,4 +1,6 @@
 timestamp,source_ip,attack_type,confidence,evidence,latitude,longitude,country,city
+"2026-04-22 01:00:53",35.244.144.25,PortScan,0.9,"Probed 4 ports | Rate: 141.66 p/s",39.1027,-94.5778,"United States","Kansas City"
+"2026-04-22 01:00:53",35.244.144.25,PortScan,0.9,"Probed 4 ports | Rate: 141.66 p/s",39.1027,-94.5778,"United States","Kansas City"
 "2026-04-22 00:44:34",69.173.144.139,PortScan,0.9,"Probed 4 ports | Rate: 3.39 p/s",50.1169,8.6837,Germany,
 "2026-04-22 00:39:46",69.173.144.165,PortScan,0.9,"Probed 4 ports | Rate: 2.3 p/s",50.1169,8.6837,Germany,
 "2026-04-22 00:13:59",192.178.211.91,PortScan,0.9,"Probed 4 ports | Rate: 0.72 p/s",37.751,-97.822,"United States",
