@@ -1,4 +1,11 @@
 timestamp,source_ip,domain
+"2026-04-21 22:20:38",10.42.0.48,1.0.42.10.in-addr.arpa
+"2026-04-21 22:20:26",10.42.0.48,csptoken.ccs.mcafee.com
+"2026-04-21 22:20:15",10.42.0.48,beacons.gcp.gvt2.com
+"2026-04-21 22:20:09",10.42.0.48,www.google-analytics.com
+"2026-04-21 22:20:08",10.42.0.48,ssl.gstatic.com
+"2026-04-21 22:20:03",10.42.0.48,gemini.google.com
+"2026-04-21 22:20:00",10.42.0.48,www.google.com
 "2026-04-21 22:19:17",10.42.0.48,easylist-downloads.adblockplus.org
 "2026-04-21 22:19:15",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-21 22:19:09",10.42.0.48,mail-ads.google.com
@@ -92,10 +99,3 @@ timestamp,source_ip,domain
 "2026-04-21 22:16:01",10.42.0.48,dae402aa810e2df91d757ad8592b5ab0.azr.footprintdns.com
 "2026-04-21 22:16:01",10.42.0.48,www.google.com
 "2026-04-21 22:16:00",10.42.0.48,aks-prod-southeastasia.access-point.cloudmessaging.edge.microsoft.com
-"2026-04-21 22:15:59",10.42.0.48,fp-afd.azureedge.us
-"2026-04-21 22:15:59",10.42.0.48,3.28.0.417-LAPPY-VINVIC06.dc45e0c3-909e-43e6-af66-8ddf819c4e3a._nvstream_dbd._tcp.local
-"2026-04-21 22:15:59",10.42.0.48,_googlecast._tcp.local
-"2026-04-21 22:15:59",10.42.0.48,_googlecast._tcp.local
-"2026-04-21 22:15:59",10.42.0.48,_googlecast._tcp.local
-"2026-04-21 22:15:59",10.42.0.48,_googlecast._tcp.local
-"2026-04-21 22:15:58",10.42.0.48,api.pushbullet.com
