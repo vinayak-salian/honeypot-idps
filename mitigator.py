@@ -23,6 +23,10 @@ def get_mac_for_ip(cursor, ip):
         return None
 
 def process_queue():
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] Mitigator Active: Scanning Queue...")
+    if not os.path.exists(QUEUE_PATH): 
+        print("[!] Queue file missing.")
+        return
     if not os.path.exists(QUEUE_PATH): return
     try:
         df = pd.read_csv(QUEUE_PATH)
