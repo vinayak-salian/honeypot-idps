@@ -1,4 +1,6 @@
 timestamp,source_ip,domain
+"2026-04-21 22:59:22",10.42.0.89,g.whatsapp.net
+"2026-04-21 22:59:22",10.42.0.89,mtalk.google.com
 "2026-04-21 22:57:20",10.42.0.89,firebaseinstallations.googleapis.com
 "2026-04-21 22:57:19",10.42.0.89,update.googleapis.com
 "2026-04-21 22:57:19",10.42.0.89,update.googleapis.com
@@ -97,5 +99,3 @@ timestamp,source_ip,domain
 "2026-04-21 22:52:36",10.42.0.89,optimizationguide-pa.googleapis.com
 "2026-04-21 22:52:32",10.42.0.89,update.googleapis.com
 "2026-04-21 22:52:30",10.42.0.89,taskassist-pa.googleapis.com
-"2026-04-21 22:52:29",10.42.0.89,encrypted-tbn0.gstatic.com
-"2026-04-21 22:52:29",10.42.0.89,encrypted-tbn0.gstatic.com
