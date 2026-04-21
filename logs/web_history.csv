@@ -1,4 +1,18 @@
 timestamp,source_ip,domain
+"2026-04-21 22:49:57",10.42.0.89,instagram.fbom12-2.fna.fbcdn.net
+"2026-04-21 22:49:57",10.42.0.89,instagram.fbom12-1.fna.fbcdn.net
+"2026-04-21 22:49:55",10.42.0.89,be31c9a0-ca7d-4748-aeff-46b4b417851e-netseer-ipaddr-assoc.xy.fbcdn.net
+"2026-04-21 22:49:53",10.42.0.89,i.instagram.com
+"2026-04-21 22:49:53",10.42.0.89,i-fallback.instagram.com
+"2026-04-21 22:49:53",10.42.0.89,graph.facebook.com
+"2026-04-21 22:49:53",10.42.0.89,graph-fallback.facebook.com
+"2026-04-21 22:49:53",10.42.0.89,be31c9a0-ca7d-4748-aeff-46b4b417851e-netseer-ipaddr-assoc.xz.fbcdn.net
+"2026-04-21 22:49:53",10.42.0.89,graph.instagram.com
+"2026-04-21 22:49:53",10.42.0.89,graph-fallback.instagram.com
+"2026-04-21 22:49:53",10.42.0.89,test-gateway.instagram.com
+"2026-04-21 22:49:53",10.42.0.89,web.facebook.com
+"2026-04-21 22:49:53",10.42.0.89,z-p42-chat-e2ee-ig-fallback.facebook.com
+"2026-04-21 22:49:28",10.42.0.89,www.google.com
 "2026-04-21 22:48:25",10.42.0.89,firebaseremoteconfig.googleapis.com
 "2026-04-21 22:48:24",10.42.0.89,www.google.com
 "2026-04-21 22:48:24",10.42.0.89,crashlyticsreports-pa.googleapis.com
@@ -85,17 +99,3 @@ timestamp,source_ip,domain
 "2026-04-21 22:22:56",10.42.0.48,mobile.events.data.microsoft.com
 "2026-04-21 22:22:56",10.42.0.48,mobile.events.data.microsoft.com
 "2026-04-21 22:22:51",10.42.0.48,addons-pa.clients6.google.com
-"2026-04-21 22:22:47",10.42.0.48,widget-content.spotify.com
-"2026-04-21 22:22:37",10.42.0.48,th.bing.com
-"2026-04-21 22:22:37",10.42.0.48,th.bing.com
-"2026-04-21 22:22:37",10.42.0.48,functional.events.data.microsoft.com
-"2026-04-21 22:22:34",10.42.0.48,ntp.msn.com
-"2026-04-21 22:22:29",10.42.0.48,csptoken.ccs.mcafee.com
-"2026-04-21 22:22:28",10.42.0.48,csptoken.ccs.mcafee.com
-"2026-04-21 22:22:27",10.42.0.48,csptoken.ccs.mcafee.com
-"2026-04-21 22:22:27",10.42.0.48,csptoken.ccs.mcafee.com
-"2026-04-21 22:22:14",10.42.0.48,U3RyZXNzVGVzdEJsb2NrNjBDcml0aWNhbERhdGE=.demo-tunnel.com
-"2026-04-21 22:22:12",10.42.0.48,U3RyZXNzVGVzdEJsb2NrNjBDcml0aWNhbERhdGE=.demo-tunnel.com
-"2026-04-21 22:22:12",10.42.0.48,U3RyZXNzVGVzdEJsb2NrNjBDcml0aWNhbERhdGE=.demo-tunnel.com
-"2026-04-21 22:22:10",10.42.0.48,U3RyZXNzVGVzdEJsb2NrNTlDcml0aWNhbERhdGE=.demo-tunnel.com
-"2026-04-21 22:22:10",10.42.0.48,U3RyZXNzVGVzdEJsb2NrNTlDcml0aWNhbERhdGE=.demo-tunnel.com
