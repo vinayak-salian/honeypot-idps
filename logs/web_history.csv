@@ -1,4 +1,8 @@
 timestamp,source_ip,domain
+"2026-04-21 22:25:21",10.42.0.48,www.bing.com
+"2026-04-21 22:25:21",10.42.0.48,www.bing.com
+"2026-04-21 22:25:18",10.42.0.48,self.events.data.microsoft.com
+"2026-04-21 22:25:15",10.42.0.48,qjmnz4vd2y07.statuspage.io
 "2026-04-21 22:24:41",10.42.0.48,mobile.events.data.microsoft.com
 "2026-04-21 22:24:28",10.42.0.48,csptoken.ccs.mcafee.com
 "2026-04-21 22:24:28",10.42.0.48,analytics.apis.mcafee.com
@@ -95,7 +99,3 @@ timestamp,source_ip,domain
 "2026-04-21 22:22:02",10.42.0.48,U3RyZXNzVGVzdEJsb2NrNDlDcml0aWNhbERhdGE=.demo-tunnel.com
 "2026-04-21 22:22:02",10.42.0.48,1.0.42.10.in-addr.arpa
 "2026-04-21 22:22:02",10.42.0.48,U3RyZXNzVGVzdEJsb2NrNTBDcml0aWNhbERhdGE=.demo-tunnel.com
-"2026-04-21 22:22:01",10.42.0.48,U3RyZXNzVGVzdEJsb2NrNDdDcml0aWNhbERhdGE=.demo-tunnel.com
-"2026-04-21 22:22:01",10.42.0.48,1.0.42.10.in-addr.arpa
-"2026-04-21 22:22:00",10.42.0.48,U3RyZXNzVGVzdEJsb2NrNDdDcml0aWNhbERhdGE=.demo-tunnel.com
-"2026-04-21 22:22:00",10.42.0.48,U3RyZXNzVGVzdEJsb2NrNDdDcml0aWNhbERhdGE=.demo-tunnel.com
