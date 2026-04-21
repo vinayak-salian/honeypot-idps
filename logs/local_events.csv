@@ -1,3 +1,4 @@
 timestamp,source_ip,attack_type,confidence,evidence,latitude,longitude,country,city
+"2026-04-22 00:29:49",10.42.0.89,DNS_Tunneling,0.92,"Entropy: 3.54 | Query: premium-client-rules-noneu.truecaller.com",,,India,Local_Network
 "2026-04-22 00:26:32",10.42.0.89,Benign,0.99,"Avg Size: 80B",,,India,Local_Network
 "2026-04-22 00:26:32",10.42.0.89,Benign,0.99,"Avg Size: 80B",,,India,Local_Network
