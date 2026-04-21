@@ -1,4 +1,16 @@
 timestamp,source_ip,domain
+"2026-04-22 00:17:08",10.42.0.89,jnn-pa.googleapis.com
+"2026-04-22 00:17:08",10.42.0.89,jnn-pa.googleapis.com
+"2026-04-22 00:17:08",10.42.0.89,jnn-pa.googleapis.com
+"2026-04-22 00:17:08",10.42.0.89,jnn-pa.googleapis.com
+"2026-04-22 00:17:07",10.42.0.89,fonts.googleapis.com
+"2026-04-22 00:17:07",10.42.0.89,fonts.googleapis.com
+"2026-04-22 00:17:07",10.42.0.89,jnn-pa.googleapis.com
+"2026-04-22 00:17:07",10.42.0.89,jnn-pa.googleapis.com
+"2026-04-22 00:17:07",10.42.0.89,fonts.googleapis.com
+"2026-04-22 00:17:07",10.42.0.89,fonts.googleapis.com
+"2026-04-22 00:17:07",10.42.0.89,fonts.gstatic.com
+"2026-04-22 00:17:07",10.42.0.89,fonts.gstatic.com
 "2026-04-22 00:17:05",10.42.0.89,fonts.googleapis.com
 "2026-04-22 00:17:05",10.42.0.89,fonts.googleapis.com
 "2026-04-22 00:17:05",10.42.0.89,fonts.gstatic.com
@@ -87,15 +99,3 @@ timestamp,source_ip,domain
 "2026-04-22 00:15:34",10.42.0.89,en.wikipedia.org
 "2026-04-22 00:15:33",10.42.0.89,connectivitycheck.gstatic.com
 "2026-04-22 00:15:33",10.42.0.89,connectivitycheck.gstatic.com
-"2026-04-22 00:15:33",10.42.0.89,connectivitycheck.gstatic.com
-"2026-04-22 00:15:33",10.42.0.89,cdn.ampproject.org
-"2026-04-22 00:15:33",10.42.0.89,cdn.ampproject.org
-"2026-04-22 00:15:33",10.42.0.89,en.wikipedia.org
-"2026-04-22 00:15:33",10.42.0.89,en.wikipedia.org
-"2026-04-22 00:15:33",10.42.0.89,cdn.ampproject.org
-"2026-04-22 00:15:33",10.42.0.89,cdn.ampproject.org
-"2026-04-22 00:15:33",10.42.0.89,cdn.ampproject.org
-"2026-04-22 00:15:33",10.42.0.89,cdn.ampproject.org
-"2026-04-22 00:15:32",10.42.0.89,www.gstatic.com
-"2026-04-22 00:15:32",10.42.0.89,www.thehindu.com
-"2026-04-22 00:15:32",10.42.0.89,www.thehindu.com
