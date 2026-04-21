@@ -1,3 +1,0 @@
-timestamp,source_ip,attack_type,confidence,evidence,latitude,longitude,country,city
-"2026-04-22 01:07:29",10.42.0.89,Benign,0.99,"Avg Size: 81B",,,India,Local_Network
-"2026-04-22 01:07:29",10.42.0.89,Benign,0.99,"Avg Size: 81B",,,India,Local_Network
