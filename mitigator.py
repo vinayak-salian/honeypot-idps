@@ -9,7 +9,8 @@ from datetime import datetime
 QUEUE_PATH = "/home/vinayak/honeypot_project/logs/action_queue.csv"
 DB_PATH = "/home/vinayak/honeypot_project/nexus_security.db"
 
-# Safety Whitelist: Prevents the Pi from accidentally nuking itself or the gateway
+# 1. LOCAL FILTER: Only process these IPs for the banned list/firewall
+LOCAL_PREFIX = "10.42.0."
 PROTECTED_IPS = ["127.0.0.1", "10.42.0.1"]
 
 def get_mac_for_ip(cursor, ip):
@@ -34,43 +35,42 @@ def process_queue():
             ip = row['ip']
             action = row['action']
             
+            # --- THE GLOBAL IP FILTER ---
+            if not ip.startswith(LOCAL_PREFIX):
+                print(f"[*] IGNORING: {ip} is a Global/Remote IP (Not in Local Mode scope).")
+                continue
+
             # --- SELF-BLOCK PROTECTION ---
             if ip in PROTECTED_IPS:
                 print(f"[!] SECURITY: Block request for protected IP {ip} rejected.")
                 continue
             
-            # Fetch MAC for 100% blocking
             mac = get_mac_for_ip(cursor, ip)
             
             if action == "BLOCK":
-                print(f"[?? MITIGATOR] TOTAL ISOLATION: {ip} " + (f"[{mac}]" if mac else ""))
+                print(f"[?? MITIGATOR] LOCAL ISOLATION: {ip} " + (f"[{mac}]" if mac else ""))
                 
-                # 1. IP-Based Firewall Action (Layer 3)
+                # Layer 3 Block (IP)
                 subprocess.run(["sudo", "iptables", "-I", "INPUT", "-s", ip, "-j", "DROP"])
                 subprocess.run(["sudo", "iptables", "-I", "FORWARD", "-s", ip, "-j", "DROP"])
                 
-                # 2. MAC-Based Firewall Action (Layer 2 - The "100%" Fix)
+                # Layer 2 Block (MAC - The 100% Fix)
                 if mac:
                     subprocess.run(["sudo", "iptables", "-I", "INPUT", "-m", "mac", "--mac-source", mac, "-j", "DROP"])
                 
-                # 3. Update Database for Dashboard
+                # Update Local Banned List
                 cursor.execute("""
                     INSERT OR REPLACE INTO banned_ips (ip, mac, ban_time, reason) 
                     VALUES (?, ?, ?, ?)
-                """, (ip, mac, datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "Manual Isolate"))
+                """, (ip, mac, datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "Manual Local Block"))
                 
             elif action == "UNBLOCK":
                 print(f"[?? MITIGATOR] RELEASING ASSET: {ip}")
-                
-                # 1. Remove IP Rules
                 subprocess.run(["sudo", "iptables", "-D", "INPUT", "-s", ip, "-j", "DROP"])
                 subprocess.run(["sudo", "iptables", "-D", "FORWARD", "-s", ip, "-j", "DROP"])
-                
-                # 2. Remove MAC Rules
                 if mac:
                     subprocess.run(["sudo", "iptables", "-D", "INPUT", "-m", "mac", "--mac-source", mac, "-j", "DROP"])
                 
-                # 3. Remove from Database
                 cursor.execute("DELETE FROM banned_ips WHERE ip = ?", (ip,))
         
         conn.commit()
