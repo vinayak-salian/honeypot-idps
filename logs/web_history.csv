@@ -1,4 +1,15 @@
 timestamp,source_ip,domain
+"2026-04-21 22:19:17",10.42.0.48,easylist-downloads.adblockplus.org
+"2026-04-21 22:19:15",10.42.0.48,qjmnz4vd2y07.statuspage.io
+"2026-04-21 22:19:09",10.42.0.48,mail-ads.google.com
+"2026-04-21 22:19:07",10.42.0.48,mobile.events.data.microsoft.com
+"2026-04-21 22:18:56",10.42.0.48,193455-ipv4fdsmte.gr.global.aa-rt.sharepoint.com
+"2026-04-21 22:18:56",10.42.0.48,196615-ipv4v6fdse.gr.global.aa-rt.sharepoint.com
+"2026-04-21 22:18:53",10.42.0.48,www.msftncsi.com
+"2026-04-21 22:18:51",10.42.0.48,mail.google.com
+"2026-04-21 22:18:50",10.42.0.48,ipv6.msftncsi.com
+"2026-04-21 22:18:48",10.42.0.48,www.msftncsi.com
+"2026-04-21 22:18:48",10.42.0.48,ipv6.msftncsi.com
 "2026-04-21 22:18:21",10.42.0.48,analytics.apis.mcafee.com
 "2026-04-21 22:18:20",10.42.0.48,csptoken.ccs.mcafee.com
 "2026-04-21 22:18:18",10.42.0.48,www.msftncsi.com
@@ -88,14 +99,3 @@ timestamp,source_ip,domain
 "2026-04-21 22:15:59",10.42.0.48,_googlecast._tcp.local
 "2026-04-21 22:15:59",10.42.0.48,_googlecast._tcp.local
 "2026-04-21 22:15:58",10.42.0.48,api.pushbullet.com
-"2026-04-21 22:15:58",10.42.0.48,kv801.prod.do.dsp.mp.microsoft.com
-"2026-04-21 22:15:57",10.42.0.48,prod.detectportal.prod.cloudops.mozgcp.net
-"2026-04-21 22:15:57",10.42.0.48,push.services.mozilla.com
-"2026-04-21 22:15:57",10.42.0.48,my.microsoftpersonalcontent.com
-"2026-04-21 22:15:57",10.42.0.48,_googlecast._tcp.local
-"2026-04-21 22:15:57",10.42.0.48,mtalk.google.com
-"2026-04-21 22:15:57",10.42.0.48,stream.pushbullet.com
-"2026-04-21 22:15:57",10.42.0.48,nexus-websocket-a.intercom.io
-"2026-04-21 22:15:57",10.42.0.48,firefox.settings.services.mozilla.com
-"2026-04-21 22:15:56",10.42.0.48,skydrive.wns.windows.com
-"2026-04-21 22:15:56",10.42.0.48,detectportal.firefox.com
