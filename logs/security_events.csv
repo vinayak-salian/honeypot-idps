@@ -1,4 +1,6 @@
 timestamp,source_ip,attack_type,confidence,evidence,latitude,longitude,country,city
+"2026-04-21 23:02:39",172.217.174.65,PortScan,0.9,"Probed 4 ports | Rate: 5.48 p/s",,,India,Local_Network
+"2026-04-21 23:02:37",172.217.174.65,PortScan,0.9,"Probed 4 ports | Rate: 10.0 p/s",,,India,Local_Network
 "2026-04-21 22:56:15",100.117.237.102,Malware,0.5,"File: backdoor.sh.txt | Suspicious_File_Upload",,,Unknown,Unknown
 "2026-04-21 22:56:15",100.117.237.102,Suspicious_File_Upload,0.5,"ML Analysis",19.076,72.877,India,Mumbai
 "2026-04-21 22:16:28",34.110.196.231,PortScan,0.89,"Probed 4 ports | Rate: 15.41 p/s",39.1027,-94.5778,"United States","Kansas City"
