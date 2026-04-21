@@ -126,3 +126,9 @@ timestamp,source_ip,attack_type,confidence,evidence,latitude,longitude,country,c
 "2026-04-19 14:08:32",35.201.127.49,PortScan,0.81,"Probed 3 ports | Rate: 0.33 p/s",19.076,72.877,India,Mumbai
 "2026-04-19 14:08:28",49.44.146.40,PortScan,0.81,"Probed 3 ports | Rate: 1.45 p/s",19.076,72.877,India,Mumbai
 "2026-04-19 14:08:24",4.213.25.241,PortScan,0.81,"Probed 3 ports | Rate: 6.55 p/s",19.076,72.877,India,Mumbai
+2026-04-22 01:30:21,10.42.0.89,Benign,53,UDP,0.99,,,India,Local_Network
+2026-04-22 01:30:21,10.42.0.89,Benign,53,UDP,0.99,,,India,Local_Network
+2026-04-22 01:37:32,10.42.0.89,Benign,53,UDP,0.99,,,India,Local_Network
+2026-04-22 01:37:40,10.42.0.89,Benign,53,UDP,1.0,,,India,Local_Network
+2026-04-22 01:43:07,10.42.0.89,Benign,53,UDP,0.99,,,India,Local_Network
+2026-04-22 01:43:07,10.42.0.89,Benign,53,UDP,0.99,,,India,Local_Network
