@@ -36,17 +36,16 @@ tmux new-window -t sentry_hunt:2 -n "Brute" "sudo $PROJECT_DIR/venv/bin/python $
 tmux new-window -t sentry_hunt:3 -n "Scan" "sudo $PROJECT_DIR/venv/bin/python $PROJECT_DIR/attacks/portscan/portscan_detector.py; read"
 tmux new-window -t sentry_hunt:4 -n "DNS" "sudo $PROJECT_DIR/venv/bin/python $PROJECT_DIR/attacks/dns/dns_detector.py; read"
 
-# WINDOW 5: MASTER SYNC (Pulse + All Logs + DB)
-# Added 'git add -A' to ensure NO unstaged changes ever block a pull.
+# WINDOW 5: MASTER SYNC (Conflict-Free)
 tmux new-window -t sentry_hunt:5 -n "Sync" "while true; do \
     echo 'timestamp,uptime,gateway_ip' > $PROJECT_DIR/logs/system_status.csv; \
     echo \"\$(date '+%Y-%m-%d %H:%M:%S'),\$(uptime -p),\$(hostname -I | awk '{print \$1}')\" >> $PROJECT_DIR/logs/system_status.csv; \
-    git add -A; \
-    git commit -m 'Nexus-Pulse: Integrated Sync' --quiet || true; \
+    git add . ; \
+    git commit -m 'Nexus-Pulse: Sync' --quiet || true; \
     git pull --rebase origin main --quiet; \
     git push origin main --quiet; \
-    echo '[OK] Pulse & Logs Sent'; \
-    sleep 20; done"
+    echo '[OK] Dashboard Updated'; \
+    sleep 30; done"
 
 tmux new-window -t sentry_hunt:6 -n "Malware" "sudo $PROJECT_DIR/venv/bin/python $PROJECT_DIR/attacks/malware/vulnerable_server.py; read"
 
