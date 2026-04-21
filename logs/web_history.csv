@@ -1,4 +1,16 @@
 timestamp,source_ip,domain
+"2026-04-21 23:11:53",10.42.0.89,notifications-pa.googleapis.com
+"2026-04-21 23:11:52",10.42.0.89,auth.wikimedia.org
+"2026-04-21 23:11:52",10.42.0.89,auth.wikimedia.org
+"2026-04-21 23:11:50",10.42.0.89,content-autofill.googleapis.com
+"2026-04-21 23:11:48",10.42.0.89,encrypted-tbn2.gstatic.com
+"2026-04-21 23:11:48",10.42.0.89,encrypted-tbn2.gstatic.com
+"2026-04-21 23:11:46",10.42.0.89,tunnel.googlezip.net
+"2026-04-21 23:11:40",10.42.0.89,beacons.gcp.gvt2.com
+"2026-04-21 23:11:40",10.42.0.89,beacons.gcp.gvt2.com
+"2026-04-21 23:11:39",10.42.0.89,www.google.com
+"2026-04-21 23:11:39",10.42.0.89,www.google.com
+"2026-04-21 23:11:38",10.42.0.89,www.google.com
 "2026-04-21 23:02:42",10.42.0.89,play.google.com
 "2026-04-21 23:02:40",10.42.0.89,www.deccanherald.com
 "2026-04-21 23:02:40",10.42.0.89,www.deccanherald.com
@@ -87,15 +99,3 @@ timestamp,source_ip,domain
 "2026-04-21 22:52:56",10.42.0.89,ru.wikipedia.org
 "2026-04-21 22:52:55",10.42.0.89,upload.wikimedia.org
 "2026-04-21 22:52:55",10.42.0.89,upload.wikimedia.org
-"2026-04-21 22:52:52",10.42.0.89,jnn-pa.googleapis.com
-"2026-04-21 22:52:52",10.42.0.89,jnn-pa.googleapis.com
-"2026-04-21 22:52:50",10.42.0.89,www.google.com
-"2026-04-21 22:52:50",10.42.0.89,www.google.com
-"2026-04-21 22:52:50",10.42.0.89,www.instagram.com
-"2026-04-21 22:52:50",10.42.0.89,www.instagram.com
-"2026-04-21 22:52:49",10.42.0.89,googleads.g.doubleclick.net
-"2026-04-21 22:52:49",10.42.0.89,googleads.g.doubleclick.net
-"2026-04-21 22:52:49",10.42.0.89,static.doubleclick.net
-"2026-04-21 22:52:49",10.42.0.89,static.doubleclick.net
-"2026-04-21 22:52:49",10.42.0.89,ogads-pa.clients6.google.com
-"2026-04-21 22:52:49",10.42.0.89,ogads-pa.clients6.google.com
