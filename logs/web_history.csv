@@ -1,4 +1,9 @@
 timestamp,source_ip,domain
+"2026-04-21 22:56:29",10.42.0.89,www.google.com
+"2026-04-21 22:56:28",10.42.0.89,www.google.com
+"2026-04-21 22:56:27",10.42.0.89,www.google.com
+"2026-04-21 22:56:20",10.42.0.89,2.android.pool.ntp.org
+"2026-04-21 22:56:20",10.42.0.89,roughtime.int08h.com
 "2026-04-21 22:55:29",10.42.0.89,www.google.com
 "2026-04-21 22:54:28",10.42.0.89,www.google.com
 "2026-04-21 22:54:23",10.42.0.89,wikipedia.org
@@ -94,8 +99,3 @@ timestamp,source_ip,domain
 "2026-04-21 22:49:53",10.42.0.89,i-fallback.instagram.com
 "2026-04-21 22:49:53",10.42.0.89,graph.facebook.com
 "2026-04-21 22:49:53",10.42.0.89,graph-fallback.facebook.com
-"2026-04-21 22:49:53",10.42.0.89,be31c9a0-ca7d-4748-aeff-46b4b417851e-netseer-ipaddr-assoc.xz.fbcdn.net
-"2026-04-21 22:49:53",10.42.0.89,graph.instagram.com
-"2026-04-21 22:49:53",10.42.0.89,graph-fallback.instagram.com
-"2026-04-21 22:49:53",10.42.0.89,test-gateway.instagram.com
-"2026-04-21 22:49:53",10.42.0.89,web.facebook.com
