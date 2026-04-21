@@ -1,0 +1,4 @@
+timestamp,source_ip,attack_type,confidence,evidence,latitude,longitude,country,city
+"2026-04-21 22:15:56",10.42.0.48,PortScan,0.89,"Probed 4 ports | Rate: 2.61 p/s",,,India,Local_Network
+"2026-04-21 22:15:56",10.42.0.48,Benign,0.99,"Avg Size: 87B",,,India,Local_Network
+"2026-04-21 22:15:55",10.42.0.48,Benign,0.99,"Avg Size: 86B",,,India,Local_Network
