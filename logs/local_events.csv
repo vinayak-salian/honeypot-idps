@@ -1,0 +1,2 @@
+timestamp,source_ip,attack_type,confidence,evidence,latitude,longitude,country,city
+"2026-04-22 11:18:56",10.42.0.48,DNS_Tunneling,0.92,"Port: 53 | Proto: UDP | Entropy: 3.58 | Query: qjmnz4vd2y07.statuspage.io",,,India,Local_Network
