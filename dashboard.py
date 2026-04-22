@@ -118,7 +118,7 @@ st.divider()
 # --- HELPER: DISPLAY SECTION ---
 def display_attack_section(df, attack_key):
     if not df.empty:
-        st.dataframe(df, use_container_width=True, hide_index=True)
+        st.dataframe(df, width="stretch", hide_index=True)
         if attack_key in PLAYBOOK:
             st.markdown(f'<div class="playbook-card"><strong>Recommendation:</strong> {PLAYBOOK[attack_key]["solution"]}</div>', unsafe_allow_html=True)
     else: st.info(f"✅ System clear for {attack_key}.")
@@ -136,7 +136,7 @@ if op_mode == "Mode A: Global Watchtower":
     with col_hist:
         st.markdown("#### Historical Botnet Archive")
         if not active_events_df.empty:
-            st.dataframe(active_events_df.sort_values("timestamp", ascending=False), height=450, use_container_width=True, hide_index=True)
+            st.dataframe(active_events_df.sort_values("timestamp", ascending=False), height=450, width="stretch", hide_index=True)
         else: st.info("🗄️ Archive currently empty. Fresh logs will appear here.")
     st.divider()
 
@@ -154,7 +154,7 @@ else:
             with col_l:
                 st.markdown("**Discovered Local Assets**")
                 selected_ip = st.selectbox("🎯 Select Target Device:", options=live_devices['ip_address'].unique())
-                st.dataframe(live_devices, use_container_width=True, hide_index=True)
+                st.dataframe(live_devices, width="stretch", hide_index=True)
             
             with col_r:
                 st.markdown(f"#### 🔍 Deep Inspection: {selected_ip}")
@@ -172,12 +172,12 @@ else:
                 c_block, c_web = st.columns(2)
                 with c_block:
                     if is_banned:
-                        if st.button(f"🔓 RESTORE ACCESS: {selected_ip}", type="primary", use_container_width=True):
+                        if st.button(f"🔓 RESTORE ACCESS: {selected_ip}", type="primary", width="stretch"):
                             send_command(selected_ip, "UNBLOCK")
                             st.session_state.manual_actions[selected_ip] = "UNBLOCK"
                             st.rerun()
                     else:
-                        if st.button(f"🚫 ISOLATE ASSET: {selected_ip}", use_container_width=True):
+                        if st.button(f"🚫 ISOLATE ASSET: {selected_ip}", width="stretch"):
                             send_command(selected_ip, "BLOCK")
                             st.session_state.manual_actions[selected_ip] = "BLOCK"
                             st.rerun()
@@ -197,7 +197,7 @@ else:
                     ip_events = active_events_df[active_events_df['source_ip'].astype(str) == str(selected_ip)]
                     if not ip_events.empty:
                         st.warning(f"Detected {len(ip_events)} malicious signatures in this session.")
-                        st.dataframe(ip_events[['timestamp', 'attack_type', 'evidence', 'confidence']], use_container_width=True, hide_index=True)
+                        st.dataframe(ip_events[['timestamp', 'attack_type', 'evidence', 'confidence']], width="stretch", hide_index=True)
                     else: st.success("Clean: No hostile behavior found in this session.")
         else: st.info(f"📡 Waiting for devices to join the {gateway_prefix}.x network...")
     else: st.info("📡 Scanning Local Network... Connect a device to begin.")
@@ -226,5 +226,5 @@ with tabs[3]:
 # Show Banned List only in Mode B
 if op_mode == "Mode B: Local Sentinel":
     with tabs[4]:
-        if not banned_df.empty: st.dataframe(banned_df, use_container_width=True, hide_index=True)
+        if not banned_df.empty: st.dataframe(banned_df, width="stretch", hide_index=True)
         else: st.info("🛡️ No active IP bans.")
