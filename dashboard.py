@@ -14,21 +14,31 @@ st.set_page_config(page_title="Nexus Security Core", page_icon="???", layout="wi
 def fetch_events():
     try:
         res = requests.get(f"{API_BASE}/get_logs", timeout=5)
-        df = pd.DataFrame(res.json())
+        data = res.json()
 
-        if df.empty:
-            return df
+        if not isinstance(data, list) or len(data) == 0:
+            return pd.DataFrame(columns=[
+                "timestamp", "source_ip", "attack_type",
+                "confidence", "evidence", "env"
+            ])
+
+        df = pd.DataFrame(data)
+
+        # Ensure columns exist
+        for col in ["timestamp", "source_ip", "attack_type", "confidence", "evidence", "env"]:
+            if col not in df.columns:
+                df[col] = "global" if col == "env" else None
 
         df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
 
-        # ?? Separate env
-        if 'env' not in df.columns:
-            df['env'] = 'global'
-
         return df
 
-    except:
-        return pd.DataFrame()
+    except Exception as e:
+        st.error(f"Fetch error: {e}")
+        return pd.DataFrame(columns=[
+            "timestamp", "source_ip", "attack_type",
+            "confidence", "evidence", "env"
+        ])
 
 # --- FETCH DEVICES (CENSUS) ---
 @st.cache_data(ttl=5)
