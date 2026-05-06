@@ -126,6 +126,7 @@ if mode == "Global":
     else:
         st.info("No global attacks")
 
+selected_ip = None
 # ---------------- LOCAL ----------------
 if not active_df.empty:
     ip_list = active_df['source_ip'].unique()
