@@ -6,7 +6,7 @@ import pytz
 import requests
 
 # --- CONFIG ---
-API_BASE = "http://100.102.89.105:5000"
+API_BASE = "https://your-cloudflare-url.trycloudflare.com"  # 🔥 UPDATE THIS
 ist = pytz.timezone('Asia/Kolkata')
 
 st.set_page_config(page_title="Nexus Security Core", page_icon="🛡️", layout="wide")
@@ -15,16 +15,28 @@ st.set_page_config(page_title="Nexus Security Core", page_icon="🛡️", layout
 @st.cache_data(ttl=5)
 def fetch_events():
     try:
-        res = requests.get(f"{API_BASE}/get_logs", timeout=3)
+        res = requests.get(f"{API_BASE}/get_logs", timeout=5)
         data = res.json()
+
+        if not isinstance(data, list):
+            return pd.DataFrame()
+
         df = pd.DataFrame(data)
 
-        if 'timestamp' in df.columns:
-            df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
+        # Ensure required columns exist
+        required_cols = ["timestamp", "source_ip", "attack_type", "confidence", "evidence"]
+        for col in required_cols:
+            if col not in df.columns:
+                df[col] = None
+
+        # Convert timestamp
+        df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
 
         return df
-    except:
-        return pd.DataFrame()
+
+    except Exception as e:
+        st.error(f"Fetch error: {e}")
+        return pd.DataFrame(columns=["timestamp", "source_ip", "attack_type", "confidence", "evidence"])
 
 # --- MITIGATION API ---
 def send_command(ip, action):
@@ -36,8 +48,15 @@ def send_command(ip, action):
 
 # --- DATA ---
 events_df = fetch_events()
+
 global_events_df = events_df.copy()
 local_events_df = events_df.copy()
+
+# --- SAFE FILTER FUNCTION ---
+def safe_filter(df, keyword):
+    if df.empty or 'attack_type' not in df.columns:
+        return pd.DataFrame()
+    return df[df['attack_type'].str.contains(keyword, na=False)]
 
 # --- PLAYBOOK ---
 PLAYBOOK = {
@@ -76,8 +95,9 @@ if op_mode == "Global":
 else:
     st.markdown("### 📱 Local Sentinel")
 
-    if not local_events_df.empty:
-        selected_ip = st.selectbox("Select IP", local_events_df['source_ip'].unique())
+    if not local_events_df.empty and 'source_ip' in local_events_df.columns:
+
+        selected_ip = st.selectbox("Select IP", local_events_df['source_ip'].dropna().unique())
 
         col1, col2 = st.columns(2)
 
@@ -93,19 +113,26 @@ else:
 
         st.dataframe(ip_events[['timestamp', 'attack_type', 'confidence', 'evidence']])
 
+    else:
+        st.info("No local data available")
+
 # --- TABS ---
 st.markdown("### 📡 Threat Categories")
 
 tabs = st.tabs(["PortScan", "Malware", "Brute Force", "DNS"])
 
 with tabs[0]:
-    st.dataframe(events_df[events_df['attack_type'].str.contains("Scan", na=False)])
+    df = safe_filter(events_df, "Scan")
+    st.dataframe(df if not df.empty else pd.DataFrame())
 
 with tabs[1]:
-    st.dataframe(events_df[events_df['attack_type'].str.contains("Malware", na=False)])
+    df = safe_filter(events_df, "Malware")
+    st.dataframe(df if not df.empty else pd.DataFrame())
 
 with tabs[2]:
-    st.dataframe(events_df[events_df['attack_type'].str.contains("Brute", na=False)])
+    df = safe_filter(events_df, "Brute")
+    st.dataframe(df if not df.empty else pd.DataFrame())
 
 with tabs[3]:
-    st.dataframe(events_df[events_df['attack_type'].str.contains("DNS", na=False)])
+    df = safe_filter(events_df, "DNS")
+    st.dataframe(df if not df.empty else pd.DataFrame())
