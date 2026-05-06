@@ -4,28 +4,33 @@ import requests
 import sqlite3
 
 # --- CONFIG ---
-API_BASE = "https://affect-respective-discussed-realtor.trycloudflare.com"
+API_BASE = "https://YOUR_NEW_TUNNEL_URL"
 DB_PATH = "/home/vinayak/honeypot_project/nexus_security.db"
 
-st.set_page_config(page_title="Nexus Security Core", page_icon="???", layout="wide")
+st.set_page_config(page_title="Nexus Security Core", layout="wide")
 
-# --- FETCH ATTACK DATA ---
+# --- EMOJI FIX ---
+st.markdown("""
+<style>
+body {
+    font-family: "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# --- FETCH EVENTS ---
 @st.cache_data(ttl=5)
 def fetch_events():
     try:
         res = requests.get(f"{API_BASE}/get_logs", timeout=5)
         data = res.json()
 
-        if not isinstance(data, list) or len(data) == 0:
-            return pd.DataFrame(columns=[
-                "timestamp", "source_ip", "attack_type",
-                "confidence", "evidence", "env"
-            ])
+        if not isinstance(data, list):
+            return pd.DataFrame(columns=["timestamp","source_ip","attack_type","confidence","evidence","env"])
 
         df = pd.DataFrame(data)
 
-        # Ensure columns exist
-        for col in ["timestamp", "source_ip", "attack_type", "confidence", "evidence", "env"]:
+        for col in ["timestamp","source_ip","attack_type","confidence","evidence","env"]:
             if col not in df.columns:
                 df[col] = "global" if col == "env" else None
 
@@ -34,22 +39,38 @@ def fetch_events():
         return df
 
     except Exception as e:
-        st.error(f"Fetch error: {e}")
-        return pd.DataFrame(columns=[
-            "timestamp", "source_ip", "attack_type",
-            "confidence", "evidence", "env"
-        ])
+        st.warning(f"⚠️ API Offline: {e}")
+        return pd.DataFrame(columns=["timestamp","source_ip","attack_type","confidence","evidence","env"])
 
-# --- FETCH DEVICES (CENSUS) ---
+# --- FETCH DEVICES ---
 @st.cache_data(ttl=5)
 def fetch_devices():
     try:
         conn = sqlite3.connect(DB_PATH)
-        df = pd.read_sql_query("SELECT * FROM known_devices", conn)
+        df = pd.read_sql("SELECT * FROM known_devices", conn)
         conn.close()
         return df
     except:
         return pd.DataFrame()
+
+# --- GEO LOCATION ---
+@st.cache_data(ttl=300)
+def get_geo(ip):
+    try:
+        r = requests.get(f"http://ip-api.com/json/{ip}?fields=lat,lon", timeout=3).json()
+        return r.get("lat"), r.get("lon")
+    except:
+        return None, None
+
+def build_map(df):
+    coords = []
+
+    for ip in df['source_ip'].dropna().unique():
+        lat, lon = get_geo(ip)
+        if lat and lon:
+            coords.append({"lat": lat, "lon": lon})
+
+    return pd.DataFrame(coords)
 
 # --- MITIGATION ---
 def send_command(ip, action):
@@ -71,91 +92,92 @@ else:
     local_df = pd.DataFrame()
 
 # --- SIDEBAR ---
-st.sidebar.title("?? Command Center")
+st.sidebar.title("Command Center")
 mode = st.sidebar.radio("Mode", ["Global", "Local"])
 
 # --- HEADER ---
-st.title("??? Nexus Security Core")
+st.title("Nexus Security Core")
 
 # --- STATS ---
 col1, col2, col3 = st.columns(3)
-
 col1.metric("Total Events", len(events_df))
-col2.metric("Global Attacks", len(global_df))
-col3.metric("Local Attacks", len(local_df))
+col2.metric("Global", len(global_df))
+col3.metric("Local", len(local_df))
 
-# =========================
-# ?? GLOBAL MODE
-# =========================
+# ======================
+# 🌍 GLOBAL MODE
+# ======================
 if mode == "Global":
-    st.subheader("?? Global Threat Intelligence")
+    st.subheader("Global Threat Intelligence")
 
     if not global_df.empty:
-        st.dataframe(global_df.sort_values("timestamp", ascending=False), use_container_width=True)
+        st.dataframe(global_df.sort_values("timestamp", ascending=False))
+
+        # 🔥 MAP
+        st.markdown("### Attack Map")
+
+        map_df = build_map(global_df)
+
+        if not map_df.empty:
+            st.map(map_df)
+        else:
+            st.info("No geolocation data")
+
     else:
-        st.info("No global attacks yet")
+        st.info("No global attacks")
 
-# =========================
-# ?? LOCAL MODE
-# =========================
+# ======================
+# 🏠 LOCAL MODE
+# ======================
 else:
-    st.subheader("?? Local Network Defense")
+    st.subheader("Local Network Defense")
 
-    # -------- DEVICE PANEL --------
-    st.markdown("### ?? Devices (Live)")
+    # DEVICE PANEL
+    st.markdown("### Devices")
 
     if not devices_df.empty:
-        st.dataframe(devices_df, use_container_width=True)
+        st.dataframe(devices_df)
     else:
         st.info("No devices detected")
 
-    # -------- ATTACK CONTROL --------
-    st.markdown("### ?? Threat Control")
-
+    # CONTROL
     if not local_df.empty:
-        ips = local_df['source_ip'].dropna().unique()
-
-        selected_ip = st.selectbox("Select Suspicious IP", ips)
+        ip_list = local_df['source_ip'].dropna().unique()
+        selected_ip = st.selectbox("Select IP", ip_list)
 
         col1, col2 = st.columns(2)
 
-        with col1:
-            if st.button("?? Block"):
-                send_command(selected_ip, "block")
+        if col1.button("Block"):
+            send_command(selected_ip, "block")
 
-        with col2:
-            if st.button("?? Unblock"):
-                send_command(selected_ip, "unblock")
+        if col2.button("Unblock"):
+            send_command(selected_ip, "unblock")
 
-        st.markdown("### ?? Attack History")
+        st.markdown("### Attack History")
 
-        ip_events = local_df[local_df['source_ip'] == selected_ip]
+        st.dataframe(local_df[local_df['source_ip'] == selected_ip])
 
-        st.dataframe(
-            ip_events[['timestamp', 'attack_type', 'confidence', 'evidence']],
-            use_container_width=True
-        )
     else:
-        st.info("No local threats detected")
+        st.info("No local threats")
 
-# =========================
-# ?? ATTACK BREAKDOWN
-# =========================
-st.markdown("### ?? Threat Breakdown")
+# ======================
+# 📊 BREAKDOWN
+# ======================
+st.markdown("### Threat Categories")
 
-def safe_filter(df, keyword):
-    return df[df['attack_type'].str.contains(keyword, na=False)] if not df.empty else pd.DataFrame()
+def safe(df, key):
+    return df[df['attack_type'].str.contains(key, na=False)] if not df.empty else pd.DataFrame()
 
-tabs = st.tabs(["PortScan", "Malware", "Brute Force", "DNS"])
+tabs = st.tabs(["Scan", "Malware", "Brute", "DNS"])
 
 with tabs[0]:
-    st.dataframe(safe_filter(events_df, "Scan"))
+    st.dataframe(safe(events_df, "Scan"))
 
 with tabs[1]:
-    st.dataframe(safe_filter(events_df, "Malware"))
+    st.dataframe(safe(events_df, "Malware"))
 
 with tabs[2]:
-    st.dataframe(safe_filter(events_df, "Brute"))
+    st.dataframe(safe(events_df, "Brute"))
 
 with tabs[3]:
-    st.dataframe(safe_filter(events_df, "DNS"))
+    st.dataframe(safe(events_df, "DNS"))
