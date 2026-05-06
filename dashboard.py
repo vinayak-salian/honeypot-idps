@@ -136,18 +136,25 @@ else:
         ip_list = active_df['source_ip'].unique()
         selected_ip = st.selectbox("🎯 Select IP", ip_list)
 
-        c1,c2 = st.columns(2)
+        # --- SESSION STATE INIT ---
+if "blocked_ips" not in st.session_state:
+    st.session_state.blocked_ips = set()
 
-        if c1.button("🚫 Block"):
-            requests.post(f"{API_BASE}/block", json={"ip": selected_ip})
+c1, c2 = st.columns(2)
 
-        if c2.button("🔓 Unblock"):
-            requests.post(f"{API_BASE}/unblock", json={"ip": selected_ip})
+# 🔥 CHECK IF BLOCKED
+is_blocked = selected_ip in st.session_state.blocked_ips
 
-        st.dataframe(active_df[active_df['source_ip']==selected_ip])
-
-    else:
-        st.info("No local threats")
+if not is_blocked:
+    if c1.button("🚫 Block"):
+        requests.post(f"{API_BASE}/block", json={"ip": selected_ip})
+        st.session_state.blocked_ips.add(selected_ip)
+        st.rerun()
+else:
+    if c2.button("🔓 Unblock"):
+        requests.post(f"{API_BASE}/unblock", json={"ip": selected_ip})
+        st.session_state.blocked_ips.remove(selected_ip)
+        st.rerun()
 
 # ---------------- THREAT TABS ----------------
 st.markdown("### 📊 Threat Categories")
