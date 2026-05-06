@@ -53,8 +53,12 @@ def send_command(ip, action):
 events_df = fetch_events()
 devices_df = fetch_devices()
 
-global_df = events_df[events_df['env'] == 'global']
-local_df = events_df[events_df['env'] == 'local']
+if not events_df.empty and 'env' in events_df.columns:
+    global_df = events_df[events_df['env'] == 'global']
+    local_df = events_df[events_df['env'] == 'local']
+else:
+    global_df = pd.DataFrame()
+    local_df = pd.DataFrame()
 
 # --- SIDEBAR ---
 st.sidebar.title("?? Command Center")
