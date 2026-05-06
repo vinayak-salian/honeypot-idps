@@ -6,7 +6,7 @@ import pytz
 import requests
 
 # --- CONFIG ---
-API_BASE = "https://your-cloudflare-url.trycloudflare.com"  # 🔥 UPDATE THIS
+API_BASE = "https://affect-respective-discussed-realtor.trycloudflare.com"  
 ist = pytz.timezone('Asia/Kolkata')
 
 st.set_page_config(page_title="Nexus Security Core", page_icon="🛡️", layout="wide")
