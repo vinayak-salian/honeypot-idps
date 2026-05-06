@@ -127,35 +127,34 @@ if mode == "Global":
         st.info("No global attacks")
 
 # ---------------- LOCAL ----------------
+if not active_df.empty:
+    ip_list = active_df['source_ip'].unique()
+    selected_ip = st.selectbox("🎯 Select IP", ip_list)
+
+    # --- SESSION STATE INIT ---
+    if "blocked_ips" not in st.session_state:
+        st.session_state.blocked_ips = set()
+
+    c1, c2 = st.columns(2)
+
+    # 🔥 SAFE CHECK
+    is_blocked = selected_ip in st.session_state.blocked_ips
+
+    if not is_blocked:
+        if c1.button("🚫 Block"):
+            requests.post(f"{API_BASE}/block", json={"ip": selected_ip})
+            st.session_state.blocked_ips.add(selected_ip)
+            st.rerun()
+    else:
+        if c2.button("🔓 Unblock"):
+            requests.post(f"{API_BASE}/unblock", json={"ip": selected_ip})
+            st.session_state.blocked_ips.remove(selected_ip)
+            st.rerun()
+
+    st.dataframe(active_df[active_df['source_ip']==selected_ip])
+
 else:
-    st.subheader("🏠 Local Network Defense")
-
-    active_df = local_df
-
-    if not active_df.empty:
-        ip_list = active_df['source_ip'].unique()
-        selected_ip = st.selectbox("🎯 Select IP", ip_list)
-
-        # --- SESSION STATE INIT ---
-if "blocked_ips" not in st.session_state:
-    st.session_state.blocked_ips = set()
-
-c1, c2 = st.columns(2)
-
-# 🔥 CHECK IF BLOCKED
-is_blocked = selected_ip in st.session_state.blocked_ips
-
-if not is_blocked:
-    if c1.button("🚫 Block"):
-        requests.post(f"{API_BASE}/block", json={"ip": selected_ip})
-        st.session_state.blocked_ips.add(selected_ip)
-        st.rerun()
-else:
-    if c2.button("🔓 Unblock"):
-        requests.post(f"{API_BASE}/unblock", json={"ip": selected_ip})
-        st.session_state.blocked_ips.remove(selected_ip)
-        st.rerun()
-
+    st.info("No local threats")
 # ---------------- THREAT TABS ----------------
 st.markdown("### 📊 Threat Categories")
 
