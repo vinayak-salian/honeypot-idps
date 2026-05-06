@@ -14,6 +14,19 @@ st.set_page_config(page_title="Nexus Security Core", layout="wide")
 st.experimental_rerun if False else None  # placeholder
 
 
+# ---------------- GEO HELPERS ----------------
+@st.cache_data(ttl=3600)
+def get_country(ip):
+    try:
+        r = requests.get(
+            f"http://ip-api.com/json/{ip}?fields=status,country",
+            timeout=3
+        ).json()
+        if r.get("status") == "success":
+            return r.get("country")
+    except:
+        pass
+    return None
 # ---------------- FETCH EVENTS ----------------
 @st.cache_data(ttl=3)
 def fetch_events():
@@ -161,22 +174,59 @@ with tabs[3]:
 # ---------------- LEADERBOARD 🔥 ----------------
 st.markdown("### 🏆 Top Attackers")
 
-if not events_df.empty:
-    leaderboard = events_df.groupby("source_ip").size().reset_index(name="attacks")
-    leaderboard = leaderboard.sort_values("attacks", ascending=False).head(10)
+active_df = global_df if mode == "Global" else local_df
 
-    st.dataframe(leaderboard)
+if not active_df.empty:
+    leaderboard = (
+        active_df.groupby("source_ip")
+        .agg(
+            attacks=("source_ip", "count"),
+            last_seen=("timestamp", "max"),
+            max_risk=("confidence", "max")
+        )
+        .reset_index()
+        .sort_values("attacks", ascending=False)
+        .head(10)
+    )
+
+    # 🔥 Add country ONLY for global
+    if mode == "Global":
+        leaderboard["country"] = leaderboard["source_ip"].apply(get_country)
+        leaderboard = leaderboard[["source_ip","country","attacks","last_seen","max_risk"]]
+
+    # Rank
+    leaderboard.insert(0, "rank", range(1, len(leaderboard)+1))
+
+    st.dataframe(leaderboard, use_container_width=True)
 else:
     st.info("No attacker data")
 
 # ---------------- RISK PANEL 🔥 ----------------
 st.markdown("### 🚨 Risk Intelligence")
 
-if not events_df.empty:
-    risk_df = events_df.copy()
-    risk_df['risk'] = risk_df['confidence'].fillna(0).apply(risk_level)
+active_df = global_df if mode == "Global" else local_df
 
-    st.dataframe(risk_df[['timestamp','source_ip','attack_type','risk']].head(20))
+if not active_df.empty:
+    risk_df = active_df.copy()
+
+    risk_df['confidence'] = pd.to_numeric(risk_df['confidence'], errors='coerce').fillna(0)
+    risk_df['risk'] = risk_df['confidence'].apply(risk_level)
+
+    risk_df = risk_df.sort_values("timestamp", ascending=False)
+
+    # 🔥 Add country only in global
+    if mode == "Global":
+        risk_df["country"] = risk_df["source_ip"].apply(get_country)
+        st.dataframe(
+            risk_df[['timestamp','source_ip','country','attack_type','risk']].head(20),
+            use_container_width=True
+        )
+    else:
+        st.dataframe(
+            risk_df[['timestamp','source_ip','attack_type','risk']].head(20),
+            use_container_width=True
+        )
+
 else:
     st.info("No risk data")
 
