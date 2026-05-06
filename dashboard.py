@@ -5,7 +5,7 @@ from datetime import datetime
 import pytz
 
 # ---------------- CONFIG ----------------
-API_BASE = "https://edition-terrorists-enforcement-monday.trycloudflare.com"
+API_BASE = "https://roots-sentence-options-medication.trycloudflare.com"
 ist = pytz.timezone('Asia/Kolkata')
 
 st.set_page_config(page_title="Nexus Security Core", layout="wide")
