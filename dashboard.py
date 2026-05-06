@@ -12,7 +12,7 @@ st.set_page_config(page_title="Nexus Security Core", layout="wide")
 
 # ---------------- AUTO REFRESH ----------------
 st.experimental_rerun if False else None  # placeholder
-st.markdown("<meta http-equiv='refresh' content='5'>", unsafe_allow_html=True)
+
 
 # ---------------- FETCH EVENTS ----------------
 @st.cache_data(ttl=3)
