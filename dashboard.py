@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import requests
 import sqlite3
+from datetime import datetime
 
 # --- CONFIG ---
 API_BASE = "https://roots-sentence-options-medication.trycloudflare.com"
@@ -9,16 +10,16 @@ DB_PATH = "/home/vinayak/honeypot_project/nexus_security.db"
 
 st.set_page_config(page_title="Nexus Security Core", layout="wide")
 
-# --- EMOJI FIX ---
+# --- EMOJI FIX (SAFE) ---
 st.markdown("""
 <style>
 body {
-    font-family: "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+    font-family: "Segoe UI Emoji","Noto Color Emoji","Apple Color Emoji",sans-serif;
 }
 </style>
 """, unsafe_allow_html=True)
 
-# --- FETCH EVENTS ---
+# ---------------- FETCH EVENTS ----------------
 @st.cache_data(ttl=5)
 def fetch_events():
     try:
@@ -42,18 +43,41 @@ def fetch_events():
         st.warning(f"⚠️ API Offline: {e}")
         return pd.DataFrame(columns=["timestamp","source_ip","attack_type","confidence","evidence","env"])
 
-# --- FETCH DEVICES ---
+# ---------------- FETCH DEVICES ----------------
 @st.cache_data(ttl=5)
 def fetch_devices():
     try:
         conn = sqlite3.connect(DB_PATH)
         df = pd.read_sql("SELECT * FROM known_devices", conn)
         conn.close()
+
+        if df.empty:
+            return df
+
+        # 🔥 FIX: ONLY hotspot devices
+        df = df[df['ip_address'].str.startswith("10.42.")]
+
+        # 🔥 FIX: only online devices
+        if "status" in df.columns:
+            df = df[df['status'] == "online"]
+
+        return df
+
+    except:
+        return pd.DataFrame()
+
+# ---------------- FETCH HEARTBEAT ----------------
+@st.cache_data(ttl=5)
+def fetch_health():
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        df = pd.read_sql("SELECT * FROM system_status ORDER BY timestamp DESC LIMIT 1", conn)
+        conn.close()
         return df
     except:
         return pd.DataFrame()
 
-# --- GEO LOCATION ---
+# ---------------- GEO ----------------
 @st.cache_data(ttl=300)
 def get_geo(ip):
     try:
@@ -64,15 +88,13 @@ def get_geo(ip):
 
 def build_map(df):
     coords = []
-
     for ip in df['source_ip'].dropna().unique():
         lat, lon = get_geo(ip)
         if lat and lon:
             coords.append({"lat": lat, "lon": lon})
-
     return pd.DataFrame(coords)
 
-# --- MITIGATION ---
+# ---------------- MITIGATION ----------------
 def send_command(ip, action):
     try:
         requests.post(f"{API_BASE}/{action.lower()}", json={"ip": ip})
@@ -80,104 +102,111 @@ def send_command(ip, action):
     except:
         st.error("Command failed")
 
-# --- LOAD DATA ---
+# ---------------- LOAD ----------------
 events_df = fetch_events()
 devices_df = fetch_devices()
+health_df = fetch_health()
 
-if not events_df.empty and 'env' in events_df.columns:
-    global_df = events_df[events_df['env'] == 'global']
-    local_df = events_df[events_df['env'] == 'local']
-else:
-    global_df = pd.DataFrame()
-    local_df = pd.DataFrame()
+# 🔥 FIX: Proper separation
+global_df = events_df[events_df['env'] == 'global'] if not events_df.empty else pd.DataFrame()
+local_df = events_df[events_df['env'] == 'local'] if not events_df.empty else pd.DataFrame()
 
-# --- SIDEBAR ---
-st.sidebar.title("Command Center")
+# ---------------- SIDEBAR ----------------
+st.sidebar.title("🎮 Command Center")
 mode = st.sidebar.radio("Mode", ["Global", "Local"])
 
-# --- HEADER ---
-st.title("Nexus Security Core")
+# ---------------- HEADER ----------------
+st.title("🛡️ Nexus Security Core")
 
-# --- STATS ---
+# ---------------- HEARTBEAT ----------------
+if not health_df.empty:
+    last = health_df.iloc[0]
+    last_time = pd.to_datetime(last.get("timestamp"))
+    uptime = last.get("uptime", "--")
+
+    is_online = (datetime.now() - last_time).seconds < 120
+
+    if is_online:
+        st.success(f"🟢 PI ONLINE | ⏱️ Uptime: {uptime}")
+    else:
+        st.error(f"🔴 PI OFFLINE | Last Seen: {last_time}")
+
+# ---------------- STATS ----------------
 col1, col2, col3 = st.columns(3)
 col1.metric("Total Events", len(events_df))
 col2.metric("Global", len(global_df))
 col3.metric("Local", len(local_df))
 
-# ======================
-# 🌍 GLOBAL MODE
-# ======================
+# ================= GLOBAL =================
 if mode == "Global":
-    st.subheader("Global Threat Intelligence")
+    st.subheader("🌍 Global Threat Intelligence")
 
-    if not global_df.empty:
-        st.dataframe(global_df.sort_values("timestamp", ascending=False))
+    active_df = global_df
 
-        # 🔥 MAP
-        st.markdown("### Attack Map")
+    if not active_df.empty:
+        st.dataframe(active_df.sort_values("timestamp", ascending=False))
 
-        map_df = build_map(global_df)
+        st.markdown("### 🗺️ Attack Map")
+        map_df = build_map(active_df)
 
         if not map_df.empty:
             st.map(map_df)
         else:
-            st.info("No geolocation data")
+            st.info("No geo data")
 
     else:
         st.info("No global attacks")
 
-# ======================
-# 🏠 LOCAL MODE
-# ======================
+# ================= LOCAL =================
 else:
-    st.subheader("Local Network Defense")
+    st.subheader("🏠 Local Network Defense")
 
-    # DEVICE PANEL
-    st.markdown("### Devices")
+    st.markdown("### 📡 Devices")
 
     if not devices_df.empty:
         st.dataframe(devices_df)
     else:
-        st.info("No devices detected")
+        st.warning("No active local devices")
 
-    # CONTROL
-    if not local_df.empty:
-        ip_list = local_df['source_ip'].dropna().unique()
-        selected_ip = st.selectbox("Select IP", ip_list)
+    active_df = local_df
+
+    if not active_df.empty:
+        ip_list = active_df['source_ip'].dropna().unique()
+        selected_ip = st.selectbox("🎯 Select IP", ip_list)
 
         col1, col2 = st.columns(2)
 
-        if col1.button("Block"):
+        if col1.button("🚫 Block"):
             send_command(selected_ip, "block")
 
-        if col2.button("Unblock"):
+        if col2.button("🔓 Unblock"):
             send_command(selected_ip, "unblock")
 
-        st.markdown("### Attack History")
-
-        st.dataframe(local_df[local_df['source_ip'] == selected_ip])
+        st.markdown("### 📜 Attack History")
+        st.dataframe(active_df[active_df['source_ip'] == selected_ip])
 
     else:
         st.info("No local threats")
 
-# ======================
-# 📊 BREAKDOWN
-# ======================
-st.markdown("### Threat Categories")
+# ================= THREAT TABS =================
+st.markdown("### 📊 Threat Categories")
 
 def safe(df, key):
     return df[df['attack_type'].str.contains(key, na=False)] if not df.empty else pd.DataFrame()
 
-tabs = st.tabs(["Scan", "Malware", "Brute", "DNS"])
+# 🔥 FIX: use correct dataset per mode
+active_df = global_df if mode == "Global" else local_df
+
+tabs = st.tabs(["🎯 Scan", "🦠 Malware", "🔑 Brute", "🌐 DNS"])
 
 with tabs[0]:
-    st.dataframe(safe(events_df, "Scan"))
+    st.dataframe(safe(active_df, "Scan"))
 
 with tabs[1]:
-    st.dataframe(safe(events_df, "Malware"))
+    st.dataframe(safe(active_df, "Malware"))
 
 with tabs[2]:
-    st.dataframe(safe(events_df, "Brute"))
+    st.dataframe(safe(active_df, "Brute"))
 
 with tabs[3]:
-    st.dataframe(safe(events_df, "DNS"))
+    st.dataframe(safe(active_df, "DNS"))
