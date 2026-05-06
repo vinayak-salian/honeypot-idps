@@ -4,6 +4,9 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 import pytz
+import sqlite3
+DB_PATH = "nexus_security.db"
+
 
 # --- 1. CONFIGURATION ---
 AWS_IP = "51.21.135.152" 
@@ -12,7 +15,25 @@ ist = pytz.timezone('Asia/Kolkata')
 
 st.set_page_config(page_title="Nexus Security Core", page_icon="🛡️", layout="wide")
 
-# --- 2. LOG FETCHING FUNCTION ---
+# 2.1 SQL
+@st.cache_data(ttl=5)
+def fetch_sql_data(query):
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        df = pd.read_sql(query, conn)
+
+        if 'timestamp' in df.columns:
+            df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
+
+        conn.close()
+        return df
+
+    except Exception as e:
+        st.error(f"DB Error: {e}")
+        return pd.DataFrame()
+
+
+# --- 2.2 LOG FETCHING FUNCTION ---
 @st.cache_data(ttl=10)
 def fetch_logs(filename):
     try:
@@ -48,8 +69,13 @@ def send_command(ip, action):
 
 # --- 3. DATA ACQUISITION (Dual-Stream Ingestion) ---
 health_df = fetch_logs("system_status.csv")
-global_events_df = fetch_logs("security_events.csv") # Mode A: All-time Global Botnets
-local_events_df = fetch_logs("local_events.csv")    # Mode B: Current Session Local Demo
+global_events_df = fetch_sql_data("""
+SELECT * FROM attack_logs
+ORDER BY timestamp DESC
+LIMIT 1000
+""")
+
+local_events_df = global_events_df.copy()   # Mode B: Current Session Local Demo
 devices_df = fetch_logs("known_devices.csv")
 traffic_df = fetch_logs("traffic_metrics.csv")
 banned_df = fetch_logs("banned_ips.csv")
