@@ -4,7 +4,7 @@ import requests
 import sqlite3
 
 # --- CONFIG ---
-API_BASE = "https://ntsc-curtis-placing-essential.trycloudflare.com"
+API_BASE = "https://roots-sentence-options-medication.trycloudflare.com"
 DB_PATH = "/home/vinayak/honeypot_project/nexus_security.db"
 
 st.set_page_config(page_title="Nexus Security Core", layout="wide")
