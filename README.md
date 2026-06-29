@@ -1,4 +1,4 @@
----
+
 # 🛡️ Nexus Security Core
 
 ## AI-Enhanced Distributed Honeypot & Intrusion Detection Platform
@@ -12,7 +12,7 @@ The platform consists of two independent security sensors:
 
 Both sensors generate security telemetry that is processed, classified, and visualized through a centralized dashboard, enabling real-time monitoring and defensive response.
 
----
+
 
 # 🏗️ System Architecture
 
