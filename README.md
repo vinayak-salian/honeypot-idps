@@ -4,7 +4,7 @@
 ## AI-Enhanced Distributed Honeypot & Intrusion Detection Platform
 
 Nexus Security Core is a hybrid cybersecurity platform designed to detect, analyze, and respond to malicious activities across both public-facing cloud infrastructure and private local networks. The project combines deception technologies (honeypots), machine-learning-assisted intrusion detection, centralized telemetry, and automated mitigation into a unified Security Operations Center (SOC) dashboard.
-
+ 
 The platform consists of two independent security sensors:
 
 * **Cloud Threat Sources** – Internet-facing AWS honeypots that capture real-world attacks.
